@@ -3,18 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- Latest compiled JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js" defer></script>
     <title>GROW</title>
 </head>
-<body>
-    <nav class="navbar navbar-dark bg-dark display-2">
-        ola
-        ola
+<body style="margin-left: 0px; padding-left: 0px" class="container-fluid vh-100">
+    <nav class="position-fixed col-md-2 d-none d-md-block bg-dark sidebar h-100">
+        <div class="sidebar-header text-center text-white">
+            <h1>GROW</h1>
+        </div>
+        <ul class="list-unstyled sidebar-sticky">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">C</a></li>
+            <li><a href="">D</a></li>
+            <li><a href="">E</a></li>
+            <li><a href="">F</a></li>
+        </ul>
+        <div class="nav flex-column">
+            <button class="btn btn-primary mb-2">Log in</button>
+            <button class="btn btn-secondary">Sign up</button>
+        </div>
     </nav>
+    
+    <main id="main" class="col-md-10 ml-sm-auto col-lg-10 px-4 text-center align-middle ">
+        <form action="" class="form my-2 my-lg-0">
+            <label for="">
+            What do you need help with? <input class="form-control" type="text" placeholder="How do I do my taxes">
+            </label>
+        </form>
+        
+    </main>
     
 </body>
 </html>

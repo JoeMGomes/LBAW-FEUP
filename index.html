@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <script src="js/bootstrap.min.js" defer></script>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <title>GROW</title>
 </head>
-<body style="margin-left: 0px; padding-left: 0px" class="container-fluid vh-100">
+<body style="margin-left: 0px; padding-left: 0px; font-family: 'Raleway', sans-serif;" class="container-fluid vh-100">
     <nav class="position-fixed col-md-2 d-none d-md-block bg-dark sidebar h-100">
         <div class="sidebar-header text-center text-white">
             <h1>GROW</h1>
@@ -26,12 +29,17 @@
         </div>
     </nav>
     
-    <main id="main" class="col-md-10 ml-sm-auto col-lg-10 px-4 text-center align-middle ">
-        <form action="" class="form my-2 my-lg-0">
-            <label for="">
-            What do you need help with? <input class="form-control" type="text" placeholder="How do I do my taxes">
-            </label>
+    <main id="main" class="col-md-10 ml-sm-auto col-lg-10 px-4 text-center d-flex flex-column justify-content-between vh-100">
+        <div ></div>
+        <form action="" class="">
+            <label  for="search" class="w-75">
+            <h3 style="font-weight: 800;">What do you need help with?</h3></label><input id="search" class="form-control w-50 " type="text" placeholder="How do I do my taxes">
+            <i class="fa fa-search" ></i>
+            
+
         </form>
+
+        <div class="pb-3"><i class="fa fa-angle-down fa-3x"></i></div>
         
     </main>
     

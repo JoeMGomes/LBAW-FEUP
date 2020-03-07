@@ -10,11 +10,13 @@
         />
         <link href="https://fonts.googleapis.com/css?family=Raleway:400&display=swap" rel="stylesheet" />
         <script src="js/bootstrap.min.js" defer></script>
+
+        <link rel="stylesheet" href="css/customStyles.css" />
         <title>GROW</title>
     </head>
 
     <body
-        style="margin:0px; padding: 0px; font-family: 'Raleway', sans-serif; background-color: #fce4e4;"
+        style="margin:0px; padding: 0px; font-family: 'Raleway', sans-serif; "
         class="container-fluid vh-100"
     >
         <nav class="position-fixed col-lg-2 d-none d-lg-block bg-dark sidebar h-100">
@@ -34,7 +36,7 @@
                 <button class="btn bg-light">Sign up</button>
             </div>
         </nav>
-        <div class="col-lg-10 ml-lg-auto col-lg-10 text-left align-middle bg-dark mr-lg-0">
+        <div class="col-lg-10 ml-lg-auto col-lg-10 text-left align-middle mr-lg-0">
             <form action="" class="form  my-lg-0 input-group py-3 ">
                 <input class="form-control " type="text" placeholder="How do I do my taxes" />
                 <div class="input-group-append">
@@ -44,37 +46,73 @@
                 </div>
             </form>
         </div>
-        <main id="main" class="ml-sm-auto col-lg-10 px-4 text-center align-right h-100 ">
-            <div class="container w-75 py-2 my-3 text-left bg-white ">
-                <blockquote class="blockquote align-left">
-                    <h2 class="font-weight-bolder">
-                        How do I wash my yellow jacket? 
-                        <i class="fa fa-angle-down fa-1x float-right"></i>
-                        <i class="fa fa-angle-up fa-1x float-right"></i>
-                        <i class="float-lg-right mx-lg-1 small">42</i>
-                    </h2>
-                    <hr style="background-color: #ffb7b7; height: 2px " />
-                    <p>
-                        SO, I have this yellow jacket and I don't know how to wash it. How do I wash it? It is
-                        yellow. Please help.
-                        <br />
-                        EDIT: The jacket is yellow
-                    </p>
+        <main id="main" class="ml-lg-auto col-lg-10 text-center align-right h-100 ">
+            <div class="container-fluid py-2 my-3 pr-lg-5 text-left bg-white ">
+                <div class="blockquote py-lg-2">
+                    <div class="d-flex">
+                        <div class="d-flex flex-column align-items-center pr-4">
+                            <img src="photos/david.jpg" class="rounded-img" alt="User Photo" />
+                            <span class="text-center">David Dinis</span>
+                        </div>
+                        <div>
+                            <h2 class="font-weight-bolder pl-lg-2 ">
+                                How do I wash my yellow jacket?
+                                <span class=""> Report</span>
+                            </h2>
+                            <p class="pl-lg-2 pt-lg-2">
+                                SO, I have this yellow jacket and I don't know how to wash it. How do I wash
+                                it? It is yellow. Please help.
+                                <br />
+                                EDIT: The jacket is yellow
+                            </p>
+                            <span class="tag"> #Laundry</span>
+                            <footer class="blockquote-footer text-left pt-lg-3">
+                                Asked on 21/03/2020
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                <!-- REPLY -->
+                <div class="blockquote py-lg-2 pl-lg-5 d-flex flex-column">
+                    <div class="d-flex">
+                        <div class="d-flex flex-column p-2 ">
+                            <i class="fa fa-angle-up fa-2x "></i>
+                            <i>42</i>
+                            <i class="fa fa-angle-down fa-2x "></i>
+                        </div>
+                        <div class=" border d-flex p-3">
+                            <div class="d-flex flex-column align-items-center pr-4">
+                                <img src="photos/henrique.jpg" class="rounded-img" alt="User Photo" />
+                                <span class="text-center">Henrique Freitas</span>
+                            </div>
+                            <p class="pt-lg-3 pl-lg-2 ">
+                                In order to wash your yellow jacket you need to use special yellow
+                                jacket washing soap
+                            </p>
+                            <footer class="blockquote-footer text-right">
+                                João Encontrado na Vida, Answered on 23/03/2020
+                            </footer>
+                        </div>
+                    </div>
+                        
+                    </div>
+                    <!-- COMMENT -->
+                    <div class="d-flex ml-auto" style="width: 95%">
+                        <div class="d-flex flex-column p-2">
+                            <i class="fa fa-angle-up fa-1x "></i>
+                            <i class="small">10</i>
+                            <i class="fa fa-angle-down fa-1x "></i>
+                        </div>
+                        <div>
+                            <p class="py-lg-3 pl-lg-2 small">
+                                Indeed there is a special soap used for yellow jackets! Best answer for me!
+                            </p>
+                        </div>
+                    </div>
                     <footer class="blockquote-footer text-right">
-                        João Perdido na Vida, Asked on 21/03/2020
+                        João Perdido da Vida, Answered on 23/03/2020
                     </footer>
-                </blockquote>
-                <hr class="mb-lg-1" style="background-color: #ffb7b7; height: 4px " />
-                <blockquote class="blockquote">
-                    <i class="fa fa-angle-down fa-1x float-lg-right ml-lg-0 pt-lg-3"></i>
-                    <i class="fa fa-angle-up fa-1x float-lg-right ml-lg-1 pt-lg-3"></i>
-                    <i class="float-lg-right mx-lg-1 small pt-lg-3">20</i>
-
-                    <p class="pt-lg-3">
-                        In order to wash your yellow jacket you need to use special yellow jacket washing soap
-                    </p>
-                    <footer class="blockquote-footer text-right">João Encontrado na Vida</footer>
-                </blockquote>
+                </div>
             </div>
         </main>
     </body>

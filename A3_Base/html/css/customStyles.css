@@ -4,6 +4,10 @@
     height: 5em;
 }
 
+.border {
+    border-radius: 1em
+}
+
 .tag {
     padding: 0.2em;
     background-color: rgb(71, 178, 182);

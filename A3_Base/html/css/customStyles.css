@@ -1,0 +1,11 @@
+.rounded-img{
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+}
+
+.tag {
+    padding: 0.2em;
+    background-color: rgb(71, 178, 182);
+    border-radius: 1em;
+}

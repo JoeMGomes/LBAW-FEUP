@@ -13,3 +13,11 @@
     background-color: rgb(71, 178, 182);
     border-radius: 1em;
 }
+
+.goodGreen {
+    color: rgb(80, 206, 7)
+}
+
+.badPurple {
+    color: rgb(135, 35, 175)
+}

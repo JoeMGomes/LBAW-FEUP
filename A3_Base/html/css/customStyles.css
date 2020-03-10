@@ -11,6 +11,7 @@
 .tag {
     padding: 0.2em;
     border-radius: 1em;
+    color: white;
 }
 
 .tag:hover {
@@ -23,11 +24,11 @@
 }
 
 .tag-orange {
-    background-color: #FE9460;
+    background-color: #ba2312;
 }
 
 .tag-orange:hover {
-    background-color: #a95C40;
+    background-color: #881a0e;
     
 }
 
@@ -40,35 +41,35 @@
 }
 
 .tag-yellow {
-    background-color: #fc0;
+    background-color: #eda809;
 }
 
 .tag-yellow:hover {
-    background-color: #a70;
+    background-color: #ad7b07;
 }
 
 .tag-green {
-    background-color: #5cff59;
+    background-color: #7e9e00;
 }
 
 .tag-green:hover {
-    background-color: #3b3;
+    background-color: #3a4800;
 }
 
 .tag-grey {
-    background-color: #999;
+    background-color: #777;
 }
 
 .tag-grey:hover {
-    background-color: #666;
+    background-color: #575757;
 }
 
 .tag-pink {
-    background-color: #;
+    background-color: #dd8e7c;
 }
 
 .tag-pink:hover {
-    background-color: #;
+    background-color: #a1685b;
 }
 
 .goodGreen {
@@ -77,6 +78,11 @@
 
 .badPurple {
     color: rgb(135, 35, 175)
+}
+
+.notifications:hover{
+    background-color: darkgray;
+    border-radius: 1em
 }
 
 .border-3 {

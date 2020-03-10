@@ -1,11 +1,11 @@
 .form-container{
     background: #FFFFFF;
-    padding:2rem;
+    padding:1rem;
     border-radius: 5px;
 }
 
 .register-logo{
-    width: 5rem;
+    width: 4rem;
 }
 
 .bg-mydark{
@@ -35,3 +35,4 @@
 .bg-myred:hover{
     background-color: #B96C46;
 }
+

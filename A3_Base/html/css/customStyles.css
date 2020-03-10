@@ -82,3 +82,12 @@
 .border-3 {
     border-width: 2px;
 }
+
+.visually-hidden {
+    opacity: 0;
+}
+
+ /* LABELS AS CHECKBOXES */
+.labelCheckBox:checked + .labelToCheck {
+    background-color: #a70;
+}

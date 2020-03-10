@@ -72,8 +72,8 @@
     background-color: #a1685b;
 }
 
-.goodGreen {
-    color: rgb(80, 206, 7)
+.grey {
+    color: #555;
 }
 
 .badPurple {
@@ -87,6 +87,10 @@
 
 .border-3 {
     border-width: 2px;
+}
+
+.bg-grey {
+    background-color: #ddd;
 }
 
 .visually-hidden {

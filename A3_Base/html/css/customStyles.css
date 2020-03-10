@@ -92,3 +92,12 @@
 .bg-grey {
     background-color: #ddd;
 }
+
+.visually-hidden {
+    opacity: 0;
+}
+
+ /* LABELS AS CHECKBOXES */
+.labelCheckBox:checked + .labelToCheck {
+    background-color: #a70;
+}

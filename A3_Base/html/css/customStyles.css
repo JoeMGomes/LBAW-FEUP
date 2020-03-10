@@ -1,4 +1,4 @@
-.rounded-img{
+.rounded-img {
     border-radius: 50%;
     width: 5em;
     height: 5em;
@@ -16,7 +16,7 @@
 
 .tag:hover {
     color: white;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .tag-aqua {
@@ -29,7 +29,7 @@
 
 .tag-orange:hover {
     background-color: #881a0e;
-    
+
 }
 
 .tag-purple {
@@ -72,15 +72,15 @@
     background-color: #a1685b;
 }
 
-.goodGreen {
-    color: rgb(80, 206, 7)
+.grey {
+    color: #555;
 }
 
 .badPurple {
     color: rgb(135, 35, 175)
 }
 
-.notifications:hover{
+.notifications:hover {
     background-color: darkgray;
     border-radius: 1em
 }
@@ -89,6 +89,19 @@
     border-width: 2px;
 }
 
-.resize-none{
+.resize-none {
     resize: none;
+}
+
+.bg-grey {
+    background-color: #ddd;
+}
+
+.visually-hidden {
+    opacity: 0;
+}
+
+/* LABELS AS CHECKBOXES */
+.labelCheckBox:checked+.labelToCheck {
+    background-color: #a70;
 }

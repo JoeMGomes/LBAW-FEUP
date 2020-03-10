@@ -21,3 +21,9 @@
 .badPurple {
     color: rgb(135, 35, 175)
 }
+
+
+.notifications:hover{
+    background-color: darkgray;
+    border-radius: 1em
+}

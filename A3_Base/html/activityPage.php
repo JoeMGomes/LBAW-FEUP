@@ -25,7 +25,7 @@ drawHTMlHeader()
     </nav>
 
     <div class="col-md-10 ml-sm-auto col-lg-10 px-4 text-left align-middle">
-        <form action="" class="form input-group my-lg-0 py-3">
+        <form action="#" class="form input-group my-lg-0 py-3">
                 
             <input id="search" class="form-control w-50 rounded-pill border-dark border-3 ml-2" type="text" placeholder="How do I do my taxes">
             <div class="input-group-append" >

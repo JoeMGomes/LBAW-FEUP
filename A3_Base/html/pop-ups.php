@@ -1,19 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <script src="js/bootstrap.min.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="css/global.css" />
-    <link rel="stylesheet" href="css/customStyles.css" />
-    <title>GROW</title>
-</head>
+function drawReport()
+{ ?>
 
-<body class="bg-white equal vh-100">
+    <div class="text-left m-auto w-25 rounded bg-grey d-flex flex-column">
+        <h3 class="px-2">what is wrong?</h3>
+        <form class="d-flex flex-column align-items-start p-2 pb-4 m-auto">
+            <label><input type="radio" id="language" name="report" value="male"> Innapropriate language</label>
+            <label><input type="radio" id="offensive" name="report" value="male"> Offensive towards others</label>
+            <label><input type="radio" id="other" name="report" value="male"> Other</label>
+            <div class="d-flex flex-column">
+                <label>Describe the problem</label>
+                <textarea rows="2" class="w-100 form-control rounded border resize-none"></textarea>
+            </div>
+            <button type="submit" class="btn tag-yellow ml-auto rounded mt-4">Send Report</button>
+        </form>
+    </div>
+
+<?php } ?>
+
+<?php
+
+function drawNotifications()
+{
+?>
     <div class="text-center">
         <h2><i class="fa fa-bell"></i><span class="px-3">Notifications</span></h2>
     </div>
@@ -39,8 +49,7 @@
 
             <div class="d-flex justify-content-start notifications mb-3 px-2">
                 <i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>
-                <span class="">3 users upvoted your answer: "<strong>Here is a great video that teaches all about
-                        finances</strong>"
+                <span class="">3 users upvoted your answer: "<strong>Here is a great video that teaches all about finances</strong>"
                     <div class="text-left pl-4">
                         5m ago
                     </div>
@@ -49,8 +58,7 @@
 
             <div class="d-flex justify-content-start notifications mb-3 px-2">
                 <i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>
-                <span class="">3 users upvoted your answer: "<strong>Here is a great video that teaches all about
-                        finances</strong>"
+                <span class="">3 users upvoted your answer: "<strong>Here is a great video that teaches all about finances</strong>"
                     <div class="text-left pl-4">
                         5m ago
                     </div>
@@ -59,8 +67,7 @@
 
             <div class="d-flex justify-content-start notifications mb-3 px-2">
                 <i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>
-                <span class="">3 users upvoted your answer: "<strong>Here is a great video that teaches all about
-                        finances</strong>"
+                <span class="">3 users upvoted your answer: "<strong>Here is a great video that teaches all about finances</strong>"
                     <div class="text-left pl-4">
                         5m ago
                     </div>
@@ -69,8 +76,7 @@
 
             <div class="d-flex justify-content-start notifications mb-3 px-2">
                 <i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>
-                <span class="">3 users upvoted your answer: "<strong>Here is a great video that teaches all about
-                        finances</strong>"
+                <span class="">3 users upvoted your answer: "<strong>Here is a great video that teaches all about finances</strong>"
                     <div class="text-left pl-4">
                         5m ago
                     </div>
@@ -78,4 +84,5 @@
             </div>
         </div>
     </section>
-</body>
+
+<?php } ?>

@@ -1,54 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/customStyles.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <script src="js/bootstrap.min.js" defer></script>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <title>GROW</title>
-</head>
+include_once('tpl_common.php');
+
+drawHTMlHeader();
+?>
+
 
 <body style="margin-left: 0px; padding-left: 0px; font-family: 'Raleway', sans-serif;" class="container-fluid vh-100">
-    <nav class="position-fixed col-md-2 col-lg-2 d-none d-md-flex flex-column  justify-content-between  bg-dark sidebar h-100">
-        <div class="sidebar-header text-center text-white mt-5">
-            <img src="assets/logo.png" class="register-logo" alt="">
-            <ul class="mt-5 list-unstyled sidebar-sticky">
-                <li class="my-3"><a class="text-white w-100" style="line-height: 0px;" href="">Post a Question</a></li>
-                <li class="my-3"><a class="text-white w-100" href="">Categories</a></li>
-                <li class="my-3"><a class="text-white w-100" href="">About</a></li>
-            </ul>
-        </div>
-        <div class="d-flex flex-column mb-5 align-items-center">
-            <img src="assets/david.jpg" class="rounded-img " alt="">
-            <h5 class="pt-2 text-white">David Dinis</h5>
-            <span class="text-white">2309 points</span>
-            <ul class="list-unstyled d-flex flex-column align-items-center my-5">
-                <li><a class="text-white" href="">View Activity</a></li>
-                <li><a class="text-white" href="">Notifications</a></li>
-                <li><a class="text-white" href="">Settings</a></li>
-            </ul>
-            <button class="btn btn-secondary">Sign out</button>
-        </div>
-    </nav>
-
-    <div class="col-lg-10 ml-lg-auto col-lg-10 text-left align-middle mr-lg-0">
-        <form action="" class="form input-group my-lg-0 py-3">
-                
-            <input id="search" class="form-control w-50 rounded-pill border-dark border-3 ml-2" type="text" placeholder="How do I do my taxes">
-            <div class="input-group-append" >
-                <button class="btn" type="button">
-                    <i class="fa fa-search fa-lg" ></i>
-                </button>
-            </div>
-            
-        </form>
-    </div>
+    <?php
+    drawNavBar();
+    drawNavBarTop();
+    ?>
     <main id="main" class="ml-lg-auto col-lg-10 align-right ">
         <h2 class="font-weight-bold py-2 px-4"> Settings</h2>
         <div class="container">
@@ -110,14 +72,12 @@
                     <form class="md-form ">
                         <div class="file-field ">
                             <div class="mb-4 d-md-flex">
-                                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                                    class="rounded-circle z-depth-1-half avatar-pic " width=80px height="80px"
-                                    alt="example placeholder avatar">
+                                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" class="rounded-circle z-depth-1-half avatar-pic " width=80px height="80px" alt="example placeholder avatar">
                                 <div class="mt-2 ml-2 d-md-flex flex-column">
                                     <span>Add photo</span>
                                     <input class="mb-5" type="file">
                                 </div>
-                              
+
                             </div>
                         </div>
                     </form>

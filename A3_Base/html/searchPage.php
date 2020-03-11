@@ -1,48 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400&display=swap" rel="stylesheet" />
-    <script src="js/bootstrap.min.js" defer></script>
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/customStyles.css" />
-    <title>GROW</title>
-</head>
+include_once('tpl_common.php');
+drawHTMlHeader();
+
+?>
 
 <body style="margin:0px; padding: 0px; font-family: 'Raleway', sans-serif; " class="container-fluid vh-100">
-    <nav
-            class="position-fixed col-md-2 col-lg-2 d-none d-md-flex flex-column  justify-content-between  bg-dark sidebar h-100">
-            <div class="sidebar-header text-center text-white mt-5">
-                <img src="assets/logo.png" class="register-logo" alt="">
-                <ul class="mt-5 list-unstyled sidebar-sticky">
-                    <li class="my-3"><a class="text-white w-100" style="line-height: 0px;" href="">Post a Question</a>
-                    </li>
-                    <li class="my-3"><a class="text-white w-100" href="">Categories</a></li>
-                    <li class="my-3"><a class="text-white w-100" href="">About</a></li>
-                </ul>
-            </div>
-            <div></div>
-            <div class="mb-5 nav flex-column">
-                <button class="btn btn-light mb-2">Sign up</button>
-                <button class="btn btn-secondary">Log in</button>
-            </div>
-        </nav>
-    <div class="col-lg-10 ml-lg-auto col-lg-10 text-left align-middle mr-lg-0">
-        <form action="" class="form input-group my-lg-0 py-3">
-                
-            <input id="search" class="form-control w-50 rounded-pill border-dark border-3 ml-2" type="text" placeholder="How do I do my taxes">
-            <div class="input-group-append" >
-                <button class="btn" type="button">
-                    <i class="fa fa-search fa-lg" ></i>
-                </button>
-            </div>
-            
-        </form>
-    </div>
+    
+    <?php
+    drawNavBar();
+    drawNavBarTop();
+    ?>
+
+
     <main id="main" class="ml-lg-auto col-lg-10 align-right h-100 ">
         <div class="row justify-content-end my-2">
             <div class="col">

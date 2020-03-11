@@ -6,10 +6,10 @@ drawHTMlHeader();
 ?>
 
 
-<body style="margin-left: 0px; padding-left: 0px; font-family: 'Raleway', sans-serif;" class="container-fluid vh-100">
+<body style=" font-family: 'Raleway', sans-serif;" class="container-fluid vh-100 m-0 p-0">
     <?php
-    drawNavBar();
-    drawNavBarTop();
+    drawNavBar(true);
+    drawNavBarTop("");
     ?>
     <main id="main" class="ml-lg-auto col-lg-10 align-right ">
         <h2 class="font-weight-bold py-2 px-4"> Settings</h2>

@@ -5,9 +5,9 @@ include_once('tpl_common.php');
 drawHTMlHeader();
 ?>
 
-<body class="bg-dark text-center">
+<body class="bg-dark text-center m-0 p-0">
     
-    <img class="mb-4 register-logo pt-5" src="assets/logo.png" alt="">
+    <img class="mb-4 register-logo pt-5" src="assets/logo.png" alt="" onclick="document.location='mainPage.php'">
     <section class="container-fluid">
         <section class="row justify-content-center">
             <form class="form-container">
@@ -24,7 +24,7 @@ drawHTMlHeader();
                 <div>
                     <small class="justify-content-center">
                         Don't have an account?
-                        <button class="btn btn-primary btn-sm border-0 bg-myred" type="submit">Sign up</button>
+                        <button class="btn btn-primary btn-sm border-0 bg-myred" type="button" onclick="document.location='signupPage.php'">Sign up</button>
                     </small>
                 </div>
             </form>

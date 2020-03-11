@@ -5,10 +5,10 @@ include_once('tpl_common.php');
 drawHTMlHeader();
 ?>
 
-<body style="margin:0px; padding: 0px; font-family: 'Raleway', sans-serif; " class="container-fluid vh-100">
+<body style="font-family: 'Raleway', sans-serif; " class="container-fluid vh-100 m-0 p-0">
     <?php
-    drawNavBar();
-    drawNavBarTop();
+    drawNavBar(true);
+    drawNavBarTop("");
     ?>
 
 

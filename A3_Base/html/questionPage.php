@@ -6,10 +6,10 @@ drawHTMlHeader();
 ?>
 
 
-<body style="margin:0px; padding: 0px; font-family: 'Raleway', sans-serif; " class="container-fluid vh-100">
+<body style="font-family: 'Raleway', sans-serif; " class="container-fluid vh-100 p-0 m-0">
     <?php
-    drawNavBar();
-    drawNavBarTop();
+    drawNavBar(false);
+    drawNavBarTop("");
     ?>
 
 

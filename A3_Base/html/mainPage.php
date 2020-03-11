@@ -6,8 +6,8 @@ drawHTMlHeader()
 
 ?>
 
-<body style="background-image: url('assets/background.png'); margin-left: 0px; padding-left: 0px; font-family: 'Raleway', sans-serif;" class="container-fluid vh-100">
-    <?php drawNavBar() ?>
+<body style="background-image: url('assets/background.png'); font-family: 'Raleway', sans-serif;" class="container-fluid vh-100 m-0 p-0">
+    <?php drawNavBar(false) ?>
 
     <main id="main" class=" col-md-10 ml-sm-auto col-lg-10 px-4 text-center d-flex flex-column justify-content-between vh-100">
         <div></div>
@@ -16,7 +16,7 @@ drawHTMlHeader()
                 <h3 style="font-weight: 800;">Adult life is hard. Hit us with your question!</h3>
             </label>
 
-            <?php drawSearchBarMain() ?>
+            <?php drawSearchBarMain("") ?>
 
             <span class="">Tip: Search with # to filter your results through categories</span>
 
@@ -33,7 +33,7 @@ drawHTMlHeader()
         </div>
 
 
-        <div class="pb-3"><i class="fa fa-angle-down fa-3x"></i></div>
+        <div class="mb-3">  <i class="fa fa-angle-down fa-4x bg-dark text-white rounded px-3"></i></div>
 
     </main>
 

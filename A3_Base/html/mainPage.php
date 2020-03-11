@@ -3,6 +3,7 @@
 include_once('tpl_common.php');
 
 drawHTMlHeader()
+
 ?>
 
 <body style="background-image: url('assets/background.png'); margin-left: 0px; padding-left: 0px; font-family: 'Raleway', sans-serif;" class="container-fluid vh-100">

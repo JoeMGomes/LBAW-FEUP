@@ -1,31 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <script src="js/bootstrap.min.js" defer></script>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/customStyles.css" />
-    <link rel="stylesheet" href="css/global.css" />
-    <title>GROW</title>
-</head>
+include_once('tpl_common.php');
+
+drawHTMlHeader()
+
+?>
 
 <body style="margin:0px; padding: 0px; font-family: 'Raleway', sans-serif; " class="container-fluid vh-100">
     <nav class="position-fixed col-md-2 col-lg-2 d-none d-md-flex flex-column  justify-content-between  bg-dark sidebar h-100">
-        <div class="sidebar-header text-center text-white mt-5">
-            <img src="assets/logo.png" class="register-logo" alt="">
-            <ul class="mt-5 list-unstyled sidebar-sticky">
-                <li class="my-3"><a class="text-white w-100" style="line-height: 0px;" href="">Post a Question</a></li>
-                <li class="my-3"><a class="text-white w-100" href="">Categories</a></li>
-                <li class="my-3"><a class="text-white w-100" href="">About</a></li>
-            </ul>
-        </div>
+        <?php 
+            drawNavBar();
+        ?>
         <div class="d-flex flex-column mb-5 align-items-center">
             <img src="assets/david.jpg" class="rounded-img " alt="">
             <h5 class="pt-2 text-white">David Dinis</h5>

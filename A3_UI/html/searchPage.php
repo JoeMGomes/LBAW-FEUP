@@ -5,11 +5,11 @@ drawHTMlHeader();
 
 ?>
 
-<body style="margin:0px; padding: 0px; font-family: 'Raleway', sans-serif; " class="container-fluid vh-100">
+<body style="font-family: 'Raleway', sans-serif; " class="container-fluid vh-100 p-0 m-0">
     
     <?php
-    drawNavBar();
-    drawNavBarTop();
+    drawNavBar(false);
+    drawNavBarTop("How do I do my taxes");
     ?>
 
 
@@ -25,7 +25,7 @@ drawHTMlHeader();
             <span class="col row justify-content-end align-self-center pr-4 mr-4"> 2 results found </span>
         </div>
         <div class="container-fluid py-0 my-0 pr-lg-5 text-left bg-white ">
-            <div class="blockquote py-lg-2 border d-flex p-3 bg-light">
+            <div class="blockquote py-lg-2 border d-flex p-3 bg-light" onclick="document.location='questionPage.php'">
                 <div class="d-flex m-0 ">
                     <div class="row ">
                         <div class="d-flex flex-column px-5 justify-content-center">
@@ -68,7 +68,7 @@ drawHTMlHeader();
                     </div>
                 </div>
             </div>
-            <div class="blockquote py-lg-2 border d-flex p-3 bg-light">
+            <div class="blockquote py-lg-2 border d-flex p-3 bg-light" onclick="document.location='questionPage.php'">
                 <div class="d-flex m-0 ">
                     <div class="row ">
                         <div class="d-flex flex-column px-5 justify-content-center">

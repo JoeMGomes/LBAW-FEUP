@@ -370,3 +370,23 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
 .labelCheckBox:checked + .labelToCheck {
     background-color: #7A86EF;;
 }
+
+.t-o {
+    background-color: rgb(255, 148, 96);
+    color: black;
+} 
+
+.t-y {
+    background-color: rgb(252, 209, 11);
+    color: black;
+} 
+
+.t-g {
+    background-color: rgb(173, 217, 0);
+    color: black;
+} 
+
+.t-b {
+    background-color: rgb(115, 129, 239);
+    color: white;
+} 

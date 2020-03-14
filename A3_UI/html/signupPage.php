@@ -7,10 +7,10 @@ drawHTMlHeader();
 
 <body class="bg-dark text-center m-0 p-0">
     
-    <img class="mb-4 pt-5 register-logo" src="assets/logo.png" alt="" onclick="document.location='mainPage.php'">
     <section class="container-fluid">
         <section class="row justify-content-center">
-            <form class="form-container">
+            <form class="mt-5 form-container">
+                <img class="mb-4 pt-3 register-logo" src="assets/logo2.png" alt="" onclick="document.location='mainPage.php'">
                 <h3 class="mb-3 font-weight-bold text-myred">Sign up</h3>
                 <div class="form-group">
                     <label class="float-left" for="inputEmail">e-mail</label>

@@ -6,7 +6,7 @@ drawHTMlHeader()
 
 ?>
 
-<body style="background-image: url('assets/background.png'); font-family: 'Raleway', sans-serif;" class="container-fluid vh-100 m-0 p-0">
+<body style="background-image: url('assets/pattern.png'); font-family: 'Raleway', sans-serif;" class="container-fluid vh-100 m-0 p-0">
     <?php drawNavBar(false) ?>
 
     <main id="main" class=" col-md-10 ml-sm-auto col-lg-10 px-4 text-center d-flex flex-column justify-content-between vh-100">
@@ -21,14 +21,14 @@ drawHTMlHeader()
             <span class="">Tip: Search with # to filter your results through categories</span>
 
             <ul class="mt-3 m-1 mx-lg-auto col-lg-10 d-flex list-unstyled justify-content-around flex-wrap">
-                <li class="tag mx-md-2 my-1 px-3 tag-purple">Laundry</li>
-                <li class="tag mx-md-2 my-1 px-3 tag-yellow">Cooking</li>
-                <li class="tag mx-md-2 my-1 px-3 tag-pink">Health</li>
-                <li class="tag mx-md-2 my-1 px-3 tag-green">Finances</li>
-                <li class="tag mx-md-2 my-1 px-3 tag-pink">Sexuality</li>
-                <li class="tag mx-md-2 my-1 px-3 tag-green">Work</li>
-                <li class="tag mx-md-2 my-1 px-3 tag-orange">Relationships</li>
-                <li class="tag mx-md-2 my-1 px-3 tag-purple">Household</li>
+                <li class="tag mx-md-2 my-1 px-4 py-1 tag-purple t-o">Laundry</li>
+                <li class="tag mx-md-2 my-1 px-4 py-1 tag-yellow t-y">Cooking</li>
+                <li class="tag mx-md-2 my-1 px-4 py-1 tag-pink t-g">Health</li>
+                <li class="tag mx-md-2 my-1 px-4 py-1 tag-green t-o">Finances</li>
+                <li class="tag mx-md-2 my-1 px-4 py-1 tag-pink t-y">Sexuality</li>
+                <li class="tag mx-md-2 my-1 px-4 py-1 tag-green t-g">Work</li>
+                <li class="tag mx-md-2 my-1 px-4 py-1 tag-orange t-o">Relationships</li>
+                <li class="tag mx-md-2 my-1 px-4 py-1 tag-purple t-y">Household</li>
             </ul>
         </div>
 

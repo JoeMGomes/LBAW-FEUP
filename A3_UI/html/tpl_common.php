@@ -1,5 +1,5 @@
 <?php
-
+include_once('pop-ups.php');
 function drawHTMlHeader()
 { ?>
 
@@ -110,8 +110,16 @@ function drawHTMlHeader()
                 <span class="text-white">2309 points</span>
                 <ul class="list-unstyled d-flex flex-column align-items-center my-5">
                     <li><a class="text-white" href="activityPage.php">View Activity</a></li>
-                    <li><a class="Header" data-toggle="popover" data-placement="left"
-                            data-content="Content">Notifications</a></li>
+                    <li><a data-placement="right" data-toggle="popover" data-popover-content="#a1" data-trigger="focus"
+                            href="#" tabindex="0">Notifications</a>
+                    </li>
+                    <div class="d-none" id="a1">
+                        <div class="popover-heading">
+                        </div>
+                        <div class="popover-body">
+                            <?php drawNotificationPopUp()?>
+                        </div>
+                    </div>
                     <li><a class="text-white" href="settingsPage.php">Settings</a></li>
                 </ul>
                 <button class="btn btn-secondary mb-5 w-100" onclick="document.location='mainPage.php'">Sign
@@ -120,9 +128,11 @@ function drawHTMlHeader()
 
             <?php } // end of logged in 
         else { // beginning of sign up and log in?>
-            <div class="pb-3 nav flex-column w-100">
-                <button onclick="document.location='signupPage.php'" class="btn btn-light mb-2">Sign up</button>
-                <button onclick="document.location='loginPage.php'" class="btn btn-secondary mb-5">Log in</button>
+            <div class=" pb-3 nav flex-column w-100">
+                <button onclick="document.location='signupPage.php'" class="btn btn-light mb-2">Sign
+                    up</button>
+                <button onclick="document.location='loginPage.php'" class="btn btn-secondary mb-5">Log
+                    in</button>
                 <a class="text-white" href="">About</a>
             </div>
 

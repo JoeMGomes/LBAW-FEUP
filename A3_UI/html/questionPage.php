@@ -1,7 +1,7 @@
 <?php
 
 include_once('tpl_common.php');
-
+include_once('pop-ups.php');
 drawHTMlHeader();
 ?>
 
@@ -35,7 +35,7 @@ drawHTMlHeader();
                         </div>
                         <div class="text-right m-3">
                             <small class="pt-3 mr-3"> Asked on June 16, 2015 </small>
-                            <a href="#" class="small text-nowrap text-secondary mr-3"><i class="fa fa-flag "></i> Report</a>
+                            <?php drawReport()?>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@ drawHTMlHeader();
                                 </div>
                                 <div>
                                     <small class="mr-3"> Replied on July 3, 2016 </small>
-                                    <a href="#" class="small  text-nowrap text-secondary"><i class="fa fa-flag "></i> Report</a>
+                                    <?php drawReport()?>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@ drawHTMlHeader();
                             </div>
                             <div class="small mx-2">
                                 <small class="mr-3"> Answered on July 3, 2016 </small>
-                                <a href="#" class="small  text-nowrap text-secondary"><i class="fa fa-flag "></i> Report</a>
+                                <?php drawReport()?>
                             </div>
                         </div>
                     </div>
@@ -120,10 +120,7 @@ drawHTMlHeader();
                                 <span class="small">
                                     <span>4253 points </span>
                                     | Member since May 2015 | Posted 1 month ago |
-                                    <a href="#" class="small text-secondary">
-                                        <i class="fa fa-flag "></i>
-                                        Report
-                                    </a>
+                                    <?php drawReport()?>
                                 </span>
                                 <p class="pt-lg-3 pl-lg-2 ">
                                     Soak it in rice... that might work...
@@ -140,10 +137,7 @@ drawHTMlHeader();
                             <span class=" small px-3">
                                 <span>3443 points</span>
                                 | Member since May 2015 | Posted 15 days ago |
-                                <a href="#" class="small text-secondary">
-                                    <i class="fa fa-flag "></i>
-                                    Report
-                                </a>
+                                <?php drawReport()?>
                             </span>
                             <p class="py-lg-2 px-lg-2 small">
                                 Indeed there is a special soap used for yellow jackets! Best answer for me!
@@ -159,10 +153,7 @@ drawHTMlHeader();
                             <span class=" small px-3">
                                 <span>3443 points</span>
                                 | Member since October 2010 | Posted today |
-                                <a href="#" class="small text-secondary">
-                                    <i class="fa fa-flag "></i>
-                                    Report
-                                </a>
+                                <?php drawReport()?>
                             </span>
                             <p class="py-lg-2 px-lg-2 small">
                                 I like trainsI like trainsI like trainsI like trainsI like trainsI like

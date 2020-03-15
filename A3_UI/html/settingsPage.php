@@ -6,7 +6,6 @@ include_once('tpl_common.php');
 drawHTMlHeader();
 ?>
 
-
 <body class="container-fluid vh-100 m-0 p-0 bg-mygrey">
     <?php
     drawNavBar(true);
@@ -50,7 +49,6 @@ drawHTMlHeader();
                             Changes</button>
                     </form>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-md-5">
@@ -78,7 +76,6 @@ drawHTMlHeader();
                                     <span>Add photo</span>
                                     <input class="mb-5" type="file">
                                 </div>
-
                             </div>
                         </div>
                     </form>

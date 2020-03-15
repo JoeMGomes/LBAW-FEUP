@@ -6,7 +6,7 @@ drawHTMlHeader();
 ?>
 
 
-<body class="container-fluid vh-100 p-0 m-0 bg-mybl">
+<body class="container-fluid vh-100 p-0 m-0 bg-mygrey">
     <?php
     drawNavBar(false);
     drawNavBarTop("");

@@ -69,8 +69,8 @@ drawHTMlHeader();
                     </form>
                 </div>
                 <div class="col-md-5">
-                    <h5> Change picture </h5>
-                    <form class="md-form ">
+                    <form class="px-5 ">
+                        <h5> Change picture </h5>
                         <div class="file-field ">
                             <div class="mb-4 d-md-flex">
                                 <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" class="rounded-circle z-depth-1-half avatar-pic " width=80px height="80px" alt="example placeholder avatar">

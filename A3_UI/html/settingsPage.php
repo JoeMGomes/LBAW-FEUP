@@ -1,3 +1,4 @@
+<title>Settings</title>
 <?php
 
 include_once('tpl_common.php');
@@ -6,18 +7,18 @@ drawHTMlHeader();
 ?>
 
 
-<body style=" font-family: 'Raleway', sans-serif;" class="container-fluid vh-100 m-0 p-0">
+<body class="container-fluid vh-100 m-0 p-0">
     <?php
     drawNavBar(true);
     drawNavBarTop("");
     ?>
     <main id="main" class="ml-lg-auto col-lg-10 align-right ">
-        <h2 class="font-weight-bold py-2 px-4"> Settings</h2>
+        <h1 class=" py-2 px-4"> Settings</h1>
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
                     <form class="px-5">
-                        <p class="font-weight-bold">Change password </p>
+                        <h5 class="">Change password </h5>
                         <div class="form-group">
                             <label class="" for="inputEmail">current password</label>
                             <input type="email" id="inputEmail" class="form-control" required="" autofocus="">
@@ -36,7 +37,7 @@ drawHTMlHeader();
                 </div>
                 <div class="col-md-5">
                     <form class="px-5">
-                        <p class="font-weight-bold">Change username</p>
+                        <h5 class="">Change username</h5>
                         <div class="form-group">
                             <label class="" for="inputEmail">current username</label>
                             <input type="email" id="inputEmail" class="form-control" required="" autofocus="">
@@ -54,7 +55,7 @@ drawHTMlHeader();
             <div class="row">
                 <div class="col-md-5">
                     <form class="px-5">
-                        <p class="font-weight-bold">Change e-mail </p>
+                        <h5 class="">Change e-mail </h5>
                         <div class="form-group">
                             <label class="" for="inputEmail">current username</label>
                             <input type="email" id="inputEmail" class="form-control" required="" autofocus="">
@@ -68,7 +69,7 @@ drawHTMlHeader();
                     </form>
                 </div>
                 <div class="col-md-5">
-                    <p class="font-weight-bold">Change picture </p>
+                    <h5> Change picture </h5>
                     <form class="md-form ">
                         <div class="file-field ">
                             <div class="mb-4 d-md-flex">

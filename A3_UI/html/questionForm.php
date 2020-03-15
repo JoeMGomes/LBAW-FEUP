@@ -1,3 +1,4 @@
+<title>New question</title>
 <?php
 
 include_once('tpl_common.php');
@@ -5,7 +6,7 @@ include_once('tpl_common.php');
 drawHTMlHeader();
 ?>
 
-<body style="font-family: 'Raleway', sans-serif; " class="container-fluid vh-100 m-0 p-0">
+<body class="container-fluid vh-100 m-0 p-0">
     <?php
     drawNavBar(true);
     drawNavBarTop("");
@@ -29,13 +30,13 @@ drawHTMlHeader();
                         <h2 class="text-white p-2 text-left">In which categories does your question fit in? Choose up to 5!</h2>
                         <div class="form-check-inline justify-content-center">
                             <!-- input id must be label "for" field -->
-                            <input type="checkbox" class="labelCheckBox visually-hidden" id="relAndSex">
+                            <input type="checkbox" class="labelCheckBox d-none" id="relAndSex">
                             <label for="relAndSex" class=" tag labelToCheck mx-md-2 my-1 px-3">Relationships & Sexuality</label>
 
-                            <input type="checkbox" class="labelCheckBox visually-hidden" id="health">
+                            <input type="checkbox" class="labelCheckBox d-none" id="health">
                             <label for="health" class=" tag labelToCheck mx-md-2 my-1 px-3">Health</label>
 
-                            <input type="checkbox" class="labelCheckBox visually-hidden" id="cooking">
+                            <input type="checkbox" class="labelCheckBox d-none" id="cooking">
                             <label for="cooking" class=" tag labelToCheck mx-md-2 my-1 px-3">Cooking</label>
                         </div>
                         <div class="form-group ">

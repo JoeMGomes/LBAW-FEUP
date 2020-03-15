@@ -1,3 +1,4 @@
+<title>Sign up</title>
 <?php
 
 include_once('tpl_common.php');
@@ -5,13 +6,13 @@ include_once('tpl_common.php');
 drawHTMlHeader();
 ?>
 
-<body class="bg-dark text-center m-0 p-0">
+<body class="bg-mydark text-center m-0 p-0">
     
-    <section class="container-fluid">
+    <section class="container-fluid mb-5">
         <section class="row justify-content-center">
             <form class="mt-5 form-container">
                 <img class="mb-4 pt-3 register-logo" src="assets/logo2.png" alt="" onclick="document.location='mainPage.php'">
-                <h3 class="mb-3 font-weight-bold text-myred">Sign up</h3>
+                <h3 class="mb-3  text-myred">Sign up</h3>
                 <div class="form-group">
                     <label class="float-left" for="inputEmail">e-mail</label>
                     <input type="email" id="inputEmail" class="form-control" required="" autofocus="">

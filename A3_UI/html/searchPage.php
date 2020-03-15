@@ -5,7 +5,7 @@ drawHTMlHeader();
 
 ?>
 
-<body style="font-family: 'Raleway', sans-serif; " class="container-fluid vh-100 p-0 m-0">
+<body class="container-fluid vh-100 p-0 m-0">
     
     <?php
     drawNavBar(false);
@@ -33,7 +33,7 @@ drawHTMlHeader();
                             <span class="text-center"><strong>David Dinis</strong></span>
                         </div>
                         <div>
-                            <h4 class="font-weight-bolder pt-2">
+                            <h4 class=" pt-2">
                                 Do I need to keep all my receipts from the past year?
                                 <a href="#" class="small text-secondary">
                                     <i class="fa fa-flag "></i> Report</a>
@@ -50,13 +50,13 @@ drawHTMlHeader();
                                 <span class="text-center px-2"><strong>Henrique Freitas</strong></span>
                             </div>
                             <div class="py-4 ">
-                                <span class="font-weight-bolder">4253 points </span>
+                                <span class="">4253 points </span>
                                 | Member since October 2010 | Posted 15 days ago |
                                 <a href="#" class="small text-secondary text-nowrap">
                                     <i class="fa fa-flag "></i>
                                     Report
                                 </a>
-                                <span class="px-lg-5 font-weight-bold text-danger text-nowrap"> <i class="fa fa-heart "></i> Best
+                                <span class="px-lg-5 text-danger text-nowrap"> <i class="fa fa-heart "></i> Best
                                     Answer!</span>
                                 <p class="pt-lg-3 pl-lg-2">
                                     In order to wash your yellow jacket you need to use special yellow jacket
@@ -76,7 +76,7 @@ drawHTMlHeader();
                             <span class="text-center"><strong>David Dinis</strong></span>
                         </div>
                         <div>
-                            <h4 class="font-weight-bolder pt-2">
+                            <h4 class=" pt-2">
                                 Another question about taxes and receipts!
                                 <a href="#" class="small text-secondary">
                                     <i class="fa fa-flag "></i> Report</a>

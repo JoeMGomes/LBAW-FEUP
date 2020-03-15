@@ -1,15 +1,26 @@
-.form-container{
-    background: #FFFFFF;
-    padding:1rem;
-    border-radius: 5px;
-}
-
 .register-logo{
-    width: 4rem;
+    width: 5rem;
 }
 
-.bg-mydark{
-    background-color: #2c2c2c;
+/***** Fonts *****/
+body{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight:400;
+}
+
+h1, h3{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+h5{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+/***** Text Colors *****/
+.text-mydark {
+    color: #2c2c2c;
 }
 
 .text-myblue{
@@ -20,19 +31,70 @@
     color: #FE9460;
 }
 
+.text-mygreen {
+    color: #7e9e00;
+}
+
+/***** Background Colors *****/
+.bg-mydark{
+    background-color: #2c2c2c;
+}
+
+.bg-mygrey {
+    background-color: #ddd;
+}
+
 .bg-myblue{
     background-color: #7A86EF;
+}
+.bg-myblue:hover{
+    background-color: #5962AE;
 }
 
 .bg-myred{
     background-color: #FE9460;
 }
-
-.bg-myblue:hover{
-    background-color: #5962AE;
-}
-
 .bg-myred:hover{
     background-color: #B96C46;
 }
+
+.bg-myyellow {
+    background-color: #eda809;
+}
+.bg-myyellow:hover {
+    background-color: #ad7b07;
+}
+
+.bg-mygreen {
+    background-color: #7e9e00;
+}
+.bg-mygreen:hover {
+    background-color: #3a4800;
+}
+
+.bg-mypurple {
+    background-color: #7A86EF;
+}
+.bg-mypurple:hover {
+    background-color: #45b;
+}
+
+
+/* To decide if we're keeping */
+.tag-pink {
+    background-color: #dd8e7c;
+}
+.tag-pink:hover {
+    background-color: #a1685b;
+}
+
+.tag-orange {
+    background-color: #ba2312;
+}
+.tag-orange:hover {
+    background-color: #881a0e;
+
+}
+
+
 

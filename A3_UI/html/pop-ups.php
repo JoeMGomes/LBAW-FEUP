@@ -3,7 +3,7 @@
 function drawReport()
 { ?>
 
-    <div class="text-left m-auto w-25 rounded bg-grey d-flex flex-column">
+    <div class="text-left m-auto w-25 rounded bg-mygrey d-flex flex-column">
         <h3 class="px-2">what is wrong?</h3>
         <form class="d-flex flex-column align-items-start p-2 pb-4 m-auto">
             <label><input type="radio" id="language" name="report" value="male"> Innapropriate language</label>

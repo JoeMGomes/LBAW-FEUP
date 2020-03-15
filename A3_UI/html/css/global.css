@@ -31,6 +31,9 @@ h5{
 }
 
 /***** Text Colors *****/
+.text-black{
+color:#000000
+}
 .text-mydark {
     color: #2c2c2c;
 }
@@ -67,18 +70,16 @@ h5{
     background-color: #FE9460;
 }
 .bg-myred:hover{
-    background-color: #B96C46;
+    background-color: #a25f3e;
 }
 
 .bg-myyellow {
     background-color: #eda809;
 }
-.bg-mybl {
-    background-color:#5962AE;
-}
 .bg-myyellow:hover {
-    background-color: #ad7b07;
+    background-color: #976b06;
 }
+
 
 .bg-mygreen {
     background-color: #7e9e00;

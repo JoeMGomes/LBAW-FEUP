@@ -29,11 +29,11 @@ drawHTMlHeader();
                     <label class="float-left" for="inputPassword ">confirm password</label>
                     <input type="password" id="inputPassword" class="form-control" required="">
                 </div>
-                <button class="mb-4 btn btn-primary border-0 bg-myred" type="submit">Sign up</button>
+                <button class="mb-4 btn btn-primary border-0 bg-myred  text-black" type="submit">Sign up</button>
                 <div>
                     <small class="justify-content-center">
                         Already have an account?
-                        <button class="btn btn-primary btn-sm border-0 bg-myblue" type="button" onclick="document.location='loginPage.php'">Log in</button>
+                        <button class="btn btn-primary btn-sm border-0 bg-myblue text-black" type="button" onclick="document.location='loginPage.php'">Log in</button>
                     </small>
                 </div>
             </form>

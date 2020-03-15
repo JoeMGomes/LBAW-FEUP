@@ -6,10 +6,10 @@ drawHTMlHeader()
 
 ?>
 
-<body style="background-image: url('assets/pattern.png');" class="container-fluid vh-100 m-0 p-0">
+<body style="background-image: url('assets/pattern.png');" class="vh-100 m-0 p-0">
     <?php drawNavBar(false) ?>
 
-    <main id="main" class=" col-md-10 ml-sm-auto col-lg-10 px-4 text-center d-flex flex-column justify-content-between vh-100">
+    <main id="main" class=" ml-sm-auto col-lg-10 px-4 text-center d-flex flex-column justify-content-between vh-100">
         <div></div>
         <div class=" m-md-5 m-sm-1 border bg-white p-md-5 p-sm-1 ">
             <label for="search" class="w-75 m-4">

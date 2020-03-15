@@ -63,6 +63,7 @@ h5{
 }
 .bg-myyellow:hover {
     background-color: #ad7b07;
+    color: white;
 }
 
 .bg-mygreen {
@@ -95,6 +96,5 @@ h5{
     background-color: #881a0e;
 
 }
-
 
 

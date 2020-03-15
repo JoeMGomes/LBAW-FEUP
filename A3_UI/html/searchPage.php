@@ -1,12 +1,13 @@
 <?php
 
 include_once('tpl_common.php');
+include_once('pop-ups.php');
 drawHTMlHeader();
 
 ?>
 
 <body class="container-fluid vh-100 p-0 m-0">
-    
+
     <?php
     drawNavBar(false);
     drawNavBarTop("How do I do my taxes");
@@ -25,7 +26,7 @@ drawHTMlHeader();
             <span class="col row justify-content-end align-self-center pr-4 mr-4"> 2 results found </span>
         </div>
         <div class="container-fluid py-0 my-0 pr-lg-5 text-left bg-white ">
-            <div class="blockquote py-lg-2 border d-flex p-3 bg-light" onclick="document.location='questionPage.php'">
+            <div class="blockquote py-lg-2 border d-flex p-3 bg-light">
                 <div class="d-flex m-0 ">
                     <div class="row ">
                         <div class="d-flex flex-column px-5 justify-content-center">
@@ -34,9 +35,11 @@ drawHTMlHeader();
                         </div>
                         <div>
                             <h4 class=" pt-2">
-                                Do I need to keep all my receipts from the past year?
-                                <a href="#" class="small text-secondary">
-                                    <i class="fa fa-flag "></i> Report</a>
+                                <a href="questionPage.php">
+                                    Do I need to keep all my receipts from the past year?
+                                </a>
+                                <?php drawReport()?>
+
                             </h4>
                             <span> taxes are hard, how does it work??</span>
                             <footer class="blockquote-footer text-left pt-lg-3">
@@ -52,10 +55,7 @@ drawHTMlHeader();
                             <div class="py-4 ">
                                 <span> 4253 points </span>
                                 | Member since October 2010 | Posted 15 days ago |
-                                <a href="#" class="small text-secondary text-nowrap">
-                                    <i class="fa fa-flag "></i>
-                                    Report
-                                </a>
+                                <?php drawReport()?>
                                 <span class="px-lg-5 text-danger text-nowrap"> <i class="fa fa-heart "></i> Best
                                     Answer!</span>
                                 <p class="pt-lg-3 pl-lg-2">
@@ -68,7 +68,7 @@ drawHTMlHeader();
                     </div>
                 </div>
             </div>
-            <div class="blockquote py-lg-2 border d-flex p-3 bg-light" onclick="document.location='questionPage.php'">
+            <div class="blockquote py-lg-2 border d-flex p-3 bg-light">
                 <div class="d-flex m-0 ">
                     <div class="row ">
                         <div class="d-flex flex-column px-5 justify-content-center">
@@ -77,12 +77,13 @@ drawHTMlHeader();
                         </div>
                         <div>
                             <h4 class=" pt-2">
-                                Another question about taxes and receipts!
-                                <a href="#" class="small text-secondary">
-                                    <i class="fa fa-flag "></i> Report</a>
+                                <a href="questionPage.php">
+                                    Another question about taxes and receipts!
+                                </a>
+                                <?php drawReport()?>
                             </h4>
                             <span> taxes are hard, how does it work??</span>
-                            <footer class="blockquote-footer text-left pt-lg-3">
+                            <footer class=" blockquote-footer text-left pt-lg-3">
                                 Asked on 16, June 2015
                             </footer>
 

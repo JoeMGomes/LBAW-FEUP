@@ -1,7 +1,7 @@
 <?php
 
 function drawReport()
-{ ?>
+{?>
 <button type="button" class="btn mr-3 text-secondary" data-toggle="modal" data-target="#exampleModal">
     <a href="#" class=" text-secondary"><i class="fa fa-flag "></i> Report</a>
 </button>
@@ -28,36 +28,50 @@ function drawReport()
     </div>
 </div>
 
-<?php } ?>
+<?php }?>
 
 <?php
 
 function drawNotificationPopUp()
 {
-?>
-<div class="text-center">
-    <h2><i class="fa fa-bell"></i><span class="px-3">Notifications</span></h2>
+    ?>
+<div class="text-center d-flex">
+    <h2 class="mx-auto"><i class="fa fa-bell"><span class="px-3">Notifications</span></i></h2>
 </div>
-<section class="container-fluid border w-25 h-50 overflow-auto p-0">
-    <div class="d-inline-block pt-2">
-        <?php 
-            
-            drawNotification();
-            drawNotification();
-            drawNotification();
-            drawNotification();
-            ?>
+<div class="container-fluid border overflow-auto p-0">
+    <div class="d-inline-block pt-2" style="height: 100px; overflow-y: auto;">
+        <?php
 
-    </div>
-</section>
+    drawNotification();
+    drawNotification();
+    drawNotification();
+    drawNotification();
 
-<?php } 
+    drawNotification();
+
+    drawNotification();
+    drawNotification();
+    drawNotification();
+drawNotification();
+drawNotification();
+drawNotification();
+drawNotification();
+drawNotification();
 
 
-function drawNotification(){
+
     ?>
 
-<div class="d-flex justify-content-start notifications mb-3 px-2">
+    </div>
+</div>
+
+<?php }
+
+function drawNotification()
+{
+    ?>
+
+<div class=" d-flex justify-content-start notifications mb-3 px-2">
     <i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>
     <span>3 users answered your question: "<strong>HOW DO I WASH MY YELLOW JACKET?</strong>"
         <div class="text-left pl-4">
@@ -66,4 +80,4 @@ function drawNotification(){
     </span>
 </div>
 
-<?php } ?>
+<?php }?>

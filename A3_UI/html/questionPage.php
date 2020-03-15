@@ -1,7 +1,6 @@
 <?php
 
 include_once('tpl_common.php');
-include_once('pop-ups.php');
 drawHTMlHeader();
 ?>
 

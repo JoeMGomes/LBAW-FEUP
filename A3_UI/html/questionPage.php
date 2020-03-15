@@ -14,7 +14,7 @@ drawHTMlHeader();
 
     <main id="main" class="ml-auto col-lg-10 text-center px-md-5">
 
-        <div class="container-fluid py-2 my-3 pr-lg-5 text-left bg-white">
+        <div class="container-fluid py-2 my-3 pr-lg-5 text-left border bg-white">
 
             <!-- Question -->
             <div class="blockquote p-3 w-100 d-flex">

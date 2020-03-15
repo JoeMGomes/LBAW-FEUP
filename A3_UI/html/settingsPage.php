@@ -6,7 +6,7 @@ include_once('tpl_common.php');
 drawHTMlHeader();
 ?>
 
-<body class="container-fluid vh-100 m-0 p-0 bg-mygrey">
+<body class="container-fluid vh-100 m-0 p-0 ">
     <?php
     drawNavBar(true);
     drawNavBarTop("");

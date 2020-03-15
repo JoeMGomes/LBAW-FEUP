@@ -14,24 +14,24 @@ drawHTMlHeader();
     <main id="main" class="ml-auto col-lg-10 px-md-5">
         <div class="bg-white p-4 my-3 border w-75 mx-auto">
             <h1 class="text-center">Don't be afraid to ask your question</h1>
-            <span class="text-left ml-4">
-                Tips on getting good answers quickly:
-            </span>
-                <ul class="text-mydarkblue ml-4 mt-2">
-                    <li> Make sure your question has not been asked already </li>
-                    <li> Keep your question short and to the point </li>
-                    <li> Double-check grammar and spelling </li>
+            <div class="text-left ml-4 mt-4">
+                <span class=""> Tips on getting good answers quickly: </span>
+                <ul class="list-unstyled ml-3 mt-2">
+                    <li> <i class=" fa fa-check-circle text-mygreen"></i> Make sure your question has not been asked already </li>
+                    <li> <i class=" fa fa-check-circle text-mygreen"></i> Keep your question short and to the point </li>
+                    <li> <i class=" fa fa-check-circle text-mygreen"></i> Double-check grammar and spelling </li>
                 </ul>
-            <form class=" text-black d-flex flex-column">
+            </div>
+            <form class=" text-black d-flex flex-column mx-4">
                 <div class="form-group">
-                    <h4 class="p-2  text-left">What is your question?</h2>
-                        <input class="form-control ">
+                    <h4 class="p-2  text-left">What is your question?</h4>
+                    <input class="form-control ">
                 </div>
                 <div class="form-group">
-                    <h4 class="p-2 text-left">Explain yourself a bit better</h2>
-                        <textarea class="form-control pb-5" rows="5"></textarea>
+                    <h4 class="p-2 text-left">Explain yourself a bit better</h4>
+                    <textarea class="form-control pb-5" rows="5"></textarea>
                 </div>
-                <h4 class="p-2 text-left">In which categories does your question fit in? <small> (Choose up to 5)</small></h4>
+                <h4 class="p-2 text-left">In which categories does your question fit in? <small class="h6"> (Choose up to 5)</small></h4>
                 <div class="form-group ">
                     <input class="form-control">
                 </div>

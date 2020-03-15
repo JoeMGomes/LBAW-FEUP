@@ -23,7 +23,7 @@ drawHTMlHeader();
                     <label class="float-left" for="inputPassword ">password</label>
                     <input type="password" id="inputPassword" class="form-control" required="">
                 </div>
-                <button class="mb-4 btn btn-primary border-0 bg-myblue" type="submit">Log in</button>
+                <button class="mb-4 btn btn-primary border-0 bg-dark" type="submit">Log in</button>
                 <div>
                     <small class="justify-content-center">
                         Don't have an account?

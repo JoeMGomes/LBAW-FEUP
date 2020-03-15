@@ -50,7 +50,7 @@ drawHTMlHeader();
                                 <span class="text-center px-2"><strong>Henrique Freitas</strong></span>
                             </div>
                             <div class="py-4 ">
-                                <span class="">4253 points </span>
+                                <span> 4253 points </span>
                                 | Member since October 2010 | Posted 15 days ago |
                                 <a href="#" class="small text-secondary text-nowrap">
                                     <i class="fa fa-flag "></i>

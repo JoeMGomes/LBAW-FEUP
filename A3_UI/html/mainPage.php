@@ -18,7 +18,7 @@ drawHTMlHeader()
 
             <?php drawSearchBarMain("") ?>
 
-            <span class="">Tip: Search with # to filter your results through categories</span>
+            <span>Tip: Search with # to filter your results through categories</span>
 
             <ul class="mt-3 m-1 mx-lg-auto col-lg-10 d-flex list-unstyled justify-content-around flex-wrap">
                 <li class="tag mx-md-2 my-1 bg-myred">Laundry</li>

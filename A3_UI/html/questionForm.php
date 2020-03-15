@@ -16,7 +16,7 @@ drawHTMlHeader();
     <main id="main" class="ml-md-auto col-md-10 text-center pr-5">
         <div>
             <h1 class="p-5">Don't be shy! Grow is a platform where you can feel safe</h1>
-            <div class="">
+            <div>
                 <div>
                     <form class="px-5 py-4 bg-mydark d-flex flex-column">
                         <div class="form-group">

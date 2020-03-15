@@ -34,12 +34,12 @@ drawHTMlHeader()
                 <div class="d-flex m-0 ">
                     <div class="row px-3 py-1">
                         <div class="d-flex w-100">
-                            <span class="">You asked a question!</span>
+                            <span>You asked a question!</span>
                             <i class="fa fa-pencil px-2"></i>
                             <a href="#">Edit question</a>
                         </div>
 
-                        <div class="">
+                        <div>
 
                             <h5 class=" pt-2">
                                 Do I need to keep all my receipts from the past year?
@@ -72,7 +72,7 @@ drawHTMlHeader()
                         <div class=" d-flex">
                             <div class="d-flex flex-column px-4">
                                 <i class=" fa fa-angle-up fa-2x text-mydark"></i>
-                                <i class="">23</i>
+                                <i>23</i>
                                 <i class=" fa fa-angle-down fa-2x text-mydark "></i>
                             </div>
                             <p class="pt-3 pl-2">
@@ -89,11 +89,11 @@ drawHTMlHeader()
                 <div class="d-flex m-0 ">
                     <div class="row px-3 py-1">
                         <div class="d-flex w-100">
-                            <span class="">You commented in a reply!</span>
+                            <span>You commented in a reply!</span>
                             <i class="fa fa-pencil px-2"></i>
                             <a href="#">Edit comment</a>
                         </div>
-                        <div class="">
+                        <div>
                             <h5 class="pt-2">
                                 How do I wash my yellow jacket?
                             </h5>

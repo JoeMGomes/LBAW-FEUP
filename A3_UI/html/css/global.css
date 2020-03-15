@@ -2,6 +2,18 @@
     width: 5rem;
 }
 
+.reply-img{
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+}
+
+.comment-img{
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+}
+
 /***** Fonts *****/
 body{
     font-family: 'Noto Sans', sans-serif;
@@ -41,7 +53,7 @@ h5{
 }
 
 .bg-mygrey {
-    background-color: #ddd;
+    background-color: #DDDDDD;
 }
 
 .bg-myblue{
@@ -60,6 +72,9 @@ h5{
 
 .bg-myyellow {
     background-color: #eda809;
+}
+.bg-mybl {
+    background-color:#5962AE;
 }
 .bg-myyellow:hover {
     background-color: #ad7b07;

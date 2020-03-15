@@ -7,26 +7,16 @@ drawHTMlHeader()
 
 ?>
 
-<body class="container-fluid vh-100 m-0 p-0">
+<body class=" vh-100 m-0 p-0">
     <!-- <nav class="position-fixed col-md-2 col-lg-2 d-none d-md-flex flex-column  justify-content-between  bg-dark sidebar h-100"> -->
         <?php 
             drawNavBar(true);
+            drawNavBarTop("");
         ?>
        
 
-    <div class="col-md-10 ml-sm-auto col-lg-10 px-4 text-left align-middle">
-        <form action="#" class="form input-group my-lg-0 py-3">
-                
-            <input id="search" class="form-control w-50 rounded-pill border-dark border-3 ml-2" type="text" placeholder="How do I do my taxes">
-            <div class="input-group-append" >
-                <button class="btn" type="button">
-                    <i class="fa fa-search fa-lg" ></i>
-                </button>
-            </div>
-            
-        </form>
-    </div>
-    <main id="main" class="ml-auto col-md-10 h-100 ">
+
+    <main id="main" class="ml-lg-auto col-lg-10  ">
         <h2 class="p-4">Activity Page</h2>
         <div class="container-fluid py-0 my-0 pr-lg-5 text-left bg-white ">
             <p class="h6"> <i class="fa fa-calendar fa-1x"> </i> 21/03/2020</p>

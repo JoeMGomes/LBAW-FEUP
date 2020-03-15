@@ -33,14 +33,25 @@ function drawHTMlHeader()
     ?>
 
     <?php
+    function drawMenuBtn() {
+    ?>
 
+        <a class="btn btn-primary btn-customized text-nowrap bg-dark open-menu d-lg-none" href="#" role="button">
+            <i class="fa fa-align-left"></i> <span>Menu</span>
+        </a>
+
+    <?php
+
+    } ?>
+
+    <?php 
     function drawSearchBarMain($value)
     {
     ?>
 
-        <form action="searchPage.php" class="form input-group my-md-0 py-3">
+        <form action="searchPage.php" class="form input-group mb-0">
 
-            <input id="search" value="" class="form-control w-50 rounded border-dark border-3 ml-2" type="text" placeholder="How do I do my taxes">
+            <input id="search" value="" class="form-control rounded border-dark border-3 ml-2" type="text" placeholder="How do I do my taxes">
             <div class="input-group-append">
                 <button class="btn" type="submit">
                     <i class="fa fa-search fa-lg"></i>
@@ -57,8 +68,10 @@ function drawHTMlHeader()
         }
     ?>
 
-        <div class="ml-md-auto col-md-10 text-left mr-lg-0">
-            <?php drawSearchBarMain($value) ?>
+        <div class="px-3 ml-lg-auto col-lg-10 py-3 mr-lg-0 text-left d-lg-block d-flex flex-row align-items-center">
+            <?php 
+            drawMenuBtn();
+            drawSearchBarMain($value) ?>
         </div>
     <?php }
 
@@ -68,29 +81,24 @@ function drawHTMlHeader()
     {
 
     ?>
-        <a class="btn btn-primary btn-customized bg-dark open-menu d-lg-none" href="#" role="button">
-            <i class="fa fa-align-left"></i> <span>Menu</span>
-        </a>
-
         <nav class="sidebar-lg d-none d-lg-block col-lg-2 ">
-            <div class=" h-100 text-center text-white mt-5 d-flex flex-column align-items-center justify-content-between">
+            <div class=" h-100 text-center text-white pt-5 d-flex flex-column align-items-center justify-content-between">
                 <div>
                     <img src="assets/logo.png" class="register-logo" width="100px" alt="" onclick="document.location='mainPage.php'">
-                    <ul class="mt-5 list-unstyled " style="line-height: 6px;">
-                        <li><a class="text-white w-100" href="#">About</a></li>
-                        <li><a class="text-white w-100" href="questionForm.php">Post a Question</a></li>
-                        <li>
+                    <!-- <ul class="mt-5 list-unstyled " > -->
+                        <div  class="pt-5">
+                        <a class="w-100  bg-myyellow  btn rounded" href="questionForm.php">Post a Question</a>
+                        
                             <a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
                                 Categories
                             </a>
                             <ul class="collapse list-unstyled" id="otherSections">
                                 <li><a class="scroll-link" href="">Laundry</a></li>
                             </ul>
-                        </li>
-                    </ul>
+                        </div>
                 </div>
                 <?php
-                if ($logged) { ?>
+                if ($logged) { // beginning of logged in?> 
                     <div class="d-flex flex-column mb-5 align-items-center w-100">
                         <img src="assets/david.jpg" class="rounded-img " alt="">
                         <h5 class="pt-2 text-white">David Dinis</h5>
@@ -102,20 +110,21 @@ function drawHTMlHeader()
                         </ul>
                         <button class="btn btn-secondary mb-5 w-100" onclick="document.location='mainPage.php'">Sign out</button>
                     </div>
-            </div>
-        </nav>
-    <?php
-                } else { ?>
-        <div class="pb-5 nav flex-column w-100">
+
+    <?php } // end of logged in 
+        else { // beginning of sign up and log in?>
+        <div class="pb-3 nav flex-column w-100">
             <button onclick="document.location='signupPage.php'" class="btn btn-light mb-2">Sign up</button>
             <button onclick="document.location='loginPage.php'" class="btn btn-secondary mb-5">Log in</button>
+            <a class="text-white" href="">About</a>
         </div>
 
-        </div>
+       
+    <?php } // end of login and sign up?>
+            </div>
         </nav>
-        <div class="overlay d-lg-none"></div>
-    <?php } ?>
 
+    <div class="overlay d-lg-none"></div>
     <nav class="sidebar d-lg-none">
 
         <div class="dismiss">

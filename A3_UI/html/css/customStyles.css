@@ -86,7 +86,7 @@
 
 
 .sidebar .to-top, .sidebar-lg .to-top { padding: 20px; text-align: center; }
-.open-menu { position: fixed; top: 20px; left: 10px; z-index: 997;}
+.open-menu { }
 
 /***** Overlay *****/
 .overlay {

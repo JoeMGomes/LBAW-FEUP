@@ -15,7 +15,7 @@
 }
 
 /***** Fonts *****/
-body{
+body, h4{
     font-family: 'Noto Sans', sans-serif;
     font-weight:400;
 }
@@ -41,7 +41,9 @@ color:#000000
 .text-myblue{
     color: #7A86EF;
 }
-
+.text-mydarkblue{
+    color: #5962AE;
+}
 .text-myred{
     color: #FE9460;
 }

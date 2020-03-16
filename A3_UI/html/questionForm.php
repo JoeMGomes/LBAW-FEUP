@@ -22,7 +22,7 @@ drawHTMlHeader();
                     <li> <i class=" fa fa-check-circle text-mygreen"></i> Double-check grammar and spelling </li>
                 </ul>
             </div>
-            <form class=" text-black d-flex flex-column mx-4">
+            <form class=" text-black d-flex flex-column ">
                 <div class="form-group">
                     <h4 class="p-2  text-left">What is your question?</h4>
                     <input class="form-control ">
@@ -35,10 +35,13 @@ drawHTMlHeader();
                 <div class="form-group ">
                     <input class="form-control">
                 </div>
-                <div class="form-check-inline justify-content-start">
+                <div class="form-check justify-content-start">
                     <!-- input id must be label "for" field -->
-                    <input type="checkbox" class="labelCheckBox d-none" id="relAndSex">
-                    <label for="relAndSex" class=" tag labelToCheck mx-md-2 my-1 px-3">Relationships & Sexuality</label>
+                    <input type="checkbox" class="labelCheckBox d-none" id="rel">
+                    <label for="rel" class=" tag labelToCheck mx-md-2 my-1 px-3">Relationships</label>
+
+                    <input type="checkbox" class="labelCheckBox d-none" id="sex">
+                    <label for="sex" class=" tag labelToCheck mx-md-2 my-1 px-3">Sexuality</label>
 
                     <input type="checkbox" class="labelCheckBox d-none" id="health">
                     <label for="health" class=" tag labelToCheck mx-md-2 my-1 px-3">Health</label>
@@ -46,7 +49,7 @@ drawHTMlHeader();
                     <input type="checkbox" class="labelCheckBox d-none" id="cooking">
                     <label for="cooking" class=" tag labelToCheck mx-md-2 my-1 px-3">Cooking</label>
                 </div>
-                <button type="submit" class="btn bg-mygreen text-white ml-auto">Submit</button>
+                <button type="submit" class="btn bg-mygreen text-white mt-1 ml-auto">Submit</button>
             </form>
         </div>
     </main>

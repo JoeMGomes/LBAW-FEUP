@@ -46,10 +46,10 @@ drawHTMlHeader();
             <!-- Answer -->
             <div class=" d-flex ml-5 ">
                 <div class="d-flex align-items-center">
-                    <div class="ml-4 justify-content-center flex-column">
-                        <i class=" fa fa-angle-up fa-2x text-mygreen"></i>
-                        4200
-                        <i class=" fa fa-angle-down fa-2x text-myblue "></i>
+                    <div class="ml-4 justify-content-center col">
+                        <i class="row fa fa-angle-up fa-2x text-mygreen"></i>
+                        <div class="row">4200</div>
+                        <i class=" row fa fa-angle-down fa-2x text-myblue "></i>
                     </div>
                     <div class="ml-4">
                         <div class="border w-100 d-flex flex-column  px-3 pt-2 bg-white ">
@@ -105,6 +105,34 @@ drawHTMlHeader();
             </div>
 
             <!-- Answer 2 -->
+            <div class=" d-flex ml-5 align-items-center">
+                <div class="ml-4 text-center  flex-column">
+                    <i class="fa fa-angle-up fa-2x text-mygreen"></i>
+                    <div>4200</div>
+                    <i class=" fa fa-angle-down fa-2x text-myblue "></i>
+                </div>
+
+                <div class="border w-100 d-flex flex-column ml-4 px-3 pt-2 bg-white ">
+                    <div class="d-flex mt-3 mx-3">
+                        <p class="text-justify">
+                            Soak it in rice... that might work...
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center m-3 ">
+                        <div>
+                            <img src="assets/henrique.jpg" class="reply-img" alt="User Photo" />
+                            <small> &#8212 José Gomes <span class="small text-dark">| 4253 points
+                                    | Member since May 2015 </span></small>
+                        </div>
+                        <div>
+                            <small class="mr-3"> Replied on July 3, 2016 </small>
+                            <?php drawReport() ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="blockquote py-lg-2 px-lg-5 d-flex flex-column">
                 <div class="d-flex px-lg-5">
                     <div class="d-flex flex-column px-4">
@@ -124,7 +152,7 @@ drawHTMlHeader();
                                 <?php drawReport() ?>
                             </span>
                             <p class="pt-lg-3 pl-lg-2 ">
-                                Soak it in rice... that might work...
+
                             </p>
                         </div>
                     </div>

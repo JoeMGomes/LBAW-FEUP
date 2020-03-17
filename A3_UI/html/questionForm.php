@@ -3,7 +3,7 @@
 
 include_once('tpl_common.php');
 
-drawHTMlHeader();
+drawHTMLHeader();
 ?>
 
 <body class="container-fluid vh-100 m-0 p-0 bg-mygrey">

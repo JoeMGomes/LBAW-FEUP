@@ -2,12 +2,12 @@
 
 include_once('tpl_common.php');
 
-drawHTMlHeader()
+drawHTMLHeader()
 
 ?>
 
 <body style="background-image: url('assets/pattern.png');" class="vh-100 m-0 p-0">
-    <?php drawNavBar(false) ?>
+    <?php drawNavBar(false); drawMenuBtnMainPage();?>
 
     <main id="main" class=" ml-sm-auto col-lg-10 px-4 text-center d-flex flex-column justify-content-between vh-100">
         <div></div>

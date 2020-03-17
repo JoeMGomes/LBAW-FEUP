@@ -1,7 +1,7 @@
 <?php
 
 include_once('tpl_common.php');
-drawHTMlHeader();
+drawHTMLHeader();
 ?>
 
 

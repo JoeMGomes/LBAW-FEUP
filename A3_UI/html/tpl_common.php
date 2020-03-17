@@ -1,6 +1,6 @@
 <?php
 include_once('pop-ups.php');
-function drawHTMlHeader()
+function drawHTMLHeader()
 { ?>
 
 
@@ -31,22 +31,26 @@ function drawHTMlHeader()
 
     <?php }
 
-    ?>
-
-    <?php
     function drawMenuBtn()
     {
     ?>
 
-        <a class="btn btn-primary btn-customized text-nowrap bg-dark open-menu d-lg-none" href="#" role="button">
-            <i class="fa fa-align-left"></i> <span>Menu</span>
+        <a class="btn btn-primary btn-customized text-nowrap bg-dark open-menu d-lg-none" href="#" role="button" alt="Menu">
+            <i class="fa fa-align-left" alt="Menu"></i> <span class="d-none d-md-inline">Menu</span>
         </a>
 
     <?php
 
-    } ?>
+    } 
+    
+    function drawMenuBtnMainPage()
+    {
+    ?>
+        <div class="d-lg-none" style="position:fixed; z-index: 900; top: 1.5rem; left: 1.5rem">
+            <?php drawMenuBtn() ?>
+        </div>
+    <?php }
 
-    <?php
     function drawSearchBarMain($value)
     {
     ?>
@@ -84,27 +88,31 @@ function drawHTMlHeader()
 
     ?>
         <nav class="sidebar-lg d-none d-lg-block col-lg-2 ">
-            <div class=" h-100 text-center text-white d-flex flex-column align-items-center justify-content-between">
-                <div>
+            <div class="h-100 mh-100 text-center text-white d-flex flex-column align-items-center justify-content-between flex-shrink-0">
+                <div class="mh-50">
                     <a href="mainPage.php">
-                        <img src="assets/logo.png" class="register-logo" width="100px" alt="Company Logo">
+                        <img src="assets/logo.png" class="register-logo mb-5" width="100px" alt="Company Logo">
                     </a>
-                    <ul class="mt-5 list-unstyled ">
-                        <a class="w-100 bg-myblue btn rounded" href="questionForm.php">Post a Question</a>
-                        <a href="#categories" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categories</a>
-                        <ul class="collapse list-unstyled" id="categories">
-                            <li><a class="scroll-link" href="">Laundry</a></li>
+                    <a class="w-100 bg-myyellow btn rounded large bg-yellowh mb-3 text-nowrap" style="font-weight: 700; font-size: 1.2em;" href="questionForm.php">Post a Question</a>
+                    <div class="bg-dark rounded py-2 overflow-auto" id="scroll">
+                        <a href="#categories" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle my-5 text-white bg-transparent">Categories</a>
+                        <ul class="collapse list-unstyled bg-transparent m-0 " id="categories">
+                            <hr class="my-1 m-0 " style="height: 2px; background-color: #2c2c2c">
+                            <li><a class="scroll-link text-white" class="" href="">Laundry</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Cooking</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Health</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Sexuality</a></li>
                         </ul>
-    </ul>
+                    </div>
                 </div>
                 <?php
                 if ($logged) { // beginning of logged in
                 ?>
-                    <div class="d-flex flex-column mb-5 align-items-center w-100">
+                    <div class="d-flex flex-column pb-3 align-items-center w-100">
                         <img src="assets/david.jpg" class="rounded-img " alt="">
                         <h5 class="pt-2 text-white">David Dinis</h5>
                         <span class="text-white">2309 points</span>
-                        <ul class="list-unstyled d-flex flex-column align-items-center my-5">
+                        <ul class="list-unstyled d-flex flex-column align-items-center mt-5 mb-3">
                             <li><a class="text-white" href="activityPage.php">View Activity</a></li>
                             <li><a data-placement="right" data-toggle="popover" data-popover-content="#a1" data-trigger="focus" href="#" tabindex="0">Notifications</a>
                             </li>
@@ -117,8 +125,9 @@ function drawHTMlHeader()
                             </div>
                             <li><a class="text-white" href="settingsPage.php">Settings</a></li>
                         </ul>
-                        <button class="btn btn-secondary mb-5 w-100" onclick="document.location='mainPage.php'">Sign
+                        <button class="btn btn-secondary mb-3 w-100" onclick="document.location='mainPage.php'">Sign
                             out</button>
+                        <a class="small text-white" href="">About</a>
                     </div>
 
                 <?php } // end of logged in 
@@ -126,9 +135,8 @@ function drawHTMlHeader()
                 ?>
                     <div class=" pb-3 nav flex-column w-100">
                         <a class="w-100  btn btn-light mb-2" href="signupPage.php">Sign up</a>
-                        <button onclick="document.location='loginPage.php'" class="btn btn-secondary mb-5">Log
-                            in</button>
-                        <a class="text-white" href="">About</a>
+                        <a class="btn btn-secondary mb-5" href="loginPage.php">Log in</a>
+                        <a class="small text-white" href="">About</a>
                     </div>
 
 

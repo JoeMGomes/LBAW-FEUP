@@ -3,7 +3,7 @@
 
 include_once('tpl_common.php');
 
-drawHTMlHeader();
+drawHTMLHeader();
 ?>
 
 <body class="container-fluid vh-100 m-0 p-0 bg-mygrey">
@@ -24,30 +24,33 @@ drawHTMlHeader();
             </div>
             <form class=" text-black d-flex flex-column ">
                 <div class="form-group">
-                    <h4 class="p-2  text-left">What is your question?</h4>
-                    <input class="form-control ">
+                    <label for="question" class="p-2 h4 text-left">What is your question?</label>
+                    <input id="question" class="form-control">
                 </div>
                 <div class="form-group">
-                    <h4 class="p-2 text-left">Explain yourself a bit better</h4>
-                    <textarea class="form-control pb-5" rows="5"></textarea>
+                    <label for="description" class="p-2 h4 text-left">Explain yourself a bit better</label>
+                    <textarea class="form-control" id="description" rows="5"></textarea>
                 </div>
-                <div class="form-group ">
-                    <label for="categories" class="p-2 h4 text-left">In which categories does your question fit in? <small class="h6"> (Choose up to 5)</small></label>
-                    <input class="form-control" id="categories">
+                <div class="form-group">
+                    <label for="categor" class="p-2 h4 text-left">In which categories does your question fit in?
+                        <small class="h6"> (Choose up to 5)</small>
+                    </label>
+                    <input class="form-control" id="categor">
                 </div>
-                <div class="form-check justify-content-start">
+                <div class="form-check ">
                     <!-- input id must be label "for" field -->
-                    <input type="checkbox" class="labelCheckBox d-none" id="rel">
-                    <label for="rel" class=" tag labelToCheck mx-md-2 my-1 px-3">Relationships</label>
+                    <input type="checkbox" id="rel">
+                    <label for="rel" class="labelToCheck" onkeydown="">Relationship</label>
 
-                    <input type="checkbox" class="labelCheckBox d-none" id="sex">
-                    <label for="sex" class=" tag labelToCheck mx-md-2 my-1 px-3">Sexuality</label>
+                    <input type="checkbox" id="sex">
+                    <label for="sex" class="labelToCheck" >Sexuality</label>
 
-                    <input type="checkbox" class="labelCheckBox d-none" id="health">
-                    <label for="health" class=" tag labelToCheck mx-md-2 my-1 px-3">Health</label>
+                    <input type="checkbox" id="cooking">
+                    <label for="cooking" class="labelToCheck" >Cooking</label>
 
-                    <input type="checkbox" class="labelCheckBox d-none" id="cooking">
-                    <label for="cooking" class=" tag labelToCheck mx-md-2 my-1 px-3">Cooking</label>
+                    <input type="checkbox" id="health">
+                    <label for="health" class="labelToCheck" >Health</label>
+
                 </div>
                 <button type="submit" class="btn bg-mydarkgreen text-white mt-1 ml-auto">Submit</button>
             </form>

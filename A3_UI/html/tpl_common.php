@@ -94,8 +94,15 @@ function drawHTMlHeader()
                         <a href="#categories" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categories</a>
                         <ul class="collapse list-unstyled" id="categories">
                             <li><a class="scroll-link" href="">Laundry</a></li>
+                            <li><a class="scroll-link" href="">Laundry</a></li>
+                            <li><a class="scroll-link" href="">Laundry</a></li>
+                            <li><a class="scroll-link" href="">Laundry</a></li>
+                            <li><a class="scroll-link" href="">Laundry</a></li>
+                            <li><a class="scroll-link" href="">Laundry</a></li>
+                            <li><a class="scroll-link" href="">Laundry</a></li>
+                            <li><a class="scroll-link" href="">Laundry</a></li>
                         </ul>
-    </ul>
+                    </ul>
                 </div>
                 <?php
                 if ($logged) { // beginning of logged in

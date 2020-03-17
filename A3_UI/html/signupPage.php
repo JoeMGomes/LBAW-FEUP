@@ -33,7 +33,7 @@ drawHTMLHeader();
             <div>
                 <small class="justify-content-center">
                     Already have an account?
-                    <a class="text-mydarkblue text-darkblueh" href="signupPage.php">Log in</a>
+                    <a class="text-mydarkblue text-darkblueh" href="loginPage.php">Log in</a>
                 </small>
             </div>
         </form>

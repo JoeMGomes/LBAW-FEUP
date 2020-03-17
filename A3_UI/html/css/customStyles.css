@@ -1,7 +1,6 @@
 .form-container{
-    background: #FFFFFF;
-    padding:1rem;
-    border-radius: 5px;
+    background: #2c2c2c;
+    color:black;
 }
 
 .popover{
@@ -13,66 +12,41 @@
 /***** Sidebar *****/
 
 .sidebar, .sidebar-lg {
-    width: 250px; height: 100vh; 
+    width: 17vw; 
+    height: 100%;
+    padding: 1rem; 
+    padding-top: 2rem;
     position: fixed; 
-    top: 0;
     z-index: 999; 
-	background: #2C2C2C; color: #fff; transition: all .3s; 
-	text-align: left;
+    background: #2C2C2C; 
+    color: #fff; 
+    transition: all .3s; 
 }
 
-.sidebar{
-    left: -255px;
-}
+.sidebar{left: -255px;}
+
 .sidebar.inactive{left: -255px; }
 
 .sidebar.active { left: 0; }
 
 .dismiss {
-	width: 35px; height: 35px; position: absolute; top: 10px; right: 10px; transition: all .3s; 
-	background: #444; border-radius: 4px; text-align: center; line-height: 35px; cursor: pointer;
-}
-
-.dismiss:hover, .dismiss:focus { background: #555; color: #fff; }
-
-.sidebar .logo, .sidebar-lg .logo { padding: 40px 20px; border-bottom: 1px solid #444; transition: all .3s; }
-
-.sidebar .logo a, .sidebar-lg .logo a {
-	display: inline-block;
-	width: 172px;
-	height: 34px;
-	border: 0;
-}
-
-.sidebar ul.menu-elements, .sidebar-lg ul.menu-elements { 
-    padding: 10px 0; 
-    border-bottom: 1px solid #444; 
+    width: 35px; 
+    height: 35px; 
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
     transition: all .3s; 
+    background: #444; 
+    border-radius: 4px; 
+    text-align: center; 
+    line-height: 35px; 
+    cursor: pointer;
 }
 
-.sidebar ul li a, 
-.sidebar-lg ul li a {
-    display: block; 
-    padding: 10px 20px;
-    border: 0; 
-    color: #fff;
-}
-
-.sidebar ul li a:hover,
-.sidebar-lg ul li a:hover,
-.sidebar ul li a:focus,
-.sidebar-lg ul li a:focus,
-.sidebar ul li.active > a:hover,
-.sidebar-lg ul li.active > a:hover,
-.sidebar ul li.active > a:focus,
-.sidebar-lg ul li.active > a:focus { 
-    outline: 0;  
-    text-decoration: underline; 
+.dismiss:hover, .dismiss:focus { 
+    background: #555; 
     color: #fff; 
 }
-
-.sidebar ul li a i, 
-.sidebar-lg ul li a i { margin-right: 5px; }
 
 .sidebar ul li.active > a,
 .sidebar-lg ul li.active > a,
@@ -81,19 +55,15 @@
 	color: #fff;
 }
 
-.sidebar ul ul a, .sidebar-lg ul ul a { background: #444; padding-left: 30px; font-size: 14px; }
-
-.sidebar ul ul li.active > a { background: #555; }
-
 .sidebar a[data-toggle="collapse"] {
     position: relative;
 }
-
-
-
+.sidebar > a{
+    text-decoration: none;
+    color: white; 
+    
+}
 .sidebar .to-top, .sidebar-lg .to-top { padding: 20px; text-align: center; }
-.open-menu { }
-
 
 /***** Other Stuff *****/
 
@@ -132,7 +102,7 @@
 }
 
 .labelToCheck {
-    background-color: #8f8f8f;
+    background-color: #424242;
     color: white;
 }
  /* LABELS AS CHECKBOXES */

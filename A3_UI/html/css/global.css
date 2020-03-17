@@ -8,6 +8,15 @@
     height: 2em;
 }
 
+.comment-img{
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+}
+/* a, a:hover{
+    color:white;
+    
+} */
 /***** Fonts *****/
 body, h4{
     font-family: 'Noto Sans', sans-serif;
@@ -39,21 +48,29 @@ color:#000000
 .text-mydark {
     color: #2c2c2c;
 }
-.text-mylightgrey{
+.text-mygrey{
     color: #DDDDDD;
 }
 .text-myblue{
     color: #7A86EF;
 }
-.text-mydarkblue{
+.text-mydarkblue, .text-darkblueh:hover{
     color: #5962AE;
 }
 .text-myred{
     color: #FE9460;
 }
-
+.text-mydarkred, .text-darkred:hover{
+    color:#a25f3e;
+}
 .text-mygreen {
     color: #7e9e00;
+}
+.text-mydarkgreen, .text-darkgreenh:hover{
+    color:#5c7300;
+}
+.text-myyellow, .text-yellowh:hover {
+    color: #eda809;
 }
 
 /***** Background Colors *****/
@@ -61,29 +78,31 @@ color:#000000
     background-color: #2c2c2c;
 }
 
-
 .bg-mygrey {
     background-color: #DDDDDD;
+}
+.bg-myothergrey{
+    background-color:#b5b5b5;
 }
 
 .bg-myblue{
     background-color: #7A86EF;
 }
-.bg-myblue:hover{
+.bg-blueh:hover, .bg-mydarkblue{
     background-color: #5962AE;
 }
 
 .bg-myred{
     background-color: #FE9460;
 }
-.bg-myred:hover{
+.bg-myred:hover, .bg-mydarkred{
     background-color: #a25f3e;
 }
 
 .bg-myyellow {
-    background-color: #eda809;
+    background-color: #FBCD05;
 }
-.bg-myyellow:hover {
+.bg-yellowh:hover {
     background-color: #976b06;
 }
 
@@ -91,16 +110,10 @@ color:#000000
 .bg-mygreen {
     background-color: #7e9e00;
 }
-.bg-mygreen:hover {
-    background-color: #3a4800;
+.bg-mydarkgreen, .bg-greenh:hover {
+    background-color: #5c7300;
 }
 
-.bg-mypurple {
-    background-color: #7A86EF;
-}
-.bg-mypurple:hover {
-    background-color: #45b;
-}
 
 
 /* To decide if we're keeping */

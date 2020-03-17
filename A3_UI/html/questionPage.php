@@ -44,6 +44,36 @@ drawHTMlHeader();
 
 
             <!-- Answer -->
+            <div class=" d-flex ml-5 align-items-center">
+                <div class="ml-3 text-center  flex-column">
+                    <i class="fa fa-angle-up fa-2x text-mygreen"></i>
+                    <div>4200</div>
+                    <i class=" fa fa-angle-down fa-2x text-myblue "></i>
+                </div>
+
+                <div class="border w-100 d-flex flex-column ml-3 px-3 pt-2 bg-white ">
+                    <div class="d-flex mt-3 mx-3">
+                        <p class="text-justify">
+                            In order to wash your yellow jacket you need to use special yellow jacket
+                            washing soap In order to wash your yellow jacket you need to use special
+                            yellow jacket washing soap In order to wash your yellow jacket you need to
+                            use special yellow jacket washing soap In order to wash your yellow jacket
+                            you need to use special yellow jacket
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center m-3 ">
+                        <div>
+                            <img src="assets/henrique.jpg" class="reply-img" alt="User Photo" />
+                            <p> &#8212 Henrique Freitas <span class="small text-dark">| 4253 points
+                                            | Member since October 2010</span></p>
+                        </div>
+                        <div>
+                        <small class="mr-3"> Replied on July 3, 2016 </small>
+                            <?php drawReport() ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class=" d-flex ml-5 ">
                 <div class="d-flex align-items-center">
                     <div class="ml-4 justify-content-center col">
@@ -92,7 +122,7 @@ drawHTMlHeader();
                     </p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <img src="assets/rita.jpg" class="reply-img" alt="User Photo" />
+                            <img src="assets/rita.jpg" class="comment-img" alt="User Photo" />
                             <small> &#8212 Rita Mota <span class="small">| 3443 points
                                     | Member since May 2015</span></small>
                         </div>

@@ -23,7 +23,7 @@ function drawHTMLHeader()
     <!-- Javascript -->
     <script src="js/bootstrap.min.js" defer></script>
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -47,92 +47,49 @@ function drawHTMLHeader()
     function drawMenuBtnMainPage()
     {
     ?>
-    <div class="d-lg-none" style="position:fixed; z-index: 900; top: 1.5rem; left: 1.5rem">
-        <?php drawMenuBtn() ?>
-    </div>
+        <div class="d-lg-none" style="position:fixed; z-index: 900; top: 1.5rem; left: 1.5rem">
+            <?php drawMenuBtn() ?>
+        </div>
     <?php }
 
     function drawSearchBarMain($value)
     {
     ?>
 
-    <form action="searchPage.php" class="form input-group mb-0">
+        <form action="searchPage.php" class="form input-group mb-0">
 
-        <input id="search" value="" class="form-control rounded border-dark border-3 ml-2" type="text"
-            placeholder="How do I do my taxes">
-        <div class="input-group-append">
-            <button class="btn" type="submit">
-                <i class="fa fa-search fa-lg"></i>
-            </button>
-        </div>
-
-    </form>
-    <?php }
-
-function drawNavBarTop($value)
-{
-    if (!isset($value)) {
-        $value = "";
-    }
-    ?>
-
-    <div class="px-3 ml-lg-auto col-lg-10 py-3 mr-lg-0 text-left d-lg-block d-flex flex-row align-items-center">
-        <?php
-drawMenuBtn();
-    drawSearchBarMain($value)?>
-    </div>
-    <?php }
-
-function drawNavBar($logged)
-{
-
-    ?>
-    <nav class="sidebar-lg d-none d-lg-block col-lg-2 ">
-        <div class=" h-100 text-center text-white d-flex flex-column align-items-center justify-content-between">
-            <div>
-                <a href="mainPage.php">
-                    <img src="assets/logo.png" class="register-logo" width="100px" alt="Company Logo">
-                </a>
-                <ul class="mt-5 list-unstyled ">
-                    <a class="w-100 bg-myblue btn rounded" href="questionForm.php">Post a Question</a>
-                    <a href="#categories" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">Categories</a>
-                    <ul class="collapse list-unstyled" id="categories">
-                        <li><a class="scroll-link" href="">Laundry</a></li>
-                    </ul>
-                </ul>
+            <input id="search" value="" class="form-control rounded border-dark border-3 ml-2" type="text" placeholder="How do I do my taxes">
+            <div class="input-group-append">
+                <button class="btn" type="submit">
+                    <i class="fa fa-search fa-lg"></i>
+                </button>
             </div>
+
+        </form>
+    <?php }
+
+    function drawNavBarTop($value)
+    {
+        if (!isset($value)) {
+            $value = "";
+        }
+    ?>
+
+        <div class="px-3 ml-lg-auto col-lg-10 py-3 mr-lg-0 text-left d-lg-block d-flex flex-row align-items-center">
             <?php
-if ($logged) { // beginning of logged in
-        ?>
-            <div class="d-flex flex-column mb-5 align-items-center w-100">
-                <img src="assets/david.jpg" class="rounded-img " alt="">
-                <h5 class="pt-2 text-white">David Dinis</h5>
-                <span class="text-white">2309 points</span>
-                <ul class="list-unstyled d-flex flex-column align-items-center my-5">
-                    <li><a class="text-white" href="activityPage.php">View Activity</a></li>
-                    <li><a class="notifications-buttom"
-                            onclick="open_notifications()">Notifications</a><?php drawNotificationPopUp();?>
-                    </li>
-                    <li><a class="text-white" href="settingsPage.php">Settings</a></li>
-                </ul>
-                <button class="btn btn-secondary mb-5 w-100" onclick="document.location='mainPage.php'">Sign
-                    out</button>
-            </div>
-
-            <?php } // end of logged in
-    else { // beginning of sign up and log in
-        ?>
-            <div class=" pb-3 nav flex-column w-100">
-                <a class="w-100  btn btn-light mb-2" href="signupPage.php">Sign up</a>
-                <button onclick="document.location='loginPage.php'" class="btn btn-secondary mb-5">Log
-                    in</button>
-                <a class="text-white" href="">About</a>
-            </div>
+            drawMenuBtn();
+            drawSearchBarMain($value) ?>
+        </div>
+    <?php }
 
 
-            <?php } // end of login and sign up
+
+    function drawNavBar($logged)
+    {
+
     ?>
+    
+
         <nav class="sidebar-lg d-none d-lg-block col-lg-2 ">
             <div class="h-100 mh-100 text-center text-white d-flex flex-column align-items-center justify-content-between flex-shrink-0">
                 <div class="mh-50">
@@ -164,15 +121,9 @@ if ($logged) { // beginning of logged in
                         <span class="text-white">2309 points</span>
                         <ul class="list-unstyled d-flex flex-column align-items-center mt-5 mb-3">
                             <li><a class="text-white" href="activityPage.php">View Activity</a></li>
-                            <li><a data-placement="right" data-toggle="popover" data-popover-content="#a1" data-trigger="focus" href="#" tabindex="0">Notifications</a>
+                            <li><a class="notifications-buttom"
+                            onclick="open_notifications()">Notifications</a><?php drawNotificationPopUp();?>
                             </li>
-                            <div class="d-none" id="a1">
-                                <div class="popover-heading">
-                                </div>
-                                <div class="popover-body">
-                                    <?php drawNotificationPopUp() ?>
-                                </div>
-                            </div>
                             <li><a class="text-white" href="settingsPage.php">Settings</a></li>
                         </ul>
                         <button class="btn btn-secondary mb-3 w-100" onclick="document.location='mainPage.php'">Sign
@@ -194,6 +145,8 @@ if ($logged) { // beginning of logged in
                 ?>
             </div>
         </nav>
+
+
 
         <!-----------------
            MOBILE VERSION 
@@ -244,15 +197,9 @@ if ($logged) { // beginning of logged in
                             <span class="text-white">2309 points</span>
                             <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
                                 <li><a class="text-white" href="activityPage.php">View Activity</a></li>
-                                <li><a data-placement="right" data-toggle="popover" data-popover-content="#a1" data-trigger="focus" href="#" tabindex="0">Notifications</a>
+                                <li><a class="notifications-buttom"
+                                onclick="open_notifications()">Notifications</a><?php drawNotificationPopUp();?>
                                 </li>
-                                <div class="d-none" id="a1">
-                                    <div class="popover-heading">
-                                    </div>
-                                    <div class="popover-body">
-                                        <?php drawNotificationPopUp() ?>
-                                    </div>
-                                </div>
                                 <li><a class="text-white" href="settingsPage.php">Settings</a></li>
                             </ul>
                             <button class="btn btn-secondary mb-2 w-100" onclick="document.location='mainPage.php'">Sign
@@ -282,4 +229,4 @@ if ($logged) { // beginning of logged in
         
         <!-- End sidebar -->
 
-    <?php }?>
+    <?php } ?>

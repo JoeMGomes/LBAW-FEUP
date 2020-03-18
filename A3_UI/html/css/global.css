@@ -104,6 +104,7 @@ color:#000000
 }
 .bg-yellowh:hover {
     background-color: #976b06;
+    color: white;
 }
 
 
@@ -132,4 +133,22 @@ color:#000000
 
 }
 
+/* COLOR INPUT */
 
+input[type="color"] {
+	opacity: 0;
+	display: block;
+	width: 32px;
+	height: 32px;
+}
+#color-picker-wrapper {
+    border-radius: 1em;
+    width: 5em;
+    margin-right: auto;
+}
+
+#color-picker-wrapperEdit {
+    border-radius: 1em;
+    width: 5em;
+    margin-right: auto;
+}

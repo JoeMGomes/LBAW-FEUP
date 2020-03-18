@@ -28,7 +28,8 @@ document.addEventListener("click", function (event) {
 	close_notifications();
 });
 
-jQuery(document).ready(function () {
+
+jQuery(document).ready(function() {
 	/*
 	    Sidebar
 	*/
@@ -49,8 +50,14 @@ jQuery(document).ready(function () {
 	});
 
 	/* replace the default browser scrollbar in the sidebar, in case the sidebar menu has a height that is bigger than the viewport */
-	$('.sidebar').mCustomScrollbar({
+	$('#categories').mCustomScrollbar({
 		theme: "minimal-dark"
+	});
+	
+	$('.labelToCheck').on('keypress', function (event) {
+		if (event.which === 13) {
+			$(this).prop('checked', !$(this).prop('checked'));
+		}
 	});
 
 	/*
@@ -66,5 +73,46 @@ jQuery(document).ready(function () {
 		}
 	});
 
-
 });
+
+
+/**
+ * Tag Creation color and text preview 
+ */
+var newCatPreview = document.getElementById("newCatPreview");
+var color_picker = document.getElementById("color-picker");
+var color_picker_wrapper = document.getElementById("color-picker-wrapper");
+var cat_input = document.getElementById("inputCat");
+
+color_picker.onchange = function() {
+	color_picker_wrapper.style.background = color_picker.value;   
+	newCatPreview.style.background = color_picker.value;
+}
+cat_input.addEventListener("keyup",function(){
+	newCatPreview.innerHTML = cat_input.value;
+})
+
+newCatPreview.innerHTML = "&nbsp";
+color_picker_wrapper.style.background = color_picker.value;
+newCatPreview.style.background = color_picker.value;
+
+
+/**
+ * Tag Edition and text preview
+ */
+var newCatPreviewEdit = document.getElementById("newCatPreviewEdit");
+var color_pickerEdit = document.getElementById("color-pickerEdit");
+var color_picker_wrapperEdit = document.getElementById("color-picker-wrapperEdit");
+var cat_inputEdit = document.getElementById("inputCatEdit");
+
+color_pickerEdit.onchange = function() {
+	color_picker_wrapperEdit.style.background = color_pickerEdit.value;   
+	newCatPreviewEdit.style.background = color_pickerEdit.value;
+}
+cat_inputEdit.addEventListener("keyup",function(){
+	newCatPreviewEdit.innerHTML = cat_inputEdit.value;
+})
+
+newCatPreviewEdit.innerHTML = "&nbsp";
+color_picker_wrapperEdit.style.background = color_pickerEdit.value;
+newCatPreviewEdit.style.background = color_pickerEdit.value;

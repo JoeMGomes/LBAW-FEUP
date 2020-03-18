@@ -15,9 +15,7 @@
 
 /***** Sidebar *****/
 
-.sidebar,
-.sidebar-lg {
-    width: 17vw;
+.sidebar, .sidebar-lg {
     height: 100%;
     padding: 1rem;
     padding-top: 2rem;
@@ -28,9 +26,7 @@
     transition: all .3s;
 }
 
-.sidebar {
-    left: -255px;
-}
+.sidebar{width: 250px; left: -255px;}
 
 .sidebar.inactive {
     left: -255px;
@@ -122,10 +118,30 @@ a[aria-expanded="true"] {
 .labelToCheck {
     background-color: #424242;
     color: white;
+    border-radius:2em;
+    padding: 0.25rem 0.5rem;
+}
+ /* LABELS AS CHECKBOXES */
+.labelCheckBox:checked + .labelToCheck {
+    background-color: #5962AE;
+    color:black;
 }
 
-/* LABELS AS CHECKBOXES */
-.labelCheckBox:checked+.labelToCheck {
-    background-color: #7A86EF;
-    color: black;
-}
+  /* Invisible checkboxes */
+  input[type="checkbox"] {
+    opacity: 0;
+  }
+  
+  /* If checkbox is checked, blue background */
+  input[type="checkbox"]:checked + label {
+    background-color: #5962AE;
+    border-radius:2em;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  /* Add this */
+  input[type="checkbox"]:hover + label, 
+  input[type="checkbox"]:focus + label {
+    border-radius:2em;
+    text-decoration: underline;
+}   

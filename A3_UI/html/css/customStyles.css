@@ -1,69 +1,83 @@
-.form-container{
+.form-container {
     background: #2c2c2c;
-    color:black;
+    color: black;
 }
 
-.popover{
-    position: fixed;
-    height: 250px;
-    max-width: 350px;
-    overflow-y: auto;
+#notifications {
+    display: none;
+    position: absolute;
+    top: 50%;
+    height: 50%;
+    width: 150%;
+    left: 100%;
+    overflow-y: scroll;
 }
 
 /***** Sidebar *****/
 
 .sidebar, .sidebar-lg {
     height: 100%;
-    padding: 1rem; 
+    padding: 1rem;
     padding-top: 2rem;
-    position: fixed; 
-    z-index: 999; 
-    background: #2C2C2C; 
-    color: #fff; 
-    transition: all .3s; 
+    position: fixed;
+    z-index: 999;
+    background: #2C2C2C;
+    color: #fff;
+    transition: all .3s;
 }
 
 .sidebar{width: 250px; left: -255px;}
 
-.sidebar.inactive{left: -255px; }
+.sidebar.inactive {
+    left: -255px;
+}
 
-.sidebar.active { left: 0; }
+.sidebar.active {
+    left: 0;
+}
 
 .dismiss {
-    width: 35px; 
-    height: 35px; 
-    position: absolute; 
-    top: 10px; 
-    right: 10px; 
-    transition: all .3s; 
-    background: #444; 
-    border-radius: 4px; 
-    text-align: center; 
-    line-height: 35px; 
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: all .3s;
+    background: #444;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 35px;
     cursor: pointer;
 }
 
-.dismiss:hover, .dismiss:focus { 
-    background: #555; 
-    color: #fff; 
+.dismiss:hover,
+.dismiss:focus {
+    background: #555;
+    color: #fff;
 }
 
-.sidebar ul li.active > a,
-.sidebar-lg ul li.active > a,
- a[aria-expanded="true"] {
-	background: #444;
-	color: #fff;
+.sidebar ul li.active>a,
+.sidebar-lg ul li.active>a,
+a[aria-expanded="true"] {
+    background: #444;
+    color: #fff;
 }
 
 .sidebar a[data-toggle="collapse"] {
     position: relative;
 }
-.sidebar > a{
+
+.sidebar>a {
     text-decoration: none;
-    color: white; 
-    
+    color: white;
+
 }
-.sidebar .to-top, .sidebar-lg .to-top { padding: 20px; text-align: center; }
+
+.sidebar .to-top,
+.sidebar-lg .to-top {
+    padding: 20px;
+    text-align: center;
+}
 
 /***** Other Stuff *****/
 

@@ -52,6 +52,7 @@ drawHTMlHeader();
                 </div>
 
                 <div class="border w-100 d-flex flex-column ml-3 px-3 pt-2 bg-white ">
+                <span class="text-danger text-nowrap ml-3"> <i class="fa fa-heart"></i> Best Answer!</span>
                     <div class="d-flex mt-3 mx-3">
                         <p class="text-justify">
                             In order to wash your yellow jacket you need to use special yellow jacket
@@ -61,52 +62,15 @@ drawHTMlHeader();
                             you need to use special yellow jacket
                         </p>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center m-3 ">
-                        <div>
-                            <img src="assets/henrique.jpg" class="reply-img" alt="User Photo" />
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex">
+                            <img src="assets/henrique.jpg" class="reply-img mx-1" alt="User Photo" />
                             <p> &#8212 Henrique Freitas <span class="small text-dark">| 4253 points
                                             | Member since October 2010</span></p>
                         </div>
                         <div>
                         <small class="mr-3"> Replied on July 3, 2016 </small>
                             <?php drawReport() ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=" d-flex ml-5 ">
-                <div class="d-flex align-items-center">
-                    <div class="ml-4 justify-content-center col">
-                        <i class="row fa fa-angle-up fa-2x text-mygreen"></i>
-                        <div class="row">4200</div>
-                        <i class=" row fa fa-angle-down fa-2x text-myblue "></i>
-                    </div>
-                    <div class="ml-4">
-                        <div class="border w-100 d-flex flex-column  px-3 pt-2 bg-white ">
-                            <span class="text-danger text-nowrap ml-3"> <i class="fa fa-heart"></i> Best Answer!</span>
-                            <div class="d-flex mt-3">
-                                <div class="mx-3">
-                                    <p class="text-justify">
-                                        In order to wash your yellow jacket you need to use special yellow jacket
-                                        washing soap In order to wash your yellow jacket you need to use special
-                                        yellow jacket washing soap In order to wash your yellow jacket you need to
-                                        use special yellow jacket washing soap In order to wash your yellow jacket
-                                        you need to use special yellow jacket
-                                    </p>
-
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center m-3 ">
-                                <div>
-                                    <img src="assets/henrique.jpg" class="reply-img" alt="User Photo" />
-                                    <small> &#8212 Henrique Freitas <span class="small text-dark">| 4253 points
-                                            | Member since October 2010</span></small>
-                                </div>
-                                <div>
-                                    <small class="mr-3"> Replied on July 3, 2016 </small>
-                                    <?php drawReport() ?>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

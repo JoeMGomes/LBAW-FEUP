@@ -4,7 +4,8 @@
 }
 
 .popover{
-    height: 500px;
+    position: fixed;
+    height: 250px;
     max-width: 350px;
     overflow-y: auto;
 }
@@ -12,7 +13,7 @@
 /***** Sidebar *****/
 
 .sidebar, .sidebar-lg {
-    width: 17vw; 
+   
     height: 100%;
     padding: 1rem; 
     padding-top: 2rem;
@@ -23,7 +24,7 @@
     transition: all .3s; 
 }
 
-.sidebar{left: -255px;}
+.sidebar{ width: 250px; left: -255px;}
 
 .sidebar.inactive{left: -255px; }
 

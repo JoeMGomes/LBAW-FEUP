@@ -93,8 +93,8 @@ function drawHTMLHeader()
                     <a href="mainPage.php">
                         <img src="assets/logo.png" class="register-logo mb-5" width="100px" alt="Company Logo">
                     </a>
-                    <a class="w-100 bg-myyellow btn rounded large bg-yellowh mb-3 text-nowrap" style="font-weight: 700; font-size: 1.2em;" href="questionForm.php">Post a Question</a>
-                    <div class="bg-dark rounded py-2 overflow-auto" id="scroll">
+                    <a class="w-100 bg-myyellow bg-myyellowh btn rounded large mb-3 text-nowrap px-1" style="font-weight: 700; font-size: 1.2em;" href="questionForm.php">Post a Question</a>
+                    <div class="bg-dark rounded py-2 overflow-hidden mb-3" >
                         <a href="#categories" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle my-5 text-white bg-transparent">Categories</a>
                         <ul class="collapse list-unstyled bg-transparent m-0 " id="categories">
                             <hr class="my-1 m-0 " style="height: 2px; background-color: #2c2c2c">
@@ -102,6 +102,10 @@ function drawHTMLHeader()
                             <li><a class="scroll-link text-white" class="" href="">Cooking</a></li>
                             <li><a class="scroll-link text-white" class="" href="">Health</a></li>
                             <li><a class="scroll-link text-white" class="" href="">Sexuality</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Finances</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Work</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Relationships</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Household</a></li>
                         </ul>
                     </div>
                 </div>
@@ -145,43 +149,91 @@ function drawHTMLHeader()
             </div>
         </nav>
 
+        <!-----------------
+           MOBILE VERSION 
+        ------------------->
+
+
         <div class="overlay d-lg-none"></div>
-        <nav class="sidebar d-lg-none">
 
-            <div class="dismiss">
-                <i class="fa fa-arrow-left"></i>
-            </div>
-
-            <div class="sidebar-header text-center text-white mt-5">
-                <div>
-                    <img src="assets/logo.png" class="register-logo" width="100px" alt="">
-                    <ul class="mt-5 list-unstyled sidebar-sticky " style="line-height: 6px;">
-                        <li><a class="text-white w-100" href="#">About</a></li>
-                        <li><a class="text-white w-100" href="questionForm.php">Post a Question</a></li>
-                        <li>
-                            <a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
-                                Categories
-                            </a>
-                            <ul class="collapse list-unstyled" id="otherSections">
-                                <li>
-                                    <a class="scroll-link" href="#section-3">Our projects</a>
-                                </li>
-                                <li>
-                                    <a class="scroll-link" href="#section-4">We think that...</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="to-top">
-                <a class="btn btn-primary btn-customized-3" href="#" role="button">
-                    <i class="fa fa-arrow-up"></i> Top
+        <nav class="sidebar d-lg-none d-flex flex-column justify-content-between align-items-center">
+            <div class="fixed-box d-flex flex-column align-items-center justify-content-center" >
+                <a class="fixed-btn dismiss d-flex flex-column justify-content-center align-items-center p-0" href="#">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="btn btn-light text-dark btn-customized-3 fixed-btn d-flex flex-column justify-content-center align-items-center p-0" href="#" role="button" style="position:relative;top:10px">
+                    <i class="fa fa-arrow-up "></i>
                 </a>
             </div>
+            <div class="sidebar-header text-center text-white ">
+                <div>
+                    <a href="mainPage.php">
+                        <img src="assets/logo.png" class="register-logo mb-4" width="100px" alt="Company Logo">
+                    </a>
+
+                    <a class="w-100 bg-myyellow btn rounded large mb-3 text-nowrap px-1" style="font-weight: 700; font-size: 1.2em;" href="questionForm.php">Post a Question</a>
+                    <div class="bg-dark rounded py-2 overflow-auto mb-3" style="max-height: 150px">
+                        <a href="#categories" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle my-5 text-white bg-transparent">Categories</a>
+                        <ul class="collapse list-unstyled bg-transparent m-0 " id="categories" >
+                            <hr class="my-1 m-0 " style="height: 2px; background-color: #2c2c2c">
+                            <li><a class="scroll-link text-white" class="" href="">Laundry</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Cooking</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Health</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Sexuality</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Finances</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Work</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Relationships</a></li>
+                            <li><a class="scroll-link text-white" class="" href="">Household</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <?php
+                if ($logged) { // beginning of logged in
+                ?>
+                    <div class="w-100 text-center d-flex flex-column align-items-center">
+                        <div class="d-flex flex-column align-items-center w-100">
+                            <img src="assets/david.jpg" class="rounded-img " alt="">
+                            <h5 class="pt-2 text-white">David Dinis</h5>
+                            <span class="text-white">2309 points</span>
+                            <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
+                                <li><a class="text-white" href="activityPage.php">View Activity</a></li>
+                                <li><a data-placement="right" data-toggle="popover" data-popover-content="#a1" data-trigger="focus" href="#" tabindex="0">Notifications</a>
+                                </li>
+                                <div class="d-none" id="a1">
+                                    <div class="popover-heading">
+                                    </div>
+                                    <div class="popover-body">
+                                        <?php drawNotificationPopUp() ?>
+                                    </div>
+                                </div>
+                                <li><a class="text-white" href="settingsPage.php">Settings</a></li>
+                            </ul>
+                            <button class="btn btn-secondary mb-2 w-100" onclick="document.location='mainPage.php'">Sign
+                                out</button>
+                        </div>
+
+                <?php } // end of logged in 
+                else { // beginning of sign up and log in
+                ?>
+                    <div class="w-100 text-center d-flex flex-column align-items-center">
+                        <div class="nav flex-column w-100">
+                            <a class="w-100  btn btn-light mb-2" href="signupPage.php">Sign up</a>
+                            <a class="btn btn-secondary mb-2" href="loginPage.php">Log in</a>
+                        </div>
+
+
+                <?php } // end of login and sign up
+                ?>
+
+            <!-- <div class="position-absolute mx-auto d-flex flex-column align-items-middle" style="bottom: 0; "> -->
+                
+                <a class="small text-white text-center " href="">About</a>
+            </div>
+            
 
         </nav>
+        
         <!-- End sidebar -->
 
     <?php } ?>

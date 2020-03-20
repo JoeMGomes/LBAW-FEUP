@@ -9,6 +9,7 @@ drawHTMLHeader();
 <body class="container-fluid vh-100 m-0 p-0 bg-mygrey">
     <?php
     drawNavBar(true);
+    drawMenuBtnMainPage();
     ?>
 
     <main id="main" class="ml-lg-auto col-lg-10 p-4">

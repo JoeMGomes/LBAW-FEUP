@@ -1,14 +1,14 @@
-.register-logo{
+.register-logo {
     width: 5rem;
 }
 
-.reply-img{
+.reply-img {
     border-radius: 50%;
     width: 2em;
     height: 2em;
 }
 
-.comment-img{
+.comment-img {
     border-radius: 50%;
     width: 1.5em;
     height: 1.5em;
@@ -18,104 +18,119 @@
     
 } */
 /***** Fonts *****/
-body, h4{
-    font-family: 'Noto Sans', sans-serif;
-    font-weight:400;
+body,
+h4 {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
 }
 
-h1, h3{
-    font-family: 'Raleway', sans-serif;
+h1,
+h3 {
+    font-family: "Raleway", sans-serif;
     font-weight: 700;
 }
 
-h5{
-    font-family: 'Raleway', sans-serif;
+h5 {
+    font-family: "Raleway", sans-serif;
     font-weight: 600;
 }
 
 /***** Overlay *****/
 .overlay {
-    display: none; position: fixed; width: 100vw; height: 100vh; 
-    background: rgba(51, 51, 51, 0.7); z-index: 998; opacity: 0; transition: all .5s ease-in-out;
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(51, 51, 51, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
 }
 
-.overlay.active { display: block; opacity: 1; }
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
 
 /***** Text Colors *****/
-.text-black{
-color:#000000
+.text-black {
+    color: #000000;
 }
 .text-mydark {
     color: #2c2c2c;
 }
-.text-mygrey{
-    color: #DDDDDD;
+.text-mygrey {
+    color: #dddddd;
 }
-.text-myblue{
-    color: #7A86EF;
+.text-myblue {
+    color: #7a86ef;
 }
-.text-mydarkblue, .text-darkblueh:hover{
-    color: #5962AE;
+.text-mydarkblue,
+.text-darkblueh:hover {
+    color: #5962ae;
 }
-.text-myred{
-    color: #FE9460;
+.text-myred {
+    color: #fe9460;
 }
-.text-mydarkred, .text-darkred:hover{
-    color:#a25f3e;
+.text-mydarkred,
+.text-darkred:hover {
+    color: #a25f3e;
 }
 .text-mygreen {
     color: #7e9e00;
 }
-.text-mydarkgreen, .text-darkgreenh:hover{
-    color:#5c7300;
+.text-mydarkgreen,
+.text-darkgreenh:hover {
+    color: #5c7300;
 }
-.text-myyellow, .text-yellowh:hover {
+.text-myyellow,
+.text-yellowh:hover {
     color: #eda809;
 }
 
 /***** Background Colors *****/
-.bg-mydark{
+.bg-mydark {
     background-color: #2c2c2c;
 }
 
 .bg-mygrey {
-    background-color: #DDDDDD;
+    background-color: #dddddd;
 }
-.bg-myothergrey{
-    background-color:#b5b5b5;
-}
-
-.bg-myblue{
-    background-color: #7A86EF;
-}
-.bg-blueh:hover, .bg-mydarkblue{
-    background-color: #5962AE;
+.bg-myothergrey {
+    background-color: #b5b5b5;
 }
 
-.bg-myred{
-    background-color: #FE9460;
+.bg-myblue {
+    background-color: #7a86ef;
 }
-.bg-myred:hover, .bg-mydarkred{
+.bg-blueh:hover,
+.bg-mydarkblue {
+    background-color: #5962ae;
+}
+
+.bg-myred {
+    background-color: #fe9460;
+}
+.bg-myred:hover,
+.bg-mydarkred {
     background-color: #a25f3e;
 }
 
 .bg-myyellow {
-    background-color: #FBCD05;
+    background-color: #fbcd05;
 }
 .bg-yellowh:hover {
     background-color: #976b06;
     color: white;
 }
 
-
 .bg-mygreen {
     background-color: #7e9e00;
 }
-.bg-mydarkgreen, .bg-greenh:hover {
+.bg-mydarkgreen,
+.bg-greenh:hover {
     background-color: #5c7300;
 }
-
-
 
 /* To decide if we're keeping */
 .tag-pink {
@@ -130,16 +145,15 @@ color:#000000
 }
 .tag-orange:hover {
     background-color: #881a0e;
-
 }
 
 /* COLOR INPUT */
 
 input[type="color"] {
-	opacity: 0;
-	display: block;
-	width: 32px;
-	height: 32px;
+    opacity: 0;
+    display: block;
+    width: 32px;
+    height: 32px;
 }
 #color-picker-wrapper {
     border-radius: 1em;
@@ -151,4 +165,32 @@ input[type="color"] {
     border-radius: 1em;
     width: 5em;
     margin-right: auto;
+}
+
+/* TABLE ADMIN*/
+
+.fixed-header thead {
+    background: #2c2c2c;
+    color: #fff;
+}
+
+.fixed-header th,
+.fixed-header td {
+    text-align: left;
+}
+
+.fixed-header th:first-child , td:first-child {
+    width: 10%;
+}
+.fixed-header th:nth-child(2) , td:nth-child(2) {
+    width: 15%;
+}
+.fixed-header th:nth-child(3) , td:nth-child(3) {
+    width: 20%;
+}
+.fixed-header th:nth-child(4) , td:nth-child(4) {
+    width: 45%;
+}
+.fixed-header th:nth-child(5) , td:nth-child(5) {
+    width: 5%;
 }

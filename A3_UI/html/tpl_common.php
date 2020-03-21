@@ -58,7 +58,7 @@ function drawHTMLHeader()
 
         <form action="searchPage.php" class="form input-group mb-0">
 
-            <input id="search" value="" class="form-control rounded border-dark border-3 ml-2" type="text" placeholder="How do I do my taxes">
+            <input id="search" value="" class="form-control rounded border-dark border-3 ml-3" type="text" placeholder="How do I do my taxes">
             <div class="input-group-append">
                 <button class="btn" type="submit">
                     <i class="fa fa-search fa-lg"></i>
@@ -75,7 +75,7 @@ function drawHTMLHeader()
         }
     ?>
 
-        <div class="px-3 ml-lg-auto col-lg-10 py-3 mr-lg-0 text-left d-lg-block d-flex flex-row align-items-center">
+        <div class=" ml-lg-auto col-lg-10 py-3 text-left d-lg-block d-flex">
             <?php
             drawMenuBtn();
             drawSearchBarMain($value) ?>

@@ -13,6 +13,11 @@
     overflow-y: scroll;
 }
 
+.w-90{
+    width: 90%;
+    margin-left: 5%;
+}
+
 /***** Sidebar *****/
 
 .sidebar, .sidebar-lg {

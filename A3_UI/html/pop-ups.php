@@ -3,7 +3,7 @@
 function drawReport()
 {?>
 <button type="button" class="btn text-secondary" data-toggle="modal" data-target="#report">
-    <a href="#" class=" text-secondary"><i class="fa fa-flag "></i> Report</a>
+    <a href="#" class=" text-black"><i class="fa fa-flag"></i> Report</a>
 </button>
 
 <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

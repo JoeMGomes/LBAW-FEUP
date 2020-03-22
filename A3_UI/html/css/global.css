@@ -35,6 +35,11 @@ h5 {
     font-weight: 600;
 }
 
+mark{
+    background-color: #7a86ef;
+    border-radius: 0.25em;
+}
+
 /***** Overlay *****/
 .overlay {
     display: none;

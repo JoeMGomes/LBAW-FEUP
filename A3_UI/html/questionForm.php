@@ -13,7 +13,7 @@ drawHTMLHeader();
     ?>
 
     <main id="main" class="ml-lg-auto col-lg-10 p-4">
-        <div class="bg-white p-4 border w-75 mx-auto">
+        <div class="bg-white p-4  border  mx-auto ">
             <h1 class="text-center my-3">Don't be afraid to ask your question</h1>
             <div class="text-left ml-4 mt-4">
                 <span class=""> Tips on getting good answers quickly: </span>
@@ -38,7 +38,7 @@ drawHTMLHeader();
                     </label>
                     <input class="form-control" id="categor">
                 </div>
-                <div class="form-check ">
+                <div class="form-check pl-0 ">
                     <!-- input id must be label "for" field -->
                     <input type="checkbox" id="rel">
                     <label for="rel" class="labelToCheck" onkeydown="">Relationship</label>

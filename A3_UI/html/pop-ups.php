@@ -71,4 +71,35 @@ function drawNotification()
     </span>
 </div>
 
-<?php }?>
+<?php }
+
+function drawNotificationPopUpMobile()
+{
+    ?>
+<div class="text-black bg-white border notifications" id="notifications-mobile">
+    <div class="text-center d-flex ">
+        <h2 class="mx-auto mt-2"><i class="fa fa-bell "><span class="ml-auto">Notifications </span></i></h2>
+        <a onclick="close_notifications()" class="close btn mb-auto p-0">&times;</a>
+    </div>
+    <div class="container-fluid border  p-0">
+        <div class="d-inline-block pt-2">
+            <?php
+drawNotification();
+    drawNotification();
+    drawNotification();
+    drawNotification();
+    drawNotification();
+    drawNotification();
+    drawNotification();
+    drawNotification();
+    drawNotification();
+    drawNotification();
+
+    ?>
+        </div>
+    </div>
+</div>
+
+<?php }
+
+?>

@@ -9,7 +9,7 @@ drawHTMLHeader();
 
 <body class="bg-mydark text-center">
     <div class="h-100 d-flex justify-content-center align-items-center">
-        <form class="form-container p-3 rounded bg-white my-auto col-lg-4 col-7">
+        <form class="form-container p-3 rounded bg-white my-auto col-lg-4 col-md-6 col-10">
                 <a href="mainPage.php">
                     <img src="assets/logo2.png" class="register-logo my-3 " tabindex="1" width="100px" alt="Company Logo">
                 </a>

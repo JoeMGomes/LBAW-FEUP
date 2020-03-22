@@ -42,15 +42,34 @@ drawHTMLHeader();
                 </div>
             </div>
 
+            <!-- User Comment -->
+            <!-- <div class="d-flex align-items-center w-100 mb-5">
+                <div class="rounded-img"> </div>
+                <div class=" w-100 d-flex flex-column mx-4 px-3 py-3">
+                    <div class="form-group">
+                        <label for="description">Have an answer? Help David Dinis!</label>
+                        <textarea class="form-control" id="description" rows="5"></textarea>
+                    </div>
+                    <div class="flex-column align-items-center mr-3">
+                        <span class="text-nowrap">
+                            <img src="assets/henrique.jpg" class="reply-img mr-2" alt="User Photo" />
+                            &#8212 Henrique Freitas
+                        </span>
+                        <small class="small"> 4253 points | Member since October 2010</small>
+                        <button class="btn btn-primary border-0 bg-mygreen bg-greenh float-right" type="submit">Submit</button>
+                    </div>
+
+                </div>
+            </div> -->
 
             <!-- Answer -->
             <div class="d-flex align-items-center w-100">
-                <div class="rounded-img text-center flex-column">
+                <div class="ml-lg-5 mr-1 text-center flex-column">
                     <i class="fa fa-angle-up fa-2x text-mygreen"></i>
                     <div>4200</div>
                     <i class=" fa fa-angle-down fa-2x text-myblue "></i>
                 </div>
-                <div class="border w-100 d-flex flex-column mx-4 px-3 py-3">
+                <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-3">
                     <span class="text-danger text-nowrap"> <i class="fa fa-heart"></i> Best Answer!</span>
                     <p class="text-justify">
                         In order to wash your yellow jacket you need to use special yellow jacket
@@ -68,18 +87,17 @@ drawHTMLHeader();
                             <small class="small"> 4253 points | Member since October 2010</small>
                         </div>
                         <div>
-                            <small> Replied on July 3, 2016 </small>
+                            <small> Answered on July 3, 2016 </small>
                             <?php drawReport() ?>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- Comment -->
             <div class="d-flex align-items-center mt-1 w-100">
+                <div class="rounded-img  d-none d-lg-block"> </div>
                 <div class="rounded-img"> </div>
-                <div class="rounded-img"> </div>
-                <div class="border w-100 d-flex flex-column mx-4 px-3 py-3">
+                <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-3">
                     <p class="text-justify">
                         Indeed there is a special soap used for yellow jackets! Best answer for me!
                     </p>
@@ -92,45 +110,67 @@ drawHTMLHeader();
                             <small class="small"> 3443 points | Member since May 2015</small>
                         </div>
                         <div>
-                            <small> Answered on July 3, 2016 </small>
+                            <small> Comemnted on July 3, 2016 </small>
                             <?php drawReport() ?>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- User new comment -->
+            <!-- <div class="d-flex align-items-center mt-1 w-100">
+                <div class="rounded-img"> </div>
+                <div class="rounded-img"> </div>
+                <div class="border w-100 d-flex flex-column mx-4 px-3 py-3">
+                    <div class="form-group m-1">
+                        <label class="p" for="description">Have a question to make? Write it here!</label>
+                        <textarea class="form-control" id="description" placeholder="Write your comment here..." rows="1"></textarea>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                        <div class="flex-column align-items-center mr-3">
+                            <span class="text-nowrap">
+                                <img src="assets/henrique.jpg" class="comment-img ml-2 mr-2" alt="User Photo" />
+                                &#8212 Henrique Freitas
+                            </span>
+                            <small class="small"> 4253 points | Member since October 2010</small>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary border-0 bg-mygreen bg-greenh" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
 
             <!-- Answer 2 -->
             <div class="d-flex align-items-center mt-4 w-100">
-                <div class="rounded-img text-center flex-column">
+                <div class="ml-lg-5 mr-1 text-center flex-column">
                     <i class="fa fa-angle-up fa-2x text-mygreen"></i>
                     <div>53</div>
                     <i class=" fa fa-angle-down fa-2x text-myblue "></i>
                 </div>
-                <div class="border w-100 d-flex flex-column mx-4 px-3 py-3">
+                <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-3">
                     <p class="text-justify">
                         Soak it in rice... that might work...
                     </p>
                     <div class="d-flex flex-wrap justify-content-between align-items-center">
-                        <div class="flex-column align-items-center mr-3">
+                        <div class="flex-column align-items-center mr-lg-3">
                             <span class="text-nowrap">
-                                <img src="assets/jose.jpg" class="reply-img mr-2" alt="User Photo" />
+                                <img src="assets/jose.jpg" class="reply-img mr-lg-2" alt="User Photo" />
                                 &#8212 José Gomes
                             </span>
                             <small class="small"> 4253 points | Member since May 2015</small>
                         </div>
                         <div>
-                            <small> Replied on July 3, 2016 </small>
+                            <small> Answered on July 3, 2016 </small>
                             <?php drawReport() ?>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- Comment -->
             <div class="d-flex align-items-center mt-1 w-100">
+                <div class="rounded-img  d-none d-lg-block"> </div>
                 <div class="rounded-img"> </div>
-                <div class="rounded-img"> </div>
-                <div class="border w-100 d-flex flex-column mx-4 px-3 py-3">
+                <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-3">
                     <p class="text-justify">
                         Indeed there is a special soap used for yellow jackets! Best answer for me!
                     </p>
@@ -143,7 +183,7 @@ drawHTMLHeader();
                             <small class="small"> 3443 points | Member since May 2015</small>
                         </div>
                         <div>
-                            <small> Answered on July 3, 2016 </small>
+                            <small> Commented on July 3, 2016 </small>
                             <?php drawReport() ?>
                         </div>
                     </div>
@@ -151,9 +191,13 @@ drawHTMLHeader();
             </div>
             <!-- Comment -->
             <div class="d-flex align-items-center mt-1 w-100">
+                <div class="rounded-img d-none d-lg-block"> </div>
                 <div class="rounded-img"> </div>
-                <div class="rounded-img"> </div>
-                <div class="border w-100 d-flex flex-column mx-4 px-3 py-3">
+                <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-2">
+                    <div class="mb-2"> 
+                        <i class="fa fa-pencil"></i>
+                        <a class="text-black " href="#">Edit comment</a>
+                    </div>
                     <p class="text-justify">
                         I like trainsI like trainsI like trainsI like trainsI like trainsI like
                         trainsI like trainsI like trainsI like trainsI like trainsI like trainsI like
@@ -170,12 +214,36 @@ drawHTMLHeader();
                             <small class="small"> 3443 points | Member since October 2010</small>
                         </div>
                         <div>
-                            <small> Answered on July 3, 2016 </small>
+                            <small> Commented on July 3, 2016 </small>
                             <?php drawReport() ?>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- User new comment -->
+            <!-- <div class="d-flex align-items-center mt-1 w-100">
+                <div class="rounded-img"> </div>
+                <div class="rounded-img"> </div>
+                <div class="border w-100 d-flex flex-column mx-4 px-3 py-3">
+                    <div class="form-group m-1">
+                        <label class="p" for="description">Have something to say about this? Write it here!</label>
+                        <textarea class="form-control" id="description" placeholder="Write your comment here..." rows="1"></textarea>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                        <div class="flex-column align-items-center mr-3">
+                            <span class="text-nowrap">
+                                <img src="assets/henrique.jpg" class="comment-img ml-2 mr-2" alt="User Photo" />
+                                &#8212 Henrique Freitas
+                            </span>
+                            <small class="small"> 4253 points | Member since October 2010</small>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary border-0 bg-mygreen bg-greenh" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
 
         </div>
     </main>

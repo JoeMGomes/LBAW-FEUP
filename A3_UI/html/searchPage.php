@@ -13,7 +13,7 @@ drawHTMLHeader();
     ?>
 
 
-    <main id="main" class="ml-lg-auto  col-lg-10 align-right h-100 ">
+    <main id="main" class="ml-lg-auto col-lg-10 align-right  ">
 
         <div class=" ml-lg-auto w-100 pb-0">
             <div class="ml-1 d-flex align-items-center justify-content-between mb-3">
@@ -24,9 +24,9 @@ drawHTMLHeader();
                         <option>Most recent</option>
                     </select>
                 </div>
-                <span class="pr-4 mr-4"> 2 results found </span>
+                <span class="pr-4 mr-4 text-nowrap"> 2 results found </span>
             </div>
-            <div class="border d-flex flex-column bg-light w-90 align-items-center py-3">
+            <div class="border d-flex flex-column bg-light w-90 align-items-center py-3 mb-3">
                 <!-- Question -->
                 <div class="d-flex">
                     <div class="flex-column d-none d-md-flex ">
@@ -69,15 +69,38 @@ drawHTMLHeader();
                             </div>
                             <div>
                                 <small> Replied on July 3, 2016 </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border d-flex flex-column bg-light w-90 align-items-center py-3 mb-3">
+                <!-- Question -->
+                <div class="d-flex">
+                    <div class="flex-column d-none d-md-flex ">
+                        <img src="assets/Rita.jpg" class="rounded-img " alt="User Photo" />
+                        <small class="text-center mt-2">Rita Mota</small>
+                    </div>
+                    <div class="ml-4">
+                        <a class="text-black" href="questionPage.php">
+                      
+                                <h1 class="mb-3">Another question about <mark>yellow jacket?</mark></h1>
+                        </a>
+                        <p class="text-justified ">
+                            SO, I have this <mark>yellow jacket</mark> and I don't know how to wash it. How do I wash
+                            it? It is <mark> yellow</mark>. Please help.
+                        </p>
+                        <div class="d-flex row align-items-end justify-content-end">
+
+                            <div class="text-right col-lg-4">
+                                <small> Asked on June 16, 2015 </small>
                                 <?php drawReport() ?>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-        <!-- <div class="blockquote py-lg-2 border d-flex p-3 bg-light">
+            <!-- <div class="blockquote py-lg-2 border d-flex p-3 bg-light">
                 <div class="d-flex m-0 ">
                     <div class="row ">
                         <div class="d-flex flex-column px-5 justify-content-center">

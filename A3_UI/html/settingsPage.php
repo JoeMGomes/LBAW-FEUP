@@ -12,10 +12,10 @@ drawHTMLHeader();
     drawNavBarTop("");
     ?>
     <main id="main" class="ml-lg-auto col-lg-10 align-right ">
-        <h1 class=" py-2 px-4"> Settings</h1>
+        <h1 class=" py-2 px-5 ml-3"> Settings</h1>
         <div class="container">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-5 justify-content-center">
                     <form class="px-5">
                         <h5>Change password </h5>
                         <div class="form-group">
@@ -34,6 +34,7 @@ drawHTMLHeader();
                             Changes</button>
                     </form>
                 </div>
+                <div class="col-md-1"></div>
                 <div class="col-md-5">
                     <form class="px-5">
                         <h5>Change username</h5>
@@ -66,6 +67,7 @@ drawHTMLHeader();
                             Changes</button>
                     </form>
                 </div>
+                <div class="col-md-1"></div>
                 <div class="col-md-5">
                     <form class="px-5 ">
                         <h5> Change picture </h5>

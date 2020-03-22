@@ -50,9 +50,10 @@ jQuery(document).ready(function() {
 	});
 
 	/* replace the default browser scrollbar in the sidebar, in case the sidebar menu has a height that is bigger than the viewport */
-	$('.popover').mCustomScrollbar({
+	$('overflow-auto').mCustomScrollbar({
 		theme: "minimal-dark"
 	});
+
 	
 	$('.labelToCheck').on('keypress', function (event) {
 		if (event.which === 13) {

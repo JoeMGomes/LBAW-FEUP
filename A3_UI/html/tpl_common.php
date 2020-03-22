@@ -116,9 +116,9 @@ function drawHTMLHeader()
                 if ($logged) { // beginning of logged in
                 ?>
                     <div class="d-flex flex-column pb-3 align-items-center w-100">
-                        <img src="assets/david.jpg" class="rounded-img " alt="">
-                        <h5 class="pt-2 text-white">David Dinis</h5>
-                        <span class="text-white">2309 points</span>
+                        <img src="assets/henrique.jpg" class="rounded-img " alt="">
+                        <h5 class="pt-2 text-white">Henrique Freitas</h5>
+                        <span class="text-white">24253 points</span>
                         <ul class="list-unstyled d-flex flex-column align-items-center mt-5 mb-3">
                             <li><a class="text-white" href="activityPage.php">View Activity</a></li>
                             <li><a class="notifications-buttom"
@@ -155,7 +155,7 @@ function drawHTMLHeader()
 
         <div class="overlay d-lg-none"></div>
 
-        <nav class="sidebar d-lg-none d-flex flex-column justify-content-between align-items-center">
+        <nav class="sidebar h-100 d-lg-none d-flex flex-column justify-content-between align-items-center">
             <div class="fixed-box d-flex flex-column align-items-center justify-content-center" >
                 <a class="fixed-btn dismiss d-flex flex-column justify-content-center align-items-center p-0" href="#">
                     <i class="fa fa-arrow-left"></i>
@@ -192,8 +192,8 @@ function drawHTMLHeader()
                 ?>
                     <div class="w-100 text-center d-flex flex-column align-items-center">
                         <div class="d-flex flex-column align-items-center w-100">
-                            <img src="assets/david.jpg" class="rounded-img " alt="">
-                            <h5 class="pt-2 text-white">David Dinis</h5>
+                            <img src="assets/henrique.jpg" class="rounded-img " alt="">
+                            <h5 class="pt-2 text-white">Hnerique Freitas</h5>
                             <span class="text-white">2309 points</span>
                             <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
                                 <li><a class="text-white" href="activityPage.php">View Activity</a></li>

@@ -14,7 +14,7 @@ drawHTMlHeader();
     ?>
     <main id="main" class="ml-lg-auto col-lg-10 align-right ">
         <h1 class=" py-2 px-4"> Administration</h1>
-        <div class="container mx-5">
+        <div class="container ">
             <?php drawAdminHead() ?>
 
             <div class="table-responsive">

@@ -141,7 +141,7 @@ function drawHTMLHeader()
             <div class=" pb-3 nav flex-column w-100">
                 <a class="w-100  btn btn-light mb-2" href="signupPage.php">Sign up</a>
                 <a class="btn btn-secondary mb-5" href="loginPage.php">Log in</a>
-                <a class="small text-white" href="">About</a>
+                <a class="small text-white" href="aboutPage.php">About</a>
             </div>
 
 

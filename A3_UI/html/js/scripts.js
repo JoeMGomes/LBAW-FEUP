@@ -15,11 +15,15 @@ function scroll_to(clicked_link, nav_height) {
 function open_notifications() {
 	let notifications = document.getElementById("notifications");
 	notifications.style.display = "block";
+	let notificationsmob = document.getElementById("notifications-mobile");
+	notificationsmob.style.display = "block";
 }
 
 function close_notifications() {
 	let notifications = document.getElementById("notifications");
 	notifications.style.display = "none";
+	let notificationsmob = document.getElementById("notifications-mobile");
+	notificationsmob.style.display = "none";
 }
 
 document.addEventListener("click", function (event) {
@@ -29,7 +33,7 @@ document.addEventListener("click", function (event) {
 });
 
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
 	/*
 	    Sidebar
 	*/
@@ -53,7 +57,7 @@ jQuery(document).ready(function() {
 	$('.popover').mCustomScrollbar({
 		theme: "minimal-dark"
 	});
-	
+
 	$('.labelToCheck').on('keypress', function (event) {
 		if (event.which === 13) {
 			$(this).prop('checked', !$(this).prop('checked'));
@@ -84,11 +88,11 @@ var color_picker = document.getElementById("color-picker");
 var color_picker_wrapper = document.getElementById("color-picker-wrapper");
 var cat_input = document.getElementById("inputCat");
 
-color_picker.onchange = function() {
-	color_picker_wrapper.style.background = color_picker.value;   
+color_picker.onchange = function () {
+	color_picker_wrapper.style.background = color_picker.value;
 	newCatPreview.style.background = color_picker.value;
 }
-cat_input.addEventListener("keyup",function(){
+cat_input.addEventListener("keyup", function () {
 	newCatPreview.innerHTML = cat_input.value;
 })
 
@@ -105,11 +109,11 @@ var color_pickerEdit = document.getElementById("color-pickerEdit");
 var color_picker_wrapperEdit = document.getElementById("color-picker-wrapperEdit");
 var cat_inputEdit = document.getElementById("inputCatEdit");
 
-color_pickerEdit.onchange = function() {
-	color_picker_wrapperEdit.style.background = color_pickerEdit.value;   
+color_pickerEdit.onchange = function () {
+	color_picker_wrapperEdit.style.background = color_pickerEdit.value;
 	newCatPreviewEdit.style.background = color_pickerEdit.value;
 }
-cat_inputEdit.addEventListener("keyup",function(){
+cat_inputEdit.addEventListener("keyup", function () {
 	newCatPreviewEdit.innerHTML = cat_inputEdit.value;
 })
 

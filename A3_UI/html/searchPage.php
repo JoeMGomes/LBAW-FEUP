@@ -28,7 +28,7 @@ drawHTMLHeader();
             </div>
             <div class="border d-flex flex-column bg-light w-90 align-items-center py-3 mb-3">
                 <!-- Question -->
-                <div class="d-flex">
+                <div class="d-flex mr-auto pl-4">
                     <div class="flex-column d-none d-md-flex ">
                         <img src="assets/david.jpg" class="rounded-img " alt="User Photo" />
                         <small class="text-center mt-2">David Dinis</small>
@@ -76,9 +76,9 @@ drawHTMLHeader();
             </div>
             <div class="border d-flex flex-column bg-light w-90 align-items-center py-3 mb-3">
                 <!-- Question -->
-                <div class="d-flex">
+                <div class="d-flex mr-auto pl-4"">
                     <div class="flex-column d-none d-md-flex ">
-                        <img src="assets/Rita.jpg" class="rounded-img " alt="User Photo" />
+                        <img src="assets/rita.jpg" class="rounded-img " alt="User Photo" />
                         <small class="text-center mt-2">Rita Mota</small>
                     </div>
                     <div class="ml-4">

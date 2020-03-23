@@ -100,10 +100,10 @@ function drawHTMLHeader()
                 </a>
                 <a class="w-100 bg-myyellow bg-myyellowh btn rounded large mb-3 text-nowrap px-1"
                     style="font-weight: 700; font-size: 1.2em;" href="questionForm.php">Post a Question</a>
-                <div class="bg-dark rounded py-2 overflow-hidden mb-3">
+                <div class="bg-dark w-100 rounded py-2 overflow-hidden mb-3">
                     <a href="#categories" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle my-5 text-white bg-transparent">Categories</a>
-                    <ul class="collapse list-unstyled bg-transparent m-0 " id="categories">
+                        class="dropdown-toggle m-5 text-white bg-transparent">Categories</a>
+                    <ul class="collapse list-unstyled bg-transparent " id="categories">
                         <hr class="my-1 m-0 " style="height: 2px; background-color: #2c2c2c">
                         <li><a class="scroll-link text-white" class="" href="">Laundry</a></li>
                         <li><a class="scroll-link text-white" class="" href="">Cooking</a></li>
@@ -121,13 +121,16 @@ function drawHTMLHeader()
                 ?>
             <div class="d-flex flex-column pb-3 align-items-center w-100">
                 <img src="assets/david.jpg" class="rounded-img " alt="">
-                <h5 class="pt-2 text-white">David Dinis</h5>
+                <!-- <h5 class="pt-2 text-white">ADMINISTRATOR</h5> -->
+                 <h5 class="pt-2 text-white">David Dinis</h5>
                 <span class="text-white">2309 points</span>
                 <ul class="list-unstyled d-flex flex-column align-items-center mt-5 mb-3">
                     <li><a class="text-white" href="activityPage.php">View Activity</a></li>
                     <li><a class="notifications-buttom btn"
                             onclick="open_notifications()">Notifications</a><?php drawNotificationPopUp();?>
                     </li>
+                    <!-- <li><a class="text-white" href="adminCatMan.php">New Category</a></li> -->
+                    <!-- <li><a class="text-white" href="adminRepMan.php">Manage Reports</a></li> -->
                     <li><a class="text-white" href="settingsPage.php">Settings</a></li>
                 </ul>
                 <button class="btn btn-secondary mb-3 w-100" onclick="document.location='mainPage.php'">Sign

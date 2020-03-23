@@ -14,7 +14,7 @@ drawHTMlHeader();
     ?>
     <main id="main" class="ml-lg-auto col-lg-10 align-right ">
         <h1 class=" py-2 px-4"> Administration</h1>
-        <div class="container mx-5">
+        <div class="container px-4">
             <?php drawAdminHead() ?>
             <div>
                 <h5>Create New Category</h5>
@@ -26,7 +26,7 @@ drawHTMlHeader();
                     <div class="form-group col-md-2">
                         <label for="inputColor">Category Color</label>
                         <label class="pl-5" id="color-picker-wrapper" for="color-picker">
-                            <input type="color" value="#550000" id="color-picker">
+                            <input type="color" value="#5962AE" id="color-picker">
                         </label>
                     </div>
                     <div class="form-group  col-md-5">
@@ -49,7 +49,7 @@ drawHTMlHeader();
                     <div class="form-group col-md-2">
                         <label for="inputColor">Category Color</label>
                         <label class="pl-5" id="color-picker-wrapperEdit" for="color-pickerEdit">
-                            <input type="color" value="#550000" id="color-pickerEdit">
+                            <input type="color" value="#5962AE" id="color-pickerEdit">
                         </label>
                     </div>
                     <div class="form-group  col-md-5">

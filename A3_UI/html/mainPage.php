@@ -7,7 +7,7 @@ drawHTMLHeader()
 ?>
 
 <body style="background-image: url('assets/pattern.png');">
-    <?php drawNavBar(false);
+    <?php drawNavBar(true);
     drawMenuBtnMainPage(); ?>
 
     <main id="main" class="ml-sm-auto col-lg-10 px-4 text-center d-flex flex-column align-items-center justify-content-between">
@@ -35,7 +35,7 @@ drawHTMLHeader()
         <a href="#popular"><i class="fa fa-angle-down fa-4x bg-white text-dark arrow rounded-circle"></i></a>
         <div class="m-3"></div>
 
-        <div id="popular" class="d-flex flex-column w-75 text-center border bg-white px-5 py-md-3 py-sm-1 mb-5 align-items-center">
+        <div id="popular" class="d-flex flex-column w-75 text-center border bg-white px-lg-5 py-3 py-sm-1 mb-5 align-items-center">
 
             <h1><i class="fa fa-pagelines text-dark"></i>
                 Popular questions

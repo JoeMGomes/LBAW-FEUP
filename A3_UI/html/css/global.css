@@ -43,7 +43,6 @@ h5 {
 mark{
     background-color: rgb(122, 134, 239, 0.5);
     border-radius: 0.25em;
-    
     color: black;
 }
 
@@ -148,21 +147,6 @@ textarea{
     background-color: #5c7300;
 }
 
-/* To decide if we're keeping */
-.tag-pink {
-    background-color: #dd8e7c;
-}
-.tag-pink:hover {
-    background-color: #a1685b;
-}
-
-.tag-orange {
-    background-color: #ba2312;
-}
-.tag-orange:hover {
-    background-color: #881a0e;
-}
-
 /* COLOR INPUT */
 
 input[type="color"] {
@@ -216,3 +200,17 @@ input[type="color"] {
 .fixed-header th:nth-child(7) , td:nth-child(7) {
     width: 5%;
 }
+
+    
+@media (max-width:570px) {
+    * {font-size: 3vw;}
+    h1{font-size: 4.5vw; }
+    .arrow{margin:2vh 0;}    
+}
+
+
+@media (max-width:768px){
+    * {font-size: 2vw;}
+    h1{font-size: 4vw; }
+    .arrow{margin:5vh 0;} 
+}​

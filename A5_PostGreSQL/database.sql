@@ -1,5 +1,4 @@
--- Types
-
+DROP TABLE IF EXISTS "bookmark";
 DROP TABLE IF EXISTS "administrator";
 DROP TABLE IF EXISTS "vote_notif";
 DROP TABLE IF EXISTS "post_notif";
@@ -16,7 +15,10 @@ DROP TABLE IF EXISTS "question";
 DROP TABLE IF EXISTS "post";
 DROP TABLE IF EXISTS "member";
 DROP TYPE IF EXISTS "report_type";
+DROP TYPE IF EXISTS "report_state";
+DROP TYPE IF EXISTS "vote_type";
 
+-- Types
 CREATE TYPE report_type as ENUM( 
     'Inappropriate Language',
     'Offensive Towards Others',
@@ -25,8 +27,18 @@ CREATE TYPE report_type as ENUM(
     'Other'
 );
 
--- Tables
+CREATE TYPE report_state as ENUM(
+    'Unread',
+    'Approved',
+    'Rejected'
+);
 
+CREATE TYPE vote_type as ENUM(
+    'Upvote',
+    'Downvote'
+);
+
+-- Tables
 CREATE TABLE "member" (
     id SERIAL PRIMARY KEY,
     email text NOT NULL UNIQUE,
@@ -40,84 +52,83 @@ CREATE TABLE "member" (
 
 CREATE TABLE "post" (
     id SERIAL PRIMARY KEY,
-    id_member integer references "member" (id) NOT NULL,
+    author integer REFERENCES "member" (id) NOT NULL,
     "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     text_body text NOT NULL
 );
 
 CREATE TABLE "question" (
-    id_post INTEGER PRIMARY KEY REFERENCES "post"(id),
+    post INTEGER PRIMARY KEY REFERENCES "post"(id) ON DELETE CASCADE,
+    best_answer INTEGER REFERENCES "answer"(post),
     title text NOT NULL
 );
 
 CREATE TABLE "answer" (
-    id_post INTEGER PRIMARY KEY REFERENCES "post"(id),
-    id_question INTEGER REFERENCES "question" (id_post) NOT NULL
+    post INTEGER PRIMARY KEY REFERENCES "post"(id) ON DELETE CASCADE,
+    question INTEGER REFERENCES "question" (post) NOT NULL ON DELETE CASCADE
 );
 
 CREATE TABLE "comment" (
-    id_post INTEGER PRIMARY KEY REFERENCES "post"(id),
-    id_answer INTEGER REFERENCES "answer" (id_post) NOT NULL
+    post INTEGER PRIMARY KEY REFERENCES "post"(id) ON DELETE CASCADE,
+    answer INTEGER REFERENCES "answer" (post) NOT NULL ON DELETE CASCADE
 );
 
 CREATE TABLE "category" (
-    id_name text PRIMARY KEY,
+    name text PRIMARY KEY,
     color INTEGER NOT NULL
 );
 
 CREATE TABLE "question_category" (
-    id_question INTEGER REFERENCES "question" (id_post) NOT NULL,
-    id_category text REFERENCES "category" (id_name) NOT NULL,
-    PRIMARY KEY (id_question, id_category) 
+    question INTEGER REFERENCES "question" (post) NOT NULL ON DELETE CASCADE,
+    category text REFERENCES "category" (name) NOT NULL ON DELETE CASCADE,
+    PRIMARY KEY (question, category) 
 );
 
 CREATE TABLE "vote" (
-    id_answer INTEGER REFERENCES "answer" (id_post) NOT NULL,
-    id_member INTEGER REFERENCES "member" (id) NOT NULL,
-    "value" INTEGER NOT NULL CHECK(((value = 1) OR (value = -1))),
-    PRIMARY KEY (id_answer, id_member) 
+    voted INTEGER REFERENCES "answer" (post) NOT NULL ON DELETE CASCADE,
+    voter INTEGER REFERENCES "member" (id) NOT NULL,
+    "value" vote_type NOT NULL
 );
 
 CREATE TABLE "edit_log" (
     id SERIAL PRIMARY KEY,
-    id_post INTEGER REFERENCES "post"(id) NOT NULL,
+    post INTEGER REFERENCES "post"(id) NOT NULL ON DELETE CASCADE,
     edit_date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL ,
     old_body text NOT NULL
 );
 
 CREATE TABLE "report" (
-    id_post INTEGER REFERENCES "post"(id) NOT NULL,
-    id_member INTEGER REFERENCES "member"(id) NOT NULL,
+    id SERIAL PRIMARY KEY,
+    reported INTEGER REFERENCES "post"(id) NOT NULL,
+    reporter INTEGER REFERENCES "member"(id) NOT NULL,
     "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     "type" report_type NOT NULL,
     offense text,
-    "state" INTEGER NOT NULL DEFAULT 0 CHECK(((state = -1) OR (state = 0) OR (state = 1))),
-    PRIMARY KEY (id_post, id_member)
-);
-
-CREATE TABLE "best_answer" (
-    id_question INTEGER REFERENCES "question"(id_post) NOT NULL,
-    id_answer INTEGER REFERENCES "answer"(id_post) NOT NULL,
-    PRIMARY KEY (id_question, id_answer)
+    "state" report_state NOT NULL DEFAULT 'Unread'
 );
 
 CREATE TABLE "notification" (
     id SERIAL PRIMARY KEY,
-    id_member INTEGER REFERENCES "member"(id) NOT NULL,
+    notified INTEGER REFERENCES "member"(id) NOT NULL ON DELETE CASCADE,
     "read" BOOLEAN DEFAULT FALSE NOT NULL,
     "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE "post_notif" (
-    id_notif INTEGER PRIMARY KEY REFERENCES "notification"(id),
-    id_post INTEGER REFERENCES "post"(id)
+    notif INTEGER PRIMARY KEY REFERENCES "notification"(id) ON DELETE CASCADE,
+    post INTEGER REFERENCES "post"(id) NOT NULL ON DELETE CASCADE
 );
 
 CREATE TABLE "vote_notif" (
-    id_notif INTEGER PRIMARY KEY REFERENCES "notification"(id),
-    id_member INTEGER REFERENCES "member"(id),
-    id_answer INTEGER REFERENCES "answer"(id_post),
-    FOREIGN KEY (id_member,id_answer) REFERENCES "vote"
+    notif INTEGER PRIMARY KEY REFERENCES "notification"(id) ON DELETE CASCADE,
+    voter INTEGER REFERENCES "member"(id) NOT NULL,
+    voted INTEGER REFERENCES "answer"(post) NOT NULL ON DELETE CASCADE,
+    FOREIGN KEY (voter,voted) REFERENCES "vote" ON DELETE CASCADE
+);
+
+CREATE TABLE "report_notif" (
+    notif INTEGER PRIMARY KEY REFERENCES "notification"(id) ON DELETE CASCADE,
+    report INTEGER REFERENCES "report"(id) NOT NULL ON DELETE CASCADE
 );
 
 CREATE TABLE "administrator" (
@@ -125,4 +136,10 @@ CREATE TABLE "administrator" (
     email text NOT NULL UNIQUE,
     "name" text NOT NULL,
     "password" text NOT NULL
+);
+
+CREATE TABLE "bookmark" (
+    member INTEGER REFERENCES "member"(id) ON DELETE CASCADE,
+    bookmark INTEGER REFERENCES "question"(post) ON DELETE CASCADE,
+    PRIMARY KEY (member, bookmark)
 );

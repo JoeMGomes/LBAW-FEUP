@@ -46,7 +46,7 @@ CREATE TABLE "member" (
     email text NOT NULL UNIQUE,
     "name" text NOT NULL,
     "password" text NOT NULL,
-    photo_url text NOT NULL DEFAULT "assets/profileImages/default.png",
+    photo_url text NOT NULL DEFAULT 'assets/profileImages/default.png',
     banned BOOLEAN NOT NULL DEFAULT FALSE,
     membership_date date DEFAULT now() NOT NULL, 
     score int NOT NULL DEFAULT 0
@@ -127,7 +127,7 @@ CREATE TABLE "vote_notif" (
     notif INTEGER PRIMARY KEY REFERENCES "notification"(id) ON DELETE CASCADE,
     voted INTEGER NOT NULL REFERENCES "answer"(post) ON DELETE CASCADE,
     voter INTEGER REFERENCES "member"(id) NOT NULL,
-    FOREIGN KEY (voter,voted) REFERENCES "vote" ON DELETE CASCADE
+    FOREIGN KEY (voted,voter) REFERENCES "vote" ON DELETE CASCADE
 );
 
 CREATE TABLE "report_notif" (
@@ -143,7 +143,7 @@ CREATE TABLE "administrator" (
 );
 
 CREATE TABLE "bookmark" (
-    member INTEGER REFERENCES NOT NULL "member"(id) ON DELETE CASCADE,
-    bookmark INTEGER REFERENCES NOT NULL "question"(post) ON DELETE CASCADE,
+    member INTEGER NOT NULL REFERENCES "member"(id) ON DELETE CASCADE,
+    bookmark INTEGER NOT NULL REFERENCES "question"(post) ON DELETE CASCADE,
     PRIMARY KEY (member, bookmark)
 );

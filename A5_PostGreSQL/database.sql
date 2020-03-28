@@ -2,14 +2,16 @@ DROP TABLE IF EXISTS "bookmark";
 DROP TABLE IF EXISTS "administrator";
 DROP TABLE IF EXISTS "vote_notif";
 DROP TABLE IF EXISTS "post_notif";
+DROP TABLE IF EXISTS "report_notif";
 DROP TABLE IF EXISTS "notification";
-DROP TABLE IF EXISTS "best_answer";
 DROP TABLE IF EXISTS "report";
 DROP TABLE IF EXISTS "edit_log";
 DROP TABLE IF EXISTS "vote";
 DROP TABLE IF EXISTS "question_category";
 DROP TABLE IF EXISTS "category";
 DROP TABLE IF EXISTS "comment";
+ALTER TABLE IF EXISTS "question"
+DROP COLUMN IF EXISTS best_answer;
 DROP TABLE IF EXISTS "answer";
 DROP TABLE IF EXISTS "question";
 DROP TABLE IF EXISTS "post";
@@ -44,10 +46,10 @@ CREATE TABLE "member" (
     email text NOT NULL UNIQUE,
     "name" text NOT NULL,
     "password" text NOT NULL,
-    photo_url text,
+    photo_url text NOT NULL DEFAULT "assets/profileImages/default.png",
     banned BOOLEAN NOT NULL DEFAULT FALSE,
     membership_date date DEFAULT now() NOT NULL, 
-    score int NOT NULL
+    score int NOT NULL DEFAULT 0
 );
 
 CREATE TABLE "post" (
@@ -59,40 +61,42 @@ CREATE TABLE "post" (
 
 CREATE TABLE "question" (
     post INTEGER PRIMARY KEY REFERENCES "post"(id) ON DELETE CASCADE,
-    best_answer INTEGER REFERENCES "answer"(post),
     title text NOT NULL
 );
 
 CREATE TABLE "answer" (
     post INTEGER PRIMARY KEY REFERENCES "post"(id) ON DELETE CASCADE,
-    question INTEGER REFERENCES "question" (post) NOT NULL ON DELETE CASCADE
+    question INTEGER  NOT NULL REFERENCES "question" (post) ON DELETE CASCADE
 );
+
+ALTER TABLE "question"
+ADD COLUMN best_answer INTEGER REFERENCES "answer"(post);
 
 CREATE TABLE "comment" (
     post INTEGER PRIMARY KEY REFERENCES "post"(id) ON DELETE CASCADE,
-    answer INTEGER REFERENCES "answer" (post) NOT NULL ON DELETE CASCADE
+    answer INTEGER NOT NULL REFERENCES "answer" (post) ON DELETE CASCADE
 );
 
 CREATE TABLE "category" (
     name text PRIMARY KEY,
     color INTEGER NOT NULL
 );
-
 CREATE TABLE "question_category" (
-    question INTEGER REFERENCES "question" (post) NOT NULL ON DELETE CASCADE,
-    category text REFERENCES "category" (name) NOT NULL ON DELETE CASCADE,
+    question INTEGER NOT NULL REFERENCES "question" (post) ON DELETE CASCADE,
+    category text NOT NULL REFERENCES "category" (name) ON DELETE CASCADE,
     PRIMARY KEY (question, category) 
 );
 
 CREATE TABLE "vote" (
-    voted INTEGER REFERENCES "answer" (post) NOT NULL ON DELETE CASCADE,
+    voted INTEGER NOT NULL REFERENCES "answer" (post) ON DELETE CASCADE,
     voter INTEGER REFERENCES "member" (id) NOT NULL,
-    "value" vote_type NOT NULL
+    "value" vote_type NOT NULL,
+	PRIMARY KEY (voted, voter) 
 );
 
 CREATE TABLE "edit_log" (
     id SERIAL PRIMARY KEY,
-    post INTEGER REFERENCES "post"(id) NOT NULL ON DELETE CASCADE,
+    post INTEGER NOT NULL REFERENCES "post"(id) ON DELETE CASCADE,
     edit_date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL ,
     old_body text NOT NULL
 );
@@ -109,26 +113,26 @@ CREATE TABLE "report" (
 
 CREATE TABLE "notification" (
     id SERIAL PRIMARY KEY,
-    notified INTEGER REFERENCES "member"(id) NOT NULL ON DELETE CASCADE,
+    notified INTEGER NOT NULL REFERENCES "member"(id) ON DELETE CASCADE,
     "read" BOOLEAN DEFAULT FALSE NOT NULL,
     "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE "post_notif" (
     notif INTEGER PRIMARY KEY REFERENCES "notification"(id) ON DELETE CASCADE,
-    post INTEGER REFERENCES "post"(id) NOT NULL ON DELETE CASCADE
+    post INTEGER NOT NULL REFERENCES "post"(id) ON DELETE CASCADE
 );
 
 CREATE TABLE "vote_notif" (
     notif INTEGER PRIMARY KEY REFERENCES "notification"(id) ON DELETE CASCADE,
     voter INTEGER REFERENCES "member"(id) NOT NULL,
-    voted INTEGER REFERENCES "answer"(post) NOT NULL ON DELETE CASCADE,
+    voted INTEGER NOT NULL REFERENCES "answer"(post) ON DELETE CASCADE,
     FOREIGN KEY (voter,voted) REFERENCES "vote" ON DELETE CASCADE
 );
 
 CREATE TABLE "report_notif" (
     notif INTEGER PRIMARY KEY REFERENCES "notification"(id) ON DELETE CASCADE,
-    report INTEGER REFERENCES "report"(id) NOT NULL ON DELETE CASCADE
+    report INTEGER NOT NULL REFERENCES "report"(id) ON DELETE CASCADE
 );
 
 CREATE TABLE "administrator" (
@@ -139,7 +143,7 @@ CREATE TABLE "administrator" (
 );
 
 CREATE TABLE "bookmark" (
-    member INTEGER REFERENCES "member"(id) ON DELETE CASCADE,
-    bookmark INTEGER REFERENCES "question"(post) ON DELETE CASCADE,
+    member INTEGER REFERENCES NOT NULL "member"(id) ON DELETE CASCADE,
+    bookmark INTEGER REFERENCES NOT NULL "question"(post) ON DELETE CASCADE,
     PRIMARY KEY (member, bookmark)
 );

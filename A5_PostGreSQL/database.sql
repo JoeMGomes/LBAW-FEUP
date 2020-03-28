@@ -125,8 +125,8 @@ CREATE TABLE "post_notif" (
 
 CREATE TABLE "vote_notif" (
     notif INTEGER PRIMARY KEY REFERENCES "notification"(id) ON DELETE CASCADE,
-    voter INTEGER REFERENCES "member"(id) NOT NULL,
     voted INTEGER NOT NULL REFERENCES "answer"(post) ON DELETE CASCADE,
+    voter INTEGER REFERENCES "member"(id) NOT NULL,
     FOREIGN KEY (voter,voted) REFERENCES "vote" ON DELETE CASCADE
 );
 

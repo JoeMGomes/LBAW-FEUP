@@ -78,12 +78,13 @@ CREATE TABLE "comment" (
 );
 
 CREATE TABLE "category" (
-    name text PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
+    name text,
     color INTEGER NOT NULL
 );
 CREATE TABLE "question_category" (
     question INTEGER NOT NULL REFERENCES "question" (post) ON DELETE CASCADE,
-    category text NOT NULL REFERENCES "category" (name) ON DELETE CASCADE,
+    category INTEGER NOT NULL REFERENCES "category" (id) ON DELETE CASCADE,
     PRIMARY KEY (question, category) 
 );
 

@@ -92,23 +92,33 @@ UPDATE question
 
 
 -- Categories
-INSERT INTO category VALUES('Laundry', 8297984);
-INSERT INTO category VALUES('Cooking', 16502021);
-INSERT INTO category VALUES('Health', 16684128);
-INSERT INTO category VALUES('Finances', 8297984);
-INSERT INTO category VALUES('Sexuality', 16502021);
-INSERT INTO category VALUES('Work', 16684128);
-INSERT INTO category VALUES('Relationships', 8297984);
-INSERT INTO category VALUES('Household', 16502021);
-INSERT INTO category VALUES('Pets', 14540253);
-INSERT INTO category VALUES('Mental Health', 8029935);
+--1
+INSERT INTO category(name, color) VALUES('Laundry', 8297984);
+--2
+INSERT INTO category(name, color) VALUES('Cooking', 16502021);
+--3
+INSERT INTO category(name, color) VALUES('Health', 16684128);
+--4
+INSERT INTO category(name, color) VALUES('Finances', 8297984);
+--5
+INSERT INTO category(name, color) VALUES('Sexuality', 16502021);
+--6
+INSERT INTO category(name, color) VALUES('Work', 16684128);
+--7
+INSERT INTO category(name, color) VALUES('Relationships', 8297984);
+--8
+INSERT INTO category(name, color) VALUES('Household', 16502021);
+--9
+INSERT INTO category(name, color) VALUES('Pets', 14540253);
+--10
+INSERT INTO category(name, color) VALUES('Mental Health', 8029935);
 
 -- categories question
-INSERT INTO question_category VALUES(2, 'Laundry');
-INSERT INTO question_category VALUES(6, 'Cooking');
-INSERT INTO question_category VALUES(8, 'Cooking');
-INSERT INTO question_category VALUES(10, 'Health');
-INSERT INTO question_category VALUES(13,'Pets');
+INSERT INTO question_category VALUES(2, 1);
+INSERT INTO question_category VALUES(6, 2);
+INSERT INTO question_category VALUES(8, 2);
+INSERT INTO question_category VALUES(10,3);
+INSERT INTO question_category VALUES(13,9);
 
 --vote
 INSERT INTO vote VALUES(3,2, 'Upvote');
@@ -155,76 +165,76 @@ INSERT INTO bookmark VALUES(18,13);
 
 --post_notif
 --1
-INSERT INTO notification(notified) VALUES(2);
-INSERT INTO post_notif VALUES(1, 3);
+--INSERT INTO notification(notified) VALUES(2);
+--INSERT INTO post_notif VALUES(1, 3);
 --2
-INSERT INTO notification(notified) VALUES(3);
-INSERT INTO post_notif VALUES(2, 2);
+--INSERT INTO notification(notified) VALUES(3);
+--INSERT INTO post_notif VALUES(2, 2);
 --3
-INSERT INTO notification(notified) VALUES(2);
-INSERT INTO post_notif VALUES(3, 5);
+--INSERT INTO notification(notified) VALUES(2);
+--INSERT INTO post_notif VALUES(3, 5);
 --4
-INSERT INTO notification(notified) VALUES(2);
-INSERT INTO post_notif VALUES(4, 7);
+--INSERT INTO notification(notified) VALUES(2);
+--INSERT INTO post_notif VALUES(4, 7);
 --5
-INSERT INTO notification(notified) VALUES(4);
-INSERT INTO post_notif VALUES(5, 9);
+--INSERT INTO notification(notified) VALUES(4);
+--INSERT INTO post_notif VALUES(5, 9);
 --6
-INSERT INTO notification(notified) VALUES(17);
-INSERT INTO post_notif VALUES(6, 11);
+--INSERT INTO notification(notified) VALUES(17);
+--INSERT INTO post_notif VALUES(6, 11);
 --7
-INSERT INTO notification(notified) VALUES(17);
-INSERT INTO post_notif VALUES(7, 12);
+--INSERT INTO notification(notified) VALUES(17);
+--INSERT INTO post_notif VALUES(7, 12);
 --8
-INSERT INTO notification(notified) VALUES(10);
-INSERT INTO post_notif VALUES(8, 14);
+--INSERT INTO notification(notified) VALUES(10);
+--INSERT INTO post_notif VALUES(8, 14);
 
 --vote_notif
 --9
-INSERT INTO notification(notified) VALUES(3);
-INSERT INTO vote_notif VALUES(9, 3, 2);
+--INSERT INTO notification(notified) VALUES(3);
+--INSERT INTO vote_notif VALUES(9, 3, 2);
 --10
-INSERT INTO notification(notified) VALUES(3);
-INSERT INTO vote_notif VALUES(10, 3, 4);
+--INSERT INTO notification(notified) VALUES(3);
+--INSERT INTO vote_notif VALUES(10, 3, 4);
 --11
-INSERT INTO notification(notified) VALUES(5);
-INSERT INTO vote_notif VALUES(11, 7, 3);
+--INSERT INTO notification(notified) VALUES(5);
+--INSERT INTO vote_notif VALUES(11, 7, 3);
 --12
-INSERT INTO notification(notified) VALUES(5);
-INSERT INTO vote_notif VALUES(12, 7, 6);
+--INSERT INTO notification(notified) VALUES(5);
+--INSERT INTO vote_notif VALUES(12, 7, 6);
 --13
-INSERT INTO notification(notified) VALUES(5);
-INSERT INTO vote_notif VALUES(13, 7, 15);
+--INSERT INTO notification(notified) VALUES(5);
+--INSERT INTO vote_notif VALUES(13, 7, 15);
 --14
-INSERT INTO notification(notified) VALUES(10);
-INSERT INTO vote_notif VALUES(14, 9, 3);
+--INSERT INTO notification(notified) VALUES(10);
+--INSERT INTO vote_notif VALUES(14, 9, 3);
 --15
-INSERT INTO notification(notified) VALUES(10);
-INSERT INTO vote_notif VALUES(15, 9, 8);
+--INSERT INTO notification(notified) VALUES(10);
+--INSERT INTO vote_notif VALUES(15, 9, 8);
 --16
-INSERT INTO notification(notified) VALUES(5);
-INSERT INTO vote_notif VALUES(16, 11, 10);
+--INSERT INTO notification(notified) VALUES(5);
+--INSERT INTO vote_notif VALUES(16, 11, 10);
 --17
-INSERT INTO notification(notified) VALUES(3);
-INSERT INTO vote_notif VALUES(17, 12, 4);
+--INSERT INTO notification(notified) VALUES(3);
+--INSERT INTO vote_notif VALUES(17, 12, 4);
 --18
-INSERT INTO notification(notified) VALUES(3);
-INSERT INTO vote_notif VALUES(18, 12, 17);
+--INSERT INTO notification(notified) VALUES(3);
+--INSERT INTO vote_notif VALUES(18, 12, 17);
 --19
-INSERT INTO notification(notified) VALUES(12);
-INSERT INTO vote_notif VALUES(19, 14, 8);
+--INSERT INTO notification(notified) VALUES(12);
+--INSERT INTO vote_notif VALUES(19, 14, 8);
 --20
-INSERT INTO notification(notified) VALUES(12);
-INSERT INTO vote_notif VALUES(20, 14, 9);
+--INSERT INTO notification(notified) VALUES(12);
+--INSERT INTO vote_notif VALUES(20, 14, 9);
 --21
-INSERT INTO notification(notified) VALUES(12);
-INSERT INTO vote_notif VALUES(21, 14, 15);
+--INSERT INTO notification(notified) VALUES(12);
+--INSERT INTO vote_notif VALUES(21, 14, 15);
 --22
-INSERT INTO notification(notified) VALUES(12);
-INSERT INTO vote_notif VALUES(22, 14, 19);
+--INSERT INTO notification(notified) VALUES(12);
+--INSERT INTO vote_notif VALUES(22, 14, 19);
 --23
-INSERT INTO notification(notified) VALUES(12);
-INSERT INTO vote_notif VALUES(23, 14, 16);
+--INSERT INTO notification(notified) VALUES(12);
+--INSERT INTO vote_notif VALUES(23, 14, 16);
 
 --report_notif
 --24

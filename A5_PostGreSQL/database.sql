@@ -79,7 +79,7 @@ CREATE TABLE "comment" (
 
 CREATE TABLE "category" (
     id SERIAL PRIMARY KEY,
-    name text,
+    name text NOT NULL,
     color INTEGER NOT NULL
 );
 CREATE TABLE "question_category" (

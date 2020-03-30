@@ -66,8 +66,8 @@ DECLARE member_reported post.author%TYPE;
 BEGIN
 	SELECT INTO member_reported author FROM post WHERE (NEW.reported = post.id);
 	IF NEW.state = 'Approved' THEN
-		SELECT INTO member_reports id FROM report, post WHERE (post.author = member_reported AND report.reported = post.id AND report.state = 'Approved');
-		IF member_reports >= 4 THEN
+		SELECT INTO member_reports count(post.id) FROM report, post WHERE (post.author = member_reported AND report.reported = post.id AND report.state = 'Approved');
+		IF member_reports >= 5 THEN
 			UPDATE "member" SET banned = TRUE WHERE id = member_reported;
 		END IF;
 	END IF;
@@ -260,9 +260,9 @@ DECLARE notification_id notification.id%TYPE;
 DECLARE author_post post.author%TYPE;
 BEGIN
 	SELECT INTO author_post author FROM  post WHERE OLD.reported = post.id;
-	IF NEW.STATE = 'Aproved' THEN
+	IF NEW.STATE = 'Approved' THEN
  		INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
-		INSERT INTO vote_notif VALUES (notification_id, NEW.id); 
+		INSERT INTO report_notif VALUES (notification_id, NEW.id); 
 	END IF;
 RETURN NEW;
 END
@@ -270,7 +270,4 @@ $$ LANGUAGE plpgsql;
 DROP TRIGGER IF EXISTS notification_report on report;
 CREATE TRIGGER notification_report AFTER UPDATE on report
 	FOR EACH ROW EXECUTE PROCEDURE report_notification();
-
-
-
 

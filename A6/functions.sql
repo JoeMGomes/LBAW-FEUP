@@ -3,10 +3,8 @@ CREATE OR REPLACE FUNCTION add_question(author INTEGER, text_body text, title te
 RETURNS VOID AS $$
 DECLARE post_id post.id%TYPE;
 BEGIN
-    BEGIN
     INSERT INTO post(author, text_body) VALUES(author, text_body) RETURNING id INTO post_id;
     INSERT INTO question(post, title) VALUES(post_id, title);
-    COMMIT;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -15,10 +13,9 @@ CREATE OR REPLACE FUNCTION add_answer(author INTEGER, text_body text, question I
 RETURNS VOID AS $$
 DECLARE post_id post.id%TYPE;
 BEGIN
-    BEGIN
     INSERT INTO post(author, text_body) VALUES(author, text_body) RETURNING id INTO post_id;
     INSERT INTO answer(post, question) VALUES(post_id, question);
-    COMMIT;
+	CLUSTER answer USING answer_question;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -27,9 +24,8 @@ CREATE OR REPLACE FUNCTION add_comment(author INTEGER, text_body text, answer IN
 RETURNS VOID AS $$
 DECLARE post_id post.id%TYPE;
 BEGIN
-    BEGIN
     INSERT INTO post(author, text_body) VALUES(author, text_body) RETURNING id INTO post_id;
     INSERT INTO comment(post, answer) VALUES(post_id, answer);
-    COMMIT;
+	CLUSTER comment USING comment_answer;
 END;
 $$ LANGUAGE plpgsql;

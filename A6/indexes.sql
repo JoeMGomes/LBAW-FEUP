@@ -35,4 +35,4 @@ CREATE INDEX bookmark_member ON bookmark USING btree (member);
 CREATE INDEX search_title ON question USING gin(to_tsvector('english', title));
 
 --search on text_body
-CREATE INDEX search_description ON post USING gist(to_tsvector('english', text_body));
+CREATE INDEX search_text ON post USING gist(to_tsvector('english', text_body));

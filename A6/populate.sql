@@ -26,70 +26,64 @@ INSERT INTO member(email, name, password) VALUES ('DLxeJbX87iKWIl460Y_v@hipztjgo
 
 -- Questions insert
 --2 
-INSERT INTO post(author, text_body) VALUES (2, 'SO, I have this yellow jacket and I dont know how to wash it. How do I wash it? It is yellow. Please help.');
-INSERT INTO question(post, title) VALUES(2, 'How do I wash my yellow jacket?');
+SELECT add_question(2, 
+    'SO, I have this yellow jacket and I dont know how to wash it. How do I wash it? It is yellow. Please help.', 
+    'How do I wash my yellow jacket?');
 --3
-INSERT INTO post(author, text_body) VALUES(3, 'In order to wash your yellow jacket you need to use special yellow jacket
+SELECT add_answer(3,'In order to wash your yellow jacket you need to use special yellow jacket
                         washing soap In order to wash your yellow jacket you need to use special
                         yellow jacket washing soap In order to wash your yellow jacket you need to
                         use special yellow jacket washing soap In order to wash your yellow jacket
-                        you need to use special yellow jacket');
-INSERT INTO answer(post, question) VALUES(3,2);
+                        you need to use special yellow jacket',2);
 --4
-INSERT INTO post(author, text_body) VALUES(2, 'Indeed there is a special soap used for yellow jackets! Best answer for me!');
-INSERT INTO comment(post, answer) VALUES(4, 3);
+SELECT add_comment(2, 'Indeed there is a special soap used for yellow jackets! Best answer for me!', 3);
 
 UPDATE question 
     SET best_answer = 3
     WHERE post = 2;
 --5
-INSERT INTO post(author, text_body) VALUES(4, 'Soak it in rice... that might work...');
-INSERT INTO answer(post, question) VALUES(5,2);
+SELECT add_answer(4, 'Soak it in rice... that might work...', 2);
 
--- other question
+------- other question
 --6
-INSERT INTO post(author, text_body) VALUES (2, 'How long can meat last in the fridge?');
-INSERT INTO question(post, title) VALUES(6, 'I dont know how long meat can last safe to be eaten');
+SELECT add_question(2, 'How long can meat last in the fridge?','I dont know how long meat can last safe to be eaten');
+
 --7
-INSERT INTO post(author, text_body) VALUES(5, 'About 5 days if uncooked or up to 3 days cooked');
-INSERT INTO answer(post, question) VALUES(7,6);
+SELECT add_answer(5, 'About 5 days if uncooked or up to 3 days cooked', 6);
 
 UPDATE question 
     SET best_answer = 7
     WHERE post = 6;
 
--- other question
+------- other question
 --8
-INSERT INTO post(author, text_body) VALUES (4, 'How many potatoes should I buy for a week?');
-INSERT INTO question(post, title) VALUES(8, 'I am lost in life');
+SELECT add_question(4, 'How many potatoes should I buy for a week?', 'I am lost in life');
+
 --9
-INSERT INTO post(author, text_body) VALUES(10, 'At least 12 but it depends on how much you like mashed potatoes. I like thamn a lot so I buy 350 ate a time');
-INSERT INTO answer(post, question) VALUES(9,8);
+SELECT add_answer(10, 'At least 12 but it depends on how much you like mashed potatoes. I like thamn a lot so I buy 350 ate a time',8);
 
--- other question
+------- other question
 --10
-INSERT INTO post(author, text_body) VALUES (17, 'If my elbows are red, should I change washing soap?');
-INSERT INTO question(post, title) VALUES(10, 'My elbows are red');
+SELECT add_question(17, 'If my elbows are red, should I change washing soap?','My elbows are red');
+
 --11
-INSERT INTO post(author, text_body) VALUES(5, 'You should see a doctor');
-INSERT INTO answer(post, question) VALUES(11,10);
+SELECT add_answer(5, 'You should see a doctor',10);
+
 --12
-INSERT INTO post(author, text_body) VALUES(3, 'Elbows are very sensible to new clothes or different body lotions. If you changed them recently keep that in mind.');
-INSERT INTO answer(post, question) VALUES(12,10);
+SELECT add_answer(3, 'Elbows are very sensible to new clothes or different body lotions. If you changed them recently keep that in mind.',10);
 
--- other question
+-------- other question
 --13
-INSERT INTO post(author, text_body) VALUES (10, 'Should I buy a pet?');
-INSERT INTO question(post, title) VALUES(13, 'I feel lonely and am thinking about buying/adopting a cat or a guinea pig. The only thnig I am not sure is if I would be able to take care of the poor animal since I sometime can be a bit busy with work. Does anyone have some tips and/or recomendations?
-EDIT: the cat would be a sphinx because they dont drop too much hair');
---14
-INSERT INTO post(author, text_body) VALUES(12, 'In my opinion you should try a pet rock for a month. Keep a registry of the times you feed it, wash it , or clean its rock toilet. Do it for AT LEAST a month. If you can do that for that long to a rock, you surely can do that to an annoying demon spawn you call sphynx* or an overrated rat');
-INSERT INTO answer(post, question) VALUES(14,13);
+SELECT add_question(10, 'Should I buy a pet?', 'I feel lonely and am thinking about buying/adopting a cat or a guinea pig. The only thnig I am not sure is if I would be able to take care of the poor animal since I sometime can be a bit busy with work. Does anyone have some tips and/or recomendations?');
 
+UPDATE post SET text_body = 'I feel lonely and am thinking about buying/adopting a cat or a guinea pig. The only thnig I am not sure is if I would be able to take care of the poor animal since I sometime can be a bit busy with work. Does anyone have some tips and/or recomendations?
+EDIT: the cat would be a sphinx because they dont drop too much hair' WHERE id = 13;
+
+--14
+SELECT add_answer(12, 'In my opinion you should try a pet rock for a month. Keep a registry of the times you feed it, wash it , or clean its rock toilet. Do it for AT LEAST a month. If you can do that for that long to a rock, you surely can do that to an annoying demon spawn you call sphynx* or an overrated rat',13);
 UPDATE question 
     SET best_answer = 14
     WHERE post = 13;
-
 
 -- Categories
 --1
@@ -143,9 +137,6 @@ INSERT INTO vote VALUES(14,15,'Upvote');
 INSERT INTO vote VALUES(14,19,'Upvote');
 INSERT INTO vote VALUES(14,16,'Upvote');
 
---edit log
-INSERT INTO edit_log(post,old_body) VALUES(13,'I feel lonely and am thinking about buying/adopting a cat or a guinea pig. The only thnig I am not sure is if I would be able to take care of the poor animal since I sometime can be a bit busy with work. Does anyone have some tips and/or recomendations?');
-
 --report
 --1
 INSERT INTO report(reported, reporter, type, offense) VALUES(5, 2, 'Spreading Misinformation', NULL);
@@ -162,80 +153,6 @@ INSERT INTO bookmark VALUES(6,13);
 INSERT INTO bookmark VALUES(18,13);
 
 --notifications
-
---post_notif
---1
---INSERT INTO notification(notified) VALUES(2);
---INSERT INTO post_notif VALUES(1, 3);
---2
---INSERT INTO notification(notified) VALUES(3);
---INSERT INTO post_notif VALUES(2, 2);
---3
---INSERT INTO notification(notified) VALUES(2);
---INSERT INTO post_notif VALUES(3, 5);
---4
---INSERT INTO notification(notified) VALUES(2);
---INSERT INTO post_notif VALUES(4, 7);
---5
---INSERT INTO notification(notified) VALUES(4);
---INSERT INTO post_notif VALUES(5, 9);
---6
---INSERT INTO notification(notified) VALUES(17);
---INSERT INTO post_notif VALUES(6, 11);
---7
---INSERT INTO notification(notified) VALUES(17);
---INSERT INTO post_notif VALUES(7, 12);
---8
---INSERT INTO notification(notified) VALUES(10);
---INSERT INTO post_notif VALUES(8, 14);
-
---vote_notif
---9
---INSERT INTO notification(notified) VALUES(3);
---INSERT INTO vote_notif VALUES(9, 3, 2);
---10
---INSERT INTO notification(notified) VALUES(3);
---INSERT INTO vote_notif VALUES(10, 3, 4);
---11
---INSERT INTO notification(notified) VALUES(5);
---INSERT INTO vote_notif VALUES(11, 7, 3);
---12
---INSERT INTO notification(notified) VALUES(5);
---INSERT INTO vote_notif VALUES(12, 7, 6);
---13
---INSERT INTO notification(notified) VALUES(5);
---INSERT INTO vote_notif VALUES(13, 7, 15);
---14
---INSERT INTO notification(notified) VALUES(10);
---INSERT INTO vote_notif VALUES(14, 9, 3);
---15
---INSERT INTO notification(notified) VALUES(10);
---INSERT INTO vote_notif VALUES(15, 9, 8);
---16
---INSERT INTO notification(notified) VALUES(5);
---INSERT INTO vote_notif VALUES(16, 11, 10);
---17
---INSERT INTO notification(notified) VALUES(3);
---INSERT INTO vote_notif VALUES(17, 12, 4);
---18
---INSERT INTO notification(notified) VALUES(3);
---INSERT INTO vote_notif VALUES(18, 12, 17);
---19
---INSERT INTO notification(notified) VALUES(12);
---INSERT INTO vote_notif VALUES(19, 14, 8);
---20
---INSERT INTO notification(notified) VALUES(12);
---INSERT INTO vote_notif VALUES(20, 14, 9);
---21
---INSERT INTO notification(notified) VALUES(12);
---INSERT INTO vote_notif VALUES(21, 14, 15);
---22
---INSERT INTO notification(notified) VALUES(12);
---INSERT INTO vote_notif VALUES(22, 14, 19);
---23
---INSERT INTO notification(notified) VALUES(12);
---INSERT INTO vote_notif VALUES(23, 14, 16);
-
 --report_notif
 --24
 INSERT INTO notification(notified) VALUES(4);

@@ -31,6 +31,8 @@ CREATE INDEX notif_member ON notification USING btree (notified);
 CREATE INDEX bookmark_member ON bookmark USING btree (member);
 
 --- FULL TEXT SEARCH
+-- search on title
+CREATE INDEX search_title ON question USING gin(to_tsvector('english', title));
 
-
--- TODO TRIGGERS TO TSVECTOR SEARCH
+--search on text_body
+CREATE INDEX search_description ON post USING gist(to_tsvector('english', text_body));

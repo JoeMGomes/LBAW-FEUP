@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION update_member_score()
   RETURNS trigger AS
-$$
+$vote_count$
 BEGIN
 	IF NEW.value = 'Upvote' THEN
 		UPDATE member
@@ -13,56 +13,17 @@ BEGIN
 	END IF;
    RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$vote_count$ LANGUAGE plpgsql;
+
 DROP TRIGGER IF EXISTS "vote_count" ON "vote";
 CREATE TRIGGER vote_count BEFORE INSERT ON "vote"
     FOR EACH ROW EXECUTE PROCEDURE update_member_score();
 
 --------
-
-CREATE OR REPLACE FUNCTION update_member_best_answer_score()
-	RETURNS trigger AS
-$$
-DECLARE member_to_update post.author%TYPE;
-BEGIN
-	IF OLD.best_answer <> NEW.best_answer THEN
-		SELECT INTO member_to_update author FROM post WHERE NEW.best_answer = post.id;
-		UPDATE member
-			SET score = score + 10
-			WHERE member_to_update = member.id;
-	END IF;
-RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-DROP TRIGGER IF EXISTS best_answer_score on question;
-CREATE TRIGGER best_answer_score BEFORE UPDATE ON question
-	FOR EACH ROW EXECUTE PROCEDURE update_member_best_answer_score();
-
---------
-
-CREATE OR REPLACE FUNCTION update_member_score_report()
-	RETURNS trigger AS
-$$
-DECLARE member_to_update post.author%TYPE;
-BEGIN
-	SELECT INTO member_to_update author FROM post WHERE (NEW.reported = post.id);
-	IF NEW.state = 'Approved' THEN
-		UPDATE member SET score = score - 10 WHERE "member".id = member_to_update;
-	END IF;
-RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-DROP TRIGGER IF EXISTS report_score ON report;
-CREATE TRIGGER report_score AFTER UPDATE ON report
-    FOR EACH ROW EXECUTE PROCEDURE update_member_score_report();
-
---------
 	
 CREATE OR REPLACE FUNCTION ban_member()
 	RETURNS trigger AS
-$$
-DECLARE member_reports SMALLINT;
-DECLARE member_reported post.author%TYPE;
+$ban$
 BEGIN
 	SELECT INTO member_reported author FROM post WHERE (NEW.reported = post.id);
 	IF NEW.state = 'Approved' THEN
@@ -73,7 +34,8 @@ BEGIN
 	END IF;
 RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$ban$ LANGUAGE plpgsql;
+
 DROP TRIGGER IF EXISTS "ban" ON "report";
 CREATE TRIGGER ban AFTER UPDATE ON "report"
     FOR EACH ROW EXECUTE PROCEDURE ban_member();
@@ -180,11 +142,7 @@ CREATE OR REPLACE FUNCTION log_edit()
 	RETURNS trigger AS
 $$
 BEGIN
-	IF NEW.text_body = OLD.text_body THEN
-	RETURN NULL;
-	ELSE
-		INSERT INTO edit_log(post, old_body) VALUES (OLD.id, OLD.text_body);
-	END IF;
+	INSERT INTO edit_log(post, old_body) VALUES (OLD.id, OLD.text_body);
 RETURN NEW;
 END
 $$ LANGUAGE plpgsql;
@@ -199,7 +157,7 @@ CREATE OR REPLACE FUNCTION self_vote()
 $$
 DECLARE author_post post.author%TYPE;
 BEGIN
-	SELECT INTO author_post author FROM post, answer WHERE (NEW.voted = answer.id AND answer.post = post.id);
+	SELECT INTO author_post author FROM post, answer WHERE (NEW.voted = answer.post AND answer.post = post.id);
 	IF NEW.voter = author_post THEN
 		RAISE EXCEPTION 'A member cannot upvote itself';
 		RETURN NULL;

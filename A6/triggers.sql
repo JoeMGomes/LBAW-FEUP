@@ -68,7 +68,7 @@ BEGIN
 	IF NEW.state = 'Approved' THEN
 		SELECT INTO member_reports id FROM report, post WHERE (post.author = member_reported AND report.reported = post.id AND report.state = 'Approved');
 		IF member_reports >= 4 THEN
-			UPDATE "member" SET "member".banned = TRUE WHERE "member".id = member_reported;
+			UPDATE "member" SET banned = TRUE WHERE id = member_reported;
 		END IF;
 	END IF;
 RETURN NEW;
@@ -174,7 +174,7 @@ DROP TRIGGER IF EXISTS vote_notification on "vote";
 CREATE TRIGGER vote_notification AFTER INSERT on "vote"
 	FOR EACH ROW EXECUTE PROCEDURE notification_vote();
 
---
+-------
 
 CREATE OR REPLACE FUNCTION log_edit()
 	RETURNS trigger AS
@@ -192,14 +192,14 @@ DROP TRIGGER IF EXISTS edit_log on post;
 CREATE TRIGGER edit_log AFTER UPDATE on post
 	FOR EACH ROW EXECUTE PROCEDURE log_edit();
 
---
+------
 
 CREATE OR REPLACE FUNCTION self_vote()
 	RETURNS trigger AS
 $$
 DECLARE author_post post.author%TYPE;
 BEGIN
-	SELECT INTO author_post author FROM post, answer WHERE (NEW.post = answer.id AND answer.post = post.id);
+	SELECT INTO author_post author FROM post, answer WHERE (NEW.voted = answer.id AND answer.post = post.id);
 	IF NEW.voter = author_post THEN
 		RAISE EXCEPTION 'A member cannot upvote itself';
 		RETURN NULL;
@@ -211,7 +211,7 @@ DROP TRIGGER IF EXISTS vote_self on vote;
 CREATE TRIGGER vote_self BEFORE INSERT on vote
 	FOR EACH ROW EXECUTE PROCEDURE self_vote();
 
---
+------
 
 CREATE OR REPLACE FUNCTION self_report()
 	RETURNS trigger AS
@@ -229,4 +229,48 @@ $$ LANGUAGE plpgsql;
 DROP TRIGGER IF EXISTS report_self on report;
 CREATE TRIGGER report_self BEFORE INSERT on report
 	FOR EACH ROW EXECUTE PROCEDURE self_report();
+
+------
+
+CREATE OR REPLACE FUNCTION delete_user()
+ 	RETURNS trigger AS 
+$$
+BEGIN
+	UPDATE post set author = 1
+		WHERE author = OLD.id;
+	UPDATE vote set voter = 1
+		WHERE voter = OLD.id;
+	UPDATE report set reporter = 1
+		WHERE reporter = OLD.id;
+	UPDATE vote_notif set voter = 1
+		WHERE voter = OLD.id;
+RETURN NEW;
+END
+$$ LANGUAGE plpgsql;
+DROP TRIGGER IF EXISTS user_delete on member;
+CREATE TRIGGER user_delete BEFORE DELETE on member
+	FOR EACH ROW EXECUTE PROCEDURE delete_user();
+
+-----
+
+CREATE OR REPLACE FUNCTION report_notification()
+	RETURNS trigger AS
+$$
+DECLARE notification_id notification.id%TYPE;
+DECLARE author_post post.author%TYPE;
+BEGIN
+	SELECT INTO author_post author FROM  post WHERE OLD.reported = post.id;
+	IF NEW.STATE = 'Aproved' THEN
+ 		INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
+		INSERT INTO vote_notif VALUES (notification_id, NEW.id); 
+	END IF;
+RETURN NEW;
+END
+$$ LANGUAGE plpgsql;
+DROP TRIGGER IF EXISTS notification_report on report;
+CREATE TRIGGER notification_report AFTER UPDATE on report
+	FOR EACH ROW EXECUTE PROCEDURE report_notification();
+
+
+
 

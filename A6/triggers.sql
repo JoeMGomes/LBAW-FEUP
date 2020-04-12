@@ -271,3 +271,123 @@ DROP TRIGGER IF EXISTS notification_report on report;
 CREATE TRIGGER notification_report AFTER UPDATE on report
 	FOR EACH ROW EXECUTE PROCEDURE report_notification();
 
+	
+---------
+
+CREATE OR REPLACE FUNCTION disjoint_question()
+	RETURNS trigger AS 
+$$
+DECLARE answer answer.post%TYPE;
+		comment comment.post%TYPE;
+BEGIN
+	SELECT INTO answer post FROM answer WHERE NEW.post = answer.post;
+	SELECT INTO comment post FROM comment WHERE NEW.post = comment.post;
+	IF answer = NULL AND comment = NULL THEN 
+		RETURN NEW;
+	END IF;
+RETURN NULL;
+END
+$$ LANGUAGE plpgsql;
+DROP TRIGGER IF EXISTS question_disjoint on question;
+CREATE TRIGGER question_disjoint BEFORE INSERT ON question
+	FOR EACH ROW EXECUTE PROCEDURE disjoint_question();
+		
+---------
+
+CREATE OR REPLACE FUNCTION disjoint_answer()
+	RETURNS trigger AS 
+$$
+DECLARE question question.post%TYPE;
+		comment comment.post%TYPE;
+BEGIN
+	SELECT INTO question post FROM question WHERE NEW.post = question.post;
+	SELECT INTO comment post FROM comment WHERE NEW.post = comment.post;
+	IF question = NULL AND comment = NULL THEN 
+		RETURN NEW;
+	END IF;
+RETURN NULL;
+END
+$$ LANGUAGE plpgsql;
+DROP TRIGGER IF EXISTS answer_disjoint on answer;
+CREATE TRIGGER answer_disjoint BEFORE INSERT ON answer
+	FOR EACH ROW EXECUTE PROCEDURE disjoint_answer();
+		
+---------
+
+CREATE OR REPLACE FUNCTION disjoint_comment()
+	RETURNS trigger AS 
+$$
+DECLARE answer answer.post%TYPE;
+		question question.post%TYPE;
+BEGIN
+	SELECT INTO answer post FROM answer WHERE NEW.post = answer.post;
+	SELECT INTO question post FROM question WHERE NEW.post = question.post;
+	IF answer = NULL AND question = NULL THEN 
+		RETURN NEW;
+	END IF;
+RETURN NULL;
+END
+$$ LANGUAGE plpgsql;
+DROP TRIGGER IF EXISTS comment_disjoint on comment;
+CREATE TRIGGER comment_disjoint BEFORE INSERT ON comment
+	FOR EACH ROW EXECUTE PROCEDURE disjoint_comment();
+	
+---------
+
+CREATE OR REPLACE FUNCTION disjoint_post()
+	RETURNS trigger AS 
+$$
+DECLARE vote vote_notif.post%TYPE;
+		report report_notif.post%TYPE;
+BEGIN
+	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.post;
+	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.post;
+	IF vote = NULL AND report = NULL THEN 
+		RETURN NEW;
+	END IF;
+RETURN NULL;
+END
+$$ LANGUAGE plpgsql;
+DROP TRIGGER IF EXISTS post_disjoint on post_notif;
+CREATE TRIGGER post_disjoint BEFORE INSERT ON post_notif
+	FOR EACH ROW EXECUTE PROCEDURE disjoint_post();
+		
+---------
+
+CREATE OR REPLACE FUNCTION disjoint_vote()
+	RETURNS trigger AS 
+$$
+DECLARE post post_notif.post%TYPE;
+		report report_notif.post%TYPE;
+BEGIN
+	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.post;
+	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.post;
+	IF post = NULL AND report = NULL THEN 
+		RETURN NEW;
+	END IF;
+RETURN NULL;
+END
+$$ LANGUAGE plpgsql;
+DROP TRIGGER IF EXISTS vote_disjoint on vote_notif;
+CREATE TRIGGER vote_disjoint BEFORE INSERT ON vote_notif
+	FOR EACH ROW EXECUTE PROCEDURE disjoint_vote();
+	
+---------
+
+CREATE OR REPLACE FUNCTION disjoint_report()
+	RETURNS trigger AS 
+$$
+DECLARE vote vote_notif.post%TYPE;
+		post post_notif.post%TYPE;
+BEGIN
+	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.post;
+	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.post;
+	IF vote = NULL AND post = NULL THEN 
+		RETURN NEW;
+	END IF;
+RETURN NULL;
+END
+$$ LANGUAGE plpgsql;
+DROP TRIGGER IF EXISTS report_disjoint on report_notif;
+CREATE TRIGGER report_disjoint BEFORE INSERT ON report_notif
+	FOR EACH ROW EXECUTE PROCEDURE disjoint_report();

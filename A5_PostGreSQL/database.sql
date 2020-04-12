@@ -148,3 +148,8 @@ CREATE TABLE "bookmark" (
     bookmark INTEGER NOT NULL REFERENCES "question"(post) ON DELETE CASCADE,
     PRIMARY KEY (member, bookmark)
 );
+
+CREATE VIEW total_question AS 
+    SELECT id, author, date, text_body, title 
+    FROM post, question
+    WHERE post.id = question.post;

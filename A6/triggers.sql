@@ -282,12 +282,15 @@ DECLARE answer answer.post%TYPE;
 BEGIN
 	SELECT INTO answer post FROM answer WHERE NEW.post = answer.post;
 	SELECT INTO comment post FROM comment WHERE NEW.post = comment.post;
-	IF answer = NULL AND comment = NULL THEN 
+	RAISE Notice 'Answer: %', answer; 
+	RAISE Notice 'Comment: %', comment; 
+	IF answer IS NULL AND comment IS NULL THEN 
 		RETURN NEW;
 	END IF;
 RETURN NULL;
 END
 $$ LANGUAGE plpgsql;
+
 DROP TRIGGER IF EXISTS question_disjoint on question;
 CREATE TRIGGER question_disjoint BEFORE INSERT ON question
 	FOR EACH ROW EXECUTE PROCEDURE disjoint_question();
@@ -337,11 +340,11 @@ CREATE TRIGGER comment_disjoint BEFORE INSERT ON comment
 CREATE OR REPLACE FUNCTION disjoint_post()
 	RETURNS trigger AS 
 $$
-DECLARE vote vote_notif.post%TYPE;
-		report report_notif.post%TYPE;
+DECLARE vote vote_notif.voted%TYPE;
+		report report_notif.report%TYPE;
 BEGIN
-	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.post;
-	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.post;
+	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.voted;
+	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.report;
 	IF vote = NULL AND report = NULL THEN 
 		RETURN NEW;
 	END IF;
@@ -358,10 +361,10 @@ CREATE OR REPLACE FUNCTION disjoint_vote()
 	RETURNS trigger AS 
 $$
 DECLARE post post_notif.post%TYPE;
-		report report_notif.post%TYPE;
+		report report_notif.report%TYPE;
 BEGIN
 	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.post;
-	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.post;
+	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.report;
 	IF post = NULL AND report = NULL THEN 
 		RETURN NEW;
 	END IF;
@@ -377,10 +380,10 @@ CREATE TRIGGER vote_disjoint BEFORE INSERT ON vote_notif
 CREATE OR REPLACE FUNCTION disjoint_report()
 	RETURNS trigger AS 
 $$
-DECLARE vote vote_notif.post%TYPE;
+DECLARE vote vote_notif.voted%TYPE;
 		post post_notif.post%TYPE;
 BEGIN
-	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.post;
+	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.voted;
 	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.post;
 	IF vote = NULL AND post = NULL THEN 
 		RETURN NEW;

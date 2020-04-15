@@ -1,3 +1,4 @@
+DROP VIEW IF EXISTS "total_question";
 DROP TABLE IF EXISTS "bookmark";
 DROP TABLE IF EXISTS "administrator";
 DROP TABLE IF EXISTS "vote_notif";

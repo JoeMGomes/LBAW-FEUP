@@ -38,7 +38,7 @@ CREATE INDEX search_title ON question USING gin(to_tsvector('english', title));
 CREATE INDEX search_text ON post USING gist(to_tsvector('english', text_body));
 
 --combined search of view total_question (post + question)
-CREATE INDEX search_question ON total_question USING gist( 
-    setweight(to_tsvector('english', title), 'A') || 
-    setweight(to_tsvector('english', text_body), 'B') 
-);
+--CREATE INDEX search_question ON total_question USING gist( 
+--    setweight(to_tsvector('english', title), 'A') || 
+--    setweight(to_tsvector('english', text_body), 'B') 
+--);

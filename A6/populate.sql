@@ -151,9 +151,3 @@ INSERT INTO bookmark VALUES(8,2);
 INSERT INTO bookmark VALUES(10,10);
 INSERT INTO bookmark VALUES(6,13);
 INSERT INTO bookmark VALUES(18,13);
-
---notifications
---report_notif
---24
-INSERT INTO notification(notified) VALUES(4);
-INSERT INTO report_notif VALUES(24, 1);

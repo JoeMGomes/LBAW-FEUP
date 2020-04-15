@@ -282,12 +282,15 @@ DECLARE answer answer.post%TYPE;
 BEGIN
 	SELECT INTO answer post FROM answer WHERE NEW.post = answer.post;
 	SELECT INTO comment post FROM comment WHERE NEW.post = comment.post;
-	IF answer = NULL AND comment = NULL THEN 
+	RAISE Notice 'Answer: %', answer; 
+	RAISE Notice 'Comment: %', comment; 
+	IF answer IS NULL AND comment IS NULL THEN 
 		RETURN NEW;
 	END IF;
 RETURN NULL;
 END
 $$ LANGUAGE plpgsql;
+
 DROP TRIGGER IF EXISTS question_disjoint on question;
 CREATE TRIGGER question_disjoint BEFORE INSERT ON question
 	FOR EACH ROW EXECUTE PROCEDURE disjoint_question();

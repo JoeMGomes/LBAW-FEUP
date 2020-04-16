@@ -1,0 +1,216 @@
+.register-logo {
+    width: 5rem;
+}
+
+.reply-img {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+}
+
+.comment-img {
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.arrow{
+    width: 1em;
+    height: 1em;
+}
+/* a, a:hover{
+    color:white;
+    
+} */
+/***** Fonts *****/
+body,
+h4 {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+}
+
+h1,
+h3 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+}
+
+h5 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+}
+
+mark{
+    background-color: rgb(122, 134, 239, 0.5);
+    border-radius: 0.25em;
+    color: black;
+}
+
+textarea{
+    resize:none;
+}
+
+/***** Overlay *****/
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(51, 51, 51, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/***** Text Colors *****/
+.text-black {
+    color: #000000;
+}
+.text-mydark {
+    color: #2c2c2c;
+}
+.text-mygrey {
+    color: #dddddd;
+}
+.text-myblue {
+    color: #7a86ef;
+}
+.text-mydarkblue,
+.text-darkblueh:hover {
+    color: #5962ae;
+}
+.text-myred {
+    color: #fe9460;
+}
+.text-mydarkred,
+.text-darkred:hover {
+    color: #a25f3e;
+}
+.text-mygreen {
+    color: #7e9e00;
+}
+.text-mydarkgreen,
+.text-darkgreenh:hover {
+    color: #5c7300;
+}
+.text-myyellow,
+.text-yellowh:hover {
+    color: #eda809;
+}
+
+/***** Background Colors *****/
+.bg-mydark {
+    background-color: #2c2c2c;
+}
+
+.bg-mygrey {
+    background-color: #dddddd;
+}
+.bg-myothergrey {
+    background-color: #b5b5b5;
+}
+
+.bg-myblue {
+    background-color: #7a86ef;
+}
+.bg-blueh:hover,
+.bg-mydarkblue {
+    background-color: #5962ae;
+}
+
+.bg-myred {
+    background-color: #fe9460;
+}
+.bg-myred:hover,
+.bg-mydarkred {
+    background-color: #a25f3e;
+}
+
+.bg-myyellow {
+    background-color: #fbcd05;
+}
+.bg-yellowh:hover {
+    background-color: #976b06;
+    color: white;
+}
+
+.bg-mygreen {
+    background-color: #7e9e00;
+}
+.bg-mydarkgreen,
+.bg-greenh:hover {
+    background-color: #5c7300;
+}
+
+/* COLOR INPUT */
+
+input[type="color"] {
+    opacity: 0;
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+#color-picker-wrapper {
+    border-radius: 1em;
+    width: 5em;
+    margin-right: auto;
+}
+
+#color-picker-wrapperEdit {
+    border-radius: 1em;
+    width: 5em;
+    margin-right: auto;
+}
+
+/* TABLE ADMIN*/
+
+.fixed-header thead {
+    background: #2c2c2c;
+    color: #fff;
+}
+
+.fixed-header th,
+.fixed-header td {
+    text-align: left;
+}
+
+.fixed-header th:first-child , td:first-child {
+    width: 5%;
+}
+.fixed-header th:nth-child(2) , td:nth-child(2) {
+    width: 10%;
+}
+.fixed-header th:nth-child(3) , td:nth-child(3) {
+    width: 10%;
+}
+.fixed-header th:nth-child(4) , td:nth-child(4) {
+    width: 20%;
+}
+.fixed-header th:nth-child(5) , td:nth-child(5) {
+    width: 25%;
+}
+.fixed-header th:nth-child(6) , td:nth-child(6) {
+    width: 25%;
+}
+.fixed-header th:nth-child(7) , td:nth-child(7) {
+    width: 5%;
+}
+
+    
+@media (max-width:570px) {
+    * {font-size: 3vw;}
+    h1{font-size: 4.5vw; }
+    .arrow{margin:2vh 0;}    
+}
+
+
+@media (max-width:768px){
+    * {font-size: 2vw;}
+    h1{font-size: 4vw; }
+    .arrow{margin:5vh 0;} 
+}​

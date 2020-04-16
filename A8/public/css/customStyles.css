@@ -1,0 +1,175 @@
+.form-container {
+    background: #2c2c2c;
+    color: black;
+}
+
+#notifications {
+    display: none;
+    position: absolute;
+    top: 50%;
+    height: 50%;
+    width: 150%;
+    left: 100%;
+    overflow-y: scroll;
+    z-index: 1999;
+}
+
+#notifications-mobile {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    height: 50%;
+    overflow-y: scroll;
+    z-index: 1999;
+}
+
+.w-90 {
+    width: 90%;
+    margin-left: 5%;
+}
+
+/***** Sidebar *****/
+
+.sidebar,
+.sidebar-lg {
+    height: 100%;
+    padding: 1rem;
+    padding-top: 2rem;
+    position: fixed;
+    z-index: 999;
+    background: #2C2C2C;
+    color: #fff;
+    transition: all .3s;
+}
+
+.sidebar {
+    width: 250px;
+    left: -255px;
+}
+
+.sidebar.inactive {
+    left: -255px;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.dismiss {
+    color: white;
+    transition: all .3s;
+    background: #444;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.fixed-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.fixed-btn {
+    width: 35px;
+    height: 35px;
+}
+
+.dismiss:hover,
+.dismiss:focus {
+    background: #555;
+    color: #fff;
+}
+
+.sidebar ul li.active>a,
+.sidebar-lg ul li.active>a,
+a[aria-expanded="true"] {
+    background: #444;
+    color: #fff;
+}
+
+.sidebar a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.sidebar>a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.sidebar .to-top,
+.sidebar-lg .to-top {
+    padding: 20px;
+    text-align: center;
+}
+
+/***** Other Stuff *****/
+
+.rounded-img {
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+}
+
+.border {
+    border-radius: 1em
+}
+
+.tag {
+    padding: 0.2em 1.8em;
+    border-radius: 1em;
+    color: black;
+}
+
+.tag:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.notifications:hover {
+    background-color: darkgray;
+    border-radius: 1em
+}
+
+.border-3 {
+    border-width: 2px;
+}
+
+.resize-none {
+    resize: none;
+}
+
+.labelToCheck {
+    background-color: #424242;
+    color: white;
+    border-radius: 2em;
+    padding: 0.25rem 0.5rem;
+}
+
+/* LABELS AS CHECKBOXES */
+.labelCheckBox:checked+.labelToCheck {
+    background-color: #5962AE;
+    color: black;
+}
+
+/* Invisible checkboxes */
+input[type="checkbox"] {
+    opacity: 0;
+}
+
+/* If checkbox is checked, blue background */
+input[type="checkbox"]:checked+label {
+    background-color: #5962AE;
+    border-radius: 2em;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Add this */
+input[type="checkbox"]:hover+label,
+input[type="checkbox"]:focus+label {
+    border-radius: 2em;
+    text-decoration: underline;
+}

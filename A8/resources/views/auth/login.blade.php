@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
 <form method="POST" action="{{ route('login') }}">
@@ -27,6 +27,6 @@
     <button type="submit">
         Login
     </button>
-    <a class="button button-outline" href="{{ route('register') }}">Register</a>
+    <a class="button button-outline" href="{{ route('signup') }}">Register</a>
 </form>
 @endsection

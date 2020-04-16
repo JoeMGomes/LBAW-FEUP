@@ -43,7 +43,7 @@
                     <img src="{{ asset('img/logo.png') }}" class="register-logo mb-5" width="100px" alt="Company Logo">
                 </a>
                 <a class="w-100 bg-myyellow bg-myyellowh btn rounded large mb-3 text-nowrap px-1"
-                    style="font-weight: 700; font-size: 1.2em;" href="questionForm.php">Post a Question</a>
+                    style="font-weight: 700; font-size: 1.2em;" href="{{ route('newQuestion')}}">Post a Question</a>
                 <div class="bg-dark w-100 rounded py-2 overflow-hidden mb-3">
                     <a href="#categories" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle m-5 text-white bg-transparent">Categories</a>
@@ -114,7 +114,7 @@
                 </a>
 
                 <a class="w-100 bg-myyellow btn rounded large mb-3 text-nowrap px-1"
-                    style="font-weight: 700; font-size: 1.2em;" href="#NOT_IMPLEMENTED">Post a Question</a>
+                    style="font-weight: 700; font-size: 1.2em;" href="{{ route('newQuestion')}}">Post a Question</a>
                 <div class="bg-dark rounded py-2 overflow-auto mb-3" style="max-height: 150px">
                     <a href="#categories" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle my-5 text-white bg-transparent">Categories</a>

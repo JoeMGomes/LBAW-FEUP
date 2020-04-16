@@ -19,7 +19,7 @@ Route::get('/signup', 'Auth\RegisterController@showRegistrationForm')->name('sig
 
 // Module 03
 Route::get('/about', 'HomeController@showAbout')->name('about');
-
+Route::get('/post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
 
 // Route::get('/', 'Auth\LoginController@home');
 // // Cards

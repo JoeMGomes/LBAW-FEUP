@@ -14,7 +14,13 @@
 
 // Module 01
 Route::get('/','HomeController@showHome')->name('home');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/signup', 'Auth\LoginController@showRegistrationForm')->name('signup');
+
+
+// Module 03
 Route::get('/about','HomeController@showAbout')->name('about');
+
 
 // Route::get('/', 'Auth\LoginController@home');
 // // Cards

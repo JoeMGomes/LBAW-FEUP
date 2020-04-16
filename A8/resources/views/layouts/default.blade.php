@@ -85,7 +85,6 @@
 
         </div>
     </nav>
-    <!-- INSERT MAIN AND TITLE HERE -->
     @yield('main')
 </body>
 

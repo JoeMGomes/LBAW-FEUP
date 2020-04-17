@@ -1,7 +1,6 @@
 @extends('layouts.auth')
 
 @section('body')
-
 <body class="bg-mydark text-center">
   <div class="h-100 d-flex justify-content-center align-items-center">
     <form method="POST" action="{{ route('signup') }}"
@@ -13,7 +12,7 @@
       <h3 class="mb-3 text-mydarkgreen">Sign up</h3>
       <div class="form-group">
         <label class="float-left" for="inputEmail">e-mail</label>
-        <input type="email" id="inputEmail" class="form-control" value="{{ old('email') }}" required autofocus>
+        <input type="email" name="email" id="inputEmail" class="form-control" value="{{ old('email') }}" required autofocus>
         @if ($errors->has('email'))
         <span class="error">
           {{ $errors->first('email') }}
@@ -22,7 +21,7 @@
       </div>
       <div class="form-group">
         <label class="float-left" for="inputUsername">name</label>
-        <input type="text" id="inputUsername" class="form-control" value="{{ old('name') }}" required>
+        <input type="text" name="name" id="inputUsername" class="form-control" value="{{ old('name') }}" required>
         @if ($errors->has('name'))
         <span class="error">
           {{ $errors->first('name') }}
@@ -30,8 +29,8 @@
         @endif
       </div>
       <div class="form-group">
-        <label class="float-left" for="pass">password</label>
-        <input type="password" id="pass" class="form-control" required>
+        <label class="float-left" for="password">password</label>
+        <input type="password" name="password" id="password" class="form-control" required>
         @if ($errors->has('password'))
         <span class="error">
           {{ $errors->first('password') }}
@@ -39,10 +38,10 @@
         @endif
       </div>
       <div class="form-group">
-        <label class="float-left" for="confirmPass">confirm password</label>
-        <input type="password" id="confirmPass" class="form-control" required>
+        <label class="float-left" for="password-confirm">confirm password</label>
+        <input type="password" id="password-confirm" name="password_confirmation" class="form-control" required>
       </div>
-      <button class="mb-4 btn btn-dark" type="submit" href="{{ route('signup') }}">Sign up</button>
+      <button class="mb-4 btn btn-dark" type="submit" >Sign up</button>
       <div>
         <small class="justify-content-center">
           Already have an account?

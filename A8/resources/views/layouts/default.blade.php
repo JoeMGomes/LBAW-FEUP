@@ -22,15 +22,8 @@
     </script>
     <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
     <script src="{{asset('js/scripts.js')}}" defer></script>
-
+</head>
 <body style="background-image: url('{{ asset('img/pattern.png') }}');">
-    <!-- DRAW Menu BTN Main Page-->
-    <div class="d-lg-none" style="position:fixed; z-index: 900; top: 1.5rem; left: 1.5rem">
-        <a class="btn btn-primary btn-customized text-nowrap bg-dark open-menu d-lg-none" href="#" role="button"
-            alt="Menu">
-            <i class="fa fa-align-left" alt="Menu"></i> <span class="d-none d-md-inline">Menu</span>
-        </a>
-    </div>
 
     <!------- 
     NORMAL VERSION 
@@ -62,7 +55,7 @@
             </div>
             @if (Auth::check())
             <div class="d-flex flex-column pb-3 align-items-center w-100">
-                <img src="assets/david.jpg" class="rounded-img " alt="">
+                <img src="{{asset('img/default.jpg')}}" class="rounded-img " alt="">
                 <!-- <h5 class="pt-2 text-white">ADMINISTRATOR</h5> -->
                 <h5 class="pt-2 text-white">{{ Auth::user()->name }}</h5>
                 <span class="text-white">{{ Auth::user()->score }} points</span>
@@ -70,13 +63,13 @@
                     <li><a class="text-white" href="#NOT_IMPLEMENTED">View Activity</a></li>
                     <li><a class="notifications-buttom btn"
                             onclick="open_notifications()">Notifications</a>
-                            @yield('notificationPopUp')
+                            @include('partials.notificationPopUp')
                     </li>
                     <!-- <li><a class="text-white" href="adminCatMan.php">New Category</a></li> -->
                     <!-- <li><a class="text-white" href="adminRepMan.php">Manage Reports</a></li> -->
                     <li><a class="text-white" href="NOT_IMPLEMENTED">Settings</a></li>
                 </ul>
-                <button class="btn btn-secondary mb-3 w-100" onclick="document.location='#NOT_IMPLEMENTED'">Sign
+                <button class="btn btn-secondary mb-3 w-100" onclick="document.location='{{route('logout')}}'">Sign
                     out</button>
                 <a class="small text-white" href="">About</a>
             </div>
@@ -135,18 +128,18 @@
         @if (Auth::check())
         <div class="w-100 text-center d-flex flex-column align-items-center">
             <div class="d-flex flex-column align-items-center w-100">
-                <img src="{{assets('david.jpg')}}" class="rounded-img " alt="">
+                <img src="{{asset('david.jpg')}}" class="rounded-img " alt="">
                 <h5 class="pt-2 text-white">David Dinis</h5>
                 <span class="text-white">2309 points</span>
                 <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
                     <li><a class="text-white" href="NOT IMPLEMENTED">View Activity</a></li>
                     <li><a class="notifications-buttom"
                             onclick="open_notifications()">Notifications</a>
-                            @yield('notificationPopUp')
+                            @include('partials.notificationPopUp')
                     </li>
                     <li><a class="text-white" href="#NOT_IMPLEMENTED">Settings</a></li>
                 </ul>
-                <button class="btn btn-secondary mb-2 w-100" onclick="document.location='#NOT_IMPLEMENTED'">Sign
+            <button class="btn btn-secondary mb-2 w-100" onclick="document.location='{{route('logout')}}'">Sign
                     out</button>
             </div>
 
@@ -163,8 +156,6 @@
                 <a class="small text-white text-center " href="{{ route('about')}}">About</a>
             </div>
     </nav>
-
     @yield('main')
 </body>
-
 </html>

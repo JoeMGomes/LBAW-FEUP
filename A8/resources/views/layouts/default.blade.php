@@ -55,7 +55,7 @@
             </div>
             @if (Auth::check())
             <div class="d-flex flex-column pb-3 align-items-center w-100">
-                <img src="assets/david.jpg" class="rounded-img " alt="">
+                <img src="{{asset('img/default.jpg')}}" class="rounded-img " alt="">
                 <!-- <h5 class="pt-2 text-white">ADMINISTRATOR</h5> -->
                 <h5 class="pt-2 text-white">{{ Auth::user()->name }}</h5>
                 <span class="text-white">{{ Auth::user()->score }} points</span>

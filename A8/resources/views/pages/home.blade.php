@@ -1,7 +1,5 @@
 @extends('layouts.default')
 
-@section('menuBtn')
-@endsection
-@section('searchBar')
+@include('partials.menuBtnHome')
 
-@endsection
+@include('partials.searchBarMain')

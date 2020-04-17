@@ -22,15 +22,8 @@
     </script>
     <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
     <script src="{{asset('js/scripts.js')}}" defer></script>
-
+</head>
 <body style="background-image: url('{{ asset('img/pattern.png') }}');">
-    <!-- DRAW Menu BTN Main Page-->
-    <div class="d-lg-none" style="position:fixed; z-index: 900; top: 1.5rem; left: 1.5rem">
-        <a class="btn btn-primary btn-customized text-nowrap bg-dark open-menu d-lg-none" href="#" role="button"
-            alt="Menu">
-            <i class="fa fa-align-left" alt="Menu"></i> <span class="d-none d-md-inline">Menu</span>
-        </a>
-    </div>
 
     <!------- 
     NORMAL VERSION 
@@ -70,7 +63,7 @@
                     <li><a class="text-white" href="#NOT_IMPLEMENTED">View Activity</a></li>
                     <li><a class="notifications-buttom btn"
                             onclick="open_notifications()">Notifications</a>
-                            @yield('notificationPopUp')
+                            @include('partials.notificationPopUp')
                     </li>
                     <!-- <li><a class="text-white" href="adminCatMan.php">New Category</a></li> -->
                     <!-- <li><a class="text-white" href="adminRepMan.php">Manage Reports</a></li> -->
@@ -142,7 +135,7 @@
                     <li><a class="text-white" href="NOT IMPLEMENTED">View Activity</a></li>
                     <li><a class="notifications-buttom"
                             onclick="open_notifications()">Notifications</a>
-                            @yield('notificationPopUp')
+                            @include('partials.notificationPopUp')
                     </li>
                     <li><a class="text-white" href="#NOT_IMPLEMENTED">Settings</a></li>
                 </ul>
@@ -163,8 +156,6 @@
                 <a class="small text-white text-center " href="{{ route('about')}}">About</a>
             </div>
     </nav>
-
     @yield('main')
 </body>
-
 </html>

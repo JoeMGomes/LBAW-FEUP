@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/customStyles.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/customStyles.css')}}">
+    <link rel="stylesheet" href="{{asset('css/global.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery.mCustomScrollbar.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
@@ -15,13 +15,13 @@
     <title>GROW</title>
 
     <!-- Javascript -->
-    <script src="js/bootstrap.min.js" defer></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}" defer></script>
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/scripts.js" defer></script>
+    <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script src="{{asset('js/scripts.js')}}" defer></script>
 
 <body style="background-image: url('{{ asset('img/pattern.png') }}');">
     <!-- DRAW Menu BTN Main Page-->
@@ -43,7 +43,7 @@
                     <img src="{{ asset('img/logo.png') }}" class="register-logo mb-5" width="100px" alt="Company Logo">
                 </a>
                 <a class="w-100 bg-myyellow bg-myyellowh btn rounded large mb-3 text-nowrap px-1"
-                    style="font-weight: 700; font-size: 1.2em;" href="questionForm.php">Post a Question</a>
+                    style="font-weight: 700; font-size: 1.2em;" href="{{ route('newQuestion')}}">Post a Question</a>
                 <div class="bg-dark w-100 rounded py-2 overflow-hidden mb-3">
                     <a href="#categories" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle m-5 text-white bg-transparent">Categories</a>
@@ -76,7 +76,7 @@
                     <!-- <li><a class="text-white" href="adminRepMan.php">Manage Reports</a></li> -->
                     <li><a class="text-white" href="NOT_IMPLEMENTED">Settings</a></li>
                 </ul>
-                <button class="btn btn-secondary mb-3 w-100" onclick="document.location='#NOT_IMPLEMENTED'">Sign
+                <button class="btn btn-secondary mb-3 w-100" onclick="document.location='{{route('logout')}}'">Sign
                     out</button>
                 <a class="small text-white" href="">About</a>
             </div>
@@ -114,7 +114,7 @@
                 </a>
 
                 <a class="w-100 bg-myyellow btn rounded large mb-3 text-nowrap px-1"
-                    style="font-weight: 700; font-size: 1.2em;" href="#NOT_IMPLEMENTED">Post a Question</a>
+                    style="font-weight: 700; font-size: 1.2em;" href="{{ route('newQuestion')}}">Post a Question</a>
                 <div class="bg-dark rounded py-2 overflow-auto mb-3" style="max-height: 150px">
                     <a href="#categories" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle my-5 text-white bg-transparent">Categories</a>

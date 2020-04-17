@@ -135,7 +135,7 @@
         @if (Auth::check())
         <div class="w-100 text-center d-flex flex-column align-items-center">
             <div class="d-flex flex-column align-items-center w-100">
-                <img src="{{assets('david.jpg')}}" class="rounded-img " alt="">
+                <img src="{{asset('david.jpg')}}" class="rounded-img " alt="">
                 <h5 class="pt-2 text-white">David Dinis</h5>
                 <span class="text-white">2309 points</span>
                 <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
@@ -146,7 +146,7 @@
                     </li>
                     <li><a class="text-white" href="#NOT_IMPLEMENTED">Settings</a></li>
                 </ul>
-                <button class="btn btn-secondary mb-2 w-100" onclick="document.location='#NOT_IMPLEMENTED'">Sign
+            <button class="btn btn-secondary mb-2 w-100" onclick="document.location='{{route('logout')}}'">Sign
                     out</button>
             </div>
 

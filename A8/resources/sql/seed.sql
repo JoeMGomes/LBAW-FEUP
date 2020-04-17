@@ -50,7 +50,8 @@ CREATE TABLE "member" (
     photo_url text NOT NULL DEFAULT 'assets/profileImages/default.png',
     banned BOOLEAN NOT NULL DEFAULT FALSE,
     membership_date date DEFAULT now() NOT NULL, 
-    score int NOT NULL DEFAULT 0
+    score int NOT NULL DEFAULT 0,
+	remember_token text
 );
 
 CREATE TABLE "post" (

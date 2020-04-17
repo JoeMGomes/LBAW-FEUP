@@ -23,8 +23,8 @@
                 @endif
             </div>
             <div class="form-group">
-                <label class="float-left" for="inputPassword">password</label>
-                <input type="password" id="inputPassword" class="form-control" value="{{ old('email') }}" required="">
+                <label class="float-left" for="password">password</label>
+                <input type="password" name="password" id="password" class="form-control" value="{{ old('passowrd') }}" required="">
                 @if ($errors->has('password'))
                 <span class="error">
                     {{ $errors->first('password') }}

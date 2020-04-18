@@ -20,6 +20,9 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
 Route::post('signup', 'Auth\RegisterController@register');
 
+// Module 02
+Route::get('search/{search}', 'SearchController@show');
+
 // Module 03
 Route::get('about', 'HomeController@showAbout')->name('about');
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');

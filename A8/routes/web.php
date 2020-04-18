@@ -26,7 +26,7 @@ Route::get('search/{search}', 'SearchController@show');
 // Module 03
 Route::get('about', 'HomeController@showAbout')->name('about');
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
-
+Route::post('/post/newQuestion', 'QuestionController@store');
 // Route::get('/', 'Auth\LoginController@home');
 // // Cards
 // Route::get('cards', 'CardController@list');

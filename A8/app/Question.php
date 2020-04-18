@@ -14,5 +14,6 @@ class Question extends Model
     public function post()
     {
         return $this->hasOne('App\Post', 'post');
+        
     }
 }

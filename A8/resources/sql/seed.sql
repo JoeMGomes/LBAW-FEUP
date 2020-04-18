@@ -1,4 +1,4 @@
-DROP VIEW IF EXISTS "total_question";
+DROP MATERIALIZED VIEW IF EXISTS "total_question";
 DROP TABLE IF EXISTS "bookmark";
 DROP TABLE IF EXISTS "administrator";
 DROP TABLE IF EXISTS "vote_notif";
@@ -151,7 +151,7 @@ CREATE TABLE "bookmark" (
     PRIMARY KEY (member, bookmark)
 );
 
-CREATE VIEW total_question AS 
+CREATE MATERIALIZED VIEW total_question AS 
     SELECT id, author, date, text_body, title 
     FROM post, question
     WHERE post.id = question.post;
@@ -592,10 +592,10 @@ CREATE INDEX search_title ON question USING gin(to_tsvector('english', title));
 CREATE INDEX search_text ON post USING gist(to_tsvector('english', text_body));
 
 --combined search of view total_question (post + question)
---CREATE INDEX search_question ON total_question USING gist( 
---    setweight(to_tsvector('english', title), 'A') || 
---    setweight(to_tsvector('english', text_body), 'B') 
---);
+CREATE INDEX search_question ON total_question USING gist( 
+    (setweight(to_tsvector('english', title), 'A') || 
+    setweight(to_tsvector('english', text_body), 'B') 
+));
 
 --- FUNCTIONS --- 
 -- add question
@@ -605,6 +605,7 @@ DECLARE post_id post.id%TYPE;
 BEGIN
     INSERT INTO post(author, text_body) VALUES(author, text_body) RETURNING id INTO post_id;
     INSERT INTO question(post, title) VALUES(post_id, title);
+	REFRESH MATERIALIZED VIEW total_question;
 END;
 $$ LANGUAGE plpgsql;
 

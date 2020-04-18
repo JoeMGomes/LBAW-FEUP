@@ -11,20 +11,21 @@
                 <li> <i class=" fa fa-check-circle text-mydarkgreen"></i> Double-check grammar and spelling </li>
             </ul>
         </div>
-        <form class=" text-black d-flex flex-column ">
+        <form class=" text-black d-flex flex-column" method="POST" action="/post/newQuestion">
+            @csrf
             <div class="form-group">
-                <label for="question" class="p-2 h4 text-left">What is your question?</label>
-                <input id="question" class="form-control">
+                <label for="title" class="p-2 h4 text-left">What is your question?</label>
+                <input id="title" name="title" class="form-control">
             </div>
             <div class="form-group">
-                <label for="description" class="p-2 h4 text-left">Explain yourself a bit better</label>
-                <textarea class="form-control" id="description" rows="5"></textarea>
+                <label for="text_body" class="p-2 h4 text-left">Explain yourself a bit better</label>
+                <textarea class="form-control" id="text_body" name="text_body" rows="5"></textarea>
             </div>
             <div class="form-group">
                 <label for="categor" class="p-2 h4 text-left">In which categories does your question fit in?
                     <small class="h6"> (Choose up to 5)</small>
                 </label>
-                <input class="form-control" id="categor">
+                <input class="form-control" id="category">
             </div>
             <div class="form-check pl-0 ">
                 <!-- input id must be label "for" field -->

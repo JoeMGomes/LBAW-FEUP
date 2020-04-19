@@ -12,7 +12,7 @@
             </ul>
         </div>
         <form class=" text-black d-flex flex-column" method="POST" action="/post/newQuestion">
-            @csrf
+            <meta name="csrf-token" content="{{ csrf_token() }}" />
             <div class="form-group">
                 <label for="title" class="p-2 h4 text-left">What is your question?</label>
                 <input id="title" name="title" class="form-control" required>
@@ -22,10 +22,13 @@
                 <textarea class="form-control" id="text_body" name="text_body" rows="5" required></textarea>
             </div>
             <div class="form-group">
-                <label for="categor" class="p-2 h4 text-left">In which categories does your question fit in?
+                <label for="category" class="p-2 h4 text-left">In which categories does your question fit in?
                     <small class="h6"> (Choose up to 5)</small>
                 </label>
-                <input class="form-control" id="category">
+                <input class="form-control" list="tags" id="category" name="category">
+                <datalist id="tags">
+
+                  </datalist>
             </div>
             <div class="form-check pl-0 ">
                 <!-- input id must be label "for" field -->

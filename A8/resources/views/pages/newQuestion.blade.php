@@ -15,11 +15,11 @@
             @csrf
             <div class="form-group">
                 <label for="title" class="p-2 h4 text-left">What is your question?</label>
-                <input id="title" name="title" class="form-control">
+                <input id="title" name="title" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="text_body" class="p-2 h4 text-left">Explain yourself a bit better</label>
-                <textarea class="form-control" id="text_body" name="text_body" rows="5"></textarea>
+                <textarea class="form-control" id="text_body" name="text_body" rows="5" required></textarea>
             </div>
             <div class="form-group">
                 <label for="categor" class="p-2 h4 text-left">In which categories does your question fit in?

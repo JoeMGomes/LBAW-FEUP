@@ -29,5 +29,4 @@ class SearchController extends Controller
         $results = $obj->search($search);
         return view('pages.search', ['results'=> $results, 'search' => [$search]]);
     }
-
 }

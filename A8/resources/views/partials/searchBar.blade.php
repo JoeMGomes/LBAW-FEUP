@@ -1,4 +1,4 @@
-<form action="/search" class="form input-group mb-0">
+<form action="" id="search_form" class="form input-group mb-0">
 @isset($search[0])
     <input id="search" value="{{ $search[0] }}" class="form-control rounded border-dark border-3 ml-3" type="text"
             placeholder="How do I do my taxes">
@@ -11,5 +11,13 @@
             <i class="fa fa-search fa-lg"></i>
         </button>
     </div>
-
+<script type="text/javascript">
+    
+    var obj = document.getElementById("search_form");
+    obj.addEventListener("submit", function() {
+        let input = document.getElementById("search");
+        obj.action = "/search/" + input.value;
+        obj.submit();
+    });
+</script>
 </form>

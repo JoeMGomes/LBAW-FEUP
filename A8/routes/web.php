@@ -21,7 +21,7 @@ Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('sign
 Route::post('signup', 'Auth\RegisterController@register');
 
 // Module 02
-Route::get('search/{search}', 'SearchController@show');
+Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
 
 // Module 03
 Route::get('about', 'HomeController@showAbout')->name('about');

@@ -1,4 +1,5 @@
 DROP MATERIALIZED VIEW IF EXISTS "total_question";
+DROP MATERIALIZED VIEW IF EXISTS "total_answer";
 DROP TABLE IF EXISTS "bookmark";
 DROP TABLE IF EXISTS "administrator";
 DROP TABLE IF EXISTS "vote_notif";
@@ -47,7 +48,7 @@ CREATE TABLE "member" (
     email text NOT NULL UNIQUE,
     "name" text NOT NULL,
     "password" text NOT NULL,
-    photo_url text NOT NULL DEFAULT 'assets/profileImages/default.png',
+    photo_url text NOT NULL DEFAULT 'default.jpg',
     banned BOOLEAN NOT NULL DEFAULT FALSE,
     membership_date date DEFAULT now() NOT NULL, 
     score int NOT NULL DEFAULT 0,
@@ -152,9 +153,16 @@ CREATE TABLE "bookmark" (
 );
 
 CREATE MATERIALIZED VIEW total_question AS 
-    SELECT id, author, date, text_body, title 
-    FROM post, question
-    WHERE post.id = question.post;
+    SELECT post.id as id, author, date, text_body, title, best_answer, 
+			name, photo_url, membership_date, score, banned
+    FROM post, question, member
+    WHERE post.id = question.post and post.author = member.id;
+
+CREATE MATERIALIZED VIEW total_answer AS 
+	SELECT post.id as id, author, date, text_body as answer, question, 
+			name, photo_url, membership_date, score, banned
+	FROM post, answer, member
+	WHERE post.id= answer.post and post.author = member.id;
 
 --- TRIGGERS ---
 CREATE OR REPLACE FUNCTION update_member_score()
@@ -617,6 +625,7 @@ BEGIN
     INSERT INTO post(author, text_body) VALUES(author, text_body) RETURNING id INTO post_id;
     INSERT INTO answer(post, question) VALUES(post_id, question);
 	CLUSTER answer USING answer_question;
+	REFRESH MATERIALIZED VIEW total_answer;
 END;
 $$ LANGUAGE plpgsql;
 

@@ -21,6 +21,7 @@ Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('sign
 Route::post('signup', 'Auth\RegisterController@register');
 Route::get('member/settings','UserController@showSettings')->name('settings');
 Route::post('member/delete','UserController@destroy')->name('deleteAccount');
+Route::post('member/changeUsername', 'UserController@updateName')->name('editUsername');
 
 // Module 02
 Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
@@ -30,22 +31,3 @@ Route::get('about', 'HomeController@showAbout')->name('about');
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
 Route::post('post/newQuestion', 'QuestionController@store');
 Route::post('api/category', 'CategoryController@getCategories');
-// Route::get('/', 'Auth\LoginController@home');
-// // Cards
-// Route::get('cards', 'CardController@list');
-// Route::get('cards/{id}', 'CardController@show');
-
-// API
-// Route::put('api/cards', 'CardController@create');
-// Route::delete('api/cards/{card_id}', 'CardController@delete');
-// Route::put('api/cards/{card_id}/', 'ItemController@create');
-// Route::post('api/item/{id}', 'ItemController@update');
-// Route::delete('api/item/{id}', 'ItemController@delete');
-
-// // Authentication
-
-// Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-// Route::post('login', 'Auth\LoginController@login');
-// Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-// Route::post('register', 'Auth\RegisterController@register');

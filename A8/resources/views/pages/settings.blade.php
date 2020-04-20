@@ -31,15 +31,16 @@
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-5">
-                    <form class="px-5">
+                <form method="POST" action="{{route('editUsername')}}"class="px-5">
+                    {{ csrf_field() }}
                         <h5>Change username</h5>
                         <div class="form-group">
-                            <label for="inputUsername">current username</label>
-                            <input type="text" id="inputUsername" class="form-control" required="" autofocus="">
+                            <label for="oldUsername">current username</label>
+                        <input type="text" id="oldUsername" name="oldUsername" pattern="{{Auth::user()->name}}" title="Please match your old username" class="form-control" required autofocus>
                         </div>
                         <div class="form-group">
-                            <label class="float-left" for="inputUsername ">new username</label>
-                            <input type="text" id="inputUsername" class="form-control" required="">
+                            <label class="float-left" for="newUsername ">new username</label>
+                            <input type="text" id="newUsername" name="newUsername" class="form-control" required>
                         </div>
                         <button class="mb-4 btn btn-primary border-0 bg-mygreen float-right" type="submit">Confirm
                             Changes</button>

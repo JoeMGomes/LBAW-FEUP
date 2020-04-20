@@ -4,7 +4,7 @@
             placeholder="How do I do my taxes">
 @else
     <input id="search" value="" class="form-control rounded border-dark border-3 ml-3" type="text"
-            placeholder="How do I do my taxes">
+            placeholder="How do I do my taxes" required>
 @endisset
     <div class="input-group-append">
         <button class="btn" type="submit">

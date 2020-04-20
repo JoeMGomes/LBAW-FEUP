@@ -661,7 +661,8 @@ INSERT INTO member(email, name, password) VALUES ('k.H3564F1KelBJhLAEDt@tnuihzbw
 INSERT INTO member(email, name, password) VALUES ('MDyhLV7pZurYfnl3K.oR@lsxzaibuoe.com','Owen Collins','AUs9Q3bk_cunroP2VSN684C71'); 
 INSERT INTO member(email, name, password) VALUES ('hP5jSpNlmcKYCDzB0a3r@etjzvxpqkh.com','Thomas Edwards','.b08dCiAjsyvJOTB3znm9wk_p'); 
 INSERT INTO member(email, name, password) VALUES ('Fw5ReL_YETdpCjymJxG0@bldgpqivmc.com','Carter Cook','zCI_Md6LXkjGo4bfYBJ7S.OmZ'); 
-INSERT INTO member(email, name, password) VALUES ('DLxeJbX87iKWIl460Y_v@hipztjgodv.com','Julian Evans','utTHCQs1ARYJrNjwhodIiSXEg'); --21
+INSERT INTO member(email, name, password) VALUES ('DLxeJbX87iKWIl460Y_v@hipztjgodv.com','Julian Evans','utTHCQs1ARYJrNjwhodIiSXEg');
+INSERT INTO member(email, name, password) VALUES ('teste@teste.com','Teste Teste','$2y$10$w7Ehqro.QydJYidC8hY9DO1g23r3slmjXANDpVOjUX5EjUWXF4b5K');
 
 -- Questions insert
 --2 

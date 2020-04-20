@@ -17,7 +17,7 @@
             </ul>
         </div>
         <form class=" text-black d-flex flex-column" method="POST" action="/post/newQuestion">
-            <meta name="csrf-token" content="{{ csrf_token() }}" />
+            {{ csrf_field() }}
             <div class="form-group">
                 <label for="title" class="p-2 h4 text-left">What is your question?</label>
                 <input id="title" name="title" class="form-control" required>
@@ -33,7 +33,7 @@
                 <input class="form-control" list="tags" id="category" name="category">
                 <datalist id="tags">
 
-                  </datalist>
+                </datalist>
             </div>
             <div class="form-check pl-0 ">
                 <!-- input id must be label "for" field -->

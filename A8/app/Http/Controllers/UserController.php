@@ -86,9 +86,16 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function updateName(Request $request, User $user)
     {
-        //
+        $this->authorize('update', User::class);
+
+
+        DB::update('UPDATE member SET name = :name where id = :id', 
+        ['name' => $request->input('newUsername'),
+        'id' => Auth::user()->id]);
+
+        return redirect()->route('settings');
     }
 
     /**
@@ -99,12 +106,14 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $this->authorize('delete', User::class);
+
         $user = Auth::user()->id;
 
         Auth::logout();
 
     
-        DB::select('DELETE FROM member WHERE id = ?', [$user]);
+        DB::delete('DELETE FROM member WHERE id = ?', [$user]);
         return redirect()->route('home');
         
     }

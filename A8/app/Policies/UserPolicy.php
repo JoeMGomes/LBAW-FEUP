@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class UserPolicy
 {
@@ -50,9 +51,9 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function update(User $user)
     {
-        //
+        return Auth::check();
     }
 
     /**
@@ -62,9 +63,9 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function delete(User $user, User $model)
+    public function delete(User $user)
     {
-        //
+        return Auth::check();
     }
 
     /**

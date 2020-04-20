@@ -16,9 +16,7 @@ class QuestionController extends Controller
         } else{
             return redirect('login');
         }
-
     }
-
 
     public function store(Request $request){
 

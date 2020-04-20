@@ -147,6 +147,13 @@ textarea{
     background-color: #5c7300;
 }
 
+.tag-orange {
+    background-color: #ba2312;
+}
+.tag-orange:hover {
+    background-color: #881a0e;
+}
+
 /* COLOR INPUT */
 
 input[type="color"] {

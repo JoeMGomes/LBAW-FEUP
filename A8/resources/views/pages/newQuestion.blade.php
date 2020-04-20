@@ -1,4 +1,9 @@
 @extends('layouts.default')
+
+@section('bodyTag')
+<body class="container-fluid vh-100 m-0 p-0 bg-mygrey">
+@endsection
+
 @section('main')
 <main id="main" class="ml-lg-auto col-lg-10 p-4">
     <div class="bg-white p-4  border col-lg-8 col-md-9 mx-auto ">

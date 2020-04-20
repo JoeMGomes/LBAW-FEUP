@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -50,6 +53,22 @@ class UserController extends Controller
     }
 
     /**
+     * Display the settings page
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function showSettings(User $user)
+    {
+        if (Auth::check()) {
+            return view('pages.settings');
+        } else{
+            return redirect('login');
+        }
+    }
+    
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\User  $user
@@ -80,6 +99,13 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user = Auth::user()->id;
+
+        Auth::logout();
+
+    
+        DB::select('DELETE FROM member WHERE id = ?', [$user]);
+        return redirect()->route('home');
+        
     }
 }

@@ -1,3 +1,4 @@
+
 function scroll_to(clicked_link, nav_height) {
 	var element_class = clicked_link.attr('href').replace('#', '.');
 	var scroll_to = 0;
@@ -16,14 +17,18 @@ function open_notifications() {
 	let notifications = document.getElementById("notifications");
 	notifications.style.display = "block";
 	let notificationsmob = document.getElementById("notifications-mobile");
-	notificationsmob.style.display = "block";
+	if (notificationsmob != null){
+		notificationsmob.style.display = "block";
+	}
 }
 
 function close_notifications() {
 	let notifications = document.getElementById("notifications");
 	notifications.style.display = "none";
 	let notificationsmob = document.getElementById("notifications-mobile");
+	if (notificationsmob != null){
 	notificationsmob.style.display = "none";
+	}
 }
 
 document.addEventListener("click", function (event) {
@@ -32,6 +37,33 @@ document.addEventListener("click", function (event) {
 	close_notifications();
 });
 
+function encodeForAjax(data) {
+	if (data == null) return null;
+	return Object.keys(data).map(function(k){
+	  return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+	}).join('&');
+  }
+
+function sendAjaxRequest(method, url, data, handler) {
+	let request = new XMLHttpRequest();
+  
+	request.open(method, url, true);
+	request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
+	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	request.addEventListener('load', handler);
+	request.send(encodeForAjax(data));
+  }
+
+  function Handler() {
+	let response = JSON.parse(this.responseText);
+	let tagElem = document.querySelector('#tags');
+	tagElem.innerHTML = '';
+	for(let i= 0; i < response.length; i++){
+		tagElem.innerHTML += '<option value="'+ response[i].name+ '">';
+	}
+	
+
+  }
 
 jQuery(document).ready(function () {
 	/*
@@ -63,7 +95,8 @@ jQuery(document).ready(function () {
 			$(this).prop('checked', !$(this).prop('checked'));
 		}
 	});
-
+	
+	
 	/*
 	    Navigation
 	*/
@@ -77,6 +110,14 @@ jQuery(document).ready(function () {
 		}
 	});
 
+	
+	  
+
+	var categ = document.querySelector("#category");
+	categ.addEventListener('keyup', function() {
+		let data = $("#category").val();
+		sendAjaxRequest('post', '/api/category', {message: data}, Handler);
+	});
 });
 
 

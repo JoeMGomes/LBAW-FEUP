@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('bodyTag')
+<body style="background-image: url('{{ asset('img/pattern.png') }}');">
+@endsection
+
 @section('main')
 <main id="main" class="ml-sm-auto col-lg-10 px-4 d-flex flex-column align-items-center justify-content-between">
     <div class="d-flex flex-column m-md-5 m-sm-1 border bg-white p-md-5 p-sm-1 mw-75 mt-4 pt-4 px-2">

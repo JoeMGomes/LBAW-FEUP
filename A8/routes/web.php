@@ -19,6 +19,8 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
 Route::post('signup', 'Auth\RegisterController@register');
+Route::get('member/settings','UserController@showSettings')->name('settings');
+Route::post('member/delete','UserController@destroy')->name('deleteAccount');
 
 // Module 02
 Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
@@ -26,7 +28,8 @@ Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'searc
 // Module 03
 Route::get('about', 'HomeController@showAbout')->name('about');
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
-Route::post('/post/newQuestion', 'QuestionController@store');
+Route::post('post/newQuestion', 'QuestionController@store');
+Route::post('api/category', 'CategoryController@getCategories');
 // Route::get('/', 'Auth\LoginController@home');
 // // Cards
 // Route::get('cards', 'CardController@list');

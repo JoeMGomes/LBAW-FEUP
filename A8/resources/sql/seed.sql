@@ -400,7 +400,7 @@ CREATE TRIGGER report_self BEFORE INSERT on report
 ------
 
 CREATE OR REPLACE FUNCTION delete_user()
- 	RETURNS trigger AS 
+	RETURNS trigger AS 
 $$
 BEGIN
 	UPDATE post set author = 1
@@ -424,7 +424,7 @@ DECLARE author_post post.author%TYPE;
 BEGIN
 	SELECT INTO author_post author FROM  post WHERE OLD.reported = post.id;
 	IF NEW.STATE = 'Approved' THEN
- 		INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
+		INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
 		INSERT INTO report_notif VALUES (notification_id, NEW.id); 
 	END IF;
 RETURN NEW;

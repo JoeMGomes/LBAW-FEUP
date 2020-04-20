@@ -7,12 +7,12 @@
         <div class="text-left rounded bg-mygrey d-flex flex-column p-5 modal-content">
             <h3 class="">What is wrong?</h3>
             <form class="d-flex flex-column align-items-start">
-                <label><input type="radio" id="language" name="report" value="male"> Innapropriate
+                <label><input type="radio" id="language" name="report" value="IP"> Innapropriate
                     language</label>
-                <label><input type="radio" id="offensive" name="report" value="male"> Offensive
+                <label><input type="radio" id="offensive" name="report" value="OTO"> Offensive
                     towards
                     others</label>
-                <label><input type="radio" id="other" name="report" value="male"> Other</label>
+                <label><input type="radio" id="other" name="report" value="OTHER"> Other</label>
                 <div class="d-flex flex-column w-100">
                     <label>Describe the problem</label>
                     <textarea rows="2" class="form-control rounded border resize-none"></textarea>

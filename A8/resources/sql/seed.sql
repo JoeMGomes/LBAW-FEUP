@@ -93,7 +93,7 @@ CREATE TABLE "question_category" (
 
 CREATE TABLE "vote" (
     voted INTEGER NOT NULL REFERENCES "answer" (post) ON DELETE CASCADE,
-    voter INTEGER REFERENCES "member" (id) NOT NULL,
+    voter INTEGER NOT NULL REFERENCES "member" (id) ON DELETE CASCADE,
     "value" vote_type NOT NULL,
 	PRIMARY KEY (voted, voter) 
 );
@@ -130,7 +130,7 @@ CREATE TABLE "post_notif" (
 CREATE TABLE "vote_notif" (
     notif INTEGER PRIMARY KEY REFERENCES "notification"(id) ON DELETE CASCADE,
     voted INTEGER NOT NULL REFERENCES "answer"(post) ON DELETE CASCADE,
-    voter INTEGER NOT NULL REFERENCES "member"(id),
+    voter INTEGER NOT NULL REFERENCES "member"(id) ON DELETE CASCADE,
     FOREIGN KEY (voted,voter) REFERENCES "vote" ON DELETE CASCADE
 );
 
@@ -405,13 +405,9 @@ $$
 BEGIN
 	UPDATE post set author = 1
 		WHERE author = OLD.id;
-	UPDATE vote set voter = 1
-		WHERE voter = OLD.id;
 	UPDATE report set reporter = 1
 		WHERE reporter = OLD.id;
-	UPDATE vote_notif set voter = 1
-		WHERE voter = OLD.id;
-RETURN NEW;
+RETURN OLD;
 END
 $$ LANGUAGE plpgsql;
 DROP TRIGGER IF EXISTS user_delete on member;

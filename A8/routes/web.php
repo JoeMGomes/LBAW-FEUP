@@ -27,8 +27,8 @@ Route::post('member/changeUsername', 'UserController@updateName')->name('editUse
 Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
 Route::post('post/newQuestion', 'QuestionController@store');
-Route::post('api/category', 'CategoryController@getCategories');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');
 Route::get('about', 'HomeController@showAbout')->name('about');
+Route::post('api/category', 'CategoryController@getCategories');

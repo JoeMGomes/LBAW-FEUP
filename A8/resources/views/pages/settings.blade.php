@@ -1,5 +1,10 @@
 @extends('layouts.default')
 
+@section('title')
+<title>GROW - User Settings</title>
+@endsection
+
+
 @section('bodyTag')
 
 <body class="container-fluid vh-100 m-0 p-0">

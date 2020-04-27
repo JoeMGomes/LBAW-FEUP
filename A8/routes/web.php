@@ -13,7 +13,7 @@
 
 
 // Module 01
-Route::get('/', 'HomeController@showHome')->name('home');
+
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
@@ -25,9 +25,10 @@ Route::post('member/changeUsername', 'UserController@updateName')->name('editUse
 
 // Module 02
 Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
-
-// Module 03
-Route::get('about', 'HomeController@showAbout')->name('about');
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
 Route::post('post/newQuestion', 'QuestionController@store');
 Route::post('api/category', 'CategoryController@getCategories');
+
+// Module 03
+Route::get('/', 'HomeController@showHome')->name('home');
+Route::get('about', 'HomeController@showAbout')->name('about');

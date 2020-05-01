@@ -20,6 +20,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
 Route::post('signup', 'Auth\RegisterController@register');
 Route::get('member/settings','UserController@showSettings')->name('settings');
+Route::post('member/changePhoto', 'UserController@uploadImage')->name('uploadImage');
 Route::post('member/delete','UserController@destroy')->name('deleteAccount');
 Route::post('member/changeUsername', 'UserController@updateName')->name('editUsername');
 

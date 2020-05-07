@@ -26,6 +26,7 @@ Route::post('member/changeUsername', 'UserController@updateName')->name('editUse
 
 // Module 02
 Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
+Route::get('post/{questionID}', ['uses' => 'QuestionController@show', 'as' => 'questionID']);
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
 Route::post('post/newQuestion', 'QuestionController@store');
 

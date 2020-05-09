@@ -1,8 +1,13 @@
 @extends('layouts.default')
 
+@section('title')
+<title>GROW - About</title>
+@endsection
+
 @section('bodyTag')
 <body style="background-image: url('{{ asset('img/pattern.png') }}');">
 @endsection
+
 
 @section('main')
 <main id="main" class="ml-sm-auto col-lg-10 px-4 d-flex flex-column align-items-center justify-content-between">

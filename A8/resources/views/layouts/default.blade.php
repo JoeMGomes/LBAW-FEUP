@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logo2.png')}}" />
-    <title>GROW</title>
+    @yield('title')
 
     <!-- Javascript -->
     <script src="{{asset('js/bootstrap.min.js')}}" defer></script>
@@ -53,7 +53,7 @@
                 </div>
                 @if (Auth::check())
                 <div class="d-flex flex-column pb-3 align-items-center w-100">
-                    <img src="{{asset('img/default.jpg')}}" class="rounded-img " alt="">
+                    <img src="{{asset('img/'.Auth::user()->photo_url)}}" class="rounded-img " alt="">
                     <!-- <h5 class="pt-2 text-white">ADMINISTRATOR</h5> -->
                     <h5 class="pt-2 text-white">{{ Auth::user()->name }}</h5>
                     <span class="text-white">{{ Auth::user()->score }} points</span>

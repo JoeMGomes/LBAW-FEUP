@@ -1,5 +1,9 @@
 @extends('layouts.auth')
 
+@section('title')
+<title>GROW - Login</title>
+@endsection
+
 @section('body')
 
 <body class="bg-mydark text-center">

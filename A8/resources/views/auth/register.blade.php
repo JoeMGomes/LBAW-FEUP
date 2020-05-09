@@ -1,5 +1,9 @@
 @extends('layouts.auth')
 
+@section('title')
+<title>GROW - Sign Up</title>
+@endsection
+
 @section('body')
 <body class="bg-mydark text-center">
   <div class="h-100 d-flex justify-content-center align-items-center">

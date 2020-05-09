@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/logo2.png')}}" />
-    <title>GROW</title>
+    @yield('title')
 
     <!-- Javascript -->
     <script src="{{ asset('js/bootstrap.min.js')}}" defer></script>

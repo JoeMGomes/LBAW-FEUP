@@ -1,5 +1,10 @@
 @extends('layouts.default')
 
+@section('title')
+<title>GROW - New Post</title>
+@endsection
+
+
 @section('bodyTag')
 <body class="container-fluid vh-100 m-0 p-0 bg-mygrey">
 @endsection
@@ -18,6 +23,7 @@
         </div>
         <form class=" text-black d-flex flex-column" method="POST" action="/post/newQuestion">
             {{ csrf_field() }}
+            <meta name="csrf-token" content="{{ csrf_token() }}" />
             <div class="form-group">
                 <label for="title" class="p-2 h4 text-left">What is your question?</label>
                 <input id="title" name="title" class="form-control" required>

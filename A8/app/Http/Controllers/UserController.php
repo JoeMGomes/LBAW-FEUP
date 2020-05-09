@@ -62,11 +62,11 @@ class UserController extends Controller
     {
         if (Auth::check()) {
             return view('pages.settings');
-        } else{
+        } else {
             return redirect('login');
         }
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -91,9 +91,13 @@ class UserController extends Controller
         $this->authorize('update', User::class);
 
 
-        DB::update('UPDATE member SET name = :name where id = :id', 
-        ['name' => $request->input('newUsername'),
-        'id' => Auth::user()->id]);
+        DB::update(
+            'UPDATE member SET name = :name where id = :id',
+            [
+                'name' => $request->input('newUsername'),
+                'id' => Auth::user()->id
+            ]
+        );
 
         return redirect()->route('settings');
     }
@@ -112,9 +116,28 @@ class UserController extends Controller
 
         Auth::logout();
 
-    
+
         DB::delete('DELETE FROM member WHERE id = ?', [$user]);
         return redirect()->route('home');
+    }
+
+
+    public function uploadImage()
+    {
+        request()->validate([
+
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+        ]);
+        $imageName = Auth::user()->id . '.' . request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('img'), $imageName);
+
+        DB::select('UPDATE member set photo_url = ? WHERE id = ?', [$imageName, Auth::user()->id]);
         
+        return back()
+
+            ->with('success', 'You have successfully upload image.')
+
+            ->with('image', $imageName);
     }
 }

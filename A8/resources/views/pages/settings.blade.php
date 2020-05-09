@@ -1,5 +1,10 @@
 @extends('layouts.default')
 
+@section('title')
+<title>GROW - User Settings</title>
+@endsection
+
+
 @section('bodyTag')
 
 <body class="container-fluid vh-100 m-0 p-0">
@@ -66,7 +71,8 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-5">
                     <div class="row">
-                        <form class="px-5 ">
+                        <form class="px-5 " action="{{ route('uploadImage') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <h5> Change picture </h5>
                             <div class="file-field ">
                                 <div class="mb-4 d-md-flex">
@@ -75,17 +81,19 @@
                                         alt="example placeholder avatar">
                                     <div class="mt-2 ml-2 d-md-flex flex-column">
                                         <span>Add photo</span>
-                                        <input class="mb-5" type="file">
+                                        <input class="mb-5" name="image" type="file">
                                     </div>
                                 </div>
                             </div>
+                            <button class="mb-4 btn btn-primary border-0 bg-mygreen float-right" type="submit">Confirm
+                                Changes</button>
                         </form>
                     </div>
                     <div class="">
                         <div class="px-5 ">
                             <form method="POST" action="{{route('deleteAccount') }}"">
                                 {{ csrf_field() }}
-                                <button class="btn tag-orange text-white">Delete account</button>
+                                <button onclick="return confirm('Are you sure you want to delete your account? This action is permanent')" class="btn tag-orange text-white">Delete account</button>
                             </form>
                         </div>
                     </div>

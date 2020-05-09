@@ -5,7 +5,7 @@
     </div>
     <div class="container-fluid border  p-0">
         <div class="d-inline-block pt-2">
-        @yield('notification')
+            @include('partials.notification')
 
         </div>
     </div>

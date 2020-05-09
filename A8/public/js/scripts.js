@@ -17,7 +17,7 @@ function open_notifications() {
 	let notifications = document.getElementById("notifications");
 	notifications.style.display = "block";
 	let notificationsmob = document.getElementById("notifications-mobile");
-	if (notificationsmob != null){
+	if (notificationsmob != null) {
 		notificationsmob.style.display = "block";
 	}
 }
@@ -26,8 +26,8 @@ function close_notifications() {
 	let notifications = document.getElementById("notifications");
 	notifications.style.display = "none";
 	let notificationsmob = document.getElementById("notifications-mobile");
-	if (notificationsmob != null){
-	notificationsmob.style.display = "none";
+	if (notificationsmob != null) {
+		notificationsmob.style.display = "none";
 	}
 }
 
@@ -39,31 +39,37 @@ document.addEventListener("click", function (event) {
 
 function encodeForAjax(data) {
 	if (data == null) return null;
-	return Object.keys(data).map(function(k){
-	  return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+	return Object.keys(data).map(function (k) {
+		return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
 	}).join('&');
-  }
+}
 
 function sendAjaxRequest(method, url, data, handler) {
 	let request = new XMLHttpRequest();
-  
+
 	request.open(method, url, true);
 	request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	request.addEventListener('load', handler);
 	request.send(encodeForAjax(data));
-  }
+}
 
-  function Handler() {
+function Handler() {
 	let response = JSON.parse(this.responseText);
 	let tagElem = document.querySelector('#tags');
 	tagElem.innerHTML = '';
-	for(let i= 0; i < response.length; i++){
-		tagElem.innerHTML += '<option value="'+ response[i].name+ '">';
+	for (let i = 0; i < response.length; i++) {
+		tagElem.innerHTML += '<option value="' + response[i].name + '">';
 	}
-	
+}
 
-  }
+function NotificationHandler(){
+	console.log(this.responseText);
+}
+
+function getNotifications(){
+	sendAjaxRequest('post', '/api/member/notifications', null, NotificationHandler);
+}
 
 jQuery(document).ready(function () {
 	/*
@@ -95,8 +101,8 @@ jQuery(document).ready(function () {
 			$(this).prop('checked', !$(this).prop('checked'));
 		}
 	});
-	
-	
+
+
 	/*
 	    Navigation
 	*/
@@ -110,13 +116,13 @@ jQuery(document).ready(function () {
 		}
 	});
 
-	
-	  
+
+
 
 	var categ = document.querySelector("#category");
-	categ.addEventListener('keyup', function() {
+	categ.addEventListener('keyup', function () {
 		let data = $("#category").val();
-		sendAjaxRequest('post', '/api/category', {message: data}, Handler);
+		sendAjaxRequest('post', '/api/category', { message: data }, Handler);
 	});
 });
 

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/customStyles.css')}}">
     <link rel="stylesheet" href="{{asset('css/global.css')}}">
@@ -26,6 +27,7 @@
     @yield('bodyTag')
     <!-------NORMAL VERSION-------->
         <nav class="sidebar-lg d-none d-lg-block col-lg-2 ">
+            
             <div
                 class="h-100 mh-100 text-center text-white d-flex flex-column align-items-center justify-content-between flex-shrink-0">
                 <div class="mh-50">
@@ -59,7 +61,7 @@
                     <span class="text-white">{{ Auth::user()->score }} points</span>
                     <ul class="list-unstyled d-flex flex-column align-items-center mt-5 mb-3">
                         <li><a class="text-white" href="#NOT_IMPLEMENTED">View Activity</a></li>
-                        <li><a class="notifications-buttom btn" onclick="open_notifications()">Notifications</a>
+                        <li><a class="notifications-buttom btn" onclick="getNotifications(); open_notifications();">Notifications</a>
                             @include('partials.notificationPopUp')
                         </li>
                         <!-- <li><a class="text-white" href="adminCatMan.php">New Category</a></li> -->

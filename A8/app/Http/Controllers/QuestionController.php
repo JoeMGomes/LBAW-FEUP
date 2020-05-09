@@ -29,7 +29,4 @@ class QuestionController extends Controller
         return redirect('/');
     }
 
-    public function show($questionID){
-
-    }
 }

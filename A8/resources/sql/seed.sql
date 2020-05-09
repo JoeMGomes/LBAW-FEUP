@@ -530,11 +530,11 @@ CREATE TRIGGER comment_disjoint BEFORE INSERT ON comment
 CREATE OR REPLACE FUNCTION disjoint_post()
 	RETURNS trigger AS 
 $$
-DECLARE vote vote_notif.voted%TYPE;
-		report report_notif.report%TYPE;
+DECLARE vote vote_notif.notif%TYPE;
+		report report_notif.notif%TYPE;
 BEGIN
-	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.voted;
-	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.report;
+	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.notif;
+	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.notif;
 	IF vote IS NULL AND report IS NULL THEN 
 		RETURN NEW;
 	END IF;
@@ -550,11 +550,11 @@ CREATE TRIGGER post_disjoint BEFORE INSERT ON post_notif
 CREATE OR REPLACE FUNCTION disjoint_vote()
 	RETURNS trigger AS 
 $$
-DECLARE post post_notif.post%TYPE;
-		report report_notif.report%TYPE;
+DECLARE post post_notif.notif%TYPE;
+		report report_notif.notif%TYPE;
 BEGIN
-	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.post;
-	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.report;
+	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.notif;
+	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.notif;
 	IF post IS NULL AND report IS NULL THEN 
 		RETURN NEW;
 	END IF;
@@ -570,11 +570,11 @@ CREATE TRIGGER vote_disjoint BEFORE INSERT ON vote_notif
 CREATE OR REPLACE FUNCTION disjoint_report()
 	RETURNS trigger AS 
 $$
-DECLARE vote vote_notif.voted%TYPE;
-		post post_notif.post%TYPE;
+DECLARE vote vote_notif.notif%TYPE;
+		post post_notif.notif%TYPE;
 BEGIN
-	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.voted;
-	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.post;
+	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.notif;
+	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.notif;
 	IF vote IS NULL AND post IS NULL THEN 
 		RETURN NEW;
 	END IF;

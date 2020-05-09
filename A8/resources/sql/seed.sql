@@ -1,5 +1,9 @@
 DROP MATERIALIZED VIEW IF EXISTS "total_question";
 DROP MATERIALIZED VIEW IF EXISTS "total_answer";
+DROP MATERIALIZED VIEW IF EXISTS "total_comment";
+DROP MATERIALIZED VIEW IF EXISTS "total_notif_post";
+DROP MATERIALIZED VIEW IF EXISTS "total_notif_vote";
+DROP MATERIALIZED VIEW IF EXISTS "total_notif_report";
 DROP TABLE IF EXISTS "bookmark";
 DROP TABLE IF EXISTS "administrator";
 DROP TABLE IF EXISTS "vote_notif";
@@ -164,6 +168,28 @@ CREATE MATERIALIZED VIEW total_answer AS
 	FROM post, answer, member
 	WHERE post.id= answer.post and post.author = member.id;
 
+CREATE MATERIALIZED VIEW total_comment AS 
+	SELECT post.id as id, author, date, text_body as comment, answer,
+			name, photo_url, membership_date, score, banned 
+	FROM post, comment, member
+	WHERE post.id = comment.post and post.author = member.id;
+
+CREATE MATERIALIZED VIEW total_notif_post AS
+	SELECT notification.id as id, notified, read, date, post
+	FROM notification, post_notif
+	WHERE notification.id = post_notif.notif;
+
+CREATE MATERIALIZED VIEW total_notif_vote AS
+	SELECT notification.id as id, notified, read, date, voted as post
+	FROM notification, vote_notif
+	WHERE notification.id = vote_notif.notif;
+
+CREATE MATERIALIZED VIEW total_notif_report AS
+	SELECT notification.id as id, notified, read, notification.date as date, report.reported as post
+	FROM notification, report_notif, report
+	WHERE notification.id = report_notif.notif and report.id = report_notif.report;
+
+
 --- TRIGGERS ---
 CREATE OR REPLACE FUNCTION update_member_score()
   RETURNS trigger AS
@@ -296,6 +322,7 @@ BEGIN
 	SELECT INTO author_post author FROM post WHERE NEW.post = post.id;
  	INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
 	INSERT INTO post_notif VALUES (notification_id, NEW.post);
+	REFRESH MATERIALIZED VIEW total_notif_post;
 	RETURN NEW;
 END
 $$ LANGUAGE plpgsql;
@@ -314,6 +341,7 @@ BEGIN
 	SELECT INTO author_post author FROM post WHERE NEW.post = post.id;
  	INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
 	INSERT INTO post_notif VALUES (notification_id, NEW.post);
+	REFRESH MATERIALIZED VIEW total_notif_post;
 	RETURN NEW;
 END
 $$ LANGUAGE plpgsql;
@@ -330,9 +358,10 @@ DECLARE notification_id notification.id%TYPE;
 DECLARE author_post post.author%TYPE;
 BEGIN
 	IF NEW.value = 'Upvote' THEN
-		SELECT INTO author_post author FROM post, answer WHERE (NEW.voted = answer.post);
+		SELECT INTO author_post author FROM post, answer WHERE NEW.voted = answer.post and answer.post = post.id ;
  		INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
 		INSERT INTO vote_notif VALUES (notification_id, NEW.voted, NEW.voter);
+		REFRESH MATERIALIZED VIEW total_notif_vote;
 	END IF;
 	RETURN NEW;
 END
@@ -425,7 +454,8 @@ BEGIN
 	SELECT INTO author_post author FROM  post WHERE OLD.reported = post.id;
 	IF NEW.STATE = 'Approved' THEN
 		INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
-		INSERT INTO report_notif VALUES (notification_id, NEW.id); 
+		INSERT INTO report_notif VALUES (notification_id, NEW.id);
+		REFRESH MATERIALIZED VIEW total_notif_report;
 	END IF;
 RETURN NEW;
 END
@@ -500,11 +530,11 @@ CREATE TRIGGER comment_disjoint BEFORE INSERT ON comment
 CREATE OR REPLACE FUNCTION disjoint_post()
 	RETURNS trigger AS 
 $$
-DECLARE vote vote_notif.voted%TYPE;
-		report report_notif.report%TYPE;
+DECLARE vote vote_notif.notif%TYPE;
+		report report_notif.notif%TYPE;
 BEGIN
-	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.voted;
-	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.report;
+	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.notif;
+	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.notif;
 	IF vote IS NULL AND report IS NULL THEN 
 		RETURN NEW;
 	END IF;
@@ -520,11 +550,11 @@ CREATE TRIGGER post_disjoint BEFORE INSERT ON post_notif
 CREATE OR REPLACE FUNCTION disjoint_vote()
 	RETURNS trigger AS 
 $$
-DECLARE post post_notif.post%TYPE;
-		report report_notif.report%TYPE;
+DECLARE post post_notif.notif%TYPE;
+		report report_notif.notif%TYPE;
 BEGIN
-	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.post;
-	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.report;
+	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.notif;
+	SELECT INTO report notif FROM report_notif WHERE NEW.notif = report_notif.notif;
 	IF post IS NULL AND report IS NULL THEN 
 		RETURN NEW;
 	END IF;
@@ -540,11 +570,11 @@ CREATE TRIGGER vote_disjoint BEFORE INSERT ON vote_notif
 CREATE OR REPLACE FUNCTION disjoint_report()
 	RETURNS trigger AS 
 $$
-DECLARE vote vote_notif.voted%TYPE;
-		post post_notif.post%TYPE;
+DECLARE vote vote_notif.notif%TYPE;
+		post post_notif.notif%TYPE;
 BEGIN
-	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.voted;
-	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.post;
+	SELECT INTO vote notif FROM vote_notif WHERE NEW.notif = vote_notif.notif;
+	SELECT INTO post notif FROM post_notif WHERE NEW.notif = post_notif.notif;
 	IF vote IS NULL AND post IS NULL THEN 
 		RETURN NEW;
 	END IF;
@@ -633,6 +663,7 @@ BEGIN
     INSERT INTO post(author, text_body) VALUES(author, text_body) RETURNING id INTO post_id;
     INSERT INTO comment(post, answer) VALUES(post_id, answer);
 	CLUSTER comment USING comment_answer;
+	REFRESH MATERIALIZED VIEW total_comment;
 END;
 $$ LANGUAGE plpgsql;
 

@@ -16,22 +16,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 justify-content-center">
-                    <form class="px-5">
+                    <form method="POST" action="{{route('editPassword')}}"class="px-5">
+                        {{ csrf_field() }}
                         <h5>Change password </h5>
                         <div class="form-group">
-                            <label for="inputPassword">current password</label>
-                            <input type="password" id="inputPassword" class="form-control" required="" autofocus="">
+                            <label for="inputPasswordOld">current password</label>
+                            <input type="password" name="inputPasswordOld" id="inputPasswordOld" class="form-control" required autofocus>
                         </div>
                         <div class="form-group">
-                            <label class="float-left" for="inputPassword ">new password</label>
-                            <input type="password" id="inputPassword" class="form-control" required="">
+                            <label class="float-left" for="inputPasswordNew ">new password</label>
+                            <input type="password" name="inputPasswordNew" id="inputPasswordNew" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label class="float-left" for="inputPassword ">confirm new password</label>
-                            <input type="password" id="inputPassword" class="form-control" required="">
+                            <label class="float-left" for="inputPasswordTwo">confirm new password</label>
+                            <input type="password" name="inputPasswordTwo" id="inputPasswordTwo"  class="form-control" required>
                         </div>
-                        <button class="mb-4 btn btn-primary border-0 bg-mygreen float-right" type="submit">Confirm
-                            Changes</button>
+                        <button class="mb-4 btn btn-primary border-0 bg-mygreen float-right" type="submit">
+                            Confirm Changes
+                        </button>
                     </form>
                 </div>
                 <div class="col-md-1"></div>

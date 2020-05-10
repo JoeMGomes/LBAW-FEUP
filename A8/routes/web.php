@@ -24,7 +24,7 @@ Route::post('member/changePhoto', 'UserController@uploadImage')->name('uploadIma
 Route::post('member/delete','UserController@destroy')->name('deleteAccount');
 Route::post('member/changePassword', 'UserController@updatePassword')->name('editPassword');
 Route::post('member/changeUsername', 'UserController@updateName')->name('editUsername');
-
+Route::post('member/changeEmail', 'UserController@updateEmail')->name('editEmail');
 
 // Module 02
 Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);

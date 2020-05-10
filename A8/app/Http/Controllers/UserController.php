@@ -7,6 +7,7 @@ use DB;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -90,16 +91,25 @@ class UserController extends Controller
     {
         $this->authorize('update', User::class);
 
+        $inputs = $request->only('emailName', 'namePassword');
 
-        DB::update(
-            'UPDATE member SET name = :name where id = :id',
-            [
-                'name' => $request->input('newUsername'),
-                'id' => Auth::user()->id
-            ]
-        );
+        $credentials['email'] = $inputs['emailName']; 
+        $credentials['password'] = $inputs['namePassword']; 
 
-        return back()->with('successMessage', 'Username changed successfuly!');
+        if(Auth::attempt($credentials)){
+            DB::update(
+                'UPDATE member SET name = :name where id = :id',
+                [
+                    'name' => $request->input('newUsername'),
+                    'id' => Auth::user()->id
+                ]
+            );
+
+            return back()->with('successMessage', 'Username changed successfuly!');
+        } else{
+            return back()->with('errorMessage','Your current password does not match');        
+        }
+
     }
     /**
      * 
@@ -110,25 +120,58 @@ class UserController extends Controller
     public function updatePassword(Request $request, User $user)
     {
         $this->authorize('update', User::class);
-        $currPass = DB::select('SELECT password from member where id = :id', ['id' => Auth::user()->id]);
 
-        $js_code = 'console.log(' . json_encode(bcrypt($request->input('inputPasswordOld')), JSON_HEX_TAG) . ');';
-        echo $js_code;
+        $inputs = $request->only('emailPass', 'oldPassword');
+        
+        $credentials['email'] = $inputs['emailPass']; 
+        $credentials['password'] = $inputs['oldPassword']; 
 
-        if(bcrypt($request->input('inputPasswordOld')) == $currPass){
+        if(Auth::attempt($credentials)){
             DB::update(
-                'UPDATE member SET password = :password where id = :id',
+                'UPDATE member SET password = :pass where id = :id',
                 [
-                    'password' => bcrypt($request->input('inputPasswordTwo')),
+                    'pass' => bcrypt($request->input('inputPasswordNew')),
                     'id' => Auth::user()->id
                 ]
             );
 
-            // return back()->with('successMessage', 'Password changed successfully!');
+            return back()->with('successMessage', 'Username changed successfuly!');
         } else{
-            // return back()->with('errorMessage','Your current password does not match');        
+            return back()->with('errorMessage','Your current password does not match');        
         }
     }
+
+        /**
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function updateEmail(Request $request, User $user)
+    {
+        $this->authorize('update', User::class);
+
+        $inputs = $request->only('emailEmail', 'passwordEmail');
+        
+        $credentials['email'] = $inputs['emailEmail']; 
+        $credentials['password'] = $inputs['passwordEmail']; 
+
+
+        if(Auth::attempt($credentials)){
+            DB::update(
+                'UPDATE member SET email = :email where id = :id',
+                [
+                    'email' =>$request->input('inputEmail'),
+                    'id' => Auth::user()->id
+                ]
+            );
+
+            return back()->with('successMessage', 'Email changed successfully!');
+        } else{
+            return back()->with('errorMessage','Your password does not match');        
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *

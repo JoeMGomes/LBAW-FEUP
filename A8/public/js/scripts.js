@@ -1,4 +1,75 @@
 
+const MONTH_NAMES = [
+	'January', 'February', 'March', 'April', 'May', 'June',
+	'July', 'August', 'September', 'October', 'November', 'December'
+];
+
+
+function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
+	const day = date.getDate();
+	const month = MONTH_NAMES[date.getMonth()];
+	const year = date.getFullYear();
+	const hours = date.getHours();
+	let minutes = date.getMinutes();
+
+	if (minutes < 10) {
+		// Adding leading zero to minutes
+		minutes = `0${minutes}`;
+	}
+
+	if (prefomattedDate) {
+		// Today at 10:20
+		// Yesterday at 10:20
+		return `${prefomattedDate} at ${hours}:${minutes}`;
+	}
+
+	if (hideYear) {
+		// 10. January at 10:20
+		return `${day}. ${month} at ${hours}:${minutes}`;
+	}
+
+	// 10. January 2017. at 10:20
+	return `${day}. ${month} ${year}. at ${hours}:${minutes}`;
+}
+
+
+// --- Main function
+function timeAgo(dateParam) {
+	if (!dateParam) {
+		return null;
+	}
+
+	const date = typeof dateParam === 'object' ? dateParam : new Date(dateParam);
+	const DAY_IN_MS = 86400000; // 24 * 60 * 60 * 1000
+	const today = new Date();
+	const yesterday = new Date(today - DAY_IN_MS);
+	const seconds = Math.round((today - date) / 1000);
+	const minutes = Math.round(seconds / 60);
+	const isToday = today.toDateString() === date.toDateString();
+	const isYesterday = yesterday.toDateString() === date.toDateString();
+	const isThisYear = today.getFullYear() === date.getFullYear();
+
+
+	if (seconds < 5) {
+		return 'now';
+	} else if (seconds < 60) {
+		return `${seconds} seconds ago`;
+	} else if (seconds < 90) {
+		return 'about a minute ago';
+	} else if (minutes < 60) {
+		return `${minutes} minutes ago`;
+	} else if (isToday) {
+		return getFormattedDate(date, 'Today'); // Today at 10:20
+	} else if (isYesterday) {
+		return getFormattedDate(date, 'Yesterday'); // Yesterday at 10:20
+	} else if (isThisYear) {
+		return getFormattedDate(date, false, true); // 10. January at 10:20
+	}
+
+	return getFormattedDate(date); // 10. January 2017. at 10:20
+}
+
+
 function scroll_to(clicked_link, nav_height) {
 	var element_class = clicked_link.attr('href').replace('#', '.');
 	var scroll_to = 0;
@@ -63,11 +134,51 @@ function Handler() {
 	}
 }
 
-function NotificationHandler(){
-	console.log(this.responseText);
+function NotificationHandler() {
+	let response = JSON.parse(this.responseText);
+	console.log(response);
+	let tagElem = document.querySelector('#singleNotification');
+	tagElem.innerHTML = "";
+	for (let i = 0; i < response.length; i++) {
+		if (response[i].type == "VOTE") {
+			tagElem.innerHTML += '<div class=" d-flex justify-content-start notifications mb-3 px-2">';
+			if (!response[i].read) {
+				tagElem.innerHTML += '<i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>';
+			}
+			tagElem.innerHTML += '<span> 1 user upvoted your post: "<strong>' + response[i].text + '</strong>"' +
+				'<div class="text-left pl-4">' +
+				timeAgo(response[i].date.split(".")[0]) +
+				'</div>' +
+				'</span>' +
+				'</div>';
+		} else if (response[i].type == "POST") {
+			tagElem.innerHTML += '<div class=" d-flex justify-content-start notifications mb-3 px-2">';
+			if (!response[i].read) {
+				tagElem.innerHTML += '<i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>';
+			}
+			tagElem.innerHTML += '<span class> 1 user replied your post: "<strong>' + response[i].text + '</strong>"' +
+				'<div class="text-left pl-4">' +
+				timeAgo(response[i].date.split(".")[0]) +
+				'</div>' +
+				'</span>' +
+				'</div>';
+		} else {
+			tagElem.innerHTML += '<div class=" d-flex justify-content-start notifications mb-3 px-2">';
+			if (!response[i].read) {
+				tagElem.innerHTML += '<i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>';
+			}
+			tagElem.innerHTML += '<span> One of your Post got deleted because of too many reports!' +
+				'<div class="text-left pl-4">' +
+				timeAgo(response[i].date.split(".")[0]) +
+				'</div>' +
+				'</span>' +
+				'</div>';
+		}
+
+	}
 }
 
-function getNotifications(){
+function getNotifications() {
 	sendAjaxRequest('post', '/api/member/notifications', null, NotificationHandler);
 }
 
@@ -121,6 +232,11 @@ jQuery(document).ready(function () {
 
 	var categ = document.querySelector("#category");
 	categ.addEventListener('keyup', function () {
+		let data = $("#category").val();
+		sendAjaxRequest('post', '/api/category', { message: data }, Handler);
+	});
+	var categ = document.querySelector("#category");
+	categ.addEventListener('click', function () {
 		let data = $("#category").val();
 		sendAjaxRequest('post', '/api/category', { message: data }, Handler);
 	});

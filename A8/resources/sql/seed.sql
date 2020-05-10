@@ -203,7 +203,11 @@ BEGIN
 		UPDATE member
 			SET score = score - 1
 			WHERE (id = (SELECT author from post, answer WHERE (post.id = answer.post AND NEW.voted = answer.post)));
-	END IF;
+	END IF; User Photo
+david dinis
+(Edited) asd
+
+asd 
    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;

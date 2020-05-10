@@ -4,8 +4,8 @@
         <a onclick="close_notifications()" class="close btn mb-auto p-0">&times;</a>
     </div>
     <div class="container-fluid border  p-0">
-        <div class="d-inline-block pt-2">
-            @include('partials.notification')
+        <div class="d-inline-block pt-2" id="singleNotification">
+           
 
         </div>
     </div>

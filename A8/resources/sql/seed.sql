@@ -667,6 +667,44 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--count upvotes
+create or replace function upvotes(answer_id INTEGER)
+RETURNS INTEGER as $$
+DECLARE votes INTEGER;
+BEGIN
+	select into votes count(*)
+	from total_answer as a, vote as v
+	where a.id = answer_id and a.id = v.voted and v.value = 'Upvote'
+	group by a.id;
+	
+	if votes is null 
+	then
+		return 0;
+	end if;
+	return votes;
+end
+$$ language plpgsql;
+
+
+--count downvotes
+create or replace function downvotes(answer_id INTEGER)
+RETURNS INTEGER as $$
+DECLARE votes INTEGER;
+BEGIN
+	select into votes count(*)
+	from total_answer as a, vote as v
+	where a.id = answer_id and a.id = v.voted and v.value = 'Downvote'
+	group by a.id;
+	
+	if votes is null 
+	then
+		return 0;
+	end if;
+	return votes;
+end
+$$ language plpgsql;
+
+
 --- Populate --- 
 -- NULL ROWS TO ENSURE NOT NULL CONSTRAINS DONT BREAK
 INSERT INTO member(email, name, password) VALUES('null@null.com', 'Not a Person', 'unBreakablePassWordNullMember');

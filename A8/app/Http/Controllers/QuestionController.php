@@ -28,4 +28,10 @@ class QuestionController extends Controller
         'param3' => $request->input('title')]);
         return redirect('/');
     }
+
+    public function view($question) {
+        $obj = new Question();
+        $info = $obj->getAllInfo($question);
+        return view('pages.question', $info);
+    }
 }

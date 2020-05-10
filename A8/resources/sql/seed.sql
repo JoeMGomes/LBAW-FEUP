@@ -711,26 +711,26 @@ INSERT INTO member(email, name, password) VALUES('null@null.com', 'Not a Person'
 INSERT INTO post(author, text_body) VALUES(1, '');
 
 -- Members insert
-INSERT INTO member(email, name, password) VALUES ('rita@rita.com',                      'Mateo Watson','zH-38ptu_FlmsZK9QiMGbN1f0'); --2
-INSERT INTO member(email, name, password) VALUES ('henrique@henrique.com',              'Isaac Johnson','ERJ-1qztcS.gC9F3uB_LTWrOo'); 
-INSERT INTO member(email, name, password) VALUES ('jose@jose.com',                      'Nathan Walker','oN9Jrp.3LPOuMQTf_x0Z-IK7C'); 
-INSERT INTO member(email, name, password) VALUES ('david@david.com',                    'Samuel Peterson','ybPadnKXTgjhwD50v1AkoHulf'); 
-INSERT INTO member(email, name, password) VALUES ('Ow7aA_c4VHUY2BtE6SD9@kcgaifuzqb.com','Gabriel Wright','UEelc0VPNtXRpLh6TDunr4SYW'); 
-INSERT INTO member(email, name, password) VALUES ('rZVq9UseDbMTLp1R0IAk@pawinfqelu.com','Logan Scott','s.dI-f19qHbgX3woEBJ4GivhP'); 
-INSERT INTO member(email, name, password) VALUES ('RwTKp4A_UFdWHkt8J-DS@cbnhdysato.com','Caleb White','QEsPAv_cYj.ktXFziyufHCVlM'); 
-INSERT INTO member(email, name, password) VALUES ('SAWnP.I-NRdxqeo1Xifk@hrqtwdxnig.com','Matthew Peterson','EhL3xK1RsY2ilSTu4FeMG_O8U'); 
-INSERT INTO member(email, name, password) VALUES ('x3ULFg0ze9bhyn1wfu7W@mkbxdrecwg.com','Caleb Roberts','VYb412kueGXsT8JpfA-cd.jUM'); 
-INSERT INTO member(email, name, password) VALUES ('V_2uxfYELBXhDpJ3sON7@frmknuczlb.com','Sebastian Davis','._56AjECVR8FBQk2nMGYLIcJD'); 
-INSERT INTO member(email, name, password) VALUES ('SL-ktV7YHmNo4nWCGgsO@lixajygfcb.com','Daniel Evans','_Owmbv5hLI-Tx2rnzE0eViC9q'); 
-INSERT INTO member(email, name, password) VALUES ('Yo84ytNv-QJ3djcXg0Rn@obeyudsmhq.com','Luke Martin','gdTQ4I1Rpf-_8cbhYPD5.7Xz0'); 
-INSERT INTO member(email, name, password) VALUES ('JM6Rymi3Lg.nXucKDvao@vrecazjhdx.com','James Butler','F-83G6nHOsuiXe5jNpPTQMlRf'); 
-INSERT INTO member(email, name, password) VALUES ('XWZ5rApe1IsMo8h6vDBV@cirboyhajt.com','Lincoln Wright','qbi21hO4NrxyHX7PGzTeBUs5k'); 
-INSERT INTO member(email, name, password) VALUES ('pxw3GsJF_tVK7MDYnRdy@necvwfsqhi.com','Aiden Jackson','40T8wqBnXIz5WZejC6JsVlFL3'); 
-INSERT INTO member(email, name, password) VALUES ('k.H3564F1KelBJhLAEDt@tnuihzbwkq.com','Thomas Thompson','Yy0kFfTul9jCtzdhDwsB4MSA3'); 
-INSERT INTO member(email, name, password) VALUES ('MDyhLV7pZurYfnl3K.oR@lsxzaibuoe.com','Owen Collins','AUs9Q3bk_cunroP2VSN684C71'); 
-INSERT INTO member(email, name, password) VALUES ('hP5jSpNlmcKYCDzB0a3r@etjzvxpqkh.com','Thomas Edwards','.b08dCiAjsyvJOTB3znm9wk_p'); 
-INSERT INTO member(email, name, password) VALUES ('Fw5ReL_YETdpCjymJxG0@bldgpqivmc.com','Carter Cook','zCI_Md6LXkjGo4bfYBJ7S.OmZ'); 
-INSERT INTO member(email, name, password) VALUES ('DLxeJbX87iKWIl460Y_v@hipztjgodv.com','Julian Evans','utTHCQs1ARYJrNjwhodIiSXEg');
+INSERT INTO member(email, name, password) VALUES ('rita@rita.com',                      'Mateo Watson','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); --2
+INSERT INTO member(email, name, password) VALUES ('henrique@henrique.com',              'Isaac Johnson','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('jose@jose.com',                      'Nathan Walker','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('david@david.com',                    'Samuel Peterson','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('Ow7aA_c4VHUY2BtE6SD9@kcgaifuzqb.com','Gabriel Wright','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('rZVq9UseDbMTLp1R0IAk@pawinfqelu.com','Logan Scott','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('RwTKp4A_UFdWHkt8J-DS@cbnhdysato.com','Caleb White','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('SAWnP.I-NRdxqeo1Xifk@hrqtwdxnig.com','Matthew Peterson','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('x3ULFg0ze9bhyn1wfu7W@mkbxdrecwg.com','Caleb Roberts','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('V_2uxfYELBXhDpJ3sON7@frmknuczlb.com','Sebastian Davis','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('SL-ktV7YHmNo4nWCGgsO@lixajygfcb.com','Daniel Evans','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('Yo84ytNv-QJ3djcXg0Rn@obeyudsmhq.com','Luke Martin','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('JM6Rymi3Lg.nXucKDvao@vrecazjhdx.com','James Butler','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('XWZ5rApe1IsMo8h6vDBV@cirboyhajt.com','Lincoln Wright','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('pxw3GsJF_tVK7MDYnRdy@necvwfsqhi.com','Aiden Jackson','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('k.H3564F1KelBJhLAEDt@tnuihzbwkq.com','Thomas Thompson','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('MDyhLV7pZurYfnl3K.oR@lsxzaibuoe.com','Owen Collins','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('hP5jSpNlmcKYCDzB0a3r@etjzvxpqkh.com','Thomas Edwards','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('Fw5ReL_YETdpCjymJxG0@bldgpqivmc.com','Carter Cook','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu'); 
+INSERT INTO member(email, name, password) VALUES ('DLxeJbX87iKWIl460Y_v@hipztjgodv.com','Julian Evans','$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu');
 INSERT INTO member(email, name, password) VALUES ('teste@teste.com','Teste Teste','$2y$10$w7Ehqro.QydJYidC8hY9DO1g23r3slmjXANDpVOjUX5EjUWXF4b5K');
 
 -- Questions insert

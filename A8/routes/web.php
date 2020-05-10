@@ -22,7 +22,9 @@ Route::post('signup', 'Auth\RegisterController@register');
 Route::get('member/settings','UserController@showSettings')->name('settings');
 Route::post('member/changePhoto', 'UserController@uploadImage')->name('uploadImage');
 Route::post('member/delete','UserController@destroy')->name('deleteAccount');
+Route::post('member/changePassword', 'UserController@updatePassword')->name('editPassword');
 Route::post('member/changeUsername', 'UserController@updateName')->name('editUsername');
+Route::post('member/changeEmail', 'UserController@updateEmail')->name('editEmail');
 
 // Module 02
 Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);

@@ -10,5 +10,5 @@
 
 @section('main')
         @include('partials.navBarTop', $search)
-        @include('partials.searchMain', $results)
+        @include('partials.search.searchMain', $results)
 @endsection

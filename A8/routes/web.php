@@ -30,7 +30,7 @@ Route::post('member/changeEmail', 'UserController@updateEmail')->name('editEmail
 Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
 Route::post('post/newQuestion', 'QuestionController@store');
-Route::get('post/{question}', 'QuestionController@view')->name('question');
+Route::get('post/{question}', 'QuestionController@view');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');

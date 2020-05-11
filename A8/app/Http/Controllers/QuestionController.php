@@ -32,6 +32,6 @@ class QuestionController extends Controller
     public function view($question) {
         $obj = new Question();
         $info = $obj->getAllInfo($question);
-        return view('pages.question', $info);
+        return view('pages.question', ['question' => $info['question'], 'answers' => $info['answers'] ]);
     }
 }

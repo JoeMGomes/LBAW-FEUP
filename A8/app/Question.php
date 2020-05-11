@@ -80,7 +80,7 @@ class Question extends Model
 
         $question['categories'] = $categories;
 
-        $final = array('question' => $question, 'answers' => $answers);
+        $final = array('question' => $question, 'answers' => $complete_answers);
 
         return $final;
     }

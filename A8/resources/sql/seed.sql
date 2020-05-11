@@ -362,6 +362,9 @@ BEGIN
  		INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
 		INSERT INTO vote_notif VALUES (notification_id, NEW.voted, NEW.voter);
 		REFRESH MATERIALIZED VIEW total_notif_vote;
+		REFRESH MATERIALIZED VIEW total_answer;
+		REFRESH MATERIALIZED VIEW total_question;
+		REFRESH MATERIALIZED VIEW total_comment;
 	END IF;
 	RETURN NEW;
 END

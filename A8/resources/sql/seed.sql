@@ -203,11 +203,7 @@ BEGIN
 		UPDATE member
 			SET score = score - 1
 			WHERE (id = (SELECT author from post, answer WHERE (post.id = answer.post AND NEW.voted = answer.post)));
-	END IF; User Photo
-david dinis
-(Edited) asd
-
-asd 
+	END IF; 
    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -640,13 +636,15 @@ CREATE INDEX search_question ON total_question USING gist(
 
 --- FUNCTIONS --- 
 -- add question
+DROP FUNCTION IF EXISTS add_question(integer, text, text);
 CREATE OR REPLACE FUNCTION add_question(author INTEGER, text_body text, title text)
-RETURNS VOID AS $$
+RETURNS INTEGER AS $$
 DECLARE post_id post.id%TYPE;
 BEGIN
     INSERT INTO post(author, text_body) VALUES(author, text_body) RETURNING id INTO post_id;
     INSERT INTO question(post, title) VALUES(post_id, title);
 	REFRESH MATERIALIZED VIEW total_question;
+	RETURN post_id;
 END;
 $$ LANGUAGE plpgsql;
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -37,12 +38,33 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function getUser(){
+    public function getUser()
+    {
         return $request->user();
     }
 
-    public function home() {
+    public function home()
+    {
         return redirect('login');
     }
 
+    public function adminLogin(Request $request)
+    {
+        if ($this->guard('administrator')->attempt($this->credentials($request))) {
+            echo 'logged';
+        }else{
+            echo 'pewwww';
+        }
+        // if ($this->guard('administrator')->attempt($this->credentials($request), false)) {
+        //     $details = $this->guard('administrator')->user();
+        //     $user = $details['original'];
+        //     return $user;
+        // } else {
+        //     return 'auth fail';
+        // }
+    }
+
+    public function showAdminLogin(){
+        return view('auth/adminLogin');
+    }
 }

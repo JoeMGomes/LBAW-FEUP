@@ -147,7 +147,8 @@ CREATE TABLE "administrator" (
     id SERIAL PRIMARY KEY,
     email text NOT NULL UNIQUE,
     "name" text NOT NULL,
-    "password" text NOT NULL
+    "password" text NOT NULL,
+	remember_token text
 );
 
 CREATE TABLE "bookmark" (
@@ -854,7 +855,7 @@ INSERT INTO vote VALUES(14,16,'Upvote');
 INSERT INTO report(reported, reporter, type, offense) VALUES(5, 2, 'Spreading Misinformation', NULL);
 
 --administrator
-INSERT INTO administrator(email, name, password) VALUES('admin@admin.com', 'SUPER ADMIN', 'admin');
+INSERT INTO administrator(email, name, password) VALUES('admin@admin.com', 'SUPER ADMIN', '$2y$10$METVSF3esP0RdBFnMF3pS.gB70GdndkXYo//n6l7aKB.mBKrFkGVu');
 
 --bookmarks
 INSERT INTO bookmark VALUES(2,6);

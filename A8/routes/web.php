@@ -34,5 +34,7 @@ Route::get('post/{question}', 'QuestionController@view');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');
+Route::get('/adminLogin', 'Auth\LoginController@showAdminLogin')->name('adminLogin');
+Route::post('/adminLogin', 'Auth\LoginController@adminLogin');
 Route::get('about', 'HomeController@showAbout')->name('about');
 Route::post('api/category', 'CategoryController@getCategories');

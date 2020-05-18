@@ -12,7 +12,7 @@
         </div>
 
         @foreach($results as $result)
-            @include('partials.searchResult', $result)
+            @include('partials.search.searchResult', $result)
         @endforeach
 
 

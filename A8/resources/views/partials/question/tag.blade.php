@@ -1,0 +1,1 @@
+<a href="" class="btn rounded-pill my-1 bg-myyellow">{{$category['name']}}</a>

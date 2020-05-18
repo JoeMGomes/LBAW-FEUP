@@ -31,6 +31,7 @@ Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'searc
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
 Route::post('post/newQuestion', 'QuestionController@store');
 Route::get('post/{question}', 'QuestionController@view');
+Route::post('post/addAnswer', 'QuestionController@addAnswer')->name('addAnswer');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');

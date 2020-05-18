@@ -34,4 +34,12 @@ class QuestionController extends Controller
         $info = $obj->getAllInfo($question);
         return view('pages.question', ['question' => $info['question'], 'answers' => $info['answers'] ]);
     }
+
+    public function addAnswer(Request $request){
+        DB::select('SELECT add_answer(:param1, :param2, :param3)', [
+            'param1' => Auth::user()->id, 
+            'param2' => $request->input('text_body'), 
+            'param3' => $request->input('question_id')]);
+            return redirect('/post/'. $request->input('question_id'));
+    }
 }

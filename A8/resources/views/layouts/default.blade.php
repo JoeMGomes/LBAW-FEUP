@@ -155,6 +155,16 @@
                     <a class="small text-white text-center " href="{{ route('about')}}">About</a>
                 </div>
         </nav>
+        @if(session()->has('successMessage'))
+        <button class="float-right m-2 alert alert-success" onclick="hideMessage()">
+            {{ session()->get('successMessage') }}
+        </button>
+        @endif
+        @if(session()->has('errorMessage'))
+        <button class="float-right m-2 alert alert-danger popover" onclick="hideMessage()">
+            {{ session()->get('errorMessage') }}
+        </button>
+        @endif
         @yield('main')
     </body>
 

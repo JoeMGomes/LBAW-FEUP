@@ -182,6 +182,21 @@ function getNotifications() {
 	sendAjaxRequest('post', '/api/member/notifications', null, NotificationHandler);
 }
 
+function getCategNumber() {
+	for (let i = 1; i < 5; i++) {
+		if (document.getElementById('category' + i) == null) {
+			return i;
+		}
+	}
+	return 0;
+}
+
+function deletecategory(value) {
+	let el = document.getElementById('category' + value);
+	el.nextElementSibling.remove();
+	el.remove();
+}
+
 jQuery(document).ready(function () {
 	/*
 	    Sidebar
@@ -231,14 +246,45 @@ jQuery(document).ready(function () {
 
 
 	var categ = document.querySelector("#category");
-	categ.addEventListener('keyup', function () {
-		let data = $("#category").val();
-		sendAjaxRequest('post', '/api/category', { message: data }, Handler);
-	});
-	var categ = document.querySelector("#category");
+	
 	categ.addEventListener('click', function () {
+		var val = categ.value;
+		if (val.trim() != "") {
+			var opts = document.getElementById('tags').childNodes;
+			for (var i = 0; i < opts.length; i++) {
+				if (opts[i].value !== undefined) {
+
+					if (opts[i].value === val) {
+						let categNumb = getCategNumber();
+						document.querySelector('#categoryList').innerHTML += '<input class="form-control" id="category' + categNumb + '" name="category' + categNumb + '" value="' + val + '" readonly required><button onclick="deletecategory(' + categNumb + ')"> X </button>';
+					}
+				}
+			}
+		}
 		let data = $("#category").val();
 		sendAjaxRequest('post', '/api/category', { message: data }, Handler);
+		e.preventDefault();
+		return false;
+	});
+	categ.addEventListener('input', function () {
+		var val = categ.value;
+		if (val.trim() != "") {
+			var opts = document.getElementById('tags').childNodes;
+			for (var i = 0; i < opts.length; i++) {
+				if (opts[i].value !== undefined) {
+					console.log("works");
+					if (opts[i].value === val) {
+						let categNumb = getCategNumber();
+						document.querySelector('#categoryList').innerHTML += '<input class="form-control" id="category' + categNumb + '" name="category' + categNumb + '" value="' + val + '" readonly required><button onclick="deletecategory(' + categNumb + ')"> X </button>';
+						categ.value = "";
+					}
+				}
+			}
+		}
+		let data = $("#category").val();
+		sendAjaxRequest('post', '/api/category', { message: data }, Handler);
+		e.preventDefault();
+		return false;
 	});
 });
 

@@ -21,41 +21,31 @@
                 <li> <i class=" fa fa-check-circle text-mydarkgreen"></i> Double-check grammar and spelling </li>
             </ul>
         </div>
-        <form class=" text-black d-flex flex-column" method="POST" action="/post/newQuestion">
+        <form class=" text-black d-flex flex-column" method="POST" action="{{ route('makeQuestion') }}">
             {{ csrf_field() }}
-            <meta name="csrf-token" content="{{ csrf_token() }}" />
             <div class="form-group">
                 <label for="title" class="p-2 h4 text-left">What is your question?</label>
-                <input id="title" name="title" class="form-control" required>
+                <input id="title" name="title" class="form-control" value="{{ old('title') }}" required>
             </div>
             <div class="form-group">
                 <label for="text_body" class="p-2 h4 text-left">Explain yourself a bit better</label>
-                <textarea class="form-control" id="text_body" name="text_body" rows="5" required></textarea>
+                <textarea class="form-control" id="text_body" name="text_body" rows="5" value="{{ old('text_body') }}" required></textarea>
             </div>
             <div class="form-group">
                 <label for="category" class="p-2 h4 text-left">In which categories does your question fit in?
                     <small class="h6"> (Choose up to 5)</small>
                 </label>
-                <input class="form-control" autocomplete="off" list="tags" id="category" name="category" required>
+                <div class="d-flex"  id="categoryList">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control categoryArray" autocomplete="off" list="tags" id="category"value="{{ old('category') }}">
                 <datalist id="tags">
 
                 </datalist>
             </div>
-            <div class="form-check pl-0 ">
-                <!-- input id must be label "for" field -->
-                <input type="checkbox" id="rel">
-                <label for="rel" class="labelToCheck" onkeydown="">Relationship</label>
-
-                <input type="checkbox" id="sex">
-                <label for="sex" class="labelToCheck" >Sexuality</label>
-
-                <input type="checkbox" id="cooking">
-                <label for="cooking" class="labelToCheck" >Cooking</label>
-
-                <input type="checkbox" id="health">
-                <label for="health" class="labelToCheck" >Health</label>
-
-            </div>
+        
             <button type="submit" class="btn bg-mydarkgreen text-white mt-1 ml-auto">Submit</button>
         </form>
     </div>

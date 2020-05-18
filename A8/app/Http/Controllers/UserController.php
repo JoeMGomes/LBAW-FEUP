@@ -99,9 +99,36 @@ class UserController extends Controller
             ]
         );
 
-        return redirect()->route('settings');
+        return back()->with('successMessage', 'Username changed successfuly!');
     }
+    /**
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePassword(Request $request, User $user)
+    {
+        $this->authorize('update', User::class);
+        $currPass = DB::select('SELECT password from member where id = :id', ['id' => Auth::user()->id]);
 
+        $js_code = 'console.log(' . json_encode(bcrypt($request->input('inputPasswordOld')), JSON_HEX_TAG) . ');';
+        echo $js_code;
+
+        if(bcrypt($request->input('inputPasswordOld')) == $currPass){
+            DB::update(
+                'UPDATE member SET password = :password where id = :id',
+                [
+                    'password' => bcrypt($request->input('inputPasswordTwo')),
+                    'id' => Auth::user()->id
+                ]
+            );
+
+            // return back()->with('successMessage', 'Password changed successfully!');
+        } else{
+            // return back()->with('errorMessage','Your current password does not match');        
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -118,7 +145,7 @@ class UserController extends Controller
 
 
         DB::delete('DELETE FROM member WHERE id = ?', [$user]);
-        return redirect()->route('home');
+        return redirect()->route('home')->with('successMessage','You have deleted your account :\'( Come back any time!');
     }
 
 
@@ -136,7 +163,7 @@ class UserController extends Controller
         
         return back()
 
-            ->with('success', 'You have successfully upload image.')
+            ->with('successMessage', 'You have successfully upload your image!')
 
             ->with('image', $imageName);
     }

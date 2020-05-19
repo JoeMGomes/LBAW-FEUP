@@ -24,12 +24,14 @@ Route::post('member/changePhoto', 'UserController@uploadImage')->name('uploadIma
 Route::post('member/delete','UserController@destroy')->name('deleteAccount');
 Route::post('member/changePassword', 'UserController@updatePassword')->name('editPassword');
 Route::post('member/changeUsername', 'UserController@updateName')->name('editUsername');
+Route::post('api/member/notifications', 'NotificationController@getNotifications');
 Route::post('member/changeEmail', 'UserController@updateEmail')->name('editEmail');
 
 // Module 02
 Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
+//Route::get('post/{questionID}', ['uses' => 'QuestionController@show', 'as' => 'questionID']);
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
-Route::post('post/newQuestion', 'QuestionController@store');
+Route::post('post/newQuestion', 'QuestionController@store')->name('makeQuestion');
 Route::get('post/{question}', 'QuestionController@view');
 Route::post('post/addAnswer', 'QuestionController@addAnswer')->name('addAnswer');
 

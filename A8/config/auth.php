@@ -78,7 +78,7 @@ return [
         ],
         'administrator' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' =>a@a.com
         ],
 
         // 'users' => [

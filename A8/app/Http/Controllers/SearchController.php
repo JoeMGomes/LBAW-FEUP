@@ -26,7 +26,20 @@ class SearchController extends Controller
     public function show($search)
     {
         $obj = new Search();
-        $results = $obj->search($search);
+        $pos = strpos($search, "#");
+        
+        if ($pos === false) {
+            $results = $obj->search($search);
+        }
+        elseif ($pos == 0) {
+            $results = $obj->searchCategory(substr($search, 1));
+        }
+        else {
+            $search1 = substr($search, 0, $pos);
+            $category = substr($search, $pos+1);
+            
+            $results = $obj->searchWithCategory($search1, $category );
+        }
         return view('pages.search', ['results'=> $results, 'search' => [$search]]);
     }
 }

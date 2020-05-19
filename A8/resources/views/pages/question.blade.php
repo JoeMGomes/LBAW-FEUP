@@ -39,6 +39,14 @@
         @isset($question['best_answer_info'])
             @include('partials.question.bestAnswer', ['answer' => $question['best_answer_info']])
         @endisset
+
+
+        @if(Auth::check())
+            {{--<!--@if($question['owner'] != Auth::user()->id) -->--}}
+            @include('partials.question.answerInput', ['username' => $question['name'], 'question_id' =>$question['id']])
+        @endif
+        {{--@endif--}}
+
         @foreach($answers as $answer)
             @include('partials.question.answer', $answer)
         @endforeach

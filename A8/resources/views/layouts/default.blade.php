@@ -42,14 +42,14 @@
                             class="dropdown-toggle m-5 text-white bg-transparent">Categories</a>
                         <ul class="collapse list-unstyled bg-transparent " id="categories">
                             <hr class="my-1 m-0 " style="height: 2px; background-color: #2c2c2c">
-                            <li><a class="scroll-link text-white" class="" href="">Laundry</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Cooking</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Health</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Sexuality</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Finances</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Work</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Relationships</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Household</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Laundry')}}">Laundry</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Cooking')}}">Cooking</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Health')}}">Health</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Sexuality')}}">Sexuality</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Finances')}}">Finances</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Work')}}">Work</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Relationships')}}">Relationships</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Household')}}">Household</a></li>
                         </ul>
                     </div>
                 </div>
@@ -113,14 +113,14 @@
                             class="dropdown-toggle my-5 text-white bg-transparent">Categories</a>
                         <ul class="collapse list-unstyled bg-transparent m-0 " id="categories">
                             <hr class="my-1 m-0 " style="height: 2px; background-color: #2c2c2c">
-                            <li><a class="scroll-link text-white" class="" href="">Laundry</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Cooking</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Health</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Sexuality</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Finances</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Work</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Relationships</a></li>
-                            <li><a class="scroll-link text-white" class="" href="">Household</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Laundry')}}">Laundry</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Cooking')}}">Cooking</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Health')}}">Health</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Sexuality')}}">Sexuality</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Finances')}}">Finances</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Work')}}">Work</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Relationships')}}">Relationships</a></li>
+                            <li><a class="scroll-link text-white" class="" href="{{url('search/%23Household')}}">Household</a></li>
                         </ul>
                     </div>
                 </div>

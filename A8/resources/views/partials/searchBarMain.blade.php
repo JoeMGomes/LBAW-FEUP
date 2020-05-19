@@ -10,14 +10,14 @@
 
         <span>Tip: Search with # to filter your results through categories</span>
         <ul class="my-3 m-1 mx-lg-auto col-lg-10 d-flex list-unstyled justify-content-around flex-wrap">
-                <a href="#" class="tag mx-md-2 my-1 bg-myred">Laundry</a>
-                <a href="#" class="tag mx-md-2 my-1 bg-myyellow">Cooking</a>
-                <a href="#" class="tag mx-md-2 my-1 bg-mygreen">Health</a>
-                <a href="#" class="tag mx-md-2 my-1 bg-myred">Finances</a>
-                <a href="#" class="tag mx-md-2 my-1 bg-myyellow">Sexuality</a>
-                <a href="#" class="tag mx-md-2 my-1 bg-mygreen">Work</a>
-                <a href="#" class="tag mx-md-2 my-1 bg-myred">Relationships</a>
-                <a href="#" class="tag mx-md-2 my-1 bg-myyellow">Household</a>
+                <a href="{{url('search/%23Laundry')}}" class="tag mx-md-2 my-1 bg-myred">Laundry</a>
+                <a href="{{url('search/%23Cooking')}}" class="tag mx-md-2 my-1 bg-myyellow">Cooking</a>
+                <a href="{{url('search/%23Health')}}" class="tag mx-md-2 my-1 bg-mygreen">Health</a>
+                <a href="{{url('search/%23Finances')}}" class="tag mx-md-2 my-1 bg-myred">Finances</a>
+                <a href="{{url('search/%23Sexuality')}}" class="tag mx-md-2 my-1 bg-myyellow">Sexuality</a>
+                <a href="{{url('search/%23Work')}}" class="tag mx-md-2 my-1 bg-mygreen">Work</a>
+                <a href="{{url('search/%23Relationships')}}" class="tag mx-md-2 my-1 bg-myred">Relationships</a>
+                <a href="{{url('search/%23Household')}}" class="tag mx-md-2 my-1 bg-myyellow">Household</a>
             </ul>
         </div>
         <div class="m-1"></div>

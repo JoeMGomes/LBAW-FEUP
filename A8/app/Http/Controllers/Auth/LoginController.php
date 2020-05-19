@@ -53,7 +53,7 @@ class LoginController extends Controller
         if ($this->guard('administrator')->attempt($this->credentials($request))) {
             echo 'logged';
         }else{
-            echo 'pewwww';
+            echo 'not logged';
         }
         // if ($this->guard('administrator')->attempt($this->credentials($request), false)) {
         //     $details = $this->guard('administrator')->user();

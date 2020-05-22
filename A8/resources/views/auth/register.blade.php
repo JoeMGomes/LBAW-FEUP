@@ -10,7 +10,7 @@
     <form method="POST" action="{{ route('signup') }}"
       class="form-container p-3 rounded col-lg-4 col-md-6 col-10 bg-white my-auto">
       {{ csrf_field() }}
-      <a href="mainPage.php">
+      <a href="{{route('home')}}">
         <img src="{{ asset('img/logo2.png') }}" class="register-logo my-3 " width="100px" alt="Company Logo">
       </a>
       <h3 class="mb-3 text-mydarkgreen">Sign up</h3>

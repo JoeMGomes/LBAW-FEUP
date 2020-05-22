@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-<title>GROW - Post</title>
+<title>GROW - {{$question['title']}}</title>
 @endsection
 
 @section('bodyTag')

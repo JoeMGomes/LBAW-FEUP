@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-<title>GROW - Search Results</title>
+<title>GROW - {{$search[0]}}</title>
 @endsection
 
 @section('bodyTag')

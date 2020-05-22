@@ -1,8 +1,8 @@
 <div class="d-flex align-items-center w-100">
     <div class="ml-lg-5 mr-1 text-center flex-column">
-        <i class="fa fa-angle-up fa-2x text-mygreen"></i>
-        <div>{{$answer['votes']}}</div>
-        <i class=" fa fa-angle-down fa-2x text-myblue "></i>
+        <div onclick="upvote( {{ $answer['id'] }} )"><i class="fa fa-angle-up fa-2x text-mygreen" ></i></div>
+        <div id="votes_answer{{$answer['id']}}">{{$answer['votes']}}</div>
+        <div onclick="downvote({{ $answer['id'] }})"><i class=" fa fa-angle-down fa-2x text-myblue " ></i></div>
     </div>
     <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-3">
         <span class="text-danger text-nowrap"> <i class="fa fa-heart"></i> Best Answer!</span>

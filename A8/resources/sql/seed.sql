@@ -710,6 +710,58 @@ end
 $$ language plpgsql;
 
 
+-- adds downvote to database, 
+-- if downvote existed, deletes downvote, 
+-- if it was upvote, switches to downvote
+create or replace function add_downvote(answer Integer, member integer)
+returns integer as $$
+declare value vote.value%TYPE;
+begin 
+	-- search if this member already voted in this answer
+	select into value vote.value
+	from vote where voted=answer and voter = member;
+	
+	-- if not voted, downvote
+	if value is null then 
+		insert into vote values (answer, member, 'Downvote');
+	else -- if not deletes
+		DELETE FROM vote WHERE voted=answer and voter = member;
+		if value = 'Upvote' then -- if previous vote was upvote, add downvote
+			insert into vote values (answer, member, 'Downvote');
+		end if;
+	end if;
+	
+	return upvotes(answer) - downvotes(answer);	
+end;
+$$ language plpgsql;
+
+
+-- adds upvote to database, 
+-- if upvote existed, deletes upvote, 
+-- if it was dpwnvote, switches to upvote
+create or replace function add_upvote(answer Integer, member integer)
+returns integer as $$
+declare value vote.value%TYPE;
+begin 
+	-- search if this member already voted in this answer
+	select into value vote.value
+	from vote where voted=answer and voter = member;
+	
+	-- if not voted, upvote
+	if value is null then 
+		insert into vote values (answer, member, 'Upvote');
+	else -- if not deletes
+		DELETE FROM vote WHERE voted=answer and voter = member;
+		if value = 'Downvote' then -- if previous vote was downvote, add upvote
+			insert into vote values (answer, member, 'Upvote');
+		end if;
+	end if;
+	
+	return upvotes(answer) - downvotes(answer);	
+end;
+$$ language plpgsql;
+
+
 --- Populate --- 
 -- NULL ROWS TO ENSURE NOT NULL CONSTRAINS DONT BREAK
 INSERT INTO member(email, name, password) VALUES('null@null.com', 'Not a Person', 'unBreakablePassWordNullMember');

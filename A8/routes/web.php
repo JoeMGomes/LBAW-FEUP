@@ -40,7 +40,13 @@ Route::post('api/downvote', 'VoteController@downvote');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');
-Route::get('/adminLogin', 'Auth\LoginController@showAdminLogin')->name('adminLogin');
-Route::post('/adminLogin', 'Auth\LoginController@adminLogin');
+Route::get('/adminLogin', 'Admin\Auth\LoginController@showLoginForm')->name('adminLogin');
+Route::post('/adminLogin', 'Admin\Auth\LoginController@login')->name('logAdmin');
+Route::get('/adminLogout', 'Admin\Auth\LoginController@logout')->name('logoutAdmin');
+
+Route::get('/admin/categoryManagement','AdminController@showCategoryManagement')->name('showCatMan');
+Route::get('/admin/reportManagement','AdminController@showReportManagement')->name('showRepMan');
+
+
 Route::get('about', 'HomeController@showAbout')->name('about');
 Route::post('api/category', 'CategoryController@getCategories');

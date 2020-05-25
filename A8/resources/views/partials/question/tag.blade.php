@@ -1,1 +1,1 @@
-<a href="" class="btn rounded-pill my-1 bg-myyellow">{{$category['name']}}</a>
+<a href="{{url('search/%23'.$category['name'])}}" class="btn rounded-pill my-1 bg-myyellow">{{$category['name']}}</a>

@@ -36,6 +36,7 @@ Route::get('post/{question}', 'QuestionController@view');
 Route::post('post/addAnswer', 'QuestionController@addAnswer')->name('addAnswer');
 Route::post('api/upvote', 'VoteController@upvote');
 Route::post('api/downvote', 'VoteController@downvote');
+Route::post('api/bestAnswer', 'QuestionController@chooseBestAnswer');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');

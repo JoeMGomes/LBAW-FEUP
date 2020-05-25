@@ -159,19 +159,19 @@ CREATE TABLE "bookmark" (
 
 CREATE MATERIALIZED VIEW total_question AS 
     SELECT post.id as id, author, date, text_body, title, best_answer, 
-			name, photo_url, membership_date, score, banned
+			member.id as owner, name, photo_url, membership_date, score, banned
     FROM post, question, member
     WHERE post.id = question.post and post.author = member.id;
 
 CREATE MATERIALIZED VIEW total_answer AS 
 	SELECT post.id as id, author, date, text_body as answer, question, 
-			name, photo_url, membership_date, score, banned
+			member.id as owner, name, photo_url, membership_date, score, banned
 	FROM post, answer, member
 	WHERE post.id= answer.post and post.author = member.id;
 
 CREATE MATERIALIZED VIEW total_comment AS 
 	SELECT post.id as id, author, date, text_body as comment, answer,
-			name, photo_url, membership_date, score, banned 
+			member.id as owner, name, photo_url, membership_date, score, banned 
 	FROM post, comment, member
 	WHERE post.id = comment.post and post.author = member.id;
 
@@ -192,7 +192,7 @@ CREATE MATERIALIZED VIEW total_notif_report AS
 
 
 --- TRIGGERS ---
-CREATE OR REPLACE FUNCTION update_member_score()
+CREATE OR REPLACE FUNCTION update_member_score_insert()
   RETURNS trigger AS
 $$
 BEGIN
@@ -208,9 +208,31 @@ BEGIN
    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-DROP TRIGGER IF EXISTS "vote_count" ON "vote";
-CREATE TRIGGER vote_count BEFORE INSERT ON "vote"
-    FOR EACH ROW EXECUTE PROCEDURE update_member_score();
+DROP TRIGGER IF EXISTS "vote_count_insert" ON "vote";
+CREATE TRIGGER vote_count_insert BEFORE INSERT ON "vote"
+    FOR EACH ROW EXECUTE PROCEDURE update_member_score_insert();
+
+--------
+
+CREATE OR REPLACE FUNCTION update_member_score_delete()
+  RETURNS trigger AS
+$$
+BEGIN
+	IF OLD.value = 'Upvote' THEN
+		UPDATE member
+			SET score = score - 1
+			WHERE (id = (SELECT author from post, answer WHERE (post.id = answer.post AND OLD.voted = answer.post)));
+	ELSE
+		UPDATE member
+			SET score = score + 1
+			WHERE (id = (SELECT author from post, answer WHERE (post.id = answer.post AND OLD.voted = answer.post)));
+	END IF; 
+   	RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+DROP TRIGGER IF EXISTS "vote_count_delete" ON "vote";
+CREATE TRIGGER vote_count_delete AFTER DELETE ON "vote"
+    FOR EACH ROW EXECUTE PROCEDURE update_member_score_delete();
 
 --------
 
@@ -218,18 +240,29 @@ CREATE OR REPLACE FUNCTION update_member_best_answer_score()
 	RETURNS trigger AS
 $$
 DECLARE member_to_update post.author%TYPE;
+DECLARE member_to_update_old post.author%TYPE;
 BEGIN
-	IF OLD.best_answer <> NEW.best_answer THEN
+	IF OLD.best_answer is null or OLD.best_answer <> NEW.best_answer THEN
 		SELECT INTO member_to_update author FROM post WHERE NEW.best_answer = post.id;
 		UPDATE member
 			SET score = score + 10
 			WHERE member_to_update = member.id;
+
+		IF OLD.best_answer is not null THEN
+			SELECT INTO member_to_update_old author FROM post WHERE OLD.best_answer = post.id;
+			UPDATE member	
+				SET score = score - 10
+				WHERE member_to_update_old = member.id;
+		END IF;
 	END IF;
+	REFRESH MATERIALIZED VIEW total_question;
+	REFRESH MATERIALIZED VIEW total_answer;
+	REFRESH MATERIALIZED VIEW total_comment;
 RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 DROP TRIGGER IF EXISTS best_answer_score on question;
-CREATE TRIGGER best_answer_score BEFORE UPDATE ON question
+CREATE TRIGGER best_answer_score AFTER UPDATE ON question
 	FOR EACH ROW EXECUTE PROCEDURE update_member_best_answer_score();
 
 --------
@@ -301,11 +334,11 @@ DECLARE num_categories SMALLINT;
 BEGIN
 	SELECT INTO num_categories count(*)
 		FROM question_category
-		WHERE NEW.question = question_category.question;
+		WHERE OLD.question = question_category.question;
 	IF num_categories <= 1 THEN
         RAISE EXCEPTION 'A question must have at least 1 category';
 	END IF;
-	RETURN NEW;
+	RETURN OLD;
 END
 $$ LANGUAGE plpgsql;
 DROP TRIGGER IF EXISTS "check_min_categories" ON "question_category";

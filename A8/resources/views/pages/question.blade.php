@@ -47,6 +47,10 @@
         @endif
         {{--@endif--}}
 
+        @php
+        {{ $questionOwner = Auth::check() && Auth::user()->id == $question['owner'];}}
+        @endphp
+
         @foreach($answers as $answer)
             @include('partials.question.answer', $answer)
         @endforeach

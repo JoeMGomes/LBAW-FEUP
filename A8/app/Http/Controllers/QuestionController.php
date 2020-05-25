@@ -61,7 +61,6 @@ class QuestionController extends Controller
                     'catid'  => $catArray[$i]]);
             }
            return redirect('/');
-        
     }
 
     public function view($question) {
@@ -76,5 +75,12 @@ class QuestionController extends Controller
             'param2' => $request->input('text_body'), 
             'param3' => $request->input('question_id')]);
             return redirect('/post/'. $request->input('question_id'));
+    }
+
+    public function chooseBestAnswer(Request $request) {
+        $question = $request->input('question'); 
+        $answer = $request->input('answer');
+        DB::select(DB::raw('update question set best_answer = :answer where post = :question'),
+         ['question' => $question, 'answer' => $answer]);
     }
 }

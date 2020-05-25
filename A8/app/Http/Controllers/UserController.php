@@ -135,7 +135,7 @@ class UserController extends Controller
                 ]
             );
 
-            return back()->with('successMessage', 'Username changed successfuly!');
+            return back()->with('successMessage', 'Password changed successfuly!');
         } else{
             return back()->with('errorMessage','Your current password does not match');        
         }

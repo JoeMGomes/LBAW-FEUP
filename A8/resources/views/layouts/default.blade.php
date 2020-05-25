@@ -76,8 +76,8 @@
                     <img src="{{asset('img/adminImage.jpg')}}" class="rounded-img " alt="">
                     <h5 class="pt-2 text-white">{{ Auth::guard('admin')->user()->name }}</h5>
                     <ul class="list-unstyled d-flex flex-column align-items-center mt-5 mb-3">
-                        <li><a class="text-white" href="{{route('showCatMan')}}">Report Management</a></li>
-                        <li><a class="text-white" href="{{route('showRepMan')}}">Category Management</a></li>
+                        <li><a class="text-white" href="{{route('showRepMan')}}">Report Management</a></li>
+                        <li><a class="text-white" href="{{route('showCatMan')}}">Category Management</a></li>
                         <li><a class="text-white" href="{{route('settings')}}">Settings</a></li>
                     </ul>
                     <button class="btn btn-secondary mb-3 w-100" onclick="document.location='{{route('logoutAdmin')}}'">Sign
@@ -158,8 +158,8 @@
                 <img src="{{asset('img/adminImage.jpg')}}" class="rounded-img " alt="">
                 <h5 class="pt-2 text-white">{{ Auth::guard('admin')->user()->name }}</h5>
                 <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
-                    <li><a class="text-white" href="{{route('showCatMan')}}">Report Management</a></li>
-                    <li><a class="text-white" href="{{route('showRepMan')}}">Category Management</a></li>
+                    <li><a class="text-white" href="{{route('showRepMan')}}">Report Management</a></li>
+                    <li><a class="text-white" href="{{route('showCatMan')}}">Category Management</a></li>
                     <li><a class="text-white" href="{{route('settings')}}">Settings</a></li>
                 </ul>
                 <button class="btn btn-secondary mb-3 w-100" onclick="document.location='{{route('logoutAdmin')}}'">Sign

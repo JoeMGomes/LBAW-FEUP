@@ -55,9 +55,11 @@ class AnswerController extends Controller
      * @param  \App\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Answer $answer)
+    public function edit(Request $request)
     {
-        //
+        $obj = new Answer();
+        $obj->updateText($request);
+        return redirect()->back();
     }
 
     /**

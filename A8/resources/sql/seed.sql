@@ -385,6 +385,7 @@ BEGIN
 	ELSE
 		INSERT INTO edit_log(post, old_body) VALUES (OLD.id, OLD.text_body);
 	END IF;
+	refresh materialized view total_answer;
 RETURN NEW;
 END
 $$ LANGUAGE plpgsql;

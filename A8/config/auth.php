@@ -77,8 +77,8 @@ return [
             'model' => App\User::class,
         ],
         'administrator' => [
-            'driver' => 'eloquent',
-            'model' =>a@a.com
+            'driver' => 'database',
+            'table' => 'administrator',
         ],
 
         // 'users' => [

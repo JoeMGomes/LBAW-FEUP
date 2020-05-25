@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class LoginController extends Controller
 {
     public function showLoginForm()
-    {
+    {   
         return view('auth.adminLogin');
     }
 
@@ -43,7 +43,7 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
-        return redirect('/')
+        return redirect()
             ->route('adminLogin')
             ->with('successMessage','Admin has been logged out!');
     }

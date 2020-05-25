@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Admin;
 use Illuminate\Http\Request;
 
@@ -85,10 +86,16 @@ class AdminController extends Controller
 
 
     public function showCategoryManagement(){
-        return view('admin.categoryManagement');
+        if(Auth::guard('admin')->check())
+            return view('admin.categoryManagement');
+        else
+            return view('auth.adminLogin');
     }
 
     public function showReportManagement(){
-        return view('admin.reportManagement');
+        if(Auth::guard('admin')->check())
+            return view('admin.reportManagement');
+        else
+            return view('auth.adminLogin');
     }
 }

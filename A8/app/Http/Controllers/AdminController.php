@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Answer;
+use Auth;
+use App\Admin;
 use Illuminate\Http\Request;
 
-class AnswerController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class AnswerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Answer  $answer
+     * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Answer $answer)
+    public function show(Admin $admin)
     {
         //
     }
@@ -52,24 +53,22 @@ class AnswerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Answer  $answer
+     * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Admin $admin)
     {
-        $obj = new Answer();
-        $obj->updateText($request);
-        return redirect()->back();
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Answer  $answer
+     * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Answer $answer)
+    public function update(Request $request, Admin $admin)
     {
         //
     }
@@ -77,11 +76,26 @@ class AnswerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Answer  $answer
+     * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Answer $answer)
+    public function destroy(Admin $admin)
     {
         //
+    }
+
+
+    public function showCategoryManagement(){
+        if(Auth::guard('admin')->check())
+            return view('admin.categoryManagement');
+        else
+            return view('auth.adminLogin');
+    }
+
+    public function showReportManagement(){
+        if(Auth::guard('admin')->check())
+            return view('admin.reportManagement');
+        else
+            return view('auth.adminLogin');
     }
 }

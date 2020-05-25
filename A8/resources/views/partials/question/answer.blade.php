@@ -18,6 +18,7 @@
             </div>
             <div class='text-nowrap'>
                 <small> Replied on {{date('M d, Y @ H:i',strtotime($answer['date']))}} </small>
+                @include('partials.question.edit')
                 @include('partials.report')
             </div>
         </div>

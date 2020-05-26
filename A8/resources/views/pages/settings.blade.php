@@ -103,7 +103,7 @@
                     </div>
                     <div class="">
                         <div class="px-5 ">
-                            <form method="POST" action="{{route('deleteAccount') }}" onsubmit=" return confirm('Are you sure you want to delete your account? This action is permanent')">
+                            <form method="POST" action="{{route('deleteAccount') }}" onsubmit=" return confirm('Are you sure you want to delete your account? This action is permanent') && confirm('Are you really sure?');">
                                 {{ csrf_field() }}
                                 <button  class="btn tag-orange text-white">Delete account</button>
                             </form>

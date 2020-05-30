@@ -40,6 +40,7 @@ Route::post('api/downvote', 'VoteController@downvote');
 Route::post('api/bestAnswer', 'QuestionController@chooseBestAnswer');
 Route::post('api/category', 'CategoryController@getCategories');
 Route::post('/deleteQuestion', 'QuestionController@deleteQuestion');
+Route::post('post/addComment', 'CommentController@addComment')->name('addComment');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');

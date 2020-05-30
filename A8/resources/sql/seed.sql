@@ -797,6 +797,46 @@ end;
 $$ language plpgsql;
 
 
+-- disable triggers so one post can be deleted
+create or replace function delete_question(post_id Integer)
+returns void as $$
+begin
+	ALTER TABLE question_category DISABLE TRIGGER check_min_categories;
+	delete from question where post = post_id;
+	delete from post where id = post_id; 
+	refresh materialized view total_question;
+	refresh materialized view total_answer;
+	refresh materialized view total_comment;
+	ALTER TABLE question_category ENABLE TRIGGER check_min_categories;
+end;
+$$ language plpgsql;
+
+
+-- delete answer and refresh views
+create or replace function delete_answer(post_id Integer)
+returns void as $$
+begin
+	delete from answer where post = post_id;
+	delete from post where id = post_id; 
+	refresh materialized view total_question;
+	refresh materialized view total_answer;
+	refresh materialized view total_comment;
+end;
+$$ language plpgsql;
+
+-- delete answer and refresh views
+create or replace function delete_comment(post_id Integer)
+returns void as $$
+begin
+	delete from comment where post = post_id;
+	delete from post where id = post_id; 
+	refresh materialized view total_question;
+	refresh materialized view total_answer;
+	refresh materialized view total_comment;
+end;
+$$ language plpgsql;
+
+
 --- Populate --- 
 -- NULL ROWS TO ENSURE NOT NULL CONSTRAINS DONT BREAK
 INSERT INTO member(email, name, password) VALUES('null@null.com', 'Not a Person', 'unBreakablePassWordNullMember');

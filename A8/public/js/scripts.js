@@ -140,7 +140,8 @@ function Handler() {
     let tagElem = document.querySelector("#tags");
     tagElem.innerHTML = "";
     for (let i = 0; i < response.length; i++) {
-        tagElem.innerHTML += '<option value="' + response[i].name + '" data-color="'+ response[i].color + '">';
+        tagElem.innerHTML +=
+            '<option value="' + response[i].name + '" data-color="' + response[i].color + '">';
     }
 }
 
@@ -199,7 +200,7 @@ function getNotifications() {
 }
 
 function getCategNumber() {
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i <= 5; i++) {
         if (document.getElementById("category" + i) == null) {
             return i;
         }
@@ -244,7 +245,6 @@ jQuery(document).ready(function () {
         }
     });
 
-
     /*
 	    Navigation
 	*/
@@ -260,10 +260,10 @@ jQuery(document).ready(function () {
             );
         }
     });
-})
+});
 
-    let categ = document.querySelector("#category");
-    if(categ != null){
+let categ = document.querySelector("#category");
+if (categ != null) {
     categ.addEventListener("click", function (e) {
         let val = categ.value;
         if (val.trim() != "") {
@@ -272,16 +272,19 @@ jQuery(document).ready(function () {
                 if (opts[i].value !== undefined) {
                     if (opts[i].value === val) {
                         let categNumb = getCategNumber();
-                        document.querySelector("#categoryList").innerHTML +=
-                            '<input class="form-control" id="category' +
-                            categNumb +
-                            '" name="category' +
-                            categNumb +
-                            '" value="' +
-                            val +
-                            '" readonly required><button onclick="deletecategory(' +
-                            categNumb +
-                            ')"> X </button>';
+                        console.log(categNumb);
+                        if (categNumb != 0) {
+                            document.querySelector("#categoryList").innerHTML +=
+                                '<input class="form-control" id="category' +
+                                categNumb +
+                                '" name="category' +
+                                categNumb +
+                                '" value="' +
+                                val +
+                                '" readonly required><button onclick="deletecategory(' +
+                                categNumb +
+                                ')"> X </button>';
+                        }
                     }
                 }
             }
@@ -297,20 +300,21 @@ jQuery(document).ready(function () {
             let opts = document.getElementById("tags").childNodes;
             for (let i = 0; i < opts.length; i++) {
                 if (opts[i].value !== undefined) {
-                    console.log("works");
                     if (opts[i].value === val) {
                         let categNumb = getCategNumber();
-                        document.querySelector("#categoryList").innerHTML +=
-                            '<input class="form-control" id="category' +
-                            categNumb +
-                            '" name="category' +
-                            categNumb +
-                            '" value="' +
-                            val +
-                            '" readonly required><button onclick="deletecategory(' +
-                            categNumb +
-                            ')"> X </button>';
-                        categ.value = "";
+                        if (categNumb != 0) {
+                            document.querySelector("#categoryList").innerHTML +=
+                                '<input class="form-control" id="category' +
+                                categNumb +
+                                '" name="category' +
+                                categNumb +
+                                '" value="' +
+                                val +
+                                '" readonly required><button onclick="deletecategory(' +
+                                categNumb +
+                                ')"> X </button>';
+                            categ.value = "";
+                        }
                     }
                 }
             }
@@ -320,40 +324,38 @@ jQuery(document).ready(function () {
         e.preventDefault();
         return false;
     });
-
 }
 
 function downvote(id) {
-	sendAjaxRequest("post", "/api/downvote", {message : id}, voteHandler);
+    sendAjaxRequest("post", "/api/downvote", { message: id }, voteHandler);
 }
 
 function upvote(id) {
-	sendAjaxRequest("post", "/api/upvote", {message : id}, voteHandler);
+    sendAjaxRequest("post", "/api/upvote", { message: id }, voteHandler);
 }
 
 function voteHandler(id) {
-	let response = JSON.parse(this.responseText);
-	console.log(response);
-	let tagElem = document.querySelector('#votes_answer' + response.id);
-	tagElem.innerHTML = response.votes;
+    let response = JSON.parse(this.responseText);
+    console.log(response);
+    let tagElem = document.querySelector("#votes_answer" + response.id);
+    tagElem.innerHTML = response.votes;
 }
 
 function chooseBestAnswer(answer, question) {
-	sendAjaxRequest("post", "/api/bestAnswer", {answer:answer, question:question}, function() {
-		location.reload();
-	});
+    sendAjaxRequest("post", "/api/bestAnswer", { answer: answer, question: question }, function () {
+        location.reload();
+    });
 }
 
 //Dissapear Message Function
 function hideMessage(object) {
-	if(object == null){
-		console.log("null")
-		object = document.getElementById('message')
-	}
-	else{
-		console.log('not null')
-	}
-	object.parentNode.removeChild(object);
+    if (object == null) {
+        console.log("null");
+        object = document.getElementById("message");
+    } else {
+        console.log("not null");
+    }
+    object.parentNode.removeChild(object);
 }
 
 /**
@@ -407,18 +409,18 @@ categEdit.addEventListener("input", function (e) {
         for (let i = 0; i < opts.length; i++) {
             if (opts[i].value !== undefined) {
                 if (opts[i].value === val) {
-                    let newName = document.getElementById('inputCatEdit');
+                    let newName = document.getElementById("inputCatEdit");
                     newName.value = val;
-                    let newColor = document.getElementById('color-pickerEdit');
-                    let newColorWrapper = document.getElementById('color-picker-wrapperEdit');
+                    let newColor = document.getElementById("color-pickerEdit");
+                    let newColorWrapper = document.getElementById("color-picker-wrapperEdit");
                     let newCatPreviewEdit = document.getElementById("newCatPreviewEdit");
-                    
-                    let color = decimalToHexString( parseInt( opts[i].getAttribute('data-color')));
-                    newColor.value = '#' + color;
-                    newColorWrapper.style.background = '#'+ color;
-                    newCatPreviewEdit.style.background = '#' + color;   
+
+                    let color = decimalToHexString(parseInt(opts[i].getAttribute("data-color")));
+                    newColor.value = "#" + color;
+                    newColorWrapper.style.background = "#" + color;
+                    newCatPreviewEdit.style.background = "#" + color;
                     newCatPreviewEdit.innerHTML = val;
-                    console.log(color) 
+                    console.log(color);
                 }
             }
         }
@@ -429,12 +431,10 @@ categEdit.addEventListener("input", function (e) {
     return false;
 });
 
-function decimalToHexString(number)
-{
-  if (number < 0)
-  {
-    number = 0xFFFFFFFF + number + 1;
-  }
+function decimalToHexString(number) {
+    if (number < 0) {
+        number = 0xffffffff + number + 1;
+    }
 
-  return number.toString(16).toUpperCase();
+    return number.toString(16).toUpperCase();
 }

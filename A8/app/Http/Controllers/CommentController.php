@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Answer;
-use Illuminate\Support\Facades\Auth;
+use DB;
+use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AnswerController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +43,10 @@ class AnswerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Answer  $answer
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Answer $answer)
+    public function show(Comment $comment)
     {
         //
     }
@@ -53,24 +54,22 @@ class AnswerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Answer  $answer
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Comment $comment)
     {
-        $obj = new Answer();
-        $obj->updateText($request);
-        return redirect()->back();
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Answer  $answer
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Answer $answer)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -78,15 +77,24 @@ class AnswerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Answer  $answer
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function deleteAnswer(Request $request)
+    public function destroy(Comment $comment)
     {
-        if (Auth::check() && Auth::user()->id == $request->input('owner')){
-            $obj = new Answer();
-            $obj->deleteAns($request);
-            return redirect()->back();
-        }
-    } 
+        //
+    }
+
+    public function addComment(Request $request){
+        $ob = new Comment();
+
+        $input['id'] = Auth::user()->id;
+        $input['text_body'] = $request->input('comment_body');
+        $input['answer_id'] = $request->input('answer_id');
+
+        $response = $ob->create($input);
+
+        
+        return redirect()->back();
+    }
 }

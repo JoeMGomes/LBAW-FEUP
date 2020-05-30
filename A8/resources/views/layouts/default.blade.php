@@ -26,89 +26,14 @@
 </head>
 
 @yield('bodyTag')
-<!-------NORMAL VERSION-------->
-<nav class="sidebar-lg d-none d-lg-block col-lg-2 ">
 
-    <div class=" sidebar-header text-center text-white">
-        <div class="">
-            <a href="{{route('home')}}">
-                <img src="{{ asset('img/logo.png') }}" class="register-logo mb-5" width="100px" alt="Company Logo">
-            </a>
-            @auth('admin')
-            @else
-            <a class="w-100 bg-myyellow bg-myyellow btn rounded large mb-3 text-nowrap px-1"
-                style="font-weight: 700; font-size: 1.2em;" href="{{ route('newQuestion')}}">Post a Question</a>
-            <div class="bg-dark w-100 rounded py-2 overflow-hidden mb-3">
-                <a href="#categories" data-toggle="collapse" aria-expanded="false"
-                    class="dropdown-toggle m-5 text-white bg-transparent">Categories</a>
-                <ul class="collapse list-unstyled bg-transparent " id="categories">
-                    <hr class="my-1 m-0 " style="height: 2px; background-color: #2c2c2c">
-                    <li><a class="scroll-link text-white" class="" href="{{url('search/%23Laundry')}}">Laundry</a></li>
-                    <li><a class="scroll-link text-white" class="" href="{{url('search/%23Cooking')}}">Cooking</a></li>
-                    <li><a class="scroll-link text-white" class="" href="{{url('search/%23Health')}}">Health</a></li>
-                    <li><a class="scroll-link text-white" class="" href="{{url('search/%23Sexuality')}}">Sexuality</a>
-                    </li>
-                    <li><a class="scroll-link text-white" class="" href="{{url('search/%23Finances')}}">Finances</a>
-                    </li>
-                    <li><a class="scroll-link text-white" class="" href="{{url('search/%23Work')}}">Work</a></li>
-                    <li><a class="scroll-link text-white" class=""
-                            href="{{url('search/%23Relationships')}}">Relationships</a></li>
-                    <li><a class="scroll-link text-white" class="" href="{{url('search/%23Household')}}">Household</a>
-                    </li>
-                </ul>
-            </div>
-            @endauth
-        </div>
-    </div>
-    @if (Auth::check())
-    <div class="w-100 text-center d-flex flex-column align-items-center">
-        <div class="d-flex flex-column align-items-center w-100">
-            <img src="{{asset('img/'.Auth::user()->photo_url)}}" class="rounded-img " alt="">
-            <h5 class="pt-2 text-white">{{ Auth::user()->name }}</h5>
-            <span class="text-white">{{ Auth::user()->score }} points</span>
-            <ul class="list-unstyled d-flex flex-column align-items-center mt-5 mb-3">
-                <li><a class="text-white" href="#NOT_IMPLEMENTED">View Activity</a></li>
-                <li><a class="notifications-buttom btn"
-                        onclick="getNotifications(); open_notifications();">Notifications</a>
-                    @include('partials.notificationPopUp')
-                </li>
-                <li><a class="text-white" href="{{route('settings')}}">Settings</a></li>
-            </ul>
-            <button class="btn btn-secondary mb-3 w-100" onclick="document.location='{{route('logout')}}'">Sign
-                out</button>
-
-        </div>
-        @elseif (Auth::guard('admin')->check())
-        <img src="{{asset('img/adminImage.jpg')}}" class="rounded-img " alt="">
-        <h5 class="pt-2 text-white">{{ Auth::guard('admin')->user()->name }}</h5>
-        <ul class="list-unstyled d-flex flex-column align-items-center mt-5 mb-3">
-            <li><a class="text-white" href="{{route('showRepMan')}}">Report Management</a></li>
-            <li><a class="text-white" href="{{route('showCatMan')}}">Category Management</a></li>
-            <li><a class="text-white" href="{{route('settings')}}">Settings</a></li>
-        </ul>
-        <button class="btn btn-secondary mb-3 w-100" onclick="document.location='{{route('logoutAdmin')}}'">Sign
-            out</button>
-        @else
-        <div class="w-100 text-center d-flex flex-column align-items-center">
-            <div class=" pb-3 nav flex-column w-100">
-                <a class="w-100  btn btn-light mb-2" href="{{ route('signup') }}">Sign up</a>
-                <a class="btn btn-secondary mb-5" href="{{ route('login') }}">Log in</a>
-            </div>
-            @endif
-            <a class="small text-white" href="{{ route('about') }}">About</a>
-        </div>
-</nav>
-
-<!--------
-    MOBILE VERSION
-    -------->
-
-<nav class="sidebar d-lg-none d-flex flex-column justify-content-between align-items-center">
-    <div class="fixed-box d-flex flex-column align-items-center justify-content-center">
+<!--------MOBILE VERSION-------->
+<nav class="sidebar d-flex flex-column d-lg-block col-lg-2 justify-content-between align-items-center active">
+    <div class="fixed-box d-flex d-lg-none flex-column align-items-center justify-content-center">
         <a class="fixed-btn dismiss d-flex flex-column justify-content-center align-items-center p-0" href="#">
             <i class="fa fa-arrow-left"></i>
         </a>
-        <a class="btn btn-light text-dark btn-customized-3 fixed-btn d-flex flex-column justify-content-center align-items-center p-0"
+        <a class="btn btn-light text-dark btn-customized-3 fixed-btn d-flex flex-column justify-content-center align-items-center p-0 to-top"
             href="#" role="button" style="position:relative;top:10px">
             <i class="fa fa-arrow-up "></i>
         </a>

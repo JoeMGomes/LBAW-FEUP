@@ -76,8 +76,8 @@ function timeAgo(dateParam) {
 }
 
 function scroll_to(clicked_link, nav_height) {
-    var element_class = clicked_link.attr("href").replace("#", ".");
-    var scroll_to = 0;
+    let element_class = clicked_link.attr("href").replace("#", ".");
+    let scroll_to = 0;
     if (element_class != ".top-content") {
         element_class += "-container";
         scroll_to = $(element_class).offset().top - nav_height;
@@ -140,7 +140,8 @@ function Handler() {
     let tagElem = document.querySelector("#tags");
     tagElem.innerHTML = "";
     for (let i = 0; i < response.length; i++) {
-        tagElem.innerHTML += '<option value="' + response[i].name + '">';
+        tagElem.innerHTML +=
+            '<option value="' + response[i].name + '" data-color="' + response[i].color + '">';
     }
 }
 
@@ -244,6 +245,16 @@ jQuery(document).ready(function () {
         }
     });
 
+    $(window).resize(function () {
+        if ($(window).width() >= 992) {
+            $(".sidebar").addClass("active");
+            $(".sidebar").removeClass("inactive");
+        } else {
+            $(".sidebar").removeClass("active");
+            $(".sidebar").addClass("inactive");
+        }
+    });
+
     /*
 	    Navigation
 	*/
@@ -259,18 +270,19 @@ jQuery(document).ready(function () {
             );
         }
     });
+});
 
-    var categ = document.querySelector("#category");
-
-    categ.addEventListener("click", function () {
-        var val = categ.value;
+let categ = document.querySelector("#category");
+if (categ != null) {
+    categ.addEventListener("click", function (e) {
+        let val = categ.value;
         if (val.trim() != "") {
-            var opts = document.getElementById("tags").childNodes;
-            for (var i = 0; i < opts.length; i++) {
+            let opts = document.getElementById("tags").childNodes;
+            for (let i = 0; i < opts.length; i++) {
                 if (opts[i].value !== undefined) {
                     if (opts[i].value === val) {
                         let categNumb = getCategNumber();
-                        console.log(categNumb)
+                        console.log(categNumb);
                         if (categNumb != 0) {
                             document.querySelector("#categoryList").innerHTML +=
                                 '<input class="form-control" id="category' +
@@ -283,7 +295,6 @@ jQuery(document).ready(function () {
                                 categNumb +
                                 ')"> X </button>';
                         }
-
                     }
                 }
             }
@@ -293,13 +304,12 @@ jQuery(document).ready(function () {
         e.preventDefault();
         return false;
     });
-    categ.addEventListener("input", function () {
-        var val = categ.value;
+    categ.addEventListener("input", function (e) {
+        let val = categ.value;
         if (val.trim() != "") {
-            var opts = document.getElementById("tags").childNodes;
-            for (var i = 0; i < opts.length; i++) {
+            let opts = document.getElementById("tags").childNodes;
+            for (let i = 0; i < opts.length; i++) {
                 if (opts[i].value !== undefined) {
-
                     if (opts[i].value === val) {
                         let categNumb = getCategNumber();
                         if (categNumb != 0) {
@@ -324,7 +334,39 @@ jQuery(document).ready(function () {
         e.preventDefault();
         return false;
     });
-});
+}
+
+function downvote(id) {
+    sendAjaxRequest("post", "/api/downvote", { message: id }, voteHandler);
+}
+
+function upvote(id) {
+    sendAjaxRequest("post", "/api/upvote", { message: id }, voteHandler);
+}
+
+function voteHandler(id) {
+    let response = JSON.parse(this.responseText);
+    console.log(response);
+    let tagElem = document.querySelector("#votes_answer" + response.id);
+    tagElem.innerHTML = response.votes;
+}
+
+function chooseBestAnswer(answer, question) {
+    sendAjaxRequest("post", "/api/bestAnswer", { answer: answer, question: question }, function () {
+        location.reload();
+    });
+}
+
+//Dissapear Message Function
+function hideMessage(object) {
+    if (object == null) {
+        console.log("null");
+        object = document.getElementById("message");
+    } else {
+        console.log("not null");
+    }
+    object.parentNode.removeChild(object);
+}
 
 /**
  * Tag Creation color and text preview
@@ -366,38 +408,43 @@ newCatPreviewEdit.innerHTML = "&nbsp";
 color_picker_wrapperEdit.style.background = color_pickerEdit.value;
 newCatPreviewEdit.style.background = color_pickerEdit.value;
 
-function downvote(id) {
-	sendAjaxRequest("post", "/api/downvote", {message : id}, voteHandler);
-}
+//Edit Categories
 
-function upvote(id) {
-	sendAjaxRequest("post", "/api/upvote", {message : id}, voteHandler);
-}
+let categEdit = document.querySelector("#categoryEdit");
 
-function voteHandler(id) {
-	let response = JSON.parse(this.responseText);
-	console.log(response);
-	let tagElem = document.querySelector('#votes_answer' + response.id);
-	tagElem.innerHTML = response.votes;
-}
+categEdit.addEventListener("input", function (e) {
+    let val = categEdit.value;
+    if (val.trim() != "") {
+        let opts = document.getElementById("tags").childNodes;
+        for (let i = 0; i < opts.length; i++) {
+            if (opts[i].value !== undefined) {
+                if (opts[i].value === val) {
+                    let newName = document.getElementById("inputCatEdit");
+                    newName.value = val;
+                    let newColor = document.getElementById("color-pickerEdit");
+                    let newColorWrapper = document.getElementById("color-picker-wrapperEdit");
+                    let newCatPreviewEdit = document.getElementById("newCatPreviewEdit");
 
-function chooseBestAnswer(answer, question) {
-	sendAjaxRequest("post", "/api/bestAnswer", {answer:answer, question:question}, function() {
-		location.reload();
-		//console.log(this.responseText)
-	});
-}
-
-//Dissapear Message Function
-function hideMessage(object) {
-    if (object == null) {
-        console.log("null")
-        object = document.getElementById('message')
+                    let color = decimalToHexString(parseInt(opts[i].getAttribute("data-color")));
+                    newColor.value = "#" + color;
+                    newColorWrapper.style.background = "#" + color;
+                    newCatPreviewEdit.style.background = "#" + color;
+                    newCatPreviewEdit.innerHTML = val;
+                    console.log(color);
+                }
+            }
+        }
     }
-    else {
-        console.log('not null')
+    let data = $("#categoryEdit").val();
+    sendAjaxRequest("post", "/api/category", { message: data }, Handler);
+    e.preventDefault();
+    return false;
+});
+
+function decimalToHexString(number) {
+    if (number < 0) {
+        number = 0xffffffff + number + 1;
     }
-    object.parentNode.removeChild(object);
+
+    return number.toString(16).toUpperCase();
 }
-//does not work
-window.setTimeout(hideMessage, 5000);

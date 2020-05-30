@@ -29,3 +29,13 @@
 @foreach($answer['comments'] as $comment)
     @include('partials.question.comment', $comment)
 @endforeach
+
+@if(Auth::check())
+            {{--<!--@if($question['owner'] != Auth::user()->id) -->--}}
+            @include('partials.question.commentInput', ['username' => $question['name'], 'answer' =>$answer['id']])
+        @endif
+        {{--@endif--}}
+
+        @php
+        {{ $questionOwner = Auth::check() && Auth::user()->id == $question['owner'];}}
+        @endphp

@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <input class="form-control categoryArray" autocomplete="off" list="tags" id="category"value="{{ old('category') }}">
+                <input class="form-control categoryArray" autocomplete="off" list="tags" id="category" value="{{ old('category') }}">
                 <datalist id="tags">
 
                 </datalist>

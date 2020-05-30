@@ -38,6 +38,7 @@ Route::post('post/edit', 'AnswerController@edit');
 Route::post('api/upvote', 'VoteController@upvote');
 Route::post('api/downvote', 'VoteController@downvote');
 Route::post('api/bestAnswer', 'QuestionController@chooseBestAnswer');
+Route::post('api/category', 'CategoryController@getCategories');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');
@@ -46,8 +47,8 @@ Route::post('/adminLogin', 'Admin\Auth\LoginController@login')->name('logAdmin')
 Route::get('/adminLogout', 'Admin\Auth\LoginController@logout')->name('logoutAdmin');
 
 Route::get('/admin/categoryManagement','AdminController@showCategoryManagement')->name('showCatMan');
+Route::post('/admin/addCategory', 'CategoryController@createCategory')->name('addCat');
 Route::get('/admin/reportManagement','AdminController@showReportManagement')->name('showRepMan');
 
 
 Route::get('about', 'HomeController@showAbout')->name('about');
-Route::post('api/category', 'CategoryController@getCategories');

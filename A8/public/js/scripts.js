@@ -367,20 +367,25 @@ color_picker_wrapperEdit.style.background = color_pickerEdit.value;
 newCatPreviewEdit.style.background = color_pickerEdit.value;
 
 function downvote(id) {
-    console.log("downvote " + id);
-    sendAjaxRequest("post", "/api/downvote", { message: id }, voteHandler);
+	sendAjaxRequest("post", "/api/downvote", {message : id}, voteHandler);
 }
 
 function upvote(id) {
-    console.log("upvote " + id);
-    sendAjaxRequest("post", "/api/upvote", { message: id }, voteHandler);
+	sendAjaxRequest("post", "/api/upvote", {message : id}, voteHandler);
 }
 
 function voteHandler(id) {
-    let response = JSON.parse(this.responseText);
-    console.log(response);
-    let tagElem = document.querySelector("#votes_answer" + response.id);
-    tagElem.innerHTML = response.votes;
+	let response = JSON.parse(this.responseText);
+	console.log(response);
+	let tagElem = document.querySelector('#votes_answer' + response.id);
+	tagElem.innerHTML = response.votes;
+}
+
+function chooseBestAnswer(answer, question) {
+	sendAjaxRequest("post", "/api/bestAnswer", {answer:answer, question:question}, function() {
+		location.reload();
+		//console.log(this.responseText)
+	});
 }
 
 //Dissapear Message Function

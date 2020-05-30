@@ -24,13 +24,14 @@
                     {{$question['text']}}
                 </p>
                 <div class="d-flex row align-items-end justify-content-between">
-                    <div class="col-lg-8">
+                    <div class="">
                         @foreach($question['categories'] as $category)
                             @include('partials.question.tag', $category)
                         @endforeach
                     </div>
-                    <div class="text-right col-lg-4 text-nowrap">
-                        <small> Asked on {{date('M d, Y @ H:i ', strtotime($question['date']))}} </small>
+                    <div class="text-right text-nowrap d-flex ">
+                        <small class="my-auto"> Asked on {{date('M d, Y @ H:i ', strtotime($question['date']))}} </small>
+                        @include('partials.question.deleteQuestion')
                         @include('partials.report')
                     </div>
                 </div>
@@ -46,6 +47,10 @@
             @include('partials.question.answerInput', ['username' => $question['name'], 'question_id' =>$question['id']])
         @endif
         {{--@endif--}}
+
+        @php
+        {{ $questionOwner = Auth::check() && Auth::user()->id == $question['owner'];}}
+        @endphp
 
         @foreach($answers as $answer)
             @include('partials.question.answer', $answer)

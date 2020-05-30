@@ -1,4 +1,4 @@
-
+@if(Auth::check() && Auth::user()->id == $answer['owner'])
     <button type="button" class="btn text-secondary" data-toggle="modal" data-target="#edit{{$answer['id']}}">
         <a href="#" class=" text-black"><i class="fa fa-edit"></i> Edit</a>
     </button>
@@ -15,3 +15,4 @@
             </div>
         </div>
     </div>
+@endif

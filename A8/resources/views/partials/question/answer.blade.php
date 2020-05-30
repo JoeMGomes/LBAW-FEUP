@@ -5,7 +5,7 @@
         <div onclick="downvote({{ $answer['id'] }})"><i class=" fa fa-angle-down fa-2x text-myblue " ></i></div>
     </div>
     <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-3">
-        <p class="text-justify">
+        <p class="text-justify" id="post_text{{$answer['id']}}">
             {{$answer['text']}}
         </p>
         <div class="d-flex flex-wrap justify-content-between align-items-center">
@@ -19,6 +19,7 @@
             <div class='text-nowrap'>
                 <small> Replied on {{date('M d, Y @ H:i',strtotime($answer['date']))}} </small>
                 @include('partials.question.edit')
+                @include('partials.question.chooseBestAnswer')
                 @include('partials.report')
             </div>
         </div>

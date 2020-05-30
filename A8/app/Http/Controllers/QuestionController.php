@@ -83,4 +83,11 @@ class QuestionController extends Controller
         DB::select(DB::raw('update question set best_answer = :answer where post = :question'),
          ['question' => $question, 'answer' => $answer]);
     }
+
+    public function deleteQuestion(Request $r) {
+        $question = $r->input('id');
+        DB::select(DB::raw('select delete_question(:question)'), 
+            ['question' => $question]);
+        return redirect('/');
+    }
 }

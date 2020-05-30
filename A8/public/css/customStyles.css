@@ -31,9 +31,9 @@
 
 /***** Sidebar *****/
 
-.sidebar,
-.sidebar-lg {
+.sidebar {
     height: 100%;
+    width: 250px;
     padding: 1rem;
     padding-top: 2rem;
     position: fixed;
@@ -84,7 +84,6 @@
 }
 
 .sidebar ul li.active>a,
-.sidebar-lg ul li.active>a,
 a[aria-expanded="true"] {
     background: #444;
     color: #fff;
@@ -100,12 +99,15 @@ a[aria-expanded="true"] {
 
 }
 
-.sidebar .to-top,
-.sidebar-lg .to-top {
+.sidebar .to-top {
     padding: 20px;
     text-align: center;
 }
 
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    
+    }
 /***** Other Stuff *****/
 
 .rounded-img {

@@ -245,6 +245,16 @@ jQuery(document).ready(function () {
         }
     });
 
+    $(window).resize(function () {
+        if ($(window).width() >= 992) {
+            $(".sidebar").addClass("active");
+            $(".sidebar").removeClass("inactive");
+        } else {
+            $(".sidebar").removeClass("active");
+            $(".sidebar").addClass("inactive");
+        }
+    });
+
     /*
 	    Navigation
 	*/

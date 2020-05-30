@@ -26,7 +26,7 @@
 </head>
 
 @yield('bodyTag')
-<!-------NORMAL VERSION-------->
+{{-- <!-------NORMAL VERSION-------->
 <nav class="sidebar-lg d-none d-lg-block col-lg-2 ">
 
     <div class=" sidebar-header text-center text-white">
@@ -97,18 +97,18 @@
             @endif
             <a class="small text-white" href="{{ route('about') }}">About</a>
         </div>
-</nav>
+</nav> --}}
 
 <!--------
     MOBILE VERSION
     -------->
 
-<nav class="sidebar d-lg-none d-flex flex-column justify-content-between align-items-center">
-    <div class="fixed-box d-flex flex-column align-items-center justify-content-center">
+<nav class="sidebar d-flex flex-column d-lg-block col-lg-2 justify-content-between align-items-center active">
+    <div class="fixed-box d-flex d-lg-none flex-column align-items-center justify-content-center">
         <a class="fixed-btn dismiss d-flex flex-column justify-content-center align-items-center p-0" href="#">
             <i class="fa fa-arrow-left"></i>
         </a>
-        <a class="btn btn-light text-dark btn-customized-3 fixed-btn d-flex flex-column justify-content-center align-items-center p-0"
+        <a class="btn btn-light text-dark btn-customized-3 fixed-btn d-flex flex-column justify-content-center align-items-center p-0 to-top"
             href="#" role="button" style="position:relative;top:10px">
             <i class="fa fa-arrow-up "></i>
         </a>

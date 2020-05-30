@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -80,8 +81,12 @@ class AnswerController extends Controller
      * @param  \App\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Answer $answer)
+    public function deleteAnswer(Request $request)
     {
-        //
-    }
+        if (Auth::check() && Auth::user()->id == $request->input('owner')){
+            $obj = new Answer();
+            $obj->deleteAns($request);
+            return redirect()->back();
+        }
+    } 
 }

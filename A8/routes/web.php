@@ -39,6 +39,7 @@ Route::post('api/upvote', 'VoteController@upvote');
 Route::post('api/downvote', 'VoteController@downvote');
 Route::post('api/bestAnswer', 'QuestionController@chooseBestAnswer');
 Route::post('/deleteQuestion', 'QuestionController@deleteQuestion');
+Route::post('/deleteAnswer', 'AnswerController@deleteAnswer');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');

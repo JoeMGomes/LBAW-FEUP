@@ -49,6 +49,7 @@ Route::get('/adminLogout', 'Admin\Auth\LoginController@logout')->name('logoutAdm
 
 Route::get('/admin/categoryManagement','AdminController@showCategoryManagement')->name('showCatMan');
 Route::post('/admin/addCategory', 'CategoryController@createCategory')->name('addCat');
+Route::post('/admin/deleteCategory', 'CategoryController@modifyCategory')->name('modCat');
 Route::get('/admin/reportManagement','AdminController@showReportManagement')->name('showRepMan');
 
 

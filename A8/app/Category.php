@@ -18,7 +18,19 @@ class Category extends Model
     }
 
     public function create($data){
-        
         DB::insert('INSERT into category (name, color) values (:name, :color)', ['name' => $data['name'], 'color' => $data['color']]);
     }
+
+    public function deleteCateg($data){
+        DB::delete('DELETE From category where name = :name', ['name' => $data['name']]);
+    }
+
+    public function updateCateg($data){
+        DB::update('UPDATE category set name = :name, color= :color where id = :id', [
+            'name' => $data['name'],
+            'color' => $data['color'],
+            'id' => $data['id'],
+        ]);
+    }
+    
 }

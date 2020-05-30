@@ -27,7 +27,7 @@
 
 @yield('bodyTag')
 
-<!--------MOBILE VERSION-------->
+<!--------ONLY ONE VERSION-------->
 <nav class="sidebar d-flex flex-column d-lg-block col-lg-2 justify-content-between align-items-center active">
     <div class="fixed-box d-flex d-lg-none flex-column align-items-center justify-content-center">
         <a class="fixed-btn dismiss d-flex flex-column justify-content-center align-items-center p-0" href="#">
@@ -38,7 +38,7 @@
             <i class="fa fa-arrow-up "></i>
         </a>
     </div>
-    <div class="sidebar-header text-center text-white ">
+    <div class="sidebar-header text-center text-white">
         <div>
             <a href="{{ route('home')}}">
                 <img src="{{asset('img/logo.png')}}" class="register-logo mb-4" width="100px" alt="Company Logo">
@@ -69,9 +69,9 @@
             @endauth
         </div>
     </div>
-    <div class="w-100 text-center d-flex flex-column align-items-center">
-    @if (Auth::check())
-        <div class="d-flex flex-column align-items-center w-100">
+    <div class="w-100 text-center d-flex flex-column align-items-center align-text-bottom ">
+        @if (Auth::check())
+        <div class="d-flex flex-column align-items-center w-100" ">
             <img src="{{asset('img/'.Auth::user()->photo_url)}}" class="rounded-img " alt="">
             <h5 class="pt-2 text-white">{{Auth::user()->name}}</h5>
             <span class="text-white">{{Auth::user()->score}} points</span>
@@ -87,25 +87,27 @@
         </div>
 
         @elseif (Auth::guard('admin')->check())
-        <img src="{{asset('img/adminImage.jpg')}}" class="rounded-img " alt="">
-        <h5 class="pt-2 text-white">{{ Auth::guard('admin')->user()->name }}</h5>
-        <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
-            <li><a class="text-white" href="{{route('showRepMan')}}">Report Management</a></li>
-            <li><a class="text-white" href="{{route('showCatMan')}}">Category Management</a></li>
-            <li><a class="text-white" href="{{route('settings')}}">Settings</a></li>
-        </ul>
-        <button class="btn btn-secondary mb-3 w-100" onclick="document.location='{{route('logoutAdmin')}}'">Sign
-            out</button>
+        <div class="d-flex flex-column align-items-center w-100">
+
+            <img src="{{asset('img/adminImage.jpg')}}" class="rounded-img " alt="">
+            <h5 class="pt-2 text-white">{{ Auth::guard('admin')->user()->name }}</h5>
+            <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
+                <li><a class="text-white" href="{{route('showRepMan')}}">Report Management</a></li>
+                <li><a class="text-white" href="{{route('showCatMan')}}">Category Management</a></li>
+                <li><a class="text-white" href="{{route('settings')}}">Settings</a></li>
+            </ul>
+            <button class="btn btn-secondary mb-3 w-100" onclick="document.location='{{route('logoutAdmin')}}'">Sign
+                out</button>
+        </div>
         @else
-        <div class="w-100 text-center d-flex flex-column align-items-center">
+        <div class="w-100 text-center d-flex flex-column align-items-bottom">
             <div class="nav flex-column w-100">
                 <a class="w-100  btn btn-light mb-2" href="{{ route('signup')}}">Sign up</a>
                 <a class="btn btn-secondary mb-2" href="{{ route('login')}}">Log in</a>
             </div>
-            @endif
-
             <a class="small text-white text-center " href="{{ route('about')}}">About</a>
         </div>
+        @endif
     </div>
 </nav>
 @if(session()->has('successMessage'))

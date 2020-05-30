@@ -11,8 +11,8 @@
 @section('main')
 @include('partials.navBarTop')
 <main id="main" class="ml-lg-auto col-lg-10 align-right ">
-    <h1 class=" py-2 px-4"> Administration</h1>
-    <div class="container px-4">
+    <div class="py-4 px-5  ">
+        <h1> Administration</h1>
         @include('partials.admin.adminHead')
 
         <div class="table-responsive">

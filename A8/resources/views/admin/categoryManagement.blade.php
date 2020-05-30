@@ -44,7 +44,7 @@
                 <form method="POST">
                     <h5>Edit Category</h5>
                     <div class="form-group w-25">
-                        <input class="form-control" id="categoryEdit" list="tags" placeholder="Type Category Name">
+                        <input class="form-control" id="categoryEdit" autocomplete="off" list="tags" placeholder="Type Category Name">
                         <datalist id="tags">
 
                         </datalist>

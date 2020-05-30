@@ -30,18 +30,28 @@ class QuestionController extends Controller
         }
     }
 
+
     public function store(Request $request){
         $check = false;
         $catArray = array();
-        for($i = 1; $i < 5; $i++){
-            if(!$this->checkcategory($request->input('category'.$i)) && $request->input('category'.$i) != ''){
-                //print_r($response);
-                return back()->with('errorMessage' , $request->input('category'.$i).' is not a valid category!'.$request->input('category'.$i));
+        $title = $request->input('title');
+        $textBody = $request->input('text_body');
+
+        $noDupArray = array_unique($request->input());
+
+        for($i = 1; $i <= 5; $i++){
+            if (array_key_exists('category'.$i, $noDupArray)){
+
+                if(!$this->checkcategory($noDupArray['category'.$i]) && $noDupArray['category'.$i] != ''){
+                    //print_r($response);
+                    return back()->with('errorMessage' , $noDupArray['category'.$i].' is not a valid category!'.$noDupArray['category'.$i]);
+                }
+                if($request->input('category'.$i)  != ''){
+                    array_push($catArray, $noDupArray['category'.$i]);
+                    $check = true;
+                }
             }
-            if($request->input('category'.$i)  != ''){
-                array_push($catArray, $request->input('category'.$i));
-                $check = true;
-            }
+
         }
         if (!$check){
             return back()->with('errorMessage' , 'please insert a valid category');
@@ -50,8 +60,8 @@ class QuestionController extends Controller
 
             $id = DB::select('SELECT add_question(:param1, :param2, :param3)', [
             'param1' => Auth::user()->id, 
-            'param2' => $request->input('text_body'), 
-            'param3' => $request->input('title')]);
+            'param2' => $textBody, 
+            'param3' => $title]);
             $id = collect($id)->map(function($x) {return (array) $x; })->toArray();
             $questionid = $id[0]['add_question'];
             

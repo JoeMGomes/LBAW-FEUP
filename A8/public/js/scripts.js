@@ -199,7 +199,7 @@ function getNotifications() {
 }
 
 function getCategNumber() {
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i <= 5; i++) {
         if (document.getElementById("category" + i) == null) {
             return i;
         }
@@ -270,16 +270,20 @@ jQuery(document).ready(function () {
                 if (opts[i].value !== undefined) {
                     if (opts[i].value === val) {
                         let categNumb = getCategNumber();
-                        document.querySelector("#categoryList").innerHTML +=
-                            '<input class="form-control" id="category' +
-                            categNumb +
-                            '" name="category' +
-                            categNumb +
-                            '" value="' +
-                            val +
-                            '" readonly required><button onclick="deletecategory(' +
-                            categNumb +
-                            ')"> X </button>';
+                        console.log(categNumb)
+                        if (categNumb != 0) {
+                            document.querySelector("#categoryList").innerHTML +=
+                                '<input class="form-control" id="category' +
+                                categNumb +
+                                '" name="category' +
+                                categNumb +
+                                '" value="' +
+                                val +
+                                '" readonly required><button onclick="deletecategory(' +
+                                categNumb +
+                                ')"> X </button>';
+                        }
+
                     }
                 }
             }
@@ -295,20 +299,22 @@ jQuery(document).ready(function () {
             var opts = document.getElementById("tags").childNodes;
             for (var i = 0; i < opts.length; i++) {
                 if (opts[i].value !== undefined) {
-                    console.log("works");
+
                     if (opts[i].value === val) {
                         let categNumb = getCategNumber();
-                        document.querySelector("#categoryList").innerHTML +=
-                            '<input class="form-control" id="category' +
-                            categNumb +
-                            '" name="category' +
-                            categNumb +
-                            '" value="' +
-                            val +
-                            '" readonly required><button onclick="deletecategory(' +
-                            categNumb +
-                            ')"> X </button>';
-                        categ.value = "";
+                        if (categNumb != 0) {
+                            document.querySelector("#categoryList").innerHTML +=
+                                '<input class="form-control" id="category' +
+                                categNumb +
+                                '" name="category' +
+                                categNumb +
+                                '" value="' +
+                                val +
+                                '" readonly required><button onclick="deletecategory(' +
+                                categNumb +
+                                ')"> X </button>';
+                            categ.value = "";
+                        }
                     }
                 }
             }
@@ -379,14 +385,14 @@ function voteHandler(id) {
 
 //Dissapear Message Function
 function hideMessage(object) {
-	if(object == null){
-		console.log("null")
-		object = document.getElementById('message')
-	}
-	else{
-		console.log('not null')
-	}
-	object.parentNode.removeChild(object);
+    if (object == null) {
+        console.log("null")
+        object = document.getElementById('message')
+    }
+    else {
+        console.log('not null')
+    }
+    object.parentNode.removeChild(object);
 }
 //does not work
 window.setTimeout(hideMessage, 5000);

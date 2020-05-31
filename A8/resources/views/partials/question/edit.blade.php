@@ -8,8 +8,8 @@
             <div class="text-left rounded bg-mygrey d-flex flex-column modal-content px-4 py-4">
                 <form class="d-flex flex-column align-items-start" action="/post/edit" method="POST">
                     @csrf
-                    <input id="answerID" name="answerID" class="form-control" value="{{$answer['id']}}" hidden>
-                    <textarea class="form-control " id="text_body" name="text_body" rows="5" required>{{$answer['text']}}</textarea>
+                    <input name="answerID" class="form-control" value="{{$answer['id']}}" hidden>
+                    <textarea class="form-control MDE "  name="text_body" rows="5" required>{{$answer['text']}}</textarea>
                     <button type="submit" onclick="" class="btn bg-myyellow rounded ml-auto mt-2">edit answer</button>
                 </form>
             </div>

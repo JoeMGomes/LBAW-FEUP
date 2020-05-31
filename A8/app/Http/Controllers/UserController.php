@@ -210,4 +210,10 @@ class UserController extends Controller
 
             ->with('image', $imageName);
     }
+
+    public function activity() {
+        $user = new User();
+        $result = $user->activity(Auth::user()->id);
+        return view('pages.settings', ['results' => $result]);
+    }
 }

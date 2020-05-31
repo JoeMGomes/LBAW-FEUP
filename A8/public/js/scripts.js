@@ -1,3 +1,18 @@
+let textAreas = document.getElementsByClassName("MDE");
+console.log(textAreas[0]);
+
+ //easyMDE = new EasyMDE({element: document.getElementById('my-text-area')});
+ for (let i = 0; i < textAreas.length; i++){
+     new EasyMDE({element: textAreas[i], minHeight: "70px",});
+ }
+
+
+let newQuestionText = document.querySelector(".QuestionMDE");
+if (newQuestionText != null){
+    new EasyMDE({element: newQuestionText, minHeight: "200px",});
+}
+
+
 const MONTH_NAMES = [
     "January",
     "February",
@@ -95,19 +110,11 @@ function scroll_to(clicked_link, nav_height) {
 function open_notifications() {
     let notifications = document.getElementById("notifications");
     notifications.style.display = "block";
-    let notificationsmob = document.getElementById("notifications-mobile");
-    if (notificationsmob != null) {
-        notificationsmob.style.display = "block";
-    }
 }
 
 function close_notifications() {
     let notifications = document.getElementById("notifications");
     notifications.style.display = "none";
-    let notificationsmob = document.getElementById("notifications-mobile");
-    if (notificationsmob != null) {
-        notificationsmob.style.display = "none";
-    }
 }
 
 document.addEventListener("click", function (event) {
@@ -447,3 +454,4 @@ function decimalToHexString(number) {
 
     return number.toString(16).toUpperCase();
 }
+

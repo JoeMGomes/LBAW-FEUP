@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label for="text_body" class="p-2 h4 text-left">Explain yourself a bit better</label>
-                <textarea class="form-control" id="text_body" name="text_body" rows="5" value="{{ old('text_body') }}" required></textarea>
+                <textarea class="form-control QuestionMDE" id="text_body" name="text_body" rows="5" value="{{ old('text_body') }}" required></textarea>
             </div>
             <div class="form-group">
                 <label for="category" class="p-2 h4 text-left">In which categories does your question fit in?

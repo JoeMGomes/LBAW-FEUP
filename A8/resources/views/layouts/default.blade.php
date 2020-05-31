@@ -13,6 +13,9 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logo2.png')}}" />
+
+    <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
     @yield('title')
 
     <!-- Javascript -->
@@ -77,8 +80,8 @@
             <h5 class="pt-2 text-white">{{Auth::user()->name}}</h5>
             <span class="text-white">{{Auth::user()->score}} points</span>
             <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
-                <li><a class="text-white" href="NOT IMPLEMENTED">View Activity</a></li>
-                <li><a class="notifications-buttom" onclick="open_notifications()">Notifications</a>
+                <li><a class="text-white" href="{{route('activity')}}">View Activity</a></li>
+                <li><a class="notifications-buttom" onclick="getNotifications();open_notifications()">Notifications</a>
                     @include('partials.notificationPopUp')
                 </li>
                 <li><a class="text-white" href="{{route('settings')}}">Settings</a></li>

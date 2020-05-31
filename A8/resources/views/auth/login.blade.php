@@ -48,8 +48,8 @@
                                 <a class="text-mydarkgreen text-darkgreenh" href="{{ route('signup') }}">Sign up</a>
                             </small>
                         </div>
-                <button class="btn btn-lg btn-block btn-dark" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</button>
-              </form>
+                    </form>
+                <a href="{{url('/googleOAuth')}}"><button class="btn btn-lg btn-block btn-dark" ><i class="fa fa-google mr-2"></i> Sign in with Google</button></a>
             </div>
           </div>
         </div>

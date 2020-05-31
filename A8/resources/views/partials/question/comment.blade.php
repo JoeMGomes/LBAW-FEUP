@@ -3,7 +3,7 @@
     <div class="rounded-img"> </div>
     <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-3">
         <p class="text-justify">
-            {{$comment['text']}}
+        @if ($comment['edited'])<small>(<u>Edited</u>)</small>@endif{{$comment['text']}}
         </p>
         <div class="d-flex flex-wrap justify-content-between align-items-center">
             <div class="flex-column align-items-center mr-3">
@@ -15,7 +15,7 @@
             </div>
             <div>
                 <small> Comented on {{date('M d, Y @ H:i ',strtotime($comment['date']))}}</small>
-                @include('partials.report')
+                @include('partials.report', ['id' => $comment['id']])
             </div>
         </div>
     </div>

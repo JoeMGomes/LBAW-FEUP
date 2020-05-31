@@ -5,7 +5,7 @@
     </div>
     <div class="ml-4 w-100">
         <a class="text-black" href="{{ url('post/'.$result['id']) }}">
-            <h3 class="mb-3"> <small>(<u>Edited</u>)</small> {{$result['title']}}</h3>
+            <h3 class="mb-3">{{$result['title']}}</h3>
         </a>
         <p class="text-justified ">
             {{$result['text_body']}}
@@ -13,7 +13,6 @@
         <div class="d-flex row align-items-end justify-content-end">
             <div class="text-right text-nowrap">
                 <small> Asked on {{date('M d, Y @ H:i ', strtotime($result['qdate']))}} </small>
-                @include('partials.report')
             </div>
         </div>
     </div>

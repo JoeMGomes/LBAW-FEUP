@@ -43,7 +43,6 @@ class QuestionController extends Controller
             if (array_key_exists('category'.$i, $noDupArray)){
 
                 if(!$this->checkcategory($noDupArray['category'.$i]) && $noDupArray['category'.$i] != ''){
-                    //print_r($response);
                     return back()->with('errorMessage' , $noDupArray['category'.$i].' is not a valid category!'.$noDupArray['category'.$i]);
                 }
                 if($request->input('category'.$i)  != ''){
@@ -54,7 +53,7 @@ class QuestionController extends Controller
 
         }
         if (!$check){
-            return back()->with('errorMessage' , 'please insert a valid category');
+            return back()->with('errorMessage' , 'Please insert a valid category!');
         }
             $this->authorize('create', Question::class);
 
@@ -70,7 +69,7 @@ class QuestionController extends Controller
                     'question' => $questionid,
                     'catid'  => $catArray[$i]]);
             }
-           return redirect('/');
+            return redirect('/post/'.$questionid);
     }
 
     public function view($question) {

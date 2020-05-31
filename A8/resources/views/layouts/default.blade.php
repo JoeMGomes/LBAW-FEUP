@@ -28,7 +28,8 @@
 @yield('bodyTag')
 
 <!--------ONLY ONE VERSION-------->
-<nav class="sidebar d-flex flex-column d-lg-block col-lg-2 justify-content-between align-items-center active">
+<nav class="sidebar d-flex flex-column d-lg-block col-lg-2 justify-content-between align-items-center active h-100">
+    <div class="d-flex flex-column justify-content-between align-items-center h-100">
     <div class="fixed-box d-flex d-lg-none flex-column align-items-center justify-content-center">
         <a class="fixed-btn dismiss d-flex flex-column justify-content-center align-items-center p-0" href="#">
             <i class="fa fa-arrow-left"></i>
@@ -108,7 +109,7 @@
             <a class="small text-white text-center " href="{{ route('about')}}">About</a>
         </div>
         @endif
-    </div>
+    </div></div>
 </nav>
 @if(session()->has('successMessage'))
 <button id="message" class="float-right m-2 alert alert-success" style="z-index:999" onclick="hideMessage(this)"">

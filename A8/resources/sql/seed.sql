@@ -353,7 +353,7 @@ $$
 DECLARE notification_id notification.id%TYPE;
 DECLARE author_post post.author%TYPE;
 BEGIN
-	SELECT INTO author_post author FROM post WHERE NEW.post = post.id;
+	SELECT INTO author_post post.author FROM post WHERE NEW.answer = post.id;
  	INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
 	INSERT INTO post_notif VALUES (notification_id, NEW.post);
 	REFRESH MATERIALIZED VIEW total_notif_post;
@@ -372,7 +372,7 @@ $$
 DECLARE notification_id notification.id%TYPE;
 DECLARE author_post post.author%TYPE;
 BEGIN
-	SELECT INTO author_post author FROM post WHERE NEW.post = post.id;
+	SELECT INTO author_post post.author FROM post WHERE NEW.question = post.id;
  	INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
 	INSERT INTO post_notif VALUES (notification_id, NEW.post);
 	REFRESH MATERIALIZED VIEW total_notif_post;

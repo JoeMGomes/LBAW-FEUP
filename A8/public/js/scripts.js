@@ -1,3 +1,18 @@
+let textAreas = document.getElementsByClassName("MDE");
+console.log(textAreas[0]);
+
+ //easyMDE = new EasyMDE({element: document.getElementById('my-text-area')});
+ for (let i = 0; i < textAreas.length; i++){
+     new EasyMDE({element: textAreas[i], minHeight: "70px",});
+ }
+
+
+let newQuestionText = document.querySelector(".QuestionMDE");
+if (newQuestionText != null){
+    new EasyMDE({element: newQuestionText, minHeight: "200px",});
+}
+
+
 const MONTH_NAMES = [
     "January",
     "February",
@@ -447,3 +462,4 @@ function decimalToHexString(number) {
 
     return number.toString(16).toUpperCase();
 }
+

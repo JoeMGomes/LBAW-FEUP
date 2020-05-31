@@ -7,7 +7,7 @@
                 <div class=" w-100 d-flex flex-column mx-4 px-3 py-3">
                     <div class="form-group">
                         <label for="description">Have an answer? Help {{$username}}!</label>
-                        <textarea name="text_body" class="form-control" id="text_body" rows="5"></textarea>
+                        <textarea name="text_body" class="form-control MDE" id="text_body" rows="5"></textarea>
                     </div>
                     <div class="flex-column align-items-center mr-3">
                         <span class="text-nowrap">

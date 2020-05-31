@@ -13,6 +13,9 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logo2.png')}}" />
+
+    <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
     @yield('title')
 
     <!-- Javascript -->

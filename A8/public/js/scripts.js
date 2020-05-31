@@ -141,10 +141,9 @@ function Handler() {
     tagElem.innerHTML = "";
     for (let i = 0; i < response.length; i++) {
         tagElem.innerHTML +=
-            '<option value="' + response[i].name + '" data-color="' + response[i].color + '">';
+            '<option value="' + response[i].name + '" data-color="' + response[i].color +'" data-catid="' + response[i].id + '">';
     }
 }
-
 function NotificationHandler() {
     let response = JSON.parse(this.responseText);
     console.log(response);
@@ -424,13 +423,13 @@ categEdit.addEventListener("input", function (e) {
                     let newColor = document.getElementById("color-pickerEdit");
                     let newColorWrapper = document.getElementById("color-picker-wrapperEdit");
                     let newCatPreviewEdit = document.getElementById("newCatPreviewEdit");
-
+                    let catID = document.getElementById("catId");
+                    catID.value = opts[i].getAttribute("data-catid")
                     let color = decimalToHexString(parseInt(opts[i].getAttribute("data-color")));
                     newColor.value = "#" + color;
                     newColorWrapper.style.background = "#" + color;
                     newCatPreviewEdit.style.background = "#" + color;
                     newCatPreviewEdit.innerHTML = val;
-                    console.log(color);
                 }
             }
         }

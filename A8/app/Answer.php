@@ -22,4 +22,12 @@ class Answer extends Model
             'newtext' => $request->input('text_body'), 
             'id' => $request->input('answerID')]);
     }
+
+    public function deleteAns(Request $request){
+        DB::select("DELETE from answer  WHERE post = :id",  [
+            'id' => $request->input('answerID')]);
+
+        DB::select("DELETE from post  WHERE id = :id",  [
+                'id' => $request->input('answerID')]);
+    }
 }

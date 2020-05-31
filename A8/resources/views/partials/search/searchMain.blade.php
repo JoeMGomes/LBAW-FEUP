@@ -1,4 +1,4 @@
-<main id="main" class="ml-lg-auto col-lg-10 align-right ">
+<main id="main" class="ml-lg-auto col-lg-10 align-right  ">
     <div class=" ml-lg-auto w-100 pb-0">
         <div class="ml-1 d-flex align-items-center justify-content-between mb-3">
             <div class="col-lg-5">

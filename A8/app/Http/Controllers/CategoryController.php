@@ -31,4 +31,30 @@ class CategoryController extends Controller
             return view('pages.home')->with('errorMessage', ' Illegal Access');
         }
     }
+
+    public function modifyCategory(Request $request){
+        if(Auth::guard('admin')->check()){
+            $obj = new Category();
+
+            if(isset($request['editButton'])){
+                
+                $data['name'] = $request->input('inputCatEdit');
+                $data['color'] = hexdec($request->input('color-pickerEdit'));
+                $data['id'] = $request->input('catId');
+
+                
+                $obj->updateCateg($data);
+                return redirect('/admin/categoryManagement')->with('successMessage', 'Category '.$request->input('categoryEdit').' was updated to '.$request->input('inputCatEdit').'!');
+
+            }else if(isset($request['deleteButton'])){  
+                $obj = new Category();
+
+                $obj->deleteCateg(['name'=> $request->input('categoryEdit')]);
+                return redirect('/admin/categoryManagement')->with('successMessage', 'Category '.$request->input('categoryEdit').' was deleted!');
+            }
+        }
+        else{
+            return view('pages.home')->with('errorMessage', ' Illegal Access');
+        }
+    }
 }

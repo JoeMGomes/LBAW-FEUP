@@ -40,6 +40,7 @@ Route::post('api/downvote', 'VoteController@downvote');
 Route::post('api/bestAnswer', 'QuestionController@chooseBestAnswer');
 Route::post('api/category', 'CategoryController@getCategories');
 Route::post('/deleteQuestion', 'QuestionController@deleteQuestion');
+Route::post('/deleteAnswer', 'AnswerController@deleteAnswer');
 Route::post('post/addComment', 'CommentController@addComment')->name('addComment');
 
 // Module 03
@@ -50,6 +51,7 @@ Route::get('/adminLogout', 'Admin\Auth\LoginController@logout')->name('logoutAdm
 
 Route::get('/admin/categoryManagement','AdminController@showCategoryManagement')->name('showCatMan');
 Route::post('/admin/addCategory', 'CategoryController@createCategory')->name('addCat');
+Route::post('/admin/deleteCategory', 'CategoryController@modifyCategory')->name('modCat');
 Route::get('/admin/reportManagement','AdminController@showReportManagement')->name('showRepMan');
 
 

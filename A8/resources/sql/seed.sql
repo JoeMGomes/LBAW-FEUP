@@ -353,7 +353,7 @@ $$
 DECLARE notification_id notification.id%TYPE;
 DECLARE author_post post.author%TYPE;
 BEGIN
-	SELECT INTO author_post author FROM post WHERE NEW.post = post.id;
+	SELECT INTO author_post post.author FROM post WHERE NEW.answer = post.id;
  	INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
 	INSERT INTO post_notif VALUES (notification_id, NEW.post);
 	REFRESH MATERIALIZED VIEW total_notif_post;
@@ -372,7 +372,7 @@ $$
 DECLARE notification_id notification.id%TYPE;
 DECLARE author_post post.author%TYPE;
 BEGIN
-	SELECT INTO author_post author FROM post WHERE NEW.post = post.id;
+	SELECT INTO author_post post.author FROM post WHERE NEW.question = post.id;
  	INSERT INTO notification(notified) VALUES (author_post) RETURNING id INTO notification_id;
 	INSERT INTO post_notif VALUES (notification_id, NEW.post);
 	REFRESH MATERIALIZED VIEW total_notif_post;
@@ -833,6 +833,20 @@ begin
 	refresh materialized view total_question;
 	refresh materialized view total_answer;
 	refresh materialized view total_comment;
+end;
+$$ language plpgsql;
+
+
+-- check if one post has been edited
+create or replace function has_been_edited( post_id integer)
+returns boolean as $$
+declare edit_log edit_log.post%type;
+begin
+	select into edit_log id from edit_log where post = post_id;
+	if edit_log is null then
+		return false;
+	end if;
+return true;
 end;
 $$ language plpgsql;
 

@@ -95,19 +95,11 @@ function scroll_to(clicked_link, nav_height) {
 function open_notifications() {
     let notifications = document.getElementById("notifications");
     notifications.style.display = "block";
-    let notificationsmob = document.getElementById("notifications-mobile");
-    if (notificationsmob != null) {
-        notificationsmob.style.display = "block";
-    }
 }
 
 function close_notifications() {
     let notifications = document.getElementById("notifications");
     notifications.style.display = "none";
-    let notificationsmob = document.getElementById("notifications-mobile");
-    if (notificationsmob != null) {
-        notificationsmob.style.display = "none";
-    }
 }
 
 document.addEventListener("click", function (event) {

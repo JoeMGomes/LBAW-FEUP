@@ -59,7 +59,7 @@
                           <a class="text-mydarkblue text-darkblueh" href="{{ route('login') }}">Log in</a>
                         </small>
                       </div>
-              <button class="btn btn-lg btn-block btn-dark" type="submit"><i class="fa fa-google mr-2"></i> Sign up with Google</button>
+              <button class="btn btn-lg btn-block btn-dark" data-onsuccess="onSignIn" type="submit"><i class="fa fa-google mr-2"></i> Sign up with Google</button>
             </form>
           </div>
         </div>

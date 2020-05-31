@@ -24,10 +24,7 @@ class Answer extends Model
     }
 
     public function deleteAns(Request $request){
-        DB::select("DELETE from answer  WHERE post = :id",  [
+        DB::select("SELECT delete_answer(:id)",  [
             'id' => $request->input('answerID')]);
-
-        DB::select("DELETE from post  WHERE id = :id",  [
-                'id' => $request->input('answerID')]);
     }
 }

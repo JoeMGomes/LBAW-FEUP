@@ -4,6 +4,7 @@ namespace App;
 
 use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Comment extends Model
 {
@@ -21,6 +22,11 @@ public function create($data){
     public function updateText(Request $request){
         DB::select("UPDATE post SET text_body = :newtext WHERE id = :id;",  [
             'newtext' => $request->input('text_body'), 
+            'id' => $request->input('commentID')]);
+    }
+
+    public function deleteCom(Request $request){
+        DB::select("SELECT delete_comment(:id)",  [
             'id' => $request->input('commentID')]);
     }
 }

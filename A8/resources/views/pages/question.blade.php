@@ -19,7 +19,7 @@
                 <small class="text-center mt-2">{{$question['name']}}</small>
             </div>
             <div class="ml-4">
-                <h1> <small>(<u>Edited</u>)</small> {{$question['title']}}</h1>
+                <h1> @if ($question['edited'])<small>(<u>Edited</u>)</small>@endif {{$question['title']}}</h1>
                 <p class="text-justified ">
                     {{$question['text']}}
                 </p>

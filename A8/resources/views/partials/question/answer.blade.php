@@ -6,7 +6,7 @@
     </div>
     <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-3">
         <p class="text-justify" id="post_text{{$answer['id']}}">
-            {{$answer['text']}}
+        @if ($answer['edited'])<small>(<u>Edited</u>)</small>@endif {{$answer['text']}}
         </p>
         <div class="d-flex flex-wrap justify-content-between align-items-center">
             <div class="flex-column align-items-center mr-3">

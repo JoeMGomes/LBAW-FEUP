@@ -837,6 +837,20 @@ end;
 $$ language plpgsql;
 
 
+-- check if one post has been edited
+create or replace function has_been_edited( post_id integer)
+returns boolean as $$
+declare edit_log edit_log.post%type;
+begin
+	select into edit_log id from edit_log where post = post_id;
+	if edit_log is null then
+		return false;
+	end if;
+return true;
+end;
+$$ language plpgsql;
+
+
 --- Populate --- 
 -- NULL ROWS TO ENSURE NOT NULL CONSTRAINS DONT BREAK
 INSERT INTO member(email, name, password) VALUES('null@null.com', 'Not a Person', 'unBreakablePassWordNullMember');

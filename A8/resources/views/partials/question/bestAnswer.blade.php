@@ -20,7 +20,7 @@
             <div>
                 <small> Replied on {{date('M d, Y @ H:i',strtotime($answer['date']))}} </small>
                 @include('partials.question.edit')
-                @include('partials.report')
+                @include('partials.report', ['id' => $answer['id']])
             </div>
         </div>
     </div>

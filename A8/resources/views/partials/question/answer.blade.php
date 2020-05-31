@@ -21,7 +21,7 @@
                 @include('partials.question.deleteAnswer')
                 @include('partials.question.edit')
                 @include('partials.question.chooseBestAnswer')
-                @include('partials.report')
+                @include('partials.report', ['id' => $answer['id']])
             </div>
         </div>
     </div>

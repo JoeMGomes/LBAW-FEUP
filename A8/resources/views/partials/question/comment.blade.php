@@ -15,7 +15,7 @@
             </div>
             <div>
                 <small> Comented on {{date('M d, Y @ H:i ',strtotime($comment['date']))}}</small>
-                @include('partials.report')
+                @include('partials.report', ['id' => $comment['id']])
             </div>
         </div>
     </div>

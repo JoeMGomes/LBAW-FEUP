@@ -13,7 +13,6 @@
         <div class="d-flex row align-items-end justify-content-end">
             <div class="text-right text-nowrap">
                 <small> Asked on {{date('M d, Y @ H:i ', strtotime($result['qdate']))}} </small>
-                @include('partials.report')
             </div>
         </div>
     </div>

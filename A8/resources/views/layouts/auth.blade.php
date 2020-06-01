@@ -22,6 +22,11 @@
     </script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
     <script src="{{ asset('js/scripts.js')}}" defer></script>
+    {{-- Google API --}}
+    <script src="{{ asset('js/googleAPI.js')}}" defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="526719259937-a82vp026vae9un5dfa4qg73244imrv0o.apps.googleusercontent.com">
+    
 </head>
 @yield('body')
 

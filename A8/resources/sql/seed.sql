@@ -623,6 +623,38 @@ DROP TRIGGER IF EXISTS report_disjoint on report_notif;
 CREATE TRIGGER report_disjoint BEFORE INSERT ON report_notif
 	FOR EACH ROW EXECUTE PROCEDURE disjoint_report();
 
+--------
+-- trigger to update materialized views
+Create or replace function update_views()
+	returns trigger as $$
+begin
+	refresh materialized view total_question;
+	refresh materialized view total_answer;
+	refresh materialized view total_comment;
+	refresh materialized view total_notif_post;
+	refresh materialized view total_notif_report;
+	refresh materialized view total_notif_vote;
+	return new;
+end;
+$$ language plpgsql;
+
+drop trigger if exists update_member on member;
+create trigger update_member after update on member
+	for each row execute procedure update_views();
+
+drop trigger if exists update_notif_votes on vote_notif;
+create trigger update_notif_votes after insert on vote_notif
+	for each row execute procedure update_views();
+
+drop trigger if exists update_notif_reports on report_notif;
+create trigger update_notif_reports after insert on report_notif
+	for each row execute procedure update_views();
+
+drop trigger if exists update_notif_post on post_notif;
+create trigger update_notif_post after insert on post_notif
+	for each row execute procedure update_views();
+
+
 --- INDEXES ---
 --- PERFORMANCE INDEXES ---
 

@@ -26,6 +26,9 @@ Route::post('member/changePassword', 'UserController@updatePassword')->name('edi
 Route::post('member/changeUsername', 'UserController@updateName')->name('editUsername');
 Route::post('api/member/notifications', 'NotificationController@getNotifications');
 Route::post('member/changeEmail', 'UserController@updateEmail')->name('editEmail');
+    //GoogleAPI
+Route::get('/googleOAuth','Auth\LoginController@redirectToProvider');
+Route::get('/callbackOAuth', 'Auth\LoginController@handleProviderCallback');
 
 // Module 02
 Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
@@ -41,7 +44,10 @@ Route::post('api/bestAnswer', 'QuestionController@chooseBestAnswer');
 Route::post('api/category', 'CategoryController@getCategories');
 Route::post('/deleteQuestion', 'QuestionController@deleteQuestion');
 Route::post('/deleteAnswer', 'AnswerController@deleteAnswer');
+Route::post('/deleteComment', 'CommentController@deleteComment');
 Route::post('post/addComment', 'CommentController@addComment')->name('addComment');
+Route::post('post/report','ReportController@store')->name('makeReport');
+Route::get('activity', 'UserController@activity')->name('activity');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');

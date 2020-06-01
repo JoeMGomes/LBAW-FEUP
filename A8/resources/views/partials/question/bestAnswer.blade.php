@@ -22,7 +22,7 @@
             <div>
                 <small> Replied on {{date('M d, Y @ H:i',strtotime($answer['date']))}} </small>
                 @include('partials.question.edit')
-                @include('partials.report')
+                @include('partials.report', ['id' => $answer['id']])
             </div>
         </div>
     </div>
@@ -30,3 +30,9 @@
 @foreach($answer['comments'] as $comment)
     @include('partials.question.comment', $comment)
 @endforeach
+
+@if(Auth::check())
+            {{--<!--@if($question['owner'] != Auth::user()->id) -->--}}
+            @include('partials.question.commentInput', ['username' => $question['name'], 'answer' =>$answer['id']])
+        @endif
+        {{--@endif--}}

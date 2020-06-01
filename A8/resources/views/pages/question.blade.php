@@ -24,7 +24,7 @@
                     {{$question['title']}}
                 </h1> 
                 <p class="text-justified">
-                    {{$question['text']}}
+                    {!! Illuminate\Mail\Markdown::parse(nl2br(e($question['text']))) !!}
                 </p>
                 <div class="d-flex row align-items-end justify-content-between">
                     <div class="ml-2 pl-1">
@@ -35,7 +35,7 @@
                     <div class="text-right text-nowrap d-flex">
                         <small class="my-auto"> Asked on {{date('M d, Y @ H:i ', strtotime($question['date']))}} </small>
                         @include('partials.question.deleteQuestion')
-                        @include('partials.report')
+                        @include('partials.report', ['id' => $question['id']])
                     </div>
                 </div>
             </div>
@@ -48,10 +48,10 @@
 
 
         @if(Auth::check())
-            {{--<!--@if($question['owner'] != Auth::user()->id) -->--}}
-            @include('partials.question.answerInput', ['username' => $question['name'], 'question_id' =>$question['id']])
+            @if($question['owner'] != Auth::user()->id)
+                @include('partials.question.answerInput', ['username' => $question['name'], 'question_id' =>$question['id']])
+            @endif
         @endif
-        {{--@endif--}}
 
         @php
         {{ $questionOwner = Auth::check() && Auth::user()->id == $question['owner'];}}

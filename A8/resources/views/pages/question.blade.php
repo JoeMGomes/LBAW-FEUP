@@ -24,7 +24,7 @@
                     {{$question['title']}}
                 </h1> 
                 <p class="text-justified">
-                    {{$question['text']}}
+                    {!! Illuminate\Mail\Markdown::parse(nl2br(e($question['text']))) !!}
                 </p>
                 <div class="d-flex row align-items-end justify-content-between">
                     <div class="ml-2 pl-1">

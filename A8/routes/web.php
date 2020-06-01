@@ -46,6 +46,7 @@ Route::post('/deleteQuestion', 'QuestionController@deleteQuestion');
 Route::post('/deleteAnswer', 'AnswerController@deleteAnswer');
 Route::post('/deleteComment', 'CommentController@deleteComment');
 Route::post('post/addComment', 'CommentController@addComment')->name('addComment');
+Route::post('post/report','ReportController@store')->name('makeReport');
 Route::get('activity', 'UserController@activity')->name('activity');
 Route::get('activity/questions', 'UserController@activityQuestions')->name('activityQuestions');
 Route::get('activity/answers', 'UserController@activityAnswers')->name('activityAnswers');

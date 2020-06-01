@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Category;
 
 class HomeController extends Controller
 {
     public function showHome()
     {
-        return view('pages.home');
+        $cat = new Category();
+        $categories = $cat->categories();
+        return view('pages.home', ['categories' => $categories]);
         
     }
 

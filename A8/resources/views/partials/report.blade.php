@@ -1,3 +1,4 @@
+@if (!Auth::guard('admin')->check())
 <button type="button" class="btn text-secondary" data-toggle="modal" data-target="#report">
     <a href="#" class=" text-black"><i class="fa fa-flag"></i> Report</a>
 </button>
@@ -22,3 +23,4 @@
         </div>
     </div>
 </div>
+@endif

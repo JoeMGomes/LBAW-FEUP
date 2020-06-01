@@ -13,8 +13,8 @@
                 </span>
                 <small class="small"> {{$comment['score']}} points | Member since {{date('M Y', strtotime($comment['membership_date']))}}</small>
             </div>
-            <div>
-                <small> Comented on {{date('M d, Y @ H:i ',strtotime($comment['date']))}}</small>
+            <div class="text-right text-nowrap d-flex">
+                <small class="my-auto"> Comented on {{date('M d, Y @ H:i ',strtotime($comment['date']))}}</small>
                 @include('partials.question.deleteComment')
                 @include('partials.report', ['id' => $comment['id']])
             </div>

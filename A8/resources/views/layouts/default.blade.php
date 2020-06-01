@@ -53,6 +53,11 @@
                     class="dropdown-toggle my-5 text-white bg-transparent">Categories</a>
                 <ul class="collapse list-unstyled bg-transparent m-0 " id="categories">
                     <hr class="my-1 m-0 " style="height: 2px; background-color: #2c2c2c">
+                    @if (isset($categories))
+                        @foreach($categories as $category)
+                        <li><a class="scroll-link text-white" class="" href="{{url('search/%23'.$category)}}">{{$category}}</a></li>
+                        @endforeach
+                    @else
                     <li><a class="scroll-link text-white" class="" href="{{url('search/%23Laundry')}}">Laundry</a></li>
                     <li><a class="scroll-link text-white" class="" href="{{url('search/%23Cooking')}}">Cooking</a></li>
                     <li><a class="scroll-link text-white" class="" href="{{url('search/%23Health')}}">Health</a></li>
@@ -65,6 +70,7 @@
                             href="{{url('search/%23Relationships')}}">Relationships</a></li>
                     <li><a class="scroll-link text-white" class="" href="{{url('search/%23Household')}}">Household</a>
                     </li>
+                    @endif
                 </ul>
             </div>
             @endauth

@@ -47,6 +47,9 @@ Route::post('/deleteAnswer', 'AnswerController@deleteAnswer');
 Route::post('/deleteComment', 'CommentController@deleteComment');
 Route::post('post/addComment', 'CommentController@addComment')->name('addComment');
 Route::get('activity', 'UserController@activity')->name('activity');
+Route::get('activity/questions', 'UserController@activityQuestions')->name('activityQuestions');
+Route::get('activity/answers', 'UserController@activityAnswers')->name('activityAnswers');
+Route::get('activity/comments', 'UserController@activityComments')->name('activityComments');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');

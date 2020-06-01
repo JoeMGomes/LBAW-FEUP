@@ -328,11 +328,57 @@ if (categ != null) {
 }
 
 function downvote(id) {
+    let up = document.getElementById("up"+id).firstChild;
+    let down = document.getElementById("down"+id).firstChild;
+    switchVote(down, up)
+    toggleOffVote(up)
     sendAjaxRequest("post", "/api/downvote", { message: id }, voteHandler);
 }
 
 function upvote(id) {
+    let up = document.getElementById("up"+id).firstChild;
+    let down = document.getElementById("down"+id).firstChild;
+    switchVote(up, down);
+    toggleOffVote(down);
     sendAjaxRequest("post", "/api/upvote", { message: id }, voteHandler);
+}
+
+function switchVote(vote, grey) {
+    // tirar voto
+    if (vote.classList.contains('border')) {
+        vote.classList.remove('border')
+        // vote.classList.add('fa-2x')
+        grey.classList.remove('text-mydark')
+        if (grey.classList.contains('fa-angle-up')) 
+            grey.classList.add('text-mygreen')
+        else grey.classList.add('text-myblue')
+    } else { // meter voto
+        vote.classList.add('border')
+        // vote.classList.remove('fa-2x')
+        vote.classList.remove('text-mydark')
+        if (vote.classList.contains('fa-angle-up')) 
+            vote.classList.add('text-mygreen')
+        else vote.classList.add('text-myblue')
+        grey.classList.add('text-mydark')
+        grey.classList.remove('text-mygreen')
+        grey.classList.remove('text-myblue')
+    }
+}
+
+function toggleOffVote(vote) {
+    if (vote.classList.contains('border')) {
+        vote.classList.remove('border')
+        // vote.classList.add('fa-2x')
+    }
+        
+}
+
+function switchDownvote() {
+
+}
+
+function toggleOffDownvote() {
+
 }
 
 function voteHandler(id) {

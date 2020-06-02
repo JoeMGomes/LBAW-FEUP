@@ -75,6 +75,8 @@ class QuestionController extends Controller
     public function view($question) {
         $obj = new Question();
         $info = $obj->getAllInfo($question);
+        if ($info['question']['reported'])
+            return redirect('home');
         return view('pages.question', ['question' => $info['question'], 'answers' => $info['answers'] ]);
     }
 
@@ -90,7 +92,7 @@ class QuestionController extends Controller
         $question = $request->input('question'); 
         $answer = $request->input('answer');
         DB::select(DB::raw('update question set best_answer = :answer where post = :question'),
-         ['question' => $question, 'answer' => $answer]);
+        ['question' => $question, 'answer' => $answer]);
     }
 
     public function deleteQuestion(Request $r) {

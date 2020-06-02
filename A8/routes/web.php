@@ -49,7 +49,11 @@ Route::post('/deleteQuestion', 'QuestionController@deleteQuestion');
 Route::post('/deleteAnswer', 'AnswerController@deleteAnswer');
 Route::post('/deleteComment', 'CommentController@deleteComment');
 Route::post('post/addComment', 'CommentController@addComment')->name('addComment');
+Route::post('post/report','ReportController@store')->name('makeReport');
 Route::get('activity', 'UserController@activity')->name('activity');
+Route::get('activity/questions', 'UserController@activityQuestions')->name('activityQuestions');
+Route::get('activity/answers', 'UserController@activityAnswers')->name('activityAnswers');
+Route::get('activity/comments', 'UserController@activityComments')->name('activityComments');
 
 // Module 03
 Route::get('/', 'HomeController@showHome')->name('home');
@@ -61,6 +65,6 @@ Route::get('/admin/categoryManagement','AdminController@showCategoryManagement')
 Route::post('/admin/addCategory', 'CategoryController@createCategory')->name('addCat');
 Route::post('/admin/deleteCategory', 'CategoryController@modifyCategory')->name('modCat');
 Route::get('/admin/reportManagement','AdminController@showReportManagement')->name('showRepMan');
-
+Route::post('/admin/handleReport','ReportController@handleReport')->name('handleReport');
 
 Route::get('about', 'HomeController@showAbout')->name('about');

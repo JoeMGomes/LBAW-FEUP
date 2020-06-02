@@ -1,8 +1,9 @@
+@if(!$answer['reported'])
 <div class="d-flex align-items-center mt-4 w-100">
     <div class="ml-lg-5 text-center flex-column">
-        <div onclick="upvote( {{ $answer['id'] }} )"><i class="fa fa-angle-up fa-2x text-mygreen" ></i></div>
+        <div id="up{{$answer['id']}}" onclick="upvote( {{ $answer['id'] }} )"><i class="fa fa-angle-up fa-2x text-mygreen border-secondary rounded-bottom" ></i></div>
         <div id="votes_answer{{$answer['id']}}">{{$answer['votes']}}</div>
-        <div onclick="downvote({{ $answer['id'] }})"><i class=" fa fa-angle-down fa-2x text-myblue " ></i></div>
+        <div id="down{{$answer['id']}}" onclick="downvote({{ $answer['id'] }})"><i class=" fa fa-angle-down fa-2x text-myblue border-secondary rounded-top" ></i></div>
     </div>
     <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-3">
         <p class="text-justify" id="post_text{{$answer['id']}}">
@@ -16,10 +17,10 @@
                 </span>
                 <small class="small"> {{$answer['score']}} points | Member since {{date('M Y', strtotime($answer['membership_date']))}}</small>
             </div>
-            <div class='text-nowrap'>
-                <small> Replied on {{date('M d, Y @ H:i',strtotime($answer['date']))}} </small>
-                @include('partials.question.deleteAnswer')
+            <div class="text-right text-nowrap d-flex">
+                <small class="my-auto"> Replied on {{date('M d, Y @ H:i',strtotime($answer['date']))}} </small>
                 @include('partials.question.edit')
+                @include('partials.question.deleteAnswer')
                 @include('partials.question.chooseBestAnswer')
                 @include('partials.report', ['id' => $answer['id']])
             </div>
@@ -39,3 +40,4 @@
         @php
         {{ $questionOwner = Auth::check() && Auth::user()->id == $question['owner'];}}
         @endphp
+@endif

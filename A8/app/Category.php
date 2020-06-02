@@ -32,5 +32,10 @@ class Category extends Model
             'id' => $data['id'],
         ]);
     }
+
+    public function categories() {
+        $result = DB::select('SELECT name FROM category order by name');
+        return collect($result)->map(function($x) {return ((array) $x)['name']; })->toArray();
+    }
     
 }

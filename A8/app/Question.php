@@ -7,15 +7,15 @@ use DB;
 
 class Question extends Model
 {
+
+    protected $primaryKey = 'post';
+
     protected $fillable = [
         'title'
     ];
     protected $table = 'question';
 
-    public function post()
-    {
-        return $this->hasOne('App\Post', 'post');
-    }
+
 
     public function getAllInfo($id) {
         $result = DB::select(DB::raw('select *
@@ -82,5 +82,14 @@ class Question extends Model
         $final = array('question' => $question, 'answers' => $complete_answers);
 
         return $final;
+    }
+
+    public function post()
+    {
+        return $this->hasOne('App\Post', 'post');
+    }
+
+    public function answers(){
+        return $this->hasMany('App\Answer','post');
     }
 }

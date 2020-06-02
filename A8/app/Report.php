@@ -31,7 +31,7 @@ class Report extends Model
     }
 
     public function getReportsForAdmin(){
-        return DB::select('SELECT r.id, u.name, r.date,  type, p.text_body, r.offense 
+        return DB::select('SELECT r.id, u.name, r.date, r.reported,  type, p.text_body, r.offense 
                         FROM report as r, post as p, member as u 
             WHERE state = \'Unread\' AND p.id = r.reported AND p.author = u.id');
     }

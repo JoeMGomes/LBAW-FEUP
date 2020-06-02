@@ -35,7 +35,8 @@ Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'searc
 //Route::get('post/{questionID}', ['uses' => 'QuestionController@show', 'as' => 'questionID']);
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
 Route::post('post/newQuestion', 'QuestionController@store')->name('makeQuestion');
-Route::get('post/{question}', 'QuestionController@view');
+Route::get('post/{question}/{filler}', 'QuestionController@view');
+Route::get('post/{question}', 'QuestionController@fillSlug');
 Route::post('post/addAnswer', 'QuestionController@addAnswer')->name('addAnswer');
 Route::post('post/edit', 'AnswerController@edit');
 Route::post('api/upvote', 'VoteController@upvote');

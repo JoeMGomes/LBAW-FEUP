@@ -11,7 +11,7 @@
                     </div>
                     <div class="flex-column align-items-center mr-3">
                         <span class="text-nowrap">
-                            <img src="{{asset('img/'.Auth::user()->photo_url)}}" class="reply-img mr-2" alt="User Photo" />
+                            <img src="{{asset('img/'.Auth::user()->photo_url)}}" class="reply-img mr-2" alt="{{Auth::user()-> name}}'s' Photo" />
                             &#8212 {{Auth::user()-> name}}
                         </span>
                         <small class="small"> {{Auth::user()-> score}} points | Member since {{date('M Y', strtotime(Auth::user()-> membership_date))}}</small>

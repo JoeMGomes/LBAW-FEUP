@@ -8,7 +8,7 @@
         <div class="d-flex flex-wrap justify-content-between align-items-center">
             <div class="flex-column align-items-center mr-3">
                 <span class="text-nowrap">
-                    <img src="{{asset('img/'.$comment['photo_url'])}}" class="comment-img mr-2" alt="User Photo" />
+                    <img src="{{asset('img/'.$comment['photo_url'])}}" class="comment-img mr-2" alt="{{$comment['name']}}'s' Photo" />
                     &#8212 {{$comment['name']}}
                 </span>
                 <small class="small"> {{$comment['score']}} points | Member since {{date('M Y', strtotime($comment['membership_date']))}}</small>

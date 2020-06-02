@@ -27,4 +27,12 @@ class Answer extends Model
         DB::select("SELECT delete_answer(:id)",  [
             'id' => $request->input('answerID')]);
     }
+
+    public function question(){
+        return $this->belongsTo('App\Question','post');
+    }
+
+    public function comments(){
+        return $this->hasMany('App\Comment','post');
+    }
 }

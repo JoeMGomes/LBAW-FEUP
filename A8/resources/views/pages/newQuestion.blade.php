@@ -35,7 +35,7 @@
                 <label for="category" class="p-2 h4 text-left">In which categories does your question fit in?
                     <small class="h6"> (Choose up to 5)</small>
                 </label>
-                <div class="d-flex"  id="categoryList">
+                <div class="flex-column"  id="categoryList">
 
                 </div>
             </div>

@@ -1,12 +1,16 @@
 <tr>
-    <td class="align-middle text-center">12333</>
-    <td class="align-middle text-center">Rita Mota</td>
-    <td class="align-middle text-center">26/05/18</td>
-    <td class="align-middle text-center">Offensive Towards Others</td>
-    <td class="align-middle text-center "><a class="text-black" href="#">ARE YOU RETARDED??</a></td>
-    <td class="align-middle text-center">The answer is very rude and has no actual asnwer to the question asked</td>
+    <td class="align-middle text-center">{{$report->id}}</td>
+    <td class="align-middle text-center">{{$report->name}}</td>
+    <td class="align-middle text-center">{{date('M d, Y, H:m', strtotime($report->date))}}</td>
+    <td class="align-middle text-center">{{$report->type}}</td>
+    <td class="align-middle text-center "><a class="text-black" href="#">{{$report->text_body}}</a></td>
+    <td class="align-middle text-center">{{$report->offense ? $report->offense: 'NULL'  }}
     <td class="align-middle text-center ">
-        <button class="btn text-danger">Delete</button>
-        <button class="btn text-success">Keep</i></button>
+    <form method="POST" action="{{route('handleReport')}}">
+        @csrf
+            <input hidden value="{{$report->id}}" name="repID">
+            <button name="delete" class="btn text-danger">Delete</button>
+            <button name="keep" class="btn text-success">Keep</i></button>
+        </form>
     </td>
 </tr>

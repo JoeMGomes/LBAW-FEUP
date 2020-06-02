@@ -83,7 +83,7 @@ class AnswerController extends Controller
      */
     public function deleteAnswer(Request $request)
     {
-        if (Auth::check() && Auth::user()->id == $request->input('owner')){
+        if ((Auth::check() && Auth::user()->id == $request->input('owner')) || Auth::guard('admin')->check()){
             $obj = new Answer();
             $obj->deleteAns($request);
             return redirect()->back();

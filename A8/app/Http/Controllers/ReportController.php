@@ -23,9 +23,8 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function display()
     {
-        
     }
 
     /**
@@ -40,29 +39,27 @@ class ReportController extends Controller
         $data['reporter'] = Auth::user()->id;
         $data['offense'] = $request->input('offense');
 
-        switch ($request->input('reportType')){
+        switch ($request->input('reportType')) {
             case 'IP':
                 $data['type'] = 'Inappropriate Language';
-            break;
+                break;
             case 'OTO':
                 $data['type'] = 'Offensive Towards Others';
-            break;
+                break;
             case 'MIS':
                 $data['type'] = 'Spreading Misinformation';
-            break;
+                break;
             case 'SPM':
                 $data['type'] = 'Spam';
-            break;
+                break;
             case 'OTHER':
                 $data['type'] = 'Other';
-            break;
-
+                break;
         }
-
 
         $obj = new Report();
         $obj->create($data);
-        return redirect()->back()->with('successMessage','Your report was submited and will be carefully analysed!');
+        return redirect()->back()->with('successMessage', 'Your report was submited and will be carefully analysed!');
     }
 
     /**
@@ -76,15 +73,27 @@ class ReportController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Report $report)
+
+    public function handleReport(Request $request)
     {
-        //
+        if (Auth::guard('admin')->check()) {
+            $obj = new Report();
+            $data['id'] = $request->input('repID');
+
+            if (isset($request['delete'])) {
+                $data['state'] = 'Approved';
+
+               $obj->setState($data);
+               return back()->with('successMessage', 'Post was removed and report was marked as read');
+    
+            } else if (isset($request['keep'])) {
+                $data['state'] = 'Rejected';
+
+                $obj->setState($data);
+                return back()->with('successMessage', 'Post was kept and report was marked as read');
+            }
+            return back()->with('errorMessage', 'Error handling report');
+        }
     }
 
     /**

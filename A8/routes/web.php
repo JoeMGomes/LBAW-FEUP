@@ -62,6 +62,6 @@ Route::get('/admin/categoryManagement','AdminController@showCategoryManagement')
 Route::post('/admin/addCategory', 'CategoryController@createCategory')->name('addCat');
 Route::post('/admin/deleteCategory', 'CategoryController@modifyCategory')->name('modCat');
 Route::get('/admin/reportManagement','AdminController@showReportManagement')->name('showRepMan');
-
+Route::post('/admin/handleReport','ReportController@handleReport')->name('handleReport');
 
 Route::get('about', 'HomeController@showAbout')->name('about');

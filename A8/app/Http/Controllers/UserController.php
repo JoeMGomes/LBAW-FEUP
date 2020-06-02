@@ -214,21 +214,21 @@ class UserController extends Controller
     public function activity() {
         $user = new User();
         $result = $user->activity(Auth::user()->id);
-        return view('pages.settings', ['results' => $result, 'content' => 'All']);
+        return view('pages.activity', ['posts' => $result, 'content' => 'All']);
     }
     public function activityQuestions() {
         $user = new User();
         $result = $user->activityQuestions(Auth::user()->id);
-        return view('pages.settings', ['results' => $result], 'content' => 'Questions');
+        return view('pages.activity', ['posts' => $result, 'content' => 'Questions']);
     }
     public function activityAnswers() {
         $user = new User();
         $result = $user->activityAnswers(Auth::user()->id);
-        return view('pages.settings', ['results' => $result], 'content' => 'Answers');
+        return view('pages.activity', ['posts' => $result, 'content' => 'Answers']);
     }
     public function activityComments() {
         $user = new User();
-        $result = $user->activityComments(Auth::user()->id, 'content' => 'Comments');
-        return view('pages.settings', ['results' => $result]);
+        $result = $user->activityComments(Auth::user()->id);
+        return view('pages.activity', ['posts' => $result, 'content' => 'Comments']);
     }
 }

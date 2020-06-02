@@ -16,7 +16,7 @@ let newQuestionText = document.querySelector(".QuestionMDE");
 if (newQuestionText != null) {
     new EasyMDE({
         element: newQuestionText, minHeight: "200px",
-        initialValue: newQuestionText[i].innerHTML,
+        initialValue: newQuestionText.innerHTML,
         forceSync: true,
         toggleFullScreen: false,
         toolbar: ["bold", "italic", "heading", "|", "quote", "link", "image", "|", "unordered-list", "ordered-list", "|", "preview"]

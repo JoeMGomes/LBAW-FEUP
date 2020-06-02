@@ -16,6 +16,9 @@
             <h1> Administration</h1>
             @include('partials.admin.adminHead')
 
+            @if (!$reports)
+            <h4 class="text-bold">You have no pending reports to manage!</h4>
+            @else
             <div class="table-responsive">
                 <h5>Pending Reports</h5>
                 <table class="table table-bordered table-striped fixed-header">
@@ -37,6 +40,7 @@
                     </tbody>
                 </table>
             </div>
+            @endif
         </div>
     </main>
     @endsection

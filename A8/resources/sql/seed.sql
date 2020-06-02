@@ -63,7 +63,8 @@ CREATE TABLE "post" (
     id SERIAL PRIMARY KEY,
     author integer REFERENCES "member" (id) NOT NULL,
     "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-    text_body text NOT NULL
+    text_body text NOT NULL, 
+	reported boolean not null DEFAULT false
 );
 
 CREATE TABLE "question" (
@@ -158,19 +159,19 @@ CREATE TABLE "bookmark" (
 );
 
 CREATE MATERIALIZED VIEW total_question AS 
-    SELECT post.id as id, author, date, text_body, title, best_answer, 
+    SELECT post.id as id, author, date, text_body, title, best_answer, reported, 
 			member.id as owner, name, photo_url, membership_date, score, banned
     FROM post, question, member
     WHERE post.id = question.post and post.author = member.id;
 
 CREATE MATERIALIZED VIEW total_answer AS 
-	SELECT post.id as id, author, date, text_body as answer, question, 
+	SELECT post.id as id, author, date, text_body as answer, question, reported,
 			member.id as owner, name, photo_url, membership_date, score, banned
 	FROM post, answer, member
 	WHERE post.id= answer.post and post.author = member.id;
 
 CREATE MATERIALIZED VIEW total_comment AS 
-	SELECT post.id as id, author, date, text_body as comment, answer,
+	SELECT post.id as id, author, date, text_body as comment, answer, reported,
 			member.id as owner, name, photo_url, membership_date, score, banned 
 	FROM post, comment, member
 	WHERE post.id = comment.post and post.author = member.id;
@@ -297,10 +298,7 @@ BEGIN
 		IF member_reports >= 5 THEN
 			UPDATE "member" SET banned = TRUE WHERE id = member_reported;
 		END IF;
-		IF New.reported <> 1 then
-			Update report set reported = 1 where id = NEW.id;
-			delete from post where old.reported;
-		end if;
+		Update post set reported = true where id = NEW.reported;
 	END IF;
 RETURN NEW;
 END;
@@ -422,7 +420,6 @@ BEGIN
 	ELSE
 		INSERT INTO edit_log(post, old_body) VALUES (OLD.id, OLD.text_body);
 	END IF;
-	refresh materialized view total_answer;
 RETURN NEW;
 END
 $$ LANGUAGE plpgsql;
@@ -658,6 +655,13 @@ drop trigger if exists update_notif_post on post_notif;
 create trigger update_notif_post after insert on post_notif
 	for each row execute procedure update_views();
 
+drop trigger if exists update_post on post;
+create trigger update_post after insert on post
+	for each row execute procedure update_views();
+
+drop trigger if exists update_question on question;
+create trigger update_question after insert on question
+	for each row execute procedure update_views();
 
 --- INDEXES ---
 --- PERFORMANCE INDEXES ---

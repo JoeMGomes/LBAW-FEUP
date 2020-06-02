@@ -1,3 +1,4 @@
+@if(!$comment['reported'])
 <div class="d-flex align-items-center mt-1 w-100">
     <div class="rounded-img  d-none d-lg-block"> </div>
     <div class="rounded-img"> </div>
@@ -21,3 +22,4 @@
         </div>
     </div>
 </div>
+@endif

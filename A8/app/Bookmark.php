@@ -35,7 +35,7 @@ class Bookmark extends Model
     public function removeBook($bookmark)
     {
         if(Auth::check()){
-            DB::delete('DELETE from bookmark where  member = :id AND bookmark = :question) ', [
+            DB::delete('DELETE from bookmark where  member = :id AND bookmark = :question', [
                 'id' => Auth::user()->id,
                 'question' => $bookmark
             ]);

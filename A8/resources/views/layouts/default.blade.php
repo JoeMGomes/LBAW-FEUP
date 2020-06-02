@@ -31,6 +31,7 @@
 @yield('bodyTag')
 
 <!--------ONLY ONE VERSION-------->
+<div class="overlay d-lg-none"></div>
 <nav class="sidebar d-flex flex-column d-lg-block col-lg-2 justify-content-between align-items-center active h-100">
     <div class="d-flex flex-column justify-content-between align-items-center h-100">
     <div class="fixed-box d-flex d-lg-none flex-column align-items-center justify-content-center">

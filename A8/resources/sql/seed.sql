@@ -299,7 +299,7 @@ BEGIN
 		END IF;
 		IF New.reported <> 1 then
 			Update report set reported = 1 where id = NEW.id;
-			delete from post where old.reported;
+			delete from post where old.reported = id;
 		end if;
 	END IF;
 RETURN NEW;

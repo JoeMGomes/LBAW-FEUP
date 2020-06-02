@@ -12,9 +12,8 @@ class Report extends Model
     protected $table = 'report';
 
     protected $fillable = [
-       'id','date', 'reported', 'reporter','type', 'offense','state'
+        'id','date', 'reported', 'reporter','type', 'offense','state'
     ];
-
 
     /**
      * Inserts a new report in the database
@@ -32,16 +31,13 @@ class Report extends Model
     }
 
     public function getReportsForAdmin(){
-
         return DB::select('SELECT r.id, u.name, r.date,  type, p.text_body, r.offense 
                         FROM report as r, post as p, member as u 
             WHERE state = \'Unread\' AND p.id = r.reported AND p.author = u.id');
-
     }
 
     public function setState($data){
-
-        DB::update('UPDATE report set state = :state where id= :id', 
+        DB::update('UPDATE report set state = :state where id = :id', 
         ['state' => $data['state'],
         'id' => $data['id']
         ]);

@@ -90,7 +90,7 @@ class QuestionController extends Controller
         $question = $request->input('question'); 
         $answer = $request->input('answer');
         DB::select(DB::raw('update question set best_answer = :answer where post = :question'),
-         ['question' => $question, 'answer' => $answer]);
+        ['question' => $question, 'answer' => $answer]);
     }
 
     public function deleteQuestion(Request $r) {

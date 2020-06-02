@@ -59,8 +59,7 @@
                         <input type="hidden" id="emailPass" name="emailPass" value="{{Auth::user()->email}}">
                         <div class="form-group">
                             <label for="oldPassword">current password</label>
-                            <input type="password" name="oldPassword" id="oldPassword" class="form-control" required
-                                autofocus>
+                            <input type="password" name="oldPassword" id="oldPassword" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label class="float-left" for="inputPasswordNew ">new password</label>
@@ -85,8 +84,7 @@
                         <h5>Change username</h5>
                         <div class="form-group">
                             <label class="float-left" for="newUsername ">new username</label>
-                            <input type="text" id="newUsername" name="newUsername" class="form-control" required
-                                autofocus>
+                            <input type="text" id="newUsername" name="newUsername" class="form-control" value="{{old('newUsername')}}" required>
                         </div>
                         <div class="form-group">
                             <label for="namePassword">password</label>
@@ -106,8 +104,8 @@
                         <div class="form-group">
                             <label><b>current email:</b> {{Auth::user()->email}}</label><br>
                             <label for="inputEmail">new e-mail</label>
-                            <input type="email" name="inputEmail" id="inputEmail" class="form-control" required
-                                autofocus>
+                            <input type="email" name="inputEmail" id="inputEmail" class="form-control" value="{{old('inputEmail')}}" required
+                            >
                         </div>
                         <div class="form-group">
                             <label class="float-left" for="passwordEmail">password</label>

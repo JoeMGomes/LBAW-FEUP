@@ -107,7 +107,7 @@ class UserController extends Controller
 
             return back()->with('successMessage', 'Username changed successfuly!');
         } else{
-            return back()->with('errorMessage','Your current password does not match');        
+            return back()->withInput()->with('errorMessage','Your current password does not match');        
         }
 
     }
@@ -168,7 +168,7 @@ class UserController extends Controller
 
             return back()->with('successMessage', 'Email changed successfully!');
         } else{
-            return back()->with('errorMessage','Your password does not match');        
+            return back()->withInput()->with('errorMessage','Your password does not match');        
         }
     }
 

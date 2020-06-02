@@ -46,7 +46,7 @@ class QuestionController extends Controller
             if (array_key_exists('category'.$i, $noDupArray)){
 
                 if(!$this->checkcategory($noDupArray['category'.$i]) && $noDupArray['category'.$i] != ''){
-                    return back()->with('errorMessage' , $noDupArray['category'.$i].' is not a valid category!'.$noDupArray['category'.$i]);
+                    return back()->withInput()->with('errorMessage' , $noDupArray['category'.$i].' is not a valid category!'.$noDupArray['category'.$i]);
                 }
                 if($request->input('category'.$i)  != ''){
                     array_push($catArray, $noDupArray['category'.$i]);
@@ -56,7 +56,7 @@ class QuestionController extends Controller
 
         }
         if (!$check){
-            return back()->with('errorMessage' , 'Please insert a valid category!');
+            return back()->withInput()->with('errorMessage' , 'Please insert a valid category!');
         }
             $this->authorize('create', Question::class);
 
@@ -136,7 +136,7 @@ class QuestionController extends Controller
     {
         $obj = new Question();
         $obj->updateQuestion($request);
-        return redirect()->back();
+        return redirect()->back()->with('successMessage','Question edit successfully!');
     }
 
 

@@ -1,5 +1,4 @@
 let textAreas = document.getElementsByClassName("MDE");
-console.log(textAreas[0]);
 
 //easyMDE = new EasyMDE({element: document.getElementById('my-text-area')});
 for (let i = 0; i < textAreas.length; i++) {
@@ -38,6 +37,9 @@ const MONTH_NAMES = [
     "November",
     "December",
 ];
+
+
+
 
 function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
     const day = date.getDate();
@@ -224,6 +226,24 @@ function getCategNumber() {
     }
     return 0;
 }
+
+
+function addBookmark(questionID){
+    console.log(questionID);
+    sendAjaxRequest("post", "/api/addBookmark", { message: questionID }, function(){
+        document.querySelector("#bookmark").innerHTML+= '<button type="button" class="btn text-secondary" onclick="deleteBookmark(<?php echo $question["id"] ?>)"> <a href="#" class=" text-black"><i class="fa fa-bookmark"></i> bookmarked!</a></button>';
+        
+    });
+}
+
+function deleteBookmark(questionID){
+    console.log(questionID);
+    sendAjaxRequest("post", "api/removeBookmark", { message: questionID }, function(){
+        document.querySelector("#bookmark").innerHTML+= '<button type="button" class="btn text-secondary" onclick="addBookmark(<?php echo $question["id"] ?>)"><a href="#" class=" text-black"><i class="fa fa-bookmark-o"></i> bookmark</a></button>';
+
+    });
+}
+
 
 function deletecategory(value) {
     let el = document.getElementById("category" + value);

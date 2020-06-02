@@ -17,7 +17,7 @@
             <div class="text-right text-nowrap d-flex">
                 <small class="my-auto"> Comented on {{date('M d, Y @ H:i ',strtotime($comment['date']))}}</small>
                 @include('partials.question.deleteComment')
-                @include('partials.report', ['id' => $comment['id']])
+                @include('partials.report', ['id' => $comment['id'], 'owner' => $question['owner']])
             </div>
         </div>
     </div>

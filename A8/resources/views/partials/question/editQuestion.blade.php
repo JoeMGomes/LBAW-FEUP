@@ -6,7 +6,7 @@
     <div class="modal fade" id="edit{{$question['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered vh-100" ole="document">
             <div class="text-left rounded bg-mygrey d-flex flex-column modal-content px-4 py-4">
-                <form class="d-flex flex-column " action="/post/edit" method="POST">
+                <form class="d-flex flex-column " action="/post/editQuestion" method="POST">
                     @csrf
                     <input name="questionID" class="form-control" value="{{$question['id']}}" hidden>
                     

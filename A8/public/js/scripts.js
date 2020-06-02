@@ -1,5 +1,4 @@
 let textAreas = document.getElementsByClassName("MDE");
-console.log(textAreas[0]);
 
 //easyMDE = new EasyMDE({element: document.getElementById('my-text-area')});
 for (let i = 0; i < textAreas.length; i++) {
@@ -38,6 +37,9 @@ const MONTH_NAMES = [
     "November",
     "December",
 ];
+
+
+
 
 function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
     const day = date.getDate();
@@ -224,6 +226,26 @@ function getCategNumber() {
     }
     return 0;
 }
+
+
+function addBookmark(questionID){
+    console.log(questionID);
+    sendAjaxRequest("post", "/api/addBookmark", { message: questionID }, function(){
+        console.log(this.responseText)
+        document.querySelector("#bookmarked").classList.remove("d-none");
+        document.querySelector("#bookmark").classList.add("d-none");
+    });
+}
+
+function deleteBookmark(questionID){
+    console.log(questionID);
+    sendAjaxRequest("post", "api/removeBookmark", { message: questionID }, function(){
+        console.log(this.responseText)
+        document.querySelector("#bookmarked").classList.add("d-none");
+        document.querySelector("#bookmark").classList.remove("d-none");
+    });
+}
+
 
 function deletecategory(value) {
     let el = document.getElementById("category" + value);

@@ -36,6 +36,7 @@
                     </div>
                     <div class="text-right text-nowrap d-flex">
                         <small class="my-auto"> Asked on {{date('M d, Y @ H:i ', strtotime($question['date']))}} </small>
+                        @include('partials.question.Bookmark')
                         @include('partials.question.editQuestion')
                         @include('partials.question.deleteQuestion')
                         @include('partials.report', ['id' => $question['id']])

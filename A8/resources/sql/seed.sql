@@ -708,7 +708,7 @@ CREATE INDEX search_question ON total_question USING gist(
 --- FUNCTIONS --- 
 -- add question
 DROP FUNCTION IF EXISTS add_question(integer, text, text);
-CREATE OR REPLACE FUNCTION add_question(author INTEGER, text_body text, title text)
+CREATE OR REPLACE FUNCTION add_question(author INTEGER, title text, text_body text)
 RETURNS INTEGER AS $$
 DECLARE post_id post.id%TYPE;
 BEGIN
@@ -918,8 +918,9 @@ INSERT INTO member(email, name, password) VALUES ('teste@teste.com','Teste Teste
 -- Questions insert
 --2 
 SELECT add_question(2, 
-    'SO, I have this yellow jacket and I dont know how to wash it. How do I wash it? It is yellow. Please help.', 
-    'How do I wash my yellow jacket?');
+	'How do I wash my yellow jacket?',
+    'SO, I have this yellow jacket and I dont know how to wash it. How do I wash it? It is yellow. Please help.' 
+    );
 --3
 SELECT add_answer(3,'In order to wash your yellow jacket you need to use special yellow jacket
                         washing soap In order to wash your yellow jacket you need to use special

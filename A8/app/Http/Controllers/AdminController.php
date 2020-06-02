@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Admin;
+use App\Report;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -93,9 +94,12 @@ class AdminController extends Controller
     }
 
     public function showReportManagement(){
-        if(Auth::guard('admin')->check())
-            return view('admin.reportManagement');
-        else
+        if(Auth::guard('admin')->check()){
+            $obj = new Report();
+            $reports = $obj->getReportsForAdmin();
+            
+            return view('admin.reportManagement',['reports' => $reports]);
+        }else
             return view('auth.adminLogin');
     }
 }

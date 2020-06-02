@@ -99,4 +99,18 @@ class QuestionController extends Controller
             ['question' => $question]);
         return redirect('/');
     }
+
+
+
+    public function edit(Request $request)
+    {
+        $obj = new Question();
+        $obj->updateQuestion($request);
+        return redirect()->back();
+    }
+
+
+
 }
+
+

@@ -1,15 +1,26 @@
 let textAreas = document.getElementsByClassName("MDE");
 console.log(textAreas[0]);
 
- //easyMDE = new EasyMDE({element: document.getElementById('my-text-area')});
- for (let i = 0; i < textAreas.length; i++){
-     new EasyMDE({element: textAreas[i], minHeight: "70px",});
- }
+//easyMDE = new EasyMDE({element: document.getElementById('my-text-area')});
+for (let i = 0; i < textAreas.length; i++) {
+    new EasyMDE({
+        element: textAreas[i], minHeight: "70px",
+        forceSync: true,
+        toggleFullScreen: false,
+        toolbar: ["bold", "italic", "heading", "|", "quote", "link", "image", "|",  "unordered-list", "ordered-list", "|" ,"preview"]
+    });
+}
 
 
 let newQuestionText = document.querySelector(".QuestionMDE");
-if (newQuestionText != null){
-    new EasyMDE({element: newQuestionText, minHeight: "200px",});
+if (newQuestionText != null) {
+    new EasyMDE({
+        element: newQuestionText, minHeight: "200px",
+        initialValue: newQuestionText[i].innerHTML,
+        forceSync: true,
+        toggleFullScreen: false,
+        toolbar: ["bold", "italic", "heading", "|", "quote", "link", "image", "|", "unordered-list", "ordered-list", "|", "preview"]
+    });
 }
 
 
@@ -148,7 +159,7 @@ function Handler() {
     tagElem.innerHTML = "";
     for (let i = 0; i < response.length; i++) {
         tagElem.innerHTML +=
-            '<option value="' + response[i].name + '" data-color="' + response[i].color +'" data-catid="' + response[i].id + '">';
+            '<option value="' + response[i].name + '" data-color="' + response[i].color + '" data-catid="' + response[i].id + '">';
     }
 }
 function NotificationHandler() {

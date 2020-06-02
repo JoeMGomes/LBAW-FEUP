@@ -297,6 +297,10 @@ BEGIN
 		IF member_reports >= 5 THEN
 			UPDATE "member" SET banned = TRUE WHERE id = member_reported;
 		END IF;
+		IF New.reported <> 1 then
+			Update report set reported = 1 where id = NEW.id;
+			delete from post where old.reported;
+		end if;
 	END IF;
 RETURN NEW;
 END;

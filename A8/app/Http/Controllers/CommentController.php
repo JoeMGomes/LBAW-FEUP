@@ -94,13 +94,12 @@ class CommentController extends Controller
 
         $response = $ob->create($input);
 
-        
         return redirect()->back();
     }
 
     public function deleteComment(Request $request)
     {
-        if (Auth::check() && Auth::user()->id == $request->input('owner')){
+        if ((Auth::check() && Auth::user()->id == $request->input('owner')) || Auth::guard('admin')->check()){
             $obj = new Comment();
             $obj->deleteCom($request);
             return redirect()->back();

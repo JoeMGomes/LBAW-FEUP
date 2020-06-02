@@ -212,21 +212,33 @@ class UserController extends Controller
     }
 
     public function activity() {
+        if(Auth::guard('admin')->check())
+            return redirect()->route('home');
         $user = new User();
         $result = $user->activity(Auth::user()->id);
+        // print_r($result);
         return view('pages.activity', ['posts' => $result, 'content' => 'All']);
     }
     public function activityQuestions() {
+        if(Auth::guard('admin')->check())
+            return redirect()->route('home');
+
         $user = new User();
         $result = $user->activityQuestions(Auth::user()->id);
+        // print_r($result);
         return view('pages.activity', ['posts' => $result, 'content' => 'Questions']);
     }
     public function activityAnswers() {
+        if(Auth::guard('admin')->check())
+         return redirect()->route('home');
         $user = new User();
         $result = $user->activityAnswers(Auth::user()->id);
+        // print_r($result);
         return view('pages.activity', ['posts' => $result, 'content' => 'Answers']);
     }
     public function activityComments() {
+        if(Auth::guard('admin')->check())
+            return redirect()->route('home');
         $user = new User();
         $result = $user->activityComments(Auth::user()->id);
         return view('pages.activity', ['posts' => $result, 'content' => 'Comments']);

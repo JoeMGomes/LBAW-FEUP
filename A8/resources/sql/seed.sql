@@ -78,7 +78,7 @@ CREATE TABLE "answer" (
 );
 
 ALTER TABLE "question"
-ADD COLUMN best_answer INTEGER REFERENCES "answer"(post);
+ADD COLUMN best_answer INTEGER REFERENCES "answer"(post) ON DELETE SET NULL;
 
 CREATE TABLE "comment" (
     post INTEGER PRIMARY KEY REFERENCES "post"(id) ON DELETE CASCADE,

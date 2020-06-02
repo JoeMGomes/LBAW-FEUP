@@ -46,7 +46,7 @@
     <div class="sidebar-header text-center text-white">
         <div>
             <a href="{{ route('home')}}">
-                <img src="{{asset('img/logo.png')}}" class="register-logo mb-4" width="100px" alt="Company Logo">
+                <img src="{{asset('img/logo.png')}}" class="register-logo mb-4" width="100px" alt="Grow Logo">
             </a>
             @auth('admin')
             @else
@@ -83,7 +83,7 @@
     <div class="w-100 text-center d-flex flex-column align-items-center align-text-bottom ">
         @if (Auth::check())
         <div class="d-flex flex-column align-items-center w-100" ">
-            <img src="{{asset('img/'.Auth::user()->photo_url)}}" class="rounded-img " alt="">
+            <img src="{{asset('img/'.Auth::user()->photo_url)}}" class="rounded-img " alt="{{Auth::user()->name}}'s Photo ">
             <h5 class="pt-2 text-white">{{Auth::user()->name}}</h5>
             <span class="text-white">{{Auth::user()->score}} points</span>
             <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
@@ -101,7 +101,7 @@
         @elseif (Auth::guard('admin')->check())
         <div class="d-flex flex-column align-items-center w-100">
 
-            <img src="{{asset('img/adminImage.jpg')}}" class="rounded-img " alt="">
+            <img src="{{asset('img/adminImage.jpg')}}" class="rounded-img " alt="{{ Auth::guard('admin')->user()->name }}'s Photo">
             <h5 class="pt-2 text-white">{{ Auth::guard('admin')->user()->name }}</h5>
             <ul class="list-unstyled d-flex flex-column align-items-center mt-3 mb-3">
                 <li><a class="text-white" href="{{route('showRepMan')}}">Report Management</a></li>

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class Answer extends Model
@@ -26,5 +26,13 @@ class Answer extends Model
     public function deleteAns(Request $request){
         DB::select("SELECT delete_answer(:id)",  [
             'id' => $request->input('answerID')]);
+    }
+
+    public function question(){
+        return $this->belongsTo('App\Question','post');
+    }
+
+    public function comments(){
+        return $this->hasMany('App\Comment','post');
     }
 }

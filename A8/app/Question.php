@@ -3,22 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 
 class Question extends Model
 {
+
+    protected $primaryKey = 'post';
+
     protected $fillable = [
         'title'
     ];
     protected $table = 'question';
 
-    public function post()
-    {
-        return $this->hasOne('App\Post', 'post');
-    }
+
 
     public function getAllInfo($id) {
         $user = Auth::check() ? Auth::user()->id : 0;
@@ -88,6 +88,14 @@ class Question extends Model
         return $final;
     }
 
+    public function post()
+    {
+        return $this->hasOne('App\Post', 'post');
+    }
+
+    public function answers(){
+        return $this->hasMany('App\Answer','post');
+    }
     public function popularQuestions() {
         $posts = DB::select(DB::raw('select q.id, q.title, q.text_body, q.name, q.photo_url
                                     from total_question as q, (

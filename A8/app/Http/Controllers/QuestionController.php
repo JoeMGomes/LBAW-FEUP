@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use App\Answer;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Question;
 use App\Category;
+use App\Comment;
 
 class QuestionController extends Controller
 {
@@ -72,9 +75,34 @@ class QuestionController extends Controller
             return redirect('/post/'.$questionid);
     }
 
-    public function view($question) {
+    public function fillSlug($question) {
+
+        $id = $question;
+        $que = Question::find($question);
+        if(!Question::where('post','=',$id)->exists()){
+            $comment = Comment::find($id);
+            $answer = Answer::find($id);
+
+            if($comment){
+                $ans = Answer::find($comment->answer);
+                $que = Question::find($ans->question);
+                $id = $que->post;
+            } else if($answer){
+                $que = Question::find($answer->question);
+                $id = $que->post;
+            } else{
+                abort(404);
+            }
+        }
+
+        $slug = Str::slug( $que->title,'-');   
+        return redirect('/post/'.$id.'/'.$slug);
+        
+    }
+
+    public function view($id){
         $obj = new Question();
-        $info = $obj->getAllInfo($question);
+        $info = $obj->getAllInfo($id);
         if ($info['question']['reported'])
             return redirect('home');
         return view('pages.question', ['question' => $info['question'], 'answers' => $info['answers'] ]);

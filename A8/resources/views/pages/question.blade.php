@@ -17,7 +17,7 @@
         <!-- Question -->
         <div class=" d-flex mb-3 mr-5 ml-3">
             <div class="flex-column d-none d-md-flex ">
-                <img src="{{ asset('img/'.$question['photo_url']) }}" class="rounded-img " alt="User Photo" />
+                <img src="{{ asset('img/'.$question['photo_url']) }}" class="rounded-img " alt="{{$question['name']}}'s Photo" />
                 <small class="text-center mt-2">{{$question['name']}}</small>
             </div>
             <div class="w-100 ml-4">

@@ -18,20 +18,20 @@
         </p>
         <div class="mw-50 mx-auto">
             <div class="d-flex justify-content-between align-items-center my-4">
-                <img src="{{ asset('img/henriqueF.jpg') }}" class="rounded-img " alt="User Photo" />
+                <img src="{{ asset('img/henriqueF.jpg') }}" class="rounded-img " alt="Henrique's Photo" />
                 <label class="mx-3">Henrique Freitas</label>
             </div>
             <div class="d-flex justify-content-between align-items-center my-4">
                 <label class="mx-3">Rita Mota</label>
-                <img src="{{ asset('img/rita.jpg') }}" class="rounded-img " alt="User Photo" />
+                <img src="{{ asset('img/rita.jpg') }}" class="rounded-img " alt="Rita's Photo" />
             </div>
             <div class="d-flex justify-content-between align-items-center my-4">
-                <img src="{{ asset('img/joseG.jpg') }}" class="rounded-img " alt="User Photo" />
+                <img src="{{ asset('img/joseG.jpg') }}" class="rounded-img " alt="José's Photo" />
                 <label class="mx-3">José Gomes</label>
             </div>
             <div class="d-flex justify-content-between align-items-center my-4">
                 <label class="mx-3">David Dinis</label>
-                <img src="{{ asset('img/david.jpg') }}" class="rounded-img " alt="User Photo" />
+                <img src="{{ asset('img/david.jpg') }}" class="rounded-img " alt="David's Photo" />
             </div>
         </div>
         <p class="align-self-center pt-2">Laboratório de Bases de Dados e Aplicações Web, 2019/20</p>

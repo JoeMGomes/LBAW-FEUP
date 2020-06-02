@@ -3,7 +3,7 @@
     <td class="align-middle text-center">{{$report->name}}</td>
     <td class="align-middle text-center">{{date('M d, Y, H:m', strtotime($report->date))}}</td>
     <td class="align-middle text-center">{{$report->type}}</td>
-    <td class="align-middle text-center "><a class="text-black" href="#">{{$report->text_body}}</a></td>
+<td class="align-middle text-center "><a class="text-black" href="{{url('post/'.$report->reported)}}">{{$report->text_body}}</a></td>
     <td class="align-middle text-center">{{$report->offense ? $report->offense: 'NULL'  }}
     <td class="align-middle text-center ">
     <form method="POST" action="{{route('handleReport')}}">

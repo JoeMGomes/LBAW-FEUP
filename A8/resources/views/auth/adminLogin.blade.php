@@ -15,7 +15,7 @@
                 <div class="text-center">
                     <a href="{{route('home')}}">
                         <img src="{{ asset('img/logo2.png') }}" class="register-logo my-3 " tabindex="1" width="100px"
-                            alt="Company Logo">
+                            alt="Grow Logo">
                     </a>
                     <h3 class="mb-3 text-mydarkblue">Administrator Log in</h3>
                 <div>

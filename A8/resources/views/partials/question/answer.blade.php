@@ -1,10 +1,11 @@
+@if(!$answer['reported'])
 <div class="d-flex align-items-center mt-4 w-100">
-    <div class="ml-lg-5 text-center flex-column">
-        <div id="up{{$answer['id']}}" onclick="upvote( {{ $answer['id'] }} )"><i class="fa fa-angle-up fa-2x text-mygreen border-secondary rounded-bottom" ></i></div>
-        <div id="votes_answer{{$answer['id']}}">{{$answer['votes']}}</div>
-        <div id="down{{$answer['id']}}" onclick="downvote({{ $answer['id'] }})"><i class=" fa fa-angle-down fa-2x text-myblue border-secondary rounded-top" ></i></div>
+    <div class="rounded-img text-center flex-column">
+        <div id="up{{ $answer['id'] }}" onclick="upvote( {{ $answer['id'] }} )"><i class="fa fa-angle-up fa-2x text-mygreen" ></i></div>
+        <div  id="votes_answer{{$answer['id']}}">{{$answer['votes']}}</div>
+        <div id="down{{ $answer['id'] }}" onclick="downvote({{ $answer['id'] }})"><i class=" fa fa-angle-down fa-2x text-myblue " ></i></div>
     </div>
-    <div class="border w-100 d-flex flex-column mx-lg-4 px-3 py-3">
+    <div class="border border-dark w-100 d-flex flex-column mx-lg-4 px-3 py-3">
         <p class="text-justify" id="post_text{{$answer['id']}}">
         @if ($answer['edited'])<small>(<u>Edited</u>)</small>@endif {!! Illuminate\Mail\Markdown::parse(nl2br(e($answer['text']))) !!}
         </p>
@@ -39,3 +40,4 @@
         @php
         {{ $questionOwner = Auth::check() && Auth::user()->id == $question['owner'];}}
         @endphp
+@endif

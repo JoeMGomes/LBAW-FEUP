@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -103,6 +103,8 @@ class QuestionController extends Controller
     public function view($id){
         $obj = new Question();
         $info = $obj->getAllInfo($id);
+        if ($info['question']['reported'])
+            return redirect('home');
         return view('pages.question', ['question' => $info['question'], 'answers' => $info['answers'] ]);
     }
 
@@ -127,4 +129,18 @@ class QuestionController extends Controller
             ['question' => $question]);
         return redirect('/');
     }
+
+
+
+    public function edit(Request $request)
+    {
+        $obj = new Question();
+        $obj->updateQuestion($request);
+        return redirect()->back();
+    }
+
+
+
 }
+
+

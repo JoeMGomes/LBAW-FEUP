@@ -1,15 +1,26 @@
 let textAreas = document.getElementsByClassName("MDE");
 console.log(textAreas[0]);
 
- //easyMDE = new EasyMDE({element: document.getElementById('my-text-area')});
- for (let i = 0; i < textAreas.length; i++){
-     new EasyMDE({element: textAreas[i], minHeight: "70px",});
- }
+//easyMDE = new EasyMDE({element: document.getElementById('my-text-area')});
+for (let i = 0; i < textAreas.length; i++) {
+    new EasyMDE({
+        element: textAreas[i], minHeight: "70px",
+        forceSync: true,
+        toggleFullScreen: false,
+        toolbar: ["bold", "italic", "heading", "|", "quote", "link", "image", "|", "unordered-list", "ordered-list", "|", "preview"]
+    });
+}
 
 
 let newQuestionText = document.querySelector(".QuestionMDE");
-if (newQuestionText != null){
-    new EasyMDE({element: newQuestionText, minHeight: "200px",});
+if (newQuestionText != null) {
+    new EasyMDE({
+        element: newQuestionText, minHeight: "200px",
+        initialValue: newQuestionText.innerHTML,
+        forceSync: true,
+        toggleFullScreen: false,
+        toolbar: ["bold", "italic", "heading", "|", "quote", "link", "image", "|", "unordered-list", "ordered-list", "|", "preview"]
+    });
 }
 
 
@@ -148,7 +159,7 @@ function Handler() {
     tagElem.innerHTML = "";
     for (let i = 0; i < response.length; i++) {
         tagElem.innerHTML +=
-            '<option value="' + response[i].name + '" data-color="' + response[i].color +'" data-catid="' + response[i].id + '">';
+            '<option value="' + response[i].name + '" data-color="' + response[i].color + '" data-catid="' + response[i].id + '">';
     }
 }
 function NotificationHandler() {
@@ -216,7 +227,6 @@ function getCategNumber() {
 
 function deletecategory(value) {
     let el = document.getElementById("category" + value);
-    el.nextElementSibling.remove();
     el.remove();
 }
 
@@ -291,15 +301,16 @@ if (categ != null) {
                         console.log(categNumb);
                         if (categNumb != 0) {
                             document.querySelector("#categoryList").innerHTML +=
-                                '<input class="form-control" id="category' +
+                                '<div id="category' +
                                 categNumb +
-                                '" name="category' +
+                                '" class="d-flex"><button class="btn" onclick="deletecategory(' +
+                                categNumb +
+                                ')"> <i class="fa fa-times text-danger"></i> </button><input class="form-control bg-white border-0" name="category' +
                                 categNumb +
                                 '" value="' +
                                 val +
-                                '" readonly required><button onclick="deletecategory(' +
-                                categNumb +
-                                ')"> X </button>';
+                                '" readonly required></div>';
+                            categ.value = "";
                         }
                     }
                 }
@@ -320,15 +331,15 @@ if (categ != null) {
                         let categNumb = getCategNumber();
                         if (categNumb != 0) {
                             document.querySelector("#categoryList").innerHTML +=
-                                '<input class="form-control" id="category' +
+                                '<div id="category' +
                                 categNumb +
-                                '" name="category' +
+                                '" class="d-flex"><button class="btn" onclick="deletecategory(' +
+                                categNumb +
+                                ')"> <i class="fa fa-times text-danger"></i> </button><input class="form-control bg-white border-0" name="category' +
                                 categNumb +
                                 '" value="' +
                                 val +
-                                '" readonly required><button onclick="deletecategory(' +
-                                categNumb +
-                                ')"> X </button>';
+                                '" readonly required></div>';
                             categ.value = "";
                         }
                     }
@@ -343,16 +354,16 @@ if (categ != null) {
 }
 
 function downvote(id) {
-    let up = document.getElementById("up"+id).firstChild;
-    let down = document.getElementById("down"+id).firstChild;
+    let up = document.getElementById("up" + id).firstChild;
+    let down = document.getElementById("down" + id).firstChild;
     switchVote(down, up)
     toggleOffVote(up)
     sendAjaxRequest("post", "/api/downvote", { message: id }, voteHandler);
 }
 
 function upvote(id) {
-    let up = document.getElementById("up"+id).firstChild;
-    let down = document.getElementById("down"+id).firstChild;
+    let up = document.getElementById("up" + id).firstChild;
+    let down = document.getElementById("down" + id).firstChild;
     switchVote(up, down);
     toggleOffVote(down);
     sendAjaxRequest("post", "/api/upvote", { message: id }, voteHandler);
@@ -364,14 +375,14 @@ function switchVote(vote, grey) {
         vote.classList.remove('border')
         // vote.classList.add('fa-2x')
         grey.classList.remove('text-mydark')
-        if (grey.classList.contains('fa-angle-up')) 
+        if (grey.classList.contains('fa-angle-up'))
             grey.classList.add('text-mygreen')
         else grey.classList.add('text-myblue')
     } else { // meter voto
         vote.classList.add('border')
         // vote.classList.remove('fa-2x')
         vote.classList.remove('text-mydark')
-        if (vote.classList.contains('fa-angle-up')) 
+        if (vote.classList.contains('fa-angle-up'))
             vote.classList.add('text-mygreen')
         else vote.classList.add('text-myblue')
         grey.classList.add('text-mydark')
@@ -385,7 +396,7 @@ function toggleOffVote(vote) {
         vote.classList.remove('border')
         // vote.classList.add('fa-2x')
     }
-        
+
 }
 
 function switchDownvote() {

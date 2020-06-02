@@ -14,6 +14,8 @@
 
 // Module 01
 
+use App\Http\Controllers\QuestionController;
+
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
@@ -39,6 +41,7 @@ Route::get('post/{question}/{filler}', 'QuestionController@view');
 Route::get('post/{question}', 'QuestionController@fillSlug');
 Route::post('post/addAnswer', 'QuestionController@addAnswer')->name('addAnswer');
 Route::post('post/edit', 'AnswerController@edit');
+Route::post('post/editQuestion', 'QuestionController@edit');
 Route::post('api/upvote', 'VoteController@upvote');
 Route::post('api/downvote', 'VoteController@downvote');
 Route::post('api/bestAnswer', 'QuestionController@chooseBestAnswer');

@@ -113,7 +113,7 @@ class Question extends Model
     public function updateQuestion(Request $request){
         DB::select("UPDATE post SET text_body = :newtext WHERE id = :id;",  [
             'newtext' => $request->input('text_body'), 
-            'id' => $request->input('answerID')]);
+            'id' => $request->input('questionID')]);
 
         DB::select("UPDATE question SET title = :title WHERE post = :id;",  [
                 'title' => $request->input('title'), 

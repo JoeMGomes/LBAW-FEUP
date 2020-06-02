@@ -75,6 +75,8 @@ class QuestionController extends Controller
     public function view($question) {
         $obj = new Question();
         $info = $obj->getAllInfo($question);
+        if ($info['question']['reported'])
+            return redirect('home');
         return view('pages.question', ['question' => $info['question'], 'answers' => $info['answers'] ]);
     }
 

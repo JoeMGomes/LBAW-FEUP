@@ -1,3 +1,4 @@
+@if(!$answer['reported'])
 <div class="d-flex align-items-center mt-4 w-100">
     <div class="ml-lg-5 text-center flex-column">
         <div id="up{{$answer['id']}}" onclick="upvote( {{ $answer['id'] }} )"><i class="fa fa-angle-up fa-2x text-mygreen border-secondary rounded-bottom" ></i></div>
@@ -39,3 +40,4 @@
         @php
         {{ $questionOwner = Auth::check() && Auth::user()->id == $question['owner'];}}
         @endphp
+@endif

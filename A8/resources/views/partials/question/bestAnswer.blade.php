@@ -1,3 +1,4 @@
+@if(!$answer['reported'])
 <div class="d-flex align-items-center mt-1 w-100">
     <div class="ml-5 text-center flex-column">
         <div id="up{{ $answer['id'] }}" onclick="upvote( {{ $answer['id'] }} )"><i class="fa fa-angle-up fa-2x text-mygreen" ></i></div>
@@ -35,3 +36,4 @@
             @include('partials.question.commentInput', ['username' => $question['name'], 'answer' =>$answer['id']])
         @endif
         {{--@endif--}}
+@endif

@@ -12,7 +12,7 @@
 
 @include('partials.navBarTop')
 
-<main id="main" class="ml-auto col-lg-9 pr-md-5 mb-3">
+<main id="main" class="ml-auto col-lg-10 pr-md-5 mb-3">
     <div class="py-4 px-4 border bg-white">
         <!-- Question -->
         <div class=" d-flex mb-3 mr-5 ml-3">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="text-right text-nowrap d-flex">
                         <small class="my-auto"> Asked on {{date('M d, Y @ H:i ', strtotime($question['date']))}} </small>
-                        
+                        @include('partials.question.editQuestion')
                         @include('partials.question.deleteQuestion')
                         @include('partials.report', ['id' => $question['id']])
                     </div>

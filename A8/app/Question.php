@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
 
 class Question extends Model
 {
@@ -98,5 +100,15 @@ class Question extends Model
                                     where p.id = q.id
                                     order by p.rank desc'));
         return collect($posts)->map(function($x) {return (array) $x; })->toArray();
+    }
+
+    public function updateQuestion(Request $request){
+        DB::select("UPDATE post SET text_body = :newtext WHERE id = :id;",  [
+            'newtext' => $request->input('text_body'), 
+            'id' => $request->input('answerID')]);
+
+        DB::select("UPDATE question SET title = :title WHERE id = :id;",  [
+                'title' => $request->input('title'), 
+                'id' => $request->input('answerID')]);
     }
 }

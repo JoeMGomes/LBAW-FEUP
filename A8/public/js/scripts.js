@@ -239,7 +239,7 @@ function addBookmark(questionID){
 
 function deleteBookmark(questionID){
     console.log(questionID);
-    sendAjaxRequest("post", "api/removeBookmark", { message: questionID }, function(){
+    sendAjaxRequest("post", "/api/removeBookmark", { message: questionID }, function(){
         console.log(this.responseText)
         document.querySelector("#bookmarked").classList.add("d-none");
         document.querySelector("#bookmark").classList.remove("d-none");

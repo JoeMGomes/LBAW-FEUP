@@ -22,7 +22,7 @@
                 @include('partials.question.edit')
                 @include('partials.question.deleteAnswer')
                 @include('partials.question.chooseBestAnswer')
-                @include('partials.report', ['id' => $answer['id']])
+                @include('partials.report', ['id' => $answer['id'], 'owner' => $question['owner']])
             </div>
         </div>
     </div>

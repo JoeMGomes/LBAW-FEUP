@@ -1,4 +1,4 @@
-@if (!Auth::guard('admin')->check() && Auth::check())
+@if (!Auth::guard('admin')->check() && Auth::check() && Auth::user()->id != $owner)
 <button type="button" class="btn text-secondary" data-toggle="modal" data-target="#report{{$id}}">
     <a href="#" class=" text-black"><i class="fa fa-flag"></i> Report</a>
 </button>

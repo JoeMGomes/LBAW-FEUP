@@ -39,7 +39,7 @@
                         @include('partials.question.Bookmark')
                         @include('partials.question.editQuestion')
                         @include('partials.question.deleteQuestion')
-                        @include('partials.report', ['id' => $question['id']])
+                        @include('partials.report', ['id' => $question['id'], 'owner' => $question['owner']])
                     </div>
                 </div>
             </div>

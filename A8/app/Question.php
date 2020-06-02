@@ -115,8 +115,8 @@ class Question extends Model
             'newtext' => $request->input('text_body'), 
             'id' => $request->input('answerID')]);
 
-        DB::select("UPDATE question SET title = :title WHERE id = :id;",  [
+        DB::select("UPDATE question SET title = :title WHERE post = :id;",  [
                 'title' => $request->input('title'), 
-                'id' => $request->input('answerID')]);
+                'id' => $request->input('questionID')]);
     }
 }

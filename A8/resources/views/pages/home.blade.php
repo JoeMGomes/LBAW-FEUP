@@ -10,4 +10,4 @@
 
 @include('partials.menuBtnHome')
 
-@include('partials.searchBarMain')
+@include('partials.home.searchBarMain')

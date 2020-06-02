@@ -123,7 +123,7 @@
     </div></div>
 </nav>
 @if(session()->has('successMessage'))
-<button id="message" class="float-right m-2 alert alert-success" style="z-index:999" onclick="hideMessage(this)"">
+<button id="message" class="w-100 alert alert-success" style="z-index:999" onclick="hideMessage(this)"">
             {{ session()->get('successMessage') }}
         </button>
         @endif

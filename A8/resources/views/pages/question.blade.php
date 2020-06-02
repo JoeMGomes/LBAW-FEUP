@@ -12,7 +12,7 @@
 
 @include('partials.navBarTop')
 
-<main id="main" class="ml-auto col-lg-9 pr-md-5 mb-3">
+<main id="main" class="ml-auto col-lg-10 pr-md-5 mb-3">
     <div class="py-4 px-4 border bg-white">
         <!-- Question -->
         <div class=" d-flex mb-3 mr-5 ml-3">

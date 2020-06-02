@@ -9,6 +9,7 @@
 
 <body class="container-fluid vh-100 m-0 p-0">
     @endsection
+    @include('partials.menuBtnHome')
 
     @section('main')
     <main id="main" class="ml-lg-auto col-lg-10 align-right">
@@ -126,7 +127,7 @@
                             <h5> Change picture </h5>
                             <div class="file-field ">
                                 <div class="mb-4 d-md-flex">
-                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                                    <img src="{{asset('img/'.Auth::user()->photo_url)}}"
                                         class="rounded-circle z-depth-1-half avatar-pic " width=80px height="80px"
                                         alt="example placeholder avatar">
                                     <div class="mt-2 ml-2 d-md-flex flex-column">

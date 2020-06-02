@@ -25,7 +25,7 @@ class Bookmark extends Model
     public function addBook($bookmark)
     {
         if(Auth::check()){
-            DB::insert('insert into bookmark (member, bookmark)  values (:id, :question) ', [
+            DB::insert('INSERT into bookmark (member, bookmark)  values (:id, :question) ', [
                 'id' => Auth::user()->id,
                 'question' => $bookmark
             ]);
@@ -35,7 +35,7 @@ class Bookmark extends Model
     public function removeBook($bookmark)
     {
         if(Auth::check()){
-            DB::delete('DELETE from bookmark where  member = :id AND bookmark :question) ', [
+            DB::delete('DELETE from bookmark where  member = :id AND bookmark = :question) ', [
                 'id' => Auth::user()->id,
                 'question' => $bookmark
             ]);

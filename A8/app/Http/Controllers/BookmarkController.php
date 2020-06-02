@@ -17,12 +17,12 @@ class BookmarkController extends Controller
 
     public function addBookmark(Request $request){
         $obj =new Bookmark();
-        $allBookmarks = $obj->addBook($request->input('message'));
+        $obj->addBook($request->input('message'));
     }
 
 
     public function removeBookmark(Request $request){
         $obj =new Bookmark();
-        $allBookmarks = $obj->removeBook($request->input('message'));
+        $obj->removeBook($request->input('message'));
     }
 }

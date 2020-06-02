@@ -231,16 +231,18 @@ function getCategNumber() {
 function addBookmark(questionID){
     console.log(questionID);
     sendAjaxRequest("post", "/api/addBookmark", { message: questionID }, function(){
-        document.querySelector("#bookmark").innerHTML+= '<button type="button" class="btn text-secondary" onclick="deleteBookmark(<?php echo $question["id"] ?>)"> <a href="#" class=" text-black"><i class="fa fa-bookmark"></i> bookmarked!</a></button>';
-        
+        console.log(this.responseText)
+        document.querySelector("#bookmarked").classList.remove("d-none");
+        document.querySelector("#bookmark").classList.add("d-none");
     });
 }
 
 function deleteBookmark(questionID){
     console.log(questionID);
     sendAjaxRequest("post", "api/removeBookmark", { message: questionID }, function(){
-        document.querySelector("#bookmark").innerHTML+= '<button type="button" class="btn text-secondary" onclick="addBookmark(<?php echo $question["id"] ?>)"><a href="#" class=" text-black"><i class="fa fa-bookmark-o"></i> bookmark</a></button>';
-
+        console.log(this.responseText)
+        document.querySelector("#bookmarked").classList.add("d-none");
+        document.querySelector("#bookmark").classList.remove("d-none");
     });
 }
 

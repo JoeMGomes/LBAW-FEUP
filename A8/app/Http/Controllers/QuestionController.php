@@ -130,16 +130,12 @@ class QuestionController extends Controller
         return redirect('/');
     }
 
-
-
     public function edit(Request $request)
     {
         $obj = new Question();
         $obj->updateQuestion($request);
         return redirect()->back()->with('successMessage','Question edit successfully!');
     }
-
-
 
 }
 

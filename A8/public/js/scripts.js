@@ -421,14 +421,6 @@ function toggleOffVote(vote) {
 
 }
 
-function switchDownvote() {
-
-}
-
-function toggleOffDownvote() {
-
-}
-
 function voteHandler(id) {
     let response = JSON.parse(this.responseText);
     console.log(response);

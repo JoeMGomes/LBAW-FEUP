@@ -129,7 +129,7 @@
                                         class="rounded-circle z-depth-1-half avatar-pic " width=80px height="80px"
                                         alt="example placeholder avatar">
                                     <div class="mt-2 ml-2 d-md-flex flex-column">
-                                        <span>Add photo</span>
+                                        <span>Add photo. <span class ="small">The preview will not change</span></span>
                                         <input class="mb-5" name="image" type="file">
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
                     </div>
                     <div class="">
                         <div class="px-5 ">
-                            <form method="POST" action="route('deleteAccount')"
+                            <form method="POST" action="{{route('deleteAccount')}}"
                                 onsubmit=" return confirm('Are you sure you want to delete your account? This action is permanent') && confirm('Are you really sure?');">
                                 {{ csrf_field() }}
                                 <button class="btn tag-orange text-white">Delete account</button>

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,23 +91,21 @@ class UserController extends Controller
 
         $inputs = $request->only('emailName', 'namePassword');
 
-        $credentials['email'] = $inputs['emailName']; 
-        $credentials['password'] = $inputs['namePassword']; 
+        $credentials['email'] = $inputs['emailName'];
+        $credentials['password'] = $inputs['namePassword'];
 
-        if(Auth::attempt($credentials)){
-            DB::update(
-                'UPDATE member SET name = :name where id = :id',
-                [
-                    'name' => $request->input('newUsername'),
-                    'id' => Auth::user()->id
-                ]
-            );
+        if (Auth::attempt($credentials)) {
+
+            $data['name'] = $request->input('newUsername');
+            $data['id'] = Auth::user()->id;
+
+            $obj = new User();
+            $obj->updateName($data);
 
             return back()->with('successMessage', 'Username changed successfuly!');
-        } else{
-            return back()->withInput()->with('errorMessage','Your current password does not match');        
+        } else {
+            return back()->withInput()->with('errorMessage', 'Your current password does not match');
         }
-
     }
     /**
      * 
@@ -122,26 +118,25 @@ class UserController extends Controller
         $this->authorize('update', User::class);
 
         $inputs = $request->only('emailPass', 'oldPassword');
-        
-        $credentials['email'] = $inputs['emailPass']; 
-        $credentials['password'] = $inputs['oldPassword']; 
 
-        if(Auth::attempt($credentials)){
-            DB::update(
-                'UPDATE member SET password = :pass where id = :id',
-                [
-                    'pass' => bcrypt($request->input('inputPasswordNew')),
-                    'id' => Auth::user()->id
-                ]
-            );
+        $credentials['email'] = $inputs['emailPass'];
+        $credentials['password'] = $inputs['oldPassword'];
+
+        if (Auth::attempt($credentials)) {
+
+            $data['pass'] = bcrypt($request->input('inputPasswordNew'));
+            $data['id'] = Auth::user()->id;
+
+            $obj = new User();
+            $obj->updatePassword($data);
 
             return back()->with('successMessage', 'Password changed successfuly!');
-        } else{
-            return back()->with('errorMessage','Your current password does not match');        
+        } else {
+            return back()->with('errorMessage', 'Your current password does not match');
         }
     }
 
-        /**
+    /**
      * 
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\User  $user
@@ -152,23 +147,22 @@ class UserController extends Controller
         $this->authorize('update', User::class);
 
         $inputs = $request->only('emailEmail', 'passwordEmail');
-        
-        $credentials['email'] = $inputs['emailEmail']; 
-        $credentials['password'] = $inputs['passwordEmail']; 
+
+        $credentials['email'] = $inputs['emailEmail'];
+        $credentials['password'] = $inputs['passwordEmail'];
 
 
-        if(Auth::attempt($credentials)){
-            DB::update(
-                'UPDATE member SET email = :email where id = :id',
-                [
-                    'email' =>$request->input('inputEmail'),
-                    'id' => Auth::user()->id
-                ]
-            );
+        if (Auth::attempt($credentials)) {
+
+            $data['email'] = $request->input('inputEmail');
+            $data['id'] = Auth::user()->id;
+
+            $obj = new User();
+            $obj->updateEmail($data);
 
             return back()->with('successMessage', 'Email changed successfully!');
-        } else{
-            return back()->withInput()->with('errorMessage','Your password does not match');        
+        } else {
+            return back()->withInput()->with('errorMessage', 'Your password does not match');
         }
     }
 
@@ -182,13 +176,14 @@ class UserController extends Controller
     {
         $this->authorize('delete', User::class);
 
-        $user = Auth::user()->id;
+        $data['id'] = Auth::user()->id;
 
         Auth::logout();
 
+        $obj = new User();
+        $obj->deleteUser($data);
 
-        DB::delete('DELETE FROM member WHERE id = ?', [$user]);
-        return redirect()->route('home')->with('successMessage','You have deleted your account :\'( Come back any time!');
+        return redirect()->route('home')->with('successMessage', 'You have deleted your account :\'( Come back any time!');
     }
 
 
@@ -202,8 +197,12 @@ class UserController extends Controller
         $imageName = Auth::user()->id . '.' . request()->image->getClientOriginalExtension();
         request()->image->move(public_path('img'), $imageName);
 
-        DB::select('UPDATE member set photo_url = ? WHERE id = ?', [$imageName, Auth::user()->id]);
-        
+        $data['imageName'] = $imageName;
+        $data['id'] = Auth::user()->id;
+
+        $obj = new User();
+        $obj->updatePhoto($data);
+
         return back()
 
             ->with('successMessage', 'You have successfully upload your image!')
@@ -211,16 +210,18 @@ class UserController extends Controller
             ->with('image', $imageName);
     }
 
-    public function activity() {
-        if(Auth::guard('admin')->check())
+    public function activity()
+    {
+        if (Auth::guard('admin')->check())
             return redirect()->route('home');
         $user = new User();
         $result = $user->activity(Auth::user()->id);
         // print_r($result);
         return view('pages.activity', ['posts' => $result, 'content' => 'All']);
     }
-    public function activityQuestions() {
-        if(Auth::guard('admin')->check())
+    public function activityQuestions()
+    {
+        if (Auth::guard('admin')->check())
             return redirect()->route('home');
 
         $user = new User();
@@ -228,16 +229,18 @@ class UserController extends Controller
         // print_r($result);
         return view('pages.activity', ['posts' => $result, 'content' => 'Questions']);
     }
-    public function activityAnswers() {
-        if(Auth::guard('admin')->check())
-         return redirect()->route('home');
+    public function activityAnswers()
+    {
+        if (Auth::guard('admin')->check())
+            return redirect()->route('home');
         $user = new User();
         $result = $user->activityAnswers(Auth::user()->id);
         // print_r($result);
         return view('pages.activity', ['posts' => $result, 'content' => 'Answers']);
     }
-    public function activityComments() {
-        if(Auth::guard('admin')->check())
+    public function activityComments()
+    {
+        if (Auth::guard('admin')->check())
             return redirect()->route('home');
         $user = new User();
         $result = $user->activityComments(Auth::user()->id);

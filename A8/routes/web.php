@@ -33,7 +33,7 @@ Route::get('/googleOAuth','Auth\LoginController@redirectToProvider');
 Route::get('/callbackOAuth', 'Auth\LoginController@handleProviderCallback');
 
 // Module 02
-Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
+Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search'])->name('search');
 //Route::get('post/{questionID}', ['uses' => 'QuestionController@show', 'as' => 'questionID']);
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
 Route::post('post/newQuestion', 'QuestionController@store')->name('makeQuestion');

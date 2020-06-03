@@ -26,15 +26,19 @@ class SearchController extends Controller
     public function show($search)
     {
         $obj = new Search();
-        $pos = strpos($search, "#");
 
+        // replace ' ' with '+'
         str_replace(' ', '+', $search);
-        preg_replace('/[^a-zA-Z0-9#+]/i', ' ', $search);
-        if ($pos === false) {
+        // delete all not alphanumeric or '#' char
+        preg_replace('/[^a-zA-Z0-9#+]/i', '', $search);
+
+        //search for '#' to filter results if asked
+        $pos = strpos($search, "#");
+        if ($pos === false) { // no filter
             $results = $obj->search($search);
-        } elseif ($pos == 0) {
+        } elseif ($pos == 0) { // only category
             $results = $obj->searchCategory(substr($search, 1));
-        } else {
+        } else { // search with filter
             $search1 = substr($search, 0, $pos);
             $category = substr($search, $pos + 1);
 

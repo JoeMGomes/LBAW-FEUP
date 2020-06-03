@@ -13,7 +13,7 @@
             <span>Tip: Search with # to filter your results through categories</span>
             <ul class="my-3 m-1 mx-lg-auto col-lg-10 d-flex list-unstyled justify-content-around flex-wrap">
                 <li class="tag mx-md-2 my-1 bg-myred"><a href="{{url('search/%23Laundry')}}"  class=" tag text-decoration-none text-black">Laundry</a></li>
-                <li class="tag mx-md-2 my-1 bg-myyellow" ><a href="{{url('search/%23Cooking')}}" class=" tag text-decoration-none text-black">Cooking</a></li>
+                <li class="tag mx-md-2 my-1 bg-myyellow" ><a href="{{url('search/%23Cooking')}}" class="tag text-decoration-none text-black">Cooking</a></li>
                 <li class="tag mx-md-2 my-1 bg-mygreen"><a href="{{url('search/%23Health')}}" class="tag text-decoration-none text-black">Health</a></li>
                 <li class="tag mx-md-2 my-1 bg-myred"><a href="{{url('search/%23Finances')}}" class="tag text-decoration-none text-black">Finances</a></li>
                 <li class="tag mx-md-2 my-1 bg-myyellow"><a href="{{url('search/%23Sexuality')}}" class="tag text-decoration-none text-black">Sexuality</a></li>

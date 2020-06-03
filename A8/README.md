@@ -158,7 +158,7 @@ Afterwards, you can build and upload the docker image by executing that script f
 
 You can test the image locally by running:
 
-    docker run -it -p 8000:80 -e DB_DATABASE="lbaw20gg" -e DB_USERNAME="lbaw20gg" -e DB_PASSWORD="PASSWORD" <DOCKER_USERNAME>/lbaw20gg
+    docker run -it -p 8000:80 -e DB_DATABASE="lbaw2075" -e DB_USERNAME="lbaw2075" -e DB_PASSWORD="QO146707" lbaw2075b/lbaw2075
 
 The above command exposes your application on http://localhost:8000.
 The `-e` argument creates environment variables inside the container, used to provide Laravel with the required database configurations.
@@ -171,6 +171,28 @@ This prevents anyone else but us from running your container with your database.
 Finally, note that there should be only one image per group.
 One team member should create the image initially and add his team to the **public** repository at Docker Hub.
 You should provide your teacher the details for accessing your Docker image, namely, the Docker username and repository (*DOCKER_USERNAME/lbaw20gg*), in case it was changed.
+
+
+### Usage
+
+The project's production website with the latest developments and features can be accessed at: http://lbaw2075.lbaw-prod.fe.up.pt  
+
+#### Administration Credentials
+Administration login available at http://lbaw2075.lbaw-prod.fe.up.pt/adminLogin  
+
+| Email    | Password |
+| -------- | -------- |
+| admin@admin.com    | 123456   |
+
+#### User Credentials
+
+| Type          | Email  | Password |
+| ------------- | --------- | -------- |
+| basic account | teste@teste.com | testeteste |
+| basic account | rita@rita.com | 123456 |
+| basic account | henrique@henrique.com | 123456 |
+| basic account | jose@jose.com | 123456 |
+| basic account | david@david.com | 123456 |
 
 
 ## Laravel code structure

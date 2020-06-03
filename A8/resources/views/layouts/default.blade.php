@@ -95,6 +95,7 @@
             </ul>
             <button class="btn btn-secondary mb-2 w-100" onclick="document.location='{{route('logout')}}'">Sign
                 out</button>
+                <a class="small text-white text-center " href="{{ route('about')}}">About</a>
         </div>
 
         @elseif (Auth::guard('admin')->check())
@@ -109,6 +110,7 @@
             </ul>
             <button class="btn btn-secondary mb-3 w-100" onclick="document.location='{{route('logoutAdmin')}}'">Sign
                 out</button>
+                <a class="small text-white text-center " href="{{ route('about')}}">About</a>
         </div>
         @else
         <div class="w-100 text-center d-flex flex-column align-items-bottom">

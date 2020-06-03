@@ -8,18 +8,18 @@
 @section('bodyTag')
 
 <body class="container-fluid vh-100 m-0 p-0">
-    @endsection
-    @include('partials.menuBtnHome')
-
-    @section('main')
+ @endsection
+ 
+ @section('main')
+ @include('partials.menuBtnHome')
     <main id="main" class="ml-lg-auto col-lg-10 align-right">
         <h1 class=" py-2 px-5 ml-3"> Settings</h1>
         @if (Auth::user()->password === 'GoogleAUTH')
         <div class="px-5">
-            <p > Your account was logged in using Google's Authentication Services 
+            <p> Your account was logged in using Google's Authentication Services
                 <i class="fa fa-google" aria-hidden="true"></i>
                 . For safety
-                reasons you cannot edit personal information. Sorry for the inconvenience. 
+                reasons you cannot edit personal information. Sorry for the inconvenience.
             </p>
 
             <div class="row align-items-end">
@@ -29,8 +29,8 @@
                     <div class="file-field ">
                         <div class="mb-4 d-md-flex">
                             <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                                class="rounded-circle z-depth-1-half avatar-pic " width=80px height="80px"
-                                alt="example placeholder avatar">
+                                class="rounded-circle z-depth-1-half avatar-pic " width=80 height="80"
+                                alt="Placeholder avatar">
                             <div class="mt-2 ml-2 d-md-flex flex-column">
                                 <span>Add photo</span>
                                 <input class="mb-5" name="image" type="file">
@@ -62,7 +62,7 @@
                             <input type="password" name="oldPassword" id="oldPassword" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label class="float-left" for="inputPasswordNew ">new password</label>
+                            <label class="float-left" for="inputPasswordNew">new password</label>
                             <input type="password" name="inputPasswordNew" id="inputPasswordNew" class="form-control"
                                 required>
                         </div>
@@ -83,8 +83,9 @@
                         <input type="hidden" id="emailName" name="emailName" value="{{Auth::user()->email}}">
                         <h5>Change username</h5>
                         <div class="form-group">
-                            <label class="float-left" for="newUsername ">new username</label>
-                            <input type="text" id="newUsername" name="newUsername" class="form-control" value="{{old('newUsername')}}" required>
+                            <label class="float-left" for="newUsername">new username</label>
+                            <input type="text" id="newUsername" name="newUsername" class="form-control"
+                                value="{{old('newUsername')}}" required>
                         </div>
                         <div class="form-group">
                             <label for="namePassword">password</label>
@@ -104,8 +105,8 @@
                         <div class="form-group">
                             <label><b>current email:</b> {{Auth::user()->email}}</label><br>
                             <label for="inputEmail">new e-mail</label>
-                            <input type="email" name="inputEmail" id="inputEmail" class="form-control" value="{{old('inputEmail')}}" required
-                            >
+                            <input type="email" name="inputEmail" id="inputEmail" class="form-control"
+                                value="{{old('inputEmail')}}" required>
                         </div>
                         <div class="form-group">
                             <label class="float-left" for="passwordEmail">password</label>
@@ -126,10 +127,10 @@
                             <div class="file-field ">
                                 <div class="mb-4 d-md-flex">
                                     <img src="{{asset('img/'.Auth::user()->photo_url)}}"
-                                        class="rounded-circle z-depth-1-half avatar-pic " width=80px height="80px"
+                                        class="rounded-circle z-depth-1-half avatar-pic " width=80 height="80"
                                         alt="example placeholder avatar">
                                     <div class="mt-2 ml-2 d-md-flex flex-column">
-                                        <span>Add photo. <span class ="small">The preview will not change</span></span>
+                                        <span>Add photo. <span class="small">The preview will not change</span></span>
                                         <input class="mb-5" name="image" type="file">
                                     </div>
                                 </div>

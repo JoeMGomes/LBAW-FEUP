@@ -135,7 +135,7 @@ textarea{
 .bg-myyellow {
     background-color: #fbcd05;
 }
-.bg-yellowh:hover {
+.bg-myyellow:hover {
     background-color: #976b06;
     color: white;
 }
@@ -144,8 +144,12 @@ textarea{
     background-color: #7e9e00;
 }
 .bg-mydarkgreen,
-.bg-greenh:hover {
+.bg-mygreen:hover {
     background-color: #5c7300;
+}
+
+.bg-mydarkgreen:hover{
+    background-color: #7e9e00;
 }
 
 .tag-orange {

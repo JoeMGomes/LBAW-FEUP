@@ -49,18 +49,6 @@ class CommentController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -104,5 +92,12 @@ class CommentController extends Controller
             return redirect()->back();
         }
     } 
+
+    public function edit(Request $request)
+    {
+        $obj = new Comment();
+        $obj->updateText($request);
+        return redirect()->back();
+    }
 
 }

@@ -6,7 +6,7 @@
     <div class="modal fade" id="edit{{$answer['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered vh-100">
             <div class="text-left rounded bg-mygrey d-flex flex-column modal-content px-4 py-4">
-                <form class="d-flex flex-column" action="/post/edit" method="POST">
+                <form class="d-flex flex-column" action="/post/editAnswer" method="POST">
                     @csrf
                     <input name="answerID" class="form-control" value="{{$answer['id']}}" hidden>
                     <textarea class="form-control MDE "  name="text_body" rows="5" required>{{$answer['text']}}</textarea>

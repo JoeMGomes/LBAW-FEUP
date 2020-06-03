@@ -1,7 +1,7 @@
 <form  id="search_form" class="form input-group mb-0">
 @isset($search[0])
     <input id="search" value="{{ str_replace('+', ' ', $search[0]) }}" class="form-control rounded border-dark border-3 ml-3" type="text"
-            placeholder="How do I do my taxes">
+            placeholder="How do I do my taxes" required>
 @else
     <input id="search" value="" class="form-control rounded border-dark border-3 ml-3" type="text"
             placeholder="How do I do my taxes" required>

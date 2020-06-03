@@ -40,7 +40,8 @@ Route::post('post/newQuestion', 'QuestionController@store')->name('makeQuestion'
 Route::get('post/{question}/{filler}', 'QuestionController@view');
 Route::get('post/{question}', 'QuestionController@fillSlug');
 Route::post('post/addAnswer', 'QuestionController@addAnswer')->name('addAnswer');
-Route::post('post/edit', 'AnswerController@edit');
+Route::post('post/editAnswer', 'AnswerController@edit');
+Route::post('post/editComment', 'CommentController@edit');
 Route::post('post/editQuestion', 'QuestionController@edit');
 Route::post('api/upvote', 'VoteController@upvote');
 Route::post('api/downvote', 'VoteController@downvote');

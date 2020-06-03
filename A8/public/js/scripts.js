@@ -1,5 +1,4 @@
 let textAreas = document.getElementsByClassName("MDE");
-
 //easyMDE = new EasyMDE({element: document.getElementById('my-text-area')});
 for (let i = 0; i < textAreas.length; i++) {
     new EasyMDE({

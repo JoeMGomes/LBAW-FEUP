@@ -20,9 +20,11 @@ class Question extends Model
 
 
 
-    public function getAllInfo($id) {
+    public function getAllInfo($id)
+    {
         $user = Auth::check() ? Auth::user()->id : 0;
-        $result = DB::select(DB::raw('select *
+        $result = DB::select(
+            DB::raw('select *
         from (
             select 1 as type, id, author, date, text_body as text, title, best_answer, 0 as parent, has_been_edited(id) as edited, reported, owner, name, photo_url, membership_date, score, banned, 0 as votes, is_bookmarked(:member, id) as bookmarked
              from total_question
@@ -40,28 +42,29 @@ class Question extends Model
             from question_category as q, category as c
             where q.question = :question_id and q.category = c.id  
         ) as question order by type'),
-                            array('question_id' => $id, 'member' => $user));
-        $result = collect($result)->map(function($x) {return (array) $x; })->toArray();
+            array('question_id' => $id, 'member' => $user)
+        );
+        $result = collect($result)->map(function ($x) {
+            return (array) $x;
+        })->toArray();
         $question = $result[0];
-        $answers=array();
-        $comments=array();
-        $categories=array();
-        foreach ( $result as $r) {
+        $answers = array();
+        $comments = array();
+        $categories = array();
+        foreach ($result as $r) {
             if ($r['type'] == 2) {
                 array_push($answers, $r);
-            }
-            else if ($r['type'] == 3) {
+            } else if ($r['type'] == 3) {
                 array_push($comments, $r);
-            }
-            else if ($r['type'] == 4) {
+            } else if ($r['type'] == 4) {
                 array_push($categories, $r);
             }
         }
 
         $complete_answers = array();
-        foreach($answers as $a) {
+        foreach ($answers as $a) {
             $complete_comments = array();
-            foreach($comments as $c) {
+            foreach ($comments as $c) {
                 if ($c['parent'] == $a['id']) {
                     array_push($complete_comments, $c);
                 }
@@ -70,9 +73,9 @@ class Question extends Model
             array_push($complete_answers, $a);
         }
 
-        if ( isset($question['best_answer']) ) {
+        if (isset($question['best_answer'])) {
             $ba = $question['best_answer'];
-            foreach($complete_answers as $key => $a) {
+            foreach ($complete_answers as $key => $a) {
                 if ($a['id'] == $ba) {
                     $question['best_answer_info'] = $a;
                     unset($complete_answers[$key]);
@@ -93,10 +96,12 @@ class Question extends Model
         return $this->hasOne('App\Post', 'post');
     }
 
-    public function answers(){
-        return $this->hasMany('App\Answer','post');
+    public function answers()
+    {
+        return $this->hasMany('App\Answer', 'post');
     }
-    public function popularQuestions() {
+    public function popularQuestions()
+    {
         $posts = DB::select(DB::raw('select q.id, q.title, q.text_body, q.name, q.photo_url
                                     from total_question as q, (
                                         select q.id,sum(upvotes(a.id) + downvotes(a.id)) + count(*)*5 as rank
@@ -107,16 +112,65 @@ class Question extends Model
                                         limit 5 ) as p
                                     where p.id = q.id
                                     order by p.rank desc'));
-        return collect($posts)->map(function($x) {return (array) $x; })->toArray();
+        return collect($posts)->map(function ($x) {
+            return (array) $x;
+        })->toArray();
     }
 
-    public function updateQuestion(Request $request){
+    public function updateQuestion(Request $request)
+    {
         DB::select("UPDATE post SET text_body = :newtext WHERE id = :id;",  [
-            'newtext' => $request->input('text_body'), 
-            'id' => $request->input('questionID')]);
+            'newtext' => $request->input('text_body'),
+            'id' => $request->input('questionID')
+        ]);
 
         DB::select("UPDATE question SET title = :title WHERE post = :id;",  [
-                'title' => $request->input('title'), 
-                'id' => $request->input('questionID')]);
+            'title' => $request->input('title'),
+            'id' => $request->input('questionID')
+        ]);
+    }
+
+
+    public function addAnswer(Request $request)
+    {
+        DB::select('SELECT add_answer(:param1, :param2, :param3)', [
+            'param1' => Auth::user()->id,
+            'param2' => $request->input('text_body'),
+            'param3' => $request->input('question_id')
+        ]);
+    }
+
+    public function addQuestion($title, $text)
+    {
+        $id = DB::select('SELECT add_question(:param1, :param2, :param3)', [
+            'param1' => Auth::user()->id,
+            'param2' => $title,
+            'param3' => $text
+        ]);
+        return $id;
+    }
+
+    public function addCategory($questionid, $categ)
+    {
+        DB::select('insert into question_category(question, category) values (:question, (select id from category where name = :catid));', [
+            'question' => $questionid,
+            'catid'  => $categ]);
+    }
+
+    public function addbestAnswer(Request $request)
+    {
+        $question = $request->input('question');
+        $answer = $request->input('answer');
+        DB::select(
+            DB::raw('update question set best_answer = :answer where post = :question'),
+            ['question' => $question, 'answer' => $answer]
+        );
+    }
+
+    public function delQuestion(Request $request)
+    {
+        $question = $request->input('id');
+        DB::select(DB::raw('select delete_question(:question)'), 
+            ['question' => $question]);
     }
 }

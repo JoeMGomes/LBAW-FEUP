@@ -4,7 +4,7 @@
         <small class="text-center mt-2">{{$post['name']}}</small>
     </div>
     <div class="ml-4">
-        <a class="text-black" href="questionPage.php">
+    <a class="text-black" href="{{url('/post/'.$post['id'])}}">
             <h4 class="mb-3">{{$post['title']}}</h4>
         </a>
         <p class="text-justified">

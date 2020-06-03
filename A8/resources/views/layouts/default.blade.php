@@ -128,7 +128,7 @@
         </button>
         @endif
         @if(session()->has('errorMessage'))
-        <button id=" message" class="float-right m-2 alert alert-danger " style="z-index:999"
+        <button id=" message" class="w-100 alert alert-danger " style="z-index:999"
     onclick="hideMessage(this)">
     {{ session()->get('errorMessage') }}
 </button>

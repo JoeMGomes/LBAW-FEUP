@@ -10,7 +10,9 @@
             </div>
             <span class="pr-4 mr-4 text-nowrap"> {{count($results)}} results found </span>
         </div>
-
+        @if (!$results)
+        <p class="my-4">You have no bookmarked posts! Get started by looking into some <a href="/#popular">popular questions</a>!</p>
+        @endif
         @foreach($results as $result)
             @include('partials.search.searchResult', $result)
         @endforeach

@@ -1,5 +1,5 @@
 
-
+@if(Auth::check())
 @if($question['bookmarked'])
 <div  id="bookmarked">
     <button type="button" class="btn text-secondary" onclick="deleteBookmark({{$question['id']}})">
@@ -24,4 +24,5 @@
         <a href="#" class=" text-black"><i class="fa fa-bookmark-o"></i> bookmark</a>
     </button>
 </div>
+@endif
 @endif

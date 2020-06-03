@@ -28,11 +28,11 @@
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="title" class="p-2 h4 text-left">What is your question?</label>
-                <input id="title" name="title" class="form-control" required>
+            <input id="title" name="title" class="form-control" value="{{old('title')}}" required>
             </div>
             <div class="form-group">
                 <label for="text_body" class="p-2 h4 text-left">Explain yourself a bit better</label>
-                <textarea class="form-control QuestionMDE" id="text_body" name="text_body" rows="5" required></textarea>
+                <textarea class="form-control QuestionMDE" id="text_body" name="text_body" rows="5" required>{{old('text_body')}}</textarea>
             </div>
             <div class="form-group">
                 <label for="category" class="p-2 h4 text-left">In which categories does your question fit in?

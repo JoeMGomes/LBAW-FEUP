@@ -59,8 +59,7 @@
                         <input type="hidden" id="emailPass" name="emailPass" value="{{Auth::user()->email}}">
                         <div class="form-group">
                             <label for="oldPassword">current password</label>
-                            <input type="password" name="oldPassword" id="oldPassword" class="form-control" required
-                                autofocus>
+                            <input type="password" name="oldPassword" id="oldPassword" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label class="float-left" for="inputPasswordNew ">new password</label>
@@ -85,8 +84,7 @@
                         <h5>Change username</h5>
                         <div class="form-group">
                             <label class="float-left" for="newUsername ">new username</label>
-                            <input type="text" id="newUsername" name="newUsername" class="form-control" required
-                                autofocus>
+                            <input type="text" id="newUsername" name="newUsername" class="form-control" value="{{old('newUsername')}}" required>
                         </div>
                         <div class="form-group">
                             <label for="namePassword">password</label>
@@ -106,8 +104,8 @@
                         <div class="form-group">
                             <label><b>current email:</b> {{Auth::user()->email}}</label><br>
                             <label for="inputEmail">new e-mail</label>
-                            <input type="email" name="inputEmail" id="inputEmail" class="form-control" required
-                                autofocus>
+                            <input type="email" name="inputEmail" id="inputEmail" class="form-control" value="{{old('inputEmail')}}" required
+                            >
                         </div>
                         <div class="form-group">
                             <label class="float-left" for="passwordEmail">password</label>
@@ -131,7 +129,7 @@
                                         class="rounded-circle z-depth-1-half avatar-pic " width=80px height="80px"
                                         alt="example placeholder avatar">
                                     <div class="mt-2 ml-2 d-md-flex flex-column">
-                                        <span>Add photo</span>
+                                        <span>Add photo. <span class ="small">The preview will not change</span></span>
                                         <input class="mb-5" name="image" type="file">
                                     </div>
                                 </div>
@@ -142,7 +140,7 @@
                     </div>
                     <div class="">
                         <div class="px-5 ">
-                            <form method="POST" action="route('deleteAccount')"
+                            <form method="POST" action="{{route('deleteAccount')}}"
                                 onsubmit=" return confirm('Are you sure you want to delete your account? This action is permanent') && confirm('Are you really sure?');">
                                 {{ csrf_field() }}
                                 <button class="btn tag-orange text-white">Delete account</button>

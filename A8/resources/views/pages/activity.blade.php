@@ -56,6 +56,9 @@
    
 
 <div class="px-3">
+        @if (!$posts)
+            <p class="my-4">You have no recent activity! Get started by looking into some <a href="/#popular">popular questions</a>!</p>
+        @endif
         @foreach($posts as $post)
             @if($post['type']==1)
                 @include('partials.activity.activityQuestion', ['post'=>$post])

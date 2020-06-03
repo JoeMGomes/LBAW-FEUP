@@ -656,11 +656,12 @@ create trigger update_notif_post after insert on post_notif
 	for each row execute procedure update_views();
 
 drop trigger if exists update_post on post;
-create trigger update_post after insert on post
+create trigger update_post after insert or update on post
 	for each row execute procedure update_views();
 
+
 drop trigger if exists update_question on question;
-create trigger update_question after insert on question
+create trigger update_question after insert or update on question
 	for each row execute procedure update_views();
 
 --- INDEXES ---

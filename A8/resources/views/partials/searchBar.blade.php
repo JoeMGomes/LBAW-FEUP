@@ -16,7 +16,7 @@
     var obj = document.getElementById("search_form");
     obj.addEventListener("submit", function() {
         let input = document.getElementById("search");
-        obj.action = "/search/" + input.value.replace(/ /g, '+').replace(/#/g, "%23");
+        obj.action = "/search/" + input.value.replace(/ /g, '+').replace(/#/g, "%23").replace(/[\<\>\/\"\'\;\-\{\}\[\]\\\(\)]/g, '');
         obj.submit();
     });
 </script>

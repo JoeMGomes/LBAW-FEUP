@@ -10,5 +10,6 @@
 
 @section('main')
 @include('partials.menuBtnHome')
+<div class="py-2"></div>
 @include('partials.search.searchMain', $results)
 @endsection

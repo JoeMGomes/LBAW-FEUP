@@ -9,7 +9,6 @@
 @endsection
 
 
-
 @section('main')
 @include('partials.navBarTop')
     <main id="main" class="ml-lg-auto col-lg-10  ">

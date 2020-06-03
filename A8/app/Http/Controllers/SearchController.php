@@ -28,6 +28,8 @@ class SearchController extends Controller
         $obj = new Search();
         $pos = strpos($search, "#");
 
+        str_replace(' ', '+', $search);
+        preg_replace('/[^a-zA-Z0-9#+]/i', ' ', $search);
         if ($pos === false) {
             $results = $obj->search($search);
         } elseif ($pos == 0) {

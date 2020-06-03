@@ -42,6 +42,7 @@ class QuestionController extends Controller
 
         $noDupArray = array_unique($request->input());
 
+        //Verifies if the passed Categories match all requirements
         for($i = 1; $i <= 5; $i++){
             if (array_key_exists('category'.$i, $noDupArray)){
 
@@ -75,6 +76,8 @@ class QuestionController extends Controller
 
         $id = $question;
         $que = Question::find($question);
+
+        //Finds the parent Question of a Post
         if(!Question::where('post','=',$id)->exists()){
             $comment = Comment::find($id);
             $answer = Answer::find($id);
@@ -91,6 +94,7 @@ class QuestionController extends Controller
             }
         }
 
+        //Fills the url with the question title for cleaner urls
         $slug = Str::slug( $que->title,'-');   
         return redirect('/post/'.$id.'/'.$slug);
         

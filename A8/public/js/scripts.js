@@ -179,9 +179,9 @@ function NotificationHandler() {
                 '<span> 1 user upvoted your post: "<strong>' +
                 response[i].text +
                 '</strong>"' +
-                '<div class="text-left pl-4">' +
+                '<span class="text-left pl-4">' +
                 timeAgo(response[i].date.split(".")[0]) +
-                "</div>" +
+                "</span>" +
                 "</span>" +
                 "</div>";
         } else if (response[i].type == "POST") {
@@ -193,9 +193,9 @@ function NotificationHandler() {
                 '<span class> 1 user replied your post: "<strong>' +
                 response[i].text +
                 '</strong>"' +
-                '<div class="text-left pl-4">' +
+                '<span class="text-left pl-4">' +
                 timeAgo(response[i].date.split(".")[0]) +
-                "</div>" +
+                "</span>" +
                 "</span>" +
                 "</div>";
         } else {
@@ -205,9 +205,9 @@ function NotificationHandler() {
             }
             tagElem.innerHTML +=
                 "<span> One of your Post got deleted because of too many reports!" +
-                '<div class="text-left pl-4">' +
+                '<span class="text-left pl-4">' +
                 timeAgo(response[i].date.split(".")[0]) +
-                "</div>" +
+                "</span>" +
                 "</span>" +
                 "</div>";
         }

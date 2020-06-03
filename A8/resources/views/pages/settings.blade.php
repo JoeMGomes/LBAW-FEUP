@@ -71,7 +71,7 @@
                             <input type="password" name="inputPasswordTwo" id="inputPasswordTwo" class="form-control"
                                 required>
                         </div>
-                        <button class="mb-4 btn btn-primary border-0 bg-mygreen float-right" type="submit">
+                        <button class="mb-4 btn btn-primary border-0 bg-mydarkgreen float-right" type="submit">
                             Confirm Changes
                         </button>
                     </form>
@@ -91,7 +91,7 @@
                             <label for="namePassword">password</label>
                             <input type="password" id="namePassword" name="namePassword" class="form-control" required>
                         </div>
-                        <button class="mb-4 btn btn-primary border-0 bg-mygreen float-right" type="submit">Confirm
+                        <button class="mb-4 btn btn-primary border-0 bg-mydarkgreen float-right" type="submit">Confirm
                             Changes</button>
                     </form>
                 </div>
@@ -113,7 +113,7 @@
                             <input type="password" name="passwordEmail" id="passwordEmail" class="form-control"
                                 required>
                         </div>
-                        <button class="mb-4 btn btn-primary border-0 bg-mygreen float-right" type="submit">Confirm
+                        <button class="mb-4 btn btn-primary border-0 bg-mydarkgreen float-right" type="submit">Confirm
                             Changes</button>
                     </form>
                 </div>
@@ -135,7 +135,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="mb-4 btn btn-primary border-0 bg-mygreen float-right" type="submit">Confirm
+                            <button class="mb-4 btn btn-primary border-0 bg-mydarkgreen float-right" type="submit">Confirm
                                 Changes</button>
                         </form>
                     </div>

@@ -142,7 +142,7 @@ class Question extends Model
 
     public function addQuestion($title, $text)
     {
-        $id = DB::select('SELECT add_answer(:param1, :param2, :param3)', [
+        $id = DB::select('SELECT add_question(:param1, :param2, :param3)', [
             'param1' => Auth::user()->id,
             'param2' => $title,
             'param3' => $text

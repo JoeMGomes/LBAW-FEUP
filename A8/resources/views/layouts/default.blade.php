@@ -124,13 +124,14 @@
     </div></div>
 </nav>
 @if(session()->has('successMessage'))
-<button id="message" class="w-100 alert alert-success" style="z-index:999" onclick="hideMessage(this)"">
-            {{ session()->get('successMessage') }}
+<button id="message" class="w-100 alert alert-success" style="z-index:999" onclick="hideMessage(this)">
+    <i class="fa fa-check" aria-hidden="true"></i>
+    {{ session()->get('successMessage') }}
         </button>
         @endif
         @if(session()->has('errorMessage'))
         <button id=" message" class="w-100 alert alert-danger " style="z-index:999"
-    onclick="hideMessage(this)">
+    onclick="hideMessage(this)"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
     {{ session()->get('errorMessage') }}
 </button>
 @endif

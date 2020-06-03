@@ -158,7 +158,7 @@ Afterwards, you can build and upload the docker image by executing that script f
 
 You can test the image locally by running:
 
-    docker run -it -p 8000:80 -e DB_DATABASE="lbaw20gg" -e DB_USERNAME="lbaw20gg" -e DB_PASSWORD="PASSWORD" <DOCKER_USERNAME>/lbaw20gg
+    docker run -it -p 8000:80 -e DB_DATABASE="lbaw2075" -e DB_USERNAME="lbaw2075" -e DB_PASSWORD="QO146707" lbaw2075b/lbaw2075
 
 The above command exposes your application on http://localhost:8000.
 The `-e` argument creates environment variables inside the container, used to provide Laravel with the required database configurations.

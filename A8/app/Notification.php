@@ -20,7 +20,8 @@ class Notification extends Model
         UNION
         SELECT 'REPORT' as type, notified, read, date, post, '' as text
         FROM total_notif_report
-        WHERE notified = :userID;" , ['userID' => Auth::user()->id]);
+        WHERE notified = :userID
+        ORDER BY date desc" , ['userID' => Auth::user()->id]);
         return collect($allnotif)->map(function($x) {return (array) $x; })->toArray();
     }
 

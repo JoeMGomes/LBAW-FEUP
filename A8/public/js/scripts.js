@@ -172,7 +172,7 @@ function NotificationHandler() {
         if (response[i].type == "VOTE") {
             tagElem.innerHTML += '<div class=" d-flex justify-content-start notifications mb-3 px-2">';
             if (!response[i].read) {
-                tagElem.innerHTML += '<i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>';
+                tagElem.innerHTML += '<a href="/post/'+ response[i].post + '"> <i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>';
             }
             tagElem.innerHTML +=
                 '<span> 1 user upvoted your post: "<strong>' +
@@ -182,25 +182,27 @@ function NotificationHandler() {
                 timeAgo(response[i].date.split(".")[0]) +
                 "</span>" +
                 "</span>" +
+                "</a>" +  
                 "</div>";
         } else if (response[i].type == "POST") {
             tagElem.innerHTML += '<div class=" d-flex justify-content-start notifications mb-3 px-2">';
             if (!response[i].read) {
-                tagElem.innerHTML += '<i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>';
+                tagElem.innerHTML += '<a href="/post/'+ response[i].post + '"> <i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>';
             }
             tagElem.innerHTML +=
-                '<span class> 1 user replied your post: "<strong>' +
+                '<span> 1 user replied your post: "<strong>' +
                 response[i].text +
                 '</strong>"' +
                 '<span class="text-left pl-4">' +
                 timeAgo(response[i].date.split(".")[0]) +
                 "</span>" +
                 "</span>" +
+                "</a>" +  
                 "</div>";
         } else {
             tagElem.innerHTML += '<div class=" d-flex justify-content-start notifications mb-3 px-2">';
             if (!response[i].read) {
-                tagElem.innerHTML += '<i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>';
+                tagElem.innerHTML += ' <a href="/post/'+ response[i].post + '"> <i class="fa fa-circle pt-3 pr-2" style="color: #7a86ef"></i>';
             }
             tagElem.innerHTML +=
                 "<span> One of your Post got deleted because of too many reports!" +
@@ -208,6 +210,7 @@ function NotificationHandler() {
                 timeAgo(response[i].date.split(".")[0]) +
                 "</span>" +
                 "</span>" +
+                "</a>" +  
                 "</div>";
         }
     }

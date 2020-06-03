@@ -23,7 +23,7 @@
                 <small class="my-auto"> Replied on {{date('M d, Y @ H:i',strtotime($answer['date']))}} </small>
                 @include('partials.question.edit')
                 @include('partials.question.deleteAnswer')
-                @include('partials.report', ['id' => $answer['id']])
+                @include('partials.report', ['id' => $answer['id'],  'owner' => $answer['owner']])
             </div>
         </div>
     </div>

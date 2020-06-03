@@ -375,7 +375,7 @@ if (categ != null) {
     });
 }
 
-function downvote(id) {
+function downvote(id) 
     let up = document.getElementById("up" + id).firstChild;
     let down = document.getElementById("down" + id).firstChild;
     switchVote(down, up)

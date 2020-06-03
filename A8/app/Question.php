@@ -18,8 +18,9 @@ class Question extends Model
     ];
     protected $table = 'question';
 
-
-
+    /**
+     * queries and prepares array to send to question page
+     */
     public function getAllInfo($id)
     {
         $user = Auth::check() ? Auth::user()->id : 0;
@@ -47,6 +48,7 @@ class Question extends Model
         $result = collect($result)->map(function ($x) {
             return (array) $x;
         })->toArray();
+        //parses query array $result
         $question = $result[0];
         $answers = array();
         $comments = array();
@@ -61,6 +63,7 @@ class Question extends Model
             }
         }
 
+        // comments inside answers
         $complete_answers = array();
         foreach ($answers as $a) {
             $complete_comments = array();
@@ -73,6 +76,7 @@ class Question extends Model
             array_push($complete_answers, $a);
         }
 
+        // best answer on question
         if (isset($question['best_answer'])) {
             $ba = $question['best_answer'];
             foreach ($complete_answers as $key => $a) {
@@ -100,6 +104,7 @@ class Question extends Model
     {
         return $this->hasMany('App\Answer', 'post');
     }
+
     public function popularQuestions()
     {
         $posts = DB::select(DB::raw('select q.id, q.title, q.text_body, q.name, q.photo_url

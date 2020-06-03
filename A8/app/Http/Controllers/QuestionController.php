@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -129,7 +128,7 @@ class QuestionController extends Controller
     {
         $obj = new Question();
         $obj->updateQuestion($request);
-        return redirect()->back()->with('successMessage','Question edit successfully!');
+        return redirect()->back()->with('successMessage','Question edited successfully!');
     }
 
 }

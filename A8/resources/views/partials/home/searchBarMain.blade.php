@@ -4,22 +4,22 @@
     <div class="d-flex flex-column justify-content-between vh-100">
         <div class="m-5"></div>
         <div class=" m-md-5 m-sm-1 border bg-white p-md-5 p-sm-1 ">
-            <label for="search" class="w-75 m-4">
-                <h3>Adult life is hard. Hit us with your question!</h3>
+            <label for="search" class="w-75 h3 m-4 ">
+                Adult life is hard. Hit us with your question!
             </label>
 
             @include('partials.searchBar')
 
             <span>Tip: Search with # to filter your results through categories</span>
             <ul class="my-3 m-1 mx-lg-auto col-lg-10 d-flex list-unstyled justify-content-around flex-wrap">
-                <a href="{{url('search/%23Laundry')}}" class="tag mx-md-2 my-1 bg-myred">Laundry</a>
-                <a href="{{url('search/%23Cooking')}}" class="tag mx-md-2 my-1 bg-myyellow">Cooking</a>
-                <a href="{{url('search/%23Health')}}" class="tag mx-md-2 my-1 bg-mygreen">Health</a>
-                <a href="{{url('search/%23Finances')}}" class="tag mx-md-2 my-1 bg-myred">Finances</a>
-                <a href="{{url('search/%23Sexuality')}}" class="tag mx-md-2 my-1 bg-myyellow">Sexuality</a>
-                <a href="{{url('search/%23Work')}}" class="tag mx-md-2 my-1 bg-mygreen">Work</a>
-                <a href="{{url('search/%23Relationships')}}" class="tag mx-md-2 my-1 bg-myred">Relationships</a>
-                <a href="{{url('search/%23Household')}}" class="tag mx-md-2 my-1 bg-myyellow">Household</a>
+                <li class="tag mx-md-2 my-1 bg-myred"><a href="{{url('search/%23Laundry')}}"  class=" tag text-decoration-none text-black">Laundry</a></li>
+                <li class="tag mx-md-2 my-1 bg-myyellow" ><a href="{{url('search/%23Cooking')}}" class=" tag text-decoration-none text-black">Cooking</a></li>
+                <li class="tag mx-md-2 my-1 bg-mygreen"><a href="{{url('search/%23Health')}}" class="tag text-decoration-none text-black">Health</a></li>
+                <li class="tag mx-md-2 my-1 bg-myred"><a href="{{url('search/%23Finances')}}" class="tag text-decoration-none text-black">Finances</a></li>
+                <li class="tag mx-md-2 my-1 bg-myyellow"><a href="{{url('search/%23Sexuality')}}" class="tag text-decoration-none text-black">Sexuality</a></li>
+                <li class="tag mx-md-2 my-1 bg-mygreen"><a href="{{url('search/%23Work')}}" class=" tag text-decoration-none text-black">Work</a></li>
+                <li class="tag mx-md-2 my-1 bg-myred"><a href="{{url('search/%23Relationships')}}"class="tag text-decoration-none text-black" >Relationships</a></li>
+                <li class="tag mx-md-2 my-1 bg-myyellow"><a href="{{url('search/%23Household')}}"class="tag text-decoration-none text-black">Household</a></li>
             </ul>
         </div>
 

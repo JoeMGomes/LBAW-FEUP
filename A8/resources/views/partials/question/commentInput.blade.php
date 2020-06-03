@@ -1,7 +1,7 @@
   
    <form class="mr-4 ml-3" method="POST" action="{{route('addComment')}}"> 
    {{csrf_field()}}
-   <input name="answer_id" type="hidden" id="answer" value="{{$answer}}" />
+   <input name="answer_id" type="hidden" id="answer-{{$answer}}" value="{{$answer}}" />
         <div class="d-flex align-items-center mr-5 mt-1 w-100">
             <div class="rounded-img"> </div>
             <div class="rounded-img"> </div>

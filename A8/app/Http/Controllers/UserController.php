@@ -216,7 +216,6 @@ class UserController extends Controller
             return redirect()->route('home');
         $user = new User();
         $result = $user->activity(Auth::user()->id);
-        // print_r($result);
         return view('pages.activity', ['posts' => $result, 'content' => 'All']);
     }
     public function activityQuestions()
@@ -226,7 +225,7 @@ class UserController extends Controller
 
         $user = new User();
         $result = $user->activityQuestions(Auth::user()->id);
-        // print_r($result);
+       
         return view('pages.activity', ['posts' => $result, 'content' => 'Questions']);
     }
     public function activityAnswers()
@@ -235,7 +234,7 @@ class UserController extends Controller
             return redirect()->route('home');
         $user = new User();
         $result = $user->activityAnswers(Auth::user()->id);
-        // print_r($result);
+      
         return view('pages.activity', ['posts' => $result, 'content' => 'Answers']);
     }
     public function activityComments()

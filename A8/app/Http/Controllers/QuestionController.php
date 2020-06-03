@@ -127,7 +127,7 @@ class QuestionController extends Controller
         $question = $r->input('id');
         DB::select(DB::raw('select delete_question(:question)'), 
             ['question' => $question]);
-        return redirect('/');
+           return redirect('/');
     }
 
     public function edit(Request $request)

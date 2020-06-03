@@ -7,7 +7,7 @@ function drawReport()
 </button>
 
 <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" ole="document">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="text-left rounded bg-mygrey d-flex flex-column p-5 modal-content">
             <h3 class="">What is wrong?</h3>
             <form class="d-flex flex-column align-items-start">

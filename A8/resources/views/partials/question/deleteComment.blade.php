@@ -4,8 +4,7 @@
     <input name="commentID"  value="{{$comment['id']}}" hidden>
     <input name="owner"  value="{{$comment['owner']}}" hidden>
     <button type="submit" class="btn" >
-
-        <a  class="text-black"><i class="fa fa-trash"></i> Delete</a>
+<i class="fa fa-trash"></i> Delete
     </button>
 </form>
 

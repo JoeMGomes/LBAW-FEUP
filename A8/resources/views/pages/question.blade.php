@@ -17,12 +17,13 @@
         <!-- Question -->
         <div class=" d-flex mb-3 mr-5 ml-3">
             <div class="flex-column d-none d-md-flex ">
-                <img src="{{ asset('img/'.$question['photo_url']) }}" class="rounded-img " alt="User Photo" />
+                <img src="{{ asset('img/'.$question['photo_url']) }}" class="rounded-img " alt="{{$question['name']}}'s Photo" />
                 <small class="text-center mt-2">{{$question['name']}}</small>
             </div>
             <div class="w-100 ml-4">
-                 <h1>
-                    {{-- <small>(<u>Edited</u>) </small>  --}}
+                <h1>
+                    @if ($question['edited'])<small>(<u>Edited</u>)</small>@endif
+
                     {{$question['title']}}
                 </h1> 
                 <p class="text-justified">
@@ -36,9 +37,10 @@
                     </div>
                     <div class="text-right text-nowrap d-flex">
                         <small class="my-auto"> Asked on {{date('M d, Y @ H:i ', strtotime($question['date']))}} </small>
+                        @include('partials.question.Bookmark')
                         @include('partials.question.editQuestion')
                         @include('partials.question.deleteQuestion')
-                        @include('partials.report', ['id' => $question['id']])
+                        @include('partials.report', ['id' => $question['id'], 'owner' => $question['owner']])
                     </div>
                 </div>
             </div>

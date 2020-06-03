@@ -95,4 +95,53 @@ class User extends Authenticatable
                                         order by date desc;"), ['id' => $id]);
         return collect($results)->map(function($x) {return (array) $x; })->toArray();
     }
+
+    public function updateEmail($data){
+
+        DB::update(
+            'UPDATE member SET email = :email where id = :id',
+            [
+                'email' =>$data['email'],
+                'id' =>$data['id']
+            ]
+        );
+
+    }
+
+    public function updatePassword($data){
+
+        DB::update(
+            'UPDATE member SET password = :pass where id = :id',
+            [
+                'pass' => $data['pass'],
+                'id' => $data['id']
+            ]
+        );
+    }
+
+    public function updateName($data){
+        DB::update(
+            'UPDATE member SET name = :name where id = :id',
+            [
+                'name' => $data['name'],
+                'id' => $data['id']
+            ]
+        );
+    }
+
+    public function updatePhoto($data){
+
+        DB::update('UPDATE member set photo_url = :photo WHERE id = :id', [
+            'photo' => $data['imageName'],
+            'id'=> $data['id']
+            ]);
+
+    }
+
+    public function deleteUser($data){
+
+        
+        DB::delete('DELETE FROM member WHERE id = :id', ['id' => $data['id']]);
+
+    }
 }

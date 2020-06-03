@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use App\Answer;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Question;
 use App\Category;
+use App\Comment;
 
 class QuestionController extends Controller
 {
@@ -43,7 +46,7 @@ class QuestionController extends Controller
             if (array_key_exists('category'.$i, $noDupArray)){
 
                 if(!$this->checkcategory($noDupArray['category'.$i]) && $noDupArray['category'.$i] != ''){
-                    return back()->with('errorMessage' , $noDupArray['category'.$i].' is not a valid category!'.$noDupArray['category'.$i]);
+                    return back()->withInput()->with('errorMessage' , $noDupArray['category'.$i].' is not a valid category!'.$noDupArray['category'.$i]);
                 }
                 if($request->input('category'.$i)  != ''){
                     array_push($catArray, $noDupArray['category'.$i]);
@@ -53,7 +56,7 @@ class QuestionController extends Controller
 
         }
         if (!$check){
-            return back()->with('errorMessage' , 'Please insert a valid category!');
+            return back()->withInput()->with('errorMessage' , 'Please insert a valid category!');
         }
             $this->authorize('create', Question::class);
 
@@ -72,9 +75,34 @@ class QuestionController extends Controller
             return redirect('/post/'.$questionid);
     }
 
-    public function view($question) {
+    public function fillSlug($question) {
+
+        $id = $question;
+        $que = Question::find($question);
+        if(!Question::where('post','=',$id)->exists()){
+            $comment = Comment::find($id);
+            $answer = Answer::find($id);
+
+            if($comment){
+                $ans = Answer::find($comment->answer);
+                $que = Question::find($ans->question);
+                $id = $que->post;
+            } else if($answer){
+                $que = Question::find($answer->question);
+                $id = $que->post;
+            } else{
+                abort(404);
+            }
+        }
+
+        $slug = Str::slug( $que->title,'-');   
+        return redirect('/post/'.$id.'/'.$slug);
+        
+    }
+
+    public function view($id){
         $obj = new Question();
-        $info = $obj->getAllInfo($question);
+        $info = $obj->getAllInfo($id);
         if ($info['question']['reported'])
             return redirect('home');
         return view('pages.question', ['question' => $info['question'], 'answers' => $info['answers'] ]);
@@ -102,16 +130,12 @@ class QuestionController extends Controller
         return redirect('/');
     }
 
-
-
     public function edit(Request $request)
     {
         $obj = new Question();
         $obj->updateQuestion($request);
-        return redirect()->back();
+        return redirect()->back()->with('successMessage','Question edit successfully!');
     }
-
-
 
 }
 

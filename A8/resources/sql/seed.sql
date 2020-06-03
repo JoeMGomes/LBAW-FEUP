@@ -656,11 +656,12 @@ create trigger update_notif_post after insert on post_notif
 	for each row execute procedure update_views();
 
 drop trigger if exists update_post on post;
-create trigger update_post after insert on post
+create trigger update_post after insert or update on post
 	for each row execute procedure update_views();
 
+
 drop trigger if exists update_question on question;
-create trigger update_question after insert on question
+create trigger update_question after insert or update on question
 	for each row execute procedure update_views();
 
 --- INDEXES ---
@@ -890,6 +891,18 @@ return true;
 end;
 $$ language plpgsql;
 
+-- check if is bookmarks
+create or replace function is_bookmarked(member_id integer, question integer)
+returns boolean as $$
+declare post_id post.id%type;
+begin
+	select into post_id bookmark from bookmark where member = member_id and question = bookmark;
+	if post_id is not null then
+		return true;
+	end if;
+	return false;
+end;
+$$ language plpgsql;
 
 --- Populate --- 
 -- NULL ROWS TO ENSURE NOT NULL CONSTRAINS DONT BREAK

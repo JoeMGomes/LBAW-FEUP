@@ -9,7 +9,7 @@
         <div class="d-flex flex-wrap justify-content-between align-items-center">
             <div class="flex-column align-items-center mt-0 mr-3">
                 <span class="text-nowrap">
-                    <img src="{{asset('img/'.$comment['photo_url'])}}" class="comment-img mr-2" alt="User Photo" />
+                    <img src="{{asset('img/'.$comment['photo_url'])}}" class="comment-img mr-2" alt="{{$comment['name']}}'s' Photo" />
                     &#8212 {{$comment['name']}}
                 </span>
                 <small class="small"> {{$comment['score']}} points | Member since {{date('M Y', strtotime($comment['membership_date']))}}</small>
@@ -17,7 +17,7 @@
             <div class="text-right text-nowrap d-flex">
                 <small class="my-auto"> Comented on {{date('M d, Y @ H:i ',strtotime($comment['date']))}}</small>
                 @include('partials.question.deleteComment')
-                @include('partials.report', ['id' => $comment['id']])
+                @include('partials.report', ['id' => $comment['id'], 'owner' => $comment['owner']])
             </div>
         </div>
     </div>

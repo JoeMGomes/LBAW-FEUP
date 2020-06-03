@@ -33,11 +33,12 @@ Route::get('/googleOAuth','Auth\LoginController@redirectToProvider');
 Route::get('/callbackOAuth', 'Auth\LoginController@handleProviderCallback');
 
 // Module 02
-Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search']);
+Route::get('search/{search}', ['uses' => 'SearchController@show', 'as' => 'search'])->name('search');
 //Route::get('post/{questionID}', ['uses' => 'QuestionController@show', 'as' => 'questionID']);
 Route::get('post/newQuestion', 'QuestionController@addQuestion')->name('newQuestion');
 Route::post('post/newQuestion', 'QuestionController@store')->name('makeQuestion');
-Route::get('post/{question}', 'QuestionController@view');
+Route::get('post/{question}/{filler}', 'QuestionController@view');
+Route::get('post/{question}', 'QuestionController@fillSlug');
 Route::post('post/addAnswer', 'QuestionController@addAnswer')->name('addAnswer');
 Route::post('post/edit', 'AnswerController@edit');
 Route::post('post/editQuestion', 'QuestionController@edit');
@@ -51,6 +52,9 @@ Route::post('/deleteComment', 'CommentController@deleteComment');
 Route::post('post/addComment', 'CommentController@addComment')->name('addComment');
 Route::post('post/report','ReportController@store')->name('makeReport');
 Route::get('activity', 'UserController@activity')->name('activity');
+Route::get('bookmarks', 'BookmarkController@show')->name('bookmarks');
+Route::post('api/addBookmark',  'BookmarkController@addBookmark');
+Route::post('api/removeBookmark',  'BookmarkController@removeBookmark');
 Route::get('activity/questions', 'UserController@activityQuestions')->name('activityQuestions');
 Route::get('activity/answers', 'UserController@activityAnswers')->name('activityAnswers');
 Route::get('activity/comments', 'UserController@activityComments')->name('activityComments');

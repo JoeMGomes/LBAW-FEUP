@@ -7,7 +7,7 @@
         <div class="d-flex flex-wrap justify-content-between align-items-center">
             <div class="flex-column align-items-center mr-3">
                 <span class="text-nowrap">
-                    <img src="{{asset('img/'.$result['aphoto'])}}" class="reply-img mr-2" alt="User Photo" />
+                    <img src="{{asset('img/'.$result['aphoto'])}}" class="reply-img mr-2" alt="{{$result['aname']}}'s' Photo" />
                     &#8212 {{$result['aname']}}
                 </span>
                 <small class="small"> {{$result['score']}} points | Member since {{date('M Y', strtotime($result['membership_date']))}}</small>

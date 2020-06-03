@@ -27,19 +27,17 @@ class SearchController extends Controller
     {
         $obj = new Search();
         $pos = strpos($search, "#");
-        
+
         if ($pos === false) {
             $results = $obj->search($search);
-        }
-        elseif ($pos == 0) {
+        } elseif ($pos == 0) {
             $results = $obj->searchCategory(substr($search, 1));
-        }
-        else {
+        } else {
             $search1 = substr($search, 0, $pos);
-            $category = substr($search, $pos+1);
-            
-            $results = $obj->searchWithCategory($search1, $category );
+            $category = substr($search, $pos + 1);
+
+            $results = $obj->searchWithCategory($search1, $category);
         }
-        return view('pages.search', ['results'=> $results, 'search' => [$search]]);
+        return view('pages.search', ['results' => $results, 'search' => [$search]]);
     }
 }

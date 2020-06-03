@@ -1,6 +1,6 @@
 <div class="d-flex pl-4 pr-4 w-100">
     <div class="flex-column d-none d-md-flex ">
-        <img src="{{asset('img/'.$result['qphoto'])}}" class="rounded-img " alt="User Photo" />
+        <img src="{{asset('img/'.$result['qphoto'])}}" class="rounded-img " alt="{{$result['qname']}}'s' Photo" />
         <small class="text-center mt-2">{{$result['qname']}}</small>
     </div>
     <div class="ml-4 w-100">

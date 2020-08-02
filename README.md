@@ -11,6 +11,7 @@ O projeto tem como objetivo criar um site de perguntas e respostas onde é poss�
 * José Miguel Martins Gomes, up201707054@fe.up.pt
 * Rita Nunes da Mota, up201703964@fe.up.pt
 
+### Nota Final: 85%
 
 ***
 
